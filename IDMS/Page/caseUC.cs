@@ -1146,11 +1146,6 @@ namespace IDMS.Page
 
             return hid;
         }
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            idms.ChangePageToNEW_Report();
-        }
-
 
         private string getEditPopup(string caseid)
         {

@@ -233,13 +233,6 @@ namespace IDMS
 
 
         }
-        public void ChangePageToNEW_Report()
-        {
-            usercontrolPanel.Controls.Clear();
-            REPORT_2 report2 = new REPORT_2(this);
-
-            usercontrolPanel.Controls.Add(report2);
-        }
 
         public void ChangePageToReport(string hn, string caseid)
         {

@@ -137,8 +137,16 @@
     <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.21\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\MicrosoftOfficeCore.15.0.0\lib\net35\Office.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="PdfSharp, Version=1.51.5185.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp.1.51.5185-beta\lib\net20\PdfSharp.dll</HintPath>
@@ -150,7 +158,9 @@
     <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
@@ -324,18 +334,6 @@
     <Compile Include="Page\ReportMulti.Designer.cs">
       <DependentUpon>ReportMulti.cs</DependentUpon>
     </Compile>
-    <Compile Include="Page\REPORT_2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Page\REPORT_2.Designer.cs">
-      <DependentUpon>REPORT_2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Page\REPORT_CONTROL2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Page\REPORT_CONTROL2.Designer.cs">
-      <DependentUpon>REPORT_CONTROL2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Page\settingUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -455,30 +453,6 @@
     <Compile Include="ReportContent\imageReport.Designer.cs">
       <DependentUpon>imageReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportContent\output.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ReportContent\output.Designer.cs">
-      <DependentUpon>output.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReportContent\output2cs.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ReportContent\output2cs.Designer.cs">
-      <DependentUpon>output2cs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReportContent\outReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReportContent\outReport.Designer.cs">
-      <DependentUpon>outReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReportContent\outReportColono.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReportContent\outReportColono.Designer.cs">
-      <DependentUpon>outReportColono.cs</DependentUpon>
-    </Compile>
     <Compile Include="ReportContent\PdfColono.cs" />
     <Compile Include="ReportContent\PdfEGD.cs" />
     <Compile Include="ReportContent\PdfENT.cs" />
@@ -535,12 +509,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Page\ReportMulti.resx">
       <DependentUpon>ReportMulti.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Page\REPORT_2.resx">
-      <DependentUpon>REPORT_2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Page\REPORT_CONTROL2.resx">
-      <DependentUpon>REPORT_CONTROL2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Page\settingUC.resx">
       <DependentUpon>settingUC.cs</DependentUpon>
@@ -612,18 +580,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportContent\IMAGE_REPORT_2.resx">
       <DependentUpon>IMAGE_REPORT_2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReportContent\output.resx">
-      <DependentUpon>output.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReportContent\output2cs.resx">
-      <DependentUpon>output2cs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReportContent\outReport.resx">
-      <DependentUpon>outReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReportContent\outReportColono.resx">
-      <DependentUpon>outReportColono.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportContent\previewControl.resx" />
     <EmbeddedResource Include="ReportContent\previewReport.resx" />
