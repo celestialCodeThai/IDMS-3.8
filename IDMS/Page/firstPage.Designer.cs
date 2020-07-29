@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(firstPage));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.dbl = new System.Windows.Forms.Label();
             this.db = new System.Windows.Forms.Label();
             this.AdminPanel = new System.Windows.Forms.Panel();
@@ -45,7 +44,6 @@
             // 
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.dbl);
             this.panel1.Controls.Add(this.db);
             this.panel1.Controls.Add(this.AdminPanel);
@@ -60,16 +58,6 @@
             this.panel1.Size = new System.Drawing.Size(1820, 1040);
             this.panel1.TabIndex = 0;
             this.panel1.DoubleClick += new System.EventHandler(this.panel1_DoubleClick);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Leelawadee UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(151, 90);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(213, 45);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Hello Master";
             // 
             // dbl
             // 
@@ -179,6 +167,5 @@
         private System.Windows.Forms.Panel AdminPanel;
         private System.Windows.Forms.Label dbl;
         private System.Windows.Forms.Label db;
-        private System.Windows.Forms.Label label2;
     }
 }
