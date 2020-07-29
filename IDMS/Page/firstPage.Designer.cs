@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(firstPage));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.dbl = new System.Windows.Forms.Label();
             this.db = new System.Windows.Forms.Label();
             this.AdminPanel = new System.Windows.Forms.Panel();
@@ -37,7 +38,6 @@
             this.MAC = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +60,16 @@
             this.panel1.Size = new System.Drawing.Size(1820, 1040);
             this.panel1.TabIndex = 0;
             this.panel1.DoubleClick += new System.EventHandler(this.panel1_DoubleClick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Leelawadee UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(151, 90);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(213, 45);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Hello Master";
             // 
             // dbl
             // 
@@ -140,16 +150,6 @@
             this.button1.Text = "Start";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Leelawadee UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(151, 90);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 45);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Hello Git";
             // 
             // firstPage
             // 
