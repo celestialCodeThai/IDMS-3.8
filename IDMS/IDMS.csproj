@@ -1,0 +1,787 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1B5D38ED-DC0C-492B-80DD-384692236018}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>IDMS</RootNamespace>
+    <AssemblyName>IDMS</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>E:\relese folder\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo1_Q05_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>2960B0483727B8AF3035974CDB65920F30743550</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>IDMS_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accord, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.3.8.0\lib\net46\Accord.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Video, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Video.3.8.0\lib\net46\Accord.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Video.FFMPEG, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=x86">
+      <HintPath>..\packages\Accord.Video.FFMPEG.3.8.0\lib\net46\Accord.Video.FFMPEG.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.2.2.5\lib\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Controls, Version=2.2.5.0, Culture=neutral, PublicKeyToken=a8ac264d1dc6b9d9, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Controls.2.2.5\lib\AForge.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging, Version=2.2.5.0, Culture=neutral, PublicKeyToken=ba8ddea9676ca48b, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Imaging.2.2.5\lib\AForge.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Math, Version=2.2.5.0, Culture=neutral, PublicKeyToken=abba2e25397ee8c9, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Math.2.2.5\lib\AForge.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Video.2.2.5\lib\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.4\lib\net46\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DirectX.Capture">
+      <HintPath>..\..\..\..\Desktop\DirectX.Capture.dll</HintPath>
+    </Reference>
+    <Reference Include="DShowNET">
+      <HintPath>..\..\..\..\Desktop\DShowNET.dll</HintPath>
+    </Reference>
+    <Reference Include="Emxx">
+      <HintPath>..\..\..\..\Desktop\Emxx.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\..\Desktop\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.13\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="pdfsharp">
+      <HintPath>..\..\..\..\Desktop\pdfsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.109.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.109.2\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.109.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.109.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.109.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.109.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tulpep.NotificationWindow, Version=1.1.25.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tulpep.NotificationWindow.1.1.25\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Popup\ConfirnClearData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\ConfirnClearData.Designer.cs">
+      <DependentUpon>ConfirnClearData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\ImageEditor_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\ImageEditor_2.Designer.cs">
+      <DependentUpon>ImageEditor_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\Images.cs" />
+    <Compile Include="Popup\medTable_Template2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\medTable_Template2.Designer.cs">
+      <DependentUpon>medTable_Template2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportContent\PdfBroco_TemplateB.cs" />
+    <Compile Include="ReportContent\PdfColono_TemplateB.cs" />
+    <Compile Include="ReportContent\PdfEGD_TemplateB.cs" />
+    <Compile Include="ReportContent\PdfENT_TemplateB.cs" />
+    <Compile Include="ReportContent\PdfERCP_TemplateB.cs" />
+    <Compile Include="test.cs" />
+    <Compile Include="DataManage\DataAccess.cs" />
+    <Compile Include="DataManage\dbhelper.cs" />
+    <Compile Include="DataManage\hnCase.cs" />
+    <Compile Include="DataManage\hnData.cs" />
+    <Compile Include="DataManage\manageReportBRONCO.cs" />
+    <Compile Include="DataManage\manageReportCOL.cs" />
+    <Compile Include="DataManage\manageReportEGD.cs" />
+    <Compile Include="DataManage\manageReportENT.cs" />
+    <Compile Include="DataManage\manageReportERCP.cs" />
+    <Compile Include="Page\reportControlBronco.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\reportControlBronco.Designer.cs">
+      <DependentUpon>reportControlBronco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\cameraPort.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Page\cameraPort.Designer.cs">
+      <DependentUpon>cameraPort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\caseUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\caseUC.Designer.cs">
+      <DependentUpon>caseUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\reportControlCysto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\reportControlCysto.Designer.cs">
+      <DependentUpon>reportControlCysto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\editUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\editUC.Designer.cs">
+      <DependentUpon>editUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\reportControlENT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\reportControlENT.Designer.cs">
+      <DependentUpon>reportControlENT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\reportControlERCP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\reportControlERCP.Designer.cs">
+      <DependentUpon>reportControlERCP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\examUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\examUC.Designer.cs">
+      <DependentUpon>examUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\firstPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Page\firstPage.Designer.cs">
+      <DependentUpon>firstPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\idmsPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Page\idmsPage.Designer.cs">
+      <DependentUpon>idmsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\regisUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\regisUC.Designer.cs">
+      <DependentUpon>regisUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Report.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\reportControlEGD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\reportControlEGD.Designer.cs">
+      <DependentUpon>reportControlEGD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\ReportMulti.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\ReportMulti.Designer.cs">
+      <DependentUpon>ReportMulti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\REPORT_2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\REPORT_2.Designer.cs">
+      <DependentUpon>REPORT_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\REPORT_CONTROL2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\REPORT_CONTROL2.Designer.cs">
+      <DependentUpon>REPORT_CONTROL2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\settingUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\settingUC.Designer.cs">
+      <DependentUpon>settingUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\statUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\statUC.Designer.cs">
+      <DependentUpon>statUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\TabControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Page\TabControl.Designer.cs">
+      <DependentUpon>TabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\import.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\import.Designer.cs">
+      <DependentUpon>import.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\MarkBronco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\MarkBronco.Designer.cs">
+      <DependentUpon>MarkBronco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\MARK_EGD_2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Popup\MARK_EGD_2.Designer.cs">
+      <DependentUpon>MARK_EGD_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\MessageBoxManager.cs" />
+    <Compile Include="Popup\editImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\editImage.Designer.cs">
+      <DependentUpon>editImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\ImageEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\ImageEditor.Designer.cs">
+      <DependentUpon>ImageEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\Instrument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\Instrument.Designer.cs">
+      <DependentUpon>Instrument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\Mark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\Mark.Designer.cs">
+      <DependentUpon>Mark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\MarkColono.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\MarkColono.Designer.cs">
+      <DependentUpon>MarkColono.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\medTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\medTable.Designer.cs">
+      <DependentUpon>medTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\previewPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\previewPopup.Designer.cs">
+      <DependentUpon>previewPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportContent\cOutput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportContent\cOutput.Designer.cs">
+      <DependentUpon>cOutput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\reportControlColono.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\reportControlColono.Designer.cs">
+      <DependentUpon>reportControlColono.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportContent\coutput2cs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportContent\coutput2cs.Designer.cs">
+      <DependentUpon>coutput2cs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportContent\IMAGE_REPORT_2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportContent\IMAGE_REPORT_2.Designer.cs">
+      <DependentUpon>IMAGE_REPORT_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportContent\PdfBronco.cs" />
+    <Compile Include="ReportContent\PdfCysto.cs" />
+    <Compile Include="ReportContent\imageReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportContent\imageReport.Designer.cs">
+      <DependentUpon>imageReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportContent\output.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportContent\output.Designer.cs">
+      <DependentUpon>output.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportContent\output2cs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportContent\output2cs.Designer.cs">
+      <DependentUpon>output2cs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportContent\outReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportContent\outReport.Designer.cs">
+      <DependentUpon>outReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportContent\outReportColono.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportContent\outReportColono.Designer.cs">
+      <DependentUpon>outReportColono.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportContent\PdfColono.cs" />
+    <Compile Include="ReportContent\PdfEGD.cs" />
+    <Compile Include="ReportContent\PdfENT.cs" />
+    <Compile Include="ReportContent\PdfERCP.cs" />
+    <Compile Include="ReportContent\previewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportContent\previewControl.Designer.cs" />
+    <Compile Include="ReportContent\previewReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportContent\previewReport.Designer.cs" />
+    <Compile Include="RoundBTN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="World\Current.cs" />
+    <Compile Include="World\Setting.cs" />
+    <EmbeddedResource Include="Page\reportControlBronco.resx">
+      <DependentUpon>reportControlBronco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\caseUC.resx">
+      <DependentUpon>caseUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\reportControlColono.resx">
+      <DependentUpon>reportControlColono.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\reportControlCysto.resx">
+      <DependentUpon>reportControlCysto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\editUC.resx">
+      <DependentUpon>editUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\reportControlERCP.resx">
+      <DependentUpon>reportControlERCP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\examUC.resx">
+      <DependentUpon>examUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\firstPage.resx">
+      <DependentUpon>firstPage.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\idmsPage.resx">
+      <DependentUpon>idmsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\regisUC.resx">
+      <DependentUpon>regisUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\reportControlEGD.resx">
+      <DependentUpon>reportControlEGD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\ReportMulti.resx">
+      <DependentUpon>ReportMulti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\REPORT_2.resx">
+      <DependentUpon>REPORT_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\REPORT_CONTROL2.resx">
+      <DependentUpon>REPORT_CONTROL2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\settingUC.resx">
+      <DependentUpon>settingUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\statUC.resx">
+      <DependentUpon>statUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\TabControl.resx">
+      <DependentUpon>TabControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\ConfirnClearData.resx">
+      <DependentUpon>ConfirnClearData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\editImage.resx">
+      <DependentUpon>editImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\ImageEditor.resx">
+      <DependentUpon>ImageEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\import.resx">
+      <DependentUpon>import.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\Instrument.resx">
+      <DependentUpon>Instrument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\Mark.resx">
+      <DependentUpon>Mark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\MarkBronco.resx">
+      <DependentUpon>MarkBronco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\MarkColono.resx">
+      <DependentUpon>MarkColono.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\MARK_EGD_2.resx">
+      <DependentUpon>MARK_EGD_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\medTable_Template2.resx">
+      <DependentUpon>medTable_Template2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\medTable.resx">
+      <DependentUpon>medTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\previewPopup.resx">
+      <DependentUpon>previewPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ReportContent\cOutput.resx">
+      <DependentUpon>cOutput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportContent\coutput2cs.resx">
+      <DependentUpon>coutput2cs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportContent\imageReport.resx">
+      <DependentUpon>imageReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportContent\IMAGE_REPORT_2.resx">
+      <DependentUpon>IMAGE_REPORT_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportContent\output.resx">
+      <DependentUpon>output.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportContent\output2cs.resx">
+      <DependentUpon>output2cs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportContent\outReport.resx">
+      <DependentUpon>outReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportContent\outReportColono.resx">
+      <DependentUpon>outReportColono.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportContent\previewControl.resx" />
+    <EmbeddedResource Include="ReportContent\previewReport.resx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ICD10.xlsx" />
+    <None Include="Resources\idms-Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Menu Left.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idms-Menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addpatient.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\examination.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo41.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preview_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preview_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\register.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\setting.db" />
+    <None Include="Resources\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\donebox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pendingbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idms_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="idms_logo.ico" />
+    <Content Include="logo1_Q05_icon.ico" />
+    <Content Include="Popup\index.html" />
+    <None Include="Resources\remove.png" />
+    <None Include="Resources\tick.png" />
+    <None Include="Resources\crop8.png" />
+    <None Include="Resources\crop7.png" />
+    <None Include="Resources\crop5a.png" />
+    <None Include="Resources\crop3.png" />
+    <None Include="Resources\crop2.png" />
+    <None Include="Resources\crop.png" />
+    <None Include="Resources\idmsBg.PNG" />
+    <None Include="Resources\import_images.png" />
+    <None Include="Resources\brocho2.png" />
+    <None Include="Resources\brocho.png" />
+    <None Include="Resources\number_select.png" />
+    <None Include="Resources\number_unselect.png" />
+    <None Include="Resources\tab_2.png" />
+    <None Include="Resources\tab_1.png" />
+    <None Include="Resources\BRONCO.jpg" />
+    <None Include="Resources\c.png" />
+    <None Include="Resources\ercp.png" />
+    <None Include="Resources\report - ercp.png" />
+    <None Include="Resources\case_delete.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\chaophaya.png" />
+    <None Include="Resources\statistic.png" />
+    <None Include="Resources\loading.gif" />
+    <None Include="Resources\report_images1.png" />
+    <None Include="Resources\report_images.png" />
+    <None Include="Resources\colon_highlight_cut.png" />
+    <None Include="Resources\colon_highlight.png" />
+    <None Include="Resources\egdHeader.png" />
+    <None Include="Resources\egd.png" />
+    <None Include="Resources\colonHeader.png" />
+    <None Include="Resources\EGD_header.png" />
+    <None Include="Resources\COLheader.bmp" />
+    <None Include="Resources\001.wav" />
+    <None Include="Resources\soundexam.bmp" />
+    <None Include="Resources\colono_anatomy.PNG" />
+    <None Include="Resources\egd_anatomy.PNG" />
+    <None Include="Resources\report_edit1.png" />
+    <None Include="Resources\writingbox.png" />
+    <None Include="Resources\register_edit1.png" />
+    <None Include="Resources\exam_edit1.png" />
+    <None Include="Resources\stop.png" />
+    <None Include="Resources\report_edit.png" />
+    <None Include="Resources\register_edit.png" />
+    <None Include="Resources\preparebox1.png" />
+    <None Include="Resources\exam_edit.png" />
+    <None Include="Resources\preparebox.png" />
+    <None Include="Resources\donebox1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Accord.3.8.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.0\build\Accord.targets')" />
+  <Import Project="..\packages\Accord.Video.FFMPEG.3.8.0\build\Accord.Video.FFMPEG.targets" Condition="Exists('..\packages\Accord.Video.FFMPEG.3.8.0\build\Accord.Video.FFMPEG.targets')" />
+</Project>

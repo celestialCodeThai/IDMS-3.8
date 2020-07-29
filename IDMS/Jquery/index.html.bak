@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  
+ 
+  <link rel="stylesheet" href="chosen.css">
+
+  <meta http-equiv="Content-Security-Policy" content="default-src &apos;self&apos;; script-src &apos;self&apos; https://ajax.googleapis.com; style-src &apos;self&apos;; img-src &apos;self&apos; data:">
+
+    <style type="text/css">
+        .chosen-select {
+            width: 126px;
+        }
+    </style>
+
+</head>
+<body>
+  <form>
+    <div id="container">
+      <div id="content">
+          <font face="verdana">
+          <select data-placeholder="" class="chosen-select" multiple tabindex="4" name="D1">
+            <option value=""></option>
+            <option value="A">anorexia</option>
+            <option value="B">dysphagia</option>
+            <option value="C">dyspepsia</option>
+            <option value="D">flatulence</option>
+            <option value="E">fecal incontinence</option>
+            <option value="F">haematemesis</option>
+             
+           </font></font>
+          </select></div>
+  </div>
+  <script src="docsupport/jquery-3.2.1.min.js" type="text/javascript"></script>
+  <script src="chosen.jquery.js" type="text/javascript"></script>
+  <script src="docsupport/prism.js" type="text/javascript" charset="utf-8"></script>
+  <script src="docsupport/init.js" type="text/javascript" charset="utf-8"></script>
+  </form>
+  </body>
+</html>
