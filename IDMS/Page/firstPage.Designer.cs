@@ -67,9 +67,9 @@
             this.label2.Font = new System.Drawing.Font("Leelawadee UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(151, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(233, 45);
+            this.label2.Size = new System.Drawing.Size(213, 45);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Hello Develop";
+            this.label2.Text = "Hello Master";
             // 
             // dbl
             // 
