@@ -37,6 +37,7 @@
             this.MAC = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,6 +45,7 @@
             // 
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.dbl);
             this.panel1.Controls.Add(this.db);
             this.panel1.Controls.Add(this.AdminPanel);
@@ -139,6 +141,16 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Leelawadee UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(151, 90);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(153, 45);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Hello Git";
+            // 
             // firstPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,5 +179,6 @@
         private System.Windows.Forms.Panel AdminPanel;
         private System.Windows.Forms.Label dbl;
         private System.Windows.Forms.Label db;
+        private System.Windows.Forms.Label label2;
     }
 }
