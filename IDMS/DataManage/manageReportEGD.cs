@@ -148,7 +148,8 @@ namespace IDMS.DataManage
                 "his1", "his2", "his3", "his4",
                 "rap1", "rap2", "r1", "r2", "r3", "r4",
                 "comment",
-                "sf1", "sf2", "sf3", "sf4", "sf5", "sf6","sf7","sf8","sf9","sf10"
+                "sf1", "sf2", "sf3", "sf4", "sf5", "sf6","sf7","sf8","sf9","sf10",
+                "other",
 
             };
 
@@ -244,7 +245,8 @@ namespace IDMS.DataManage
                 state7,
                 state8,
                 state9,
-                state10
+                state10,
+                report.otherTextBox.Text,
 
             };
 
@@ -902,6 +904,9 @@ namespace IDMS.DataManage
                 }
             }
 
+            value = save.getValue(caseid, "other");
+            report.otherTextBox.Text = value;
+
             //
             value = save.getValue(caseid, "hn");
             if (value != "")
@@ -976,7 +981,7 @@ namespace IDMS.DataManage
                     //top =====================================================================================================
                     int fieldNumber = i + 1;
                     string imagePoint = save.getValueWithTableName(caseid, "image_point", "point_" + fieldNumber + "");
-                   
+
                     if (imagePoint == null || imagePoint == "")
                     {
                         report.recImage[i] = new Rectangle(0, 0, 0, 0);

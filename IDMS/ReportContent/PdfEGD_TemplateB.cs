@@ -523,6 +523,7 @@ namespace IDMS.ReportContent
             ColumnText finding8 = new ColumnText(cb);
             ColumnText finding9 = new ColumnText(cb);
             ColumnText finding10 = new ColumnText(cb);
+            ColumnText finding11 = new ColumnText(cb);
 
 
 
@@ -772,7 +773,7 @@ namespace IDMS.ReportContent
 
             //  BaseFont.getWidthPoint("test", 11f);
             int FindingY = HIS_BODY + BGAP;
-            Phrase F00 = null, F01 = null, F02 = null, F03 = null, F04 = null, F05 = null, F06 = null, F07 = null, F08 = null, F09 = null, F10 = null, F03b = null, F08b = null;
+            Phrase F00 = null, F01 = null, F02 = null, F03 = null, F04 = null, F05 = null, F06 = null, F07 = null, F08 = null, F09 = null, F10 = null, F03b = null, F08b = null, otherLabel=null;
 
             F00 = new Phrase("Finding", f1);
 
@@ -788,6 +789,7 @@ namespace IDMS.ReportContent
             F08b = new Phrase("Duodenal", f2);
             F09 = new Phrase("         Bulb:", subLabel);
             F10 = new Phrase("2nd part:", subLabel);
+            otherLabel = new Phrase("    Other:", subLabel);
 
             //get datafindinginfo
             string fd1 = ""; Phrase getFD1 = null;
@@ -1045,6 +1047,9 @@ namespace IDMS.ReportContent
                 }
             }
 
+            string otherValue = cutEnter(reportControl.otherTextBox.Text);
+            Phrase getOtherValue = new Phrase(otherValue, Thai);
+
 
             int FX = BodyX + 65; int extraline; int gap = 15; int j;
 
@@ -1207,10 +1212,22 @@ namespace IDMS.ReportContent
             finding10.SetSimpleColumn(F10, BodyX + 17, f10y, 580, 317, 15, Element.ALIGN_LEFT);
             df10.SetSimpleColumn(getFD10, FX, f10y, 580, 317, 15, Element.ALIGN_LEFT); df10.Go();
 
+            //f11
+            int f11y = f10y - BodySpace;
+            extraline = calculatePDFWidth(fd10, 80);
+            if (extraline > 0)
+            {
+                j = gap * extraline;
+                f10y -= j;
+
+            }
+            finding11.SetSimpleColumn(otherLabel, BodyX + 17, f11y, 580, 317, 15, Element.ALIGN_LEFT);
+            df11.SetSimpleColumn(getOtherValue, FX, f11y, 580, 317, 15, Element.ALIGN_LEFT); df11.Go();
+
             finding.Go();
-            finding1.Go(); finding2.Go(); finding3.Go(); finding3b.Go(); finding4.Go(); finding5.Go(); finding6.Go(); finding7.Go(); finding8.Go(); finding8b.Go(); finding9.Go(); finding10.Go();
+            finding1.Go(); finding2.Go(); finding3.Go(); finding3b.Go(); finding4.Go(); finding5.Go(); finding6.Go(); finding7.Go(); finding8.Go(); finding8b.Go(); finding9.Go(); finding10.Go(); finding11.Go();
             //Line
-            int Fline = f10y - BodySpace;
+            int Fline = f11y - BodySpace;
             extraline = calculatePDFWidth(fd10, 80);
             if (extraline > 0)
             {

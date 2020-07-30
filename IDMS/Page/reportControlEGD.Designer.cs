@@ -32,6 +32,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(reportControlEGD));
             this.f1btn = new System.Windows.Forms.Button();
             this.a1 = new System.Windows.Forms.CheckBox();
@@ -241,6 +242,11 @@
             this.med7l = new System.Windows.Forms.Label();
             this.med7txt = new System.Windows.Forms.TextBox();
             this.med7 = new System.Windows.Forms.CheckBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.otherTextBox = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.button22 = new System.Windows.Forms.Button();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -943,7 +949,7 @@
             // c4txt
             // 
             this.c4txt.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.c4txt.Location = new System.Drawing.Point(97, 2174);
+            this.c4txt.Location = new System.Drawing.Point(97, 2345);
             this.c4txt.Name = "c4txt";
             this.c4txt.Size = new System.Drawing.Size(172, 25);
             this.c4txt.TabIndex = 182;
@@ -955,7 +961,7 @@
             // 
             this.c4.AutoSize = true;
             this.c4.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.c4.Location = new System.Drawing.Point(36, 2174);
+            this.c4.Location = new System.Drawing.Point(36, 2345);
             this.c4.Name = "c4";
             this.c4.Size = new System.Drawing.Size(60, 21);
             this.c4.TabIndex = 181;
@@ -967,7 +973,7 @@
             // 
             this.c3.AutoSize = true;
             this.c3.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.c3.Location = new System.Drawing.Point(36, 2149);
+            this.c3.Location = new System.Drawing.Point(36, 2320);
             this.c3.Name = "c3";
             this.c3.Size = new System.Drawing.Size(77, 21);
             this.c3.TabIndex = 179;
@@ -979,7 +985,7 @@
             // 
             this.c2.AutoSize = true;
             this.c2.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.c2.Location = new System.Drawing.Point(36, 2124);
+            this.c2.Location = new System.Drawing.Point(36, 2295);
             this.c2.Name = "c2";
             this.c2.Size = new System.Drawing.Size(92, 21);
             this.c2.TabIndex = 178;
@@ -991,7 +997,7 @@
             // 
             this.c1.AutoSize = true;
             this.c1.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.c1.Location = new System.Drawing.Point(36, 2099);
+            this.c1.Location = new System.Drawing.Point(36, 2270);
             this.c1.Name = "c1";
             this.c1.Size = new System.Drawing.Size(188, 21);
             this.c1.TabIndex = 177;
@@ -1002,7 +1008,7 @@
             // c3txt
             // 
             this.c3txt.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.c3txt.Location = new System.Drawing.Point(155, 2147);
+            this.c3txt.Location = new System.Drawing.Point(155, 2318);
             this.c3txt.Name = "c3txt";
             this.c3txt.Size = new System.Drawing.Size(114, 25);
             this.c3txt.TabIndex = 180;
@@ -1013,7 +1019,7 @@
             // b1txt
             // 
             this.b1txt.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.b1txt.Location = new System.Drawing.Point(253, 2006);
+            this.b1txt.Location = new System.Drawing.Point(253, 2164);
             this.b1txt.Name = "b1txt";
             this.b1txt.Size = new System.Drawing.Size(76, 25);
             this.b1txt.TabIndex = 176;
@@ -1172,7 +1178,7 @@
             // 
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.label37.Location = new System.Drawing.Point(210, 2360);
+            this.label37.Location = new System.Drawing.Point(210, 2535);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(41, 17);
             this.label37.TabIndex = 219;
@@ -1181,7 +1187,7 @@
             // r43
             // 
             this.r43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.r43.Location = new System.Drawing.Point(268, 2360);
+            this.r43.Location = new System.Drawing.Point(268, 2535);
             this.r43.Name = "r43";
             this.r43.Size = new System.Drawing.Size(63, 21);
             this.r43.TabIndex = 210;
@@ -1191,7 +1197,7 @@
             // r42
             // 
             this.r42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.r42.Location = new System.Drawing.Point(134, 2360);
+            this.r42.Location = new System.Drawing.Point(134, 2535);
             this.r42.Name = "r42";
             this.r42.Size = new System.Drawing.Size(63, 21);
             this.r42.TabIndex = 209;
@@ -1201,7 +1207,7 @@
             // 
             this.r4.AutoSize = true;
             this.r4.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.r4.Location = new System.Drawing.Point(36, 2358);
+            this.r4.Location = new System.Drawing.Point(36, 2533);
             this.r4.Name = "r4";
             this.r4.Size = new System.Drawing.Size(83, 21);
             this.r4.TabIndex = 208;
@@ -1212,7 +1218,7 @@
             // 
             this.r3.AutoSize = true;
             this.r3.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.r3.Location = new System.Drawing.Point(36, 2308);
+            this.r3.Location = new System.Drawing.Point(36, 2483);
             this.r3.Name = "r3";
             this.r3.Size = new System.Drawing.Size(133, 21);
             this.r3.TabIndex = 207;
@@ -1225,7 +1231,7 @@
             // 
             this.r2.AutoSize = true;
             this.r2.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.r2.Location = new System.Drawing.Point(36, 2333);
+            this.r2.Location = new System.Drawing.Point(36, 2508);
             this.r2.Name = "r2";
             this.r2.Size = new System.Drawing.Size(132, 21);
             this.r2.TabIndex = 206;
@@ -1238,7 +1244,7 @@
             // 
             this.r1.AutoSize = true;
             this.r1.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.r1.Location = new System.Drawing.Point(36, 2283);
+            this.r1.Location = new System.Drawing.Point(36, 2458);
             this.r1.Name = "r1";
             this.r1.Size = new System.Drawing.Size(206, 21);
             this.r1.TabIndex = 205;
@@ -1251,7 +1257,7 @@
             // 
             this.note.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.note.Font = new System.Drawing.Font("Leelawadee UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.note.Location = new System.Drawing.Point(403, 2282);
+            this.note.Location = new System.Drawing.Point(403, 2457);
             this.note.Multiline = true;
             this.note.Name = "note";
             this.note.Size = new System.Drawing.Size(361, 81);
@@ -1262,7 +1268,7 @@
             // 
             this.c3txtl.AutoSize = true;
             this.c3txtl.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.c3txtl.Location = new System.Drawing.Point(112, 2151);
+            this.c3txtl.Location = new System.Drawing.Point(112, 2322);
             this.c3txtl.Name = "c3txtl";
             this.c3txtl.Size = new System.Drawing.Size(36, 17);
             this.c3txtl.TabIndex = 222;
@@ -1272,7 +1278,7 @@
             // pdxtxt1
             // 
             this.pdxtxt1.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pdxtxt1.Location = new System.Drawing.Point(188, 1864);
+            this.pdxtxt1.Location = new System.Drawing.Point(185, 2011);
             this.pdxtxt1.Name = "pdxtxt1";
             this.pdxtxt1.Size = new System.Drawing.Size(469, 25);
             this.pdxtxt1.TabIndex = 169;
@@ -1283,7 +1289,7 @@
             // 
             this.pdxtxt2.Enabled = false;
             this.pdxtxt2.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pdxtxt2.Location = new System.Drawing.Point(188, 1895);
+            this.pdxtxt2.Location = new System.Drawing.Point(185, 2042);
             this.pdxtxt2.Name = "pdxtxt2";
             this.pdxtxt2.Size = new System.Drawing.Size(469, 25);
             this.pdxtxt2.TabIndex = 171;
@@ -1294,7 +1300,7 @@
             // 
             this.pdxtxt3.Enabled = false;
             this.pdxtxt3.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pdxtxt3.Location = new System.Drawing.Point(188, 1926);
+            this.pdxtxt3.Location = new System.Drawing.Point(185, 2073);
             this.pdxtxt3.Name = "pdxtxt3";
             this.pdxtxt3.Size = new System.Drawing.Size(469, 25);
             this.pdxtxt3.TabIndex = 173;
@@ -1305,7 +1311,7 @@
             // 
             this.pdxtxt4.Enabled = false;
             this.pdxtxt4.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pdxtxt4.Location = new System.Drawing.Point(188, 1958);
+            this.pdxtxt4.Location = new System.Drawing.Point(185, 2105);
             this.pdxtxt4.Name = "pdxtxt4";
             this.pdxtxt4.Size = new System.Drawing.Size(469, 25);
             this.pdxtxt4.TabIndex = 175;
@@ -1318,7 +1324,7 @@
             this.pdx1btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pdx1btn.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.pdx1btn.ForeColor = System.Drawing.Color.White;
-            this.pdx1btn.Location = new System.Drawing.Point(663, 1864);
+            this.pdx1btn.Location = new System.Drawing.Point(660, 2011);
             this.pdx1btn.Margin = new System.Windows.Forms.Padding(0);
             this.pdx1btn.Name = "pdx1btn";
             this.pdx1btn.Size = new System.Drawing.Size(65, 25);
@@ -1335,7 +1341,7 @@
             this.pdx2btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pdx2btn.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.pdx2btn.ForeColor = System.Drawing.Color.White;
-            this.pdx2btn.Location = new System.Drawing.Point(663, 1895);
+            this.pdx2btn.Location = new System.Drawing.Point(660, 2042);
             this.pdx2btn.Margin = new System.Windows.Forms.Padding(0);
             this.pdx2btn.Name = "pdx2btn";
             this.pdx2btn.Size = new System.Drawing.Size(65, 25);
@@ -1352,7 +1358,7 @@
             this.pdx3btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pdx3btn.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.pdx3btn.ForeColor = System.Drawing.Color.White;
-            this.pdx3btn.Location = new System.Drawing.Point(663, 1926);
+            this.pdx3btn.Location = new System.Drawing.Point(660, 2073);
             this.pdx3btn.Margin = new System.Windows.Forms.Padding(0);
             this.pdx3btn.Name = "pdx3btn";
             this.pdx3btn.Size = new System.Drawing.Size(65, 25);
@@ -1369,7 +1375,7 @@
             this.pdx4btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pdx4btn.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.pdx4btn.ForeColor = System.Drawing.Color.White;
-            this.pdx4btn.Location = new System.Drawing.Point(663, 1958);
+            this.pdx4btn.Location = new System.Drawing.Point(660, 2105);
             this.pdx4btn.Margin = new System.Windows.Forms.Padding(0);
             this.pdx4btn.Name = "pdx4btn";
             this.pdx4btn.Size = new System.Drawing.Size(65, 25);
@@ -1388,7 +1394,7 @@
             this.panel1.Controls.Add(this.his3);
             this.panel1.Controls.Add(this.his4);
             this.panel1.Controls.Add(this.his4txt);
-            this.panel1.Location = new System.Drawing.Point(317, 2087);
+            this.panel1.Location = new System.Drawing.Point(317, 2258);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(221, 148);
             this.panel1.TabIndex = 239;
@@ -1414,7 +1420,7 @@
             this.panel2.Controls.Add(this.rapradio2);
             this.panel2.Controls.Add(this.rap1);
             this.panel2.Controls.Add(this.rap2);
-            this.panel2.Location = new System.Drawing.Point(557, 2087);
+            this.panel2.Location = new System.Drawing.Point(557, 2258);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(216, 113);
             this.panel2.TabIndex = 240;
@@ -1837,7 +1843,7 @@
             // dx1
             // 
             this.dx1.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.dx1.Location = new System.Drawing.Point(118, 1864);
+            this.dx1.Location = new System.Drawing.Point(115, 2011);
             this.dx1.Name = "dx1";
             this.dx1.Size = new System.Drawing.Size(64, 25);
             this.dx1.TabIndex = 168;
@@ -1847,7 +1853,7 @@
             // 
             this.dx2.Enabled = false;
             this.dx2.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.dx2.Location = new System.Drawing.Point(118, 1895);
+            this.dx2.Location = new System.Drawing.Point(115, 2042);
             this.dx2.Name = "dx2";
             this.dx2.Size = new System.Drawing.Size(64, 25);
             this.dx2.TabIndex = 170;
@@ -1857,7 +1863,7 @@
             // 
             this.dx3.Enabled = false;
             this.dx3.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.dx3.Location = new System.Drawing.Point(118, 1926);
+            this.dx3.Location = new System.Drawing.Point(115, 2073);
             this.dx3.Name = "dx3";
             this.dx3.Size = new System.Drawing.Size(64, 25);
             this.dx3.TabIndex = 172;
@@ -1867,7 +1873,7 @@
             // 
             this.dx4.Enabled = false;
             this.dx4.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.dx4.Location = new System.Drawing.Point(118, 1958);
+            this.dx4.Location = new System.Drawing.Point(115, 2105);
             this.dx4.Name = "dx4";
             this.dx4.Size = new System.Drawing.Size(64, 25);
             this.dx4.TabIndex = 174;
@@ -1883,7 +1889,7 @@
             "polyp",
             "mass",
             "brunch cytology"});
-            this.hislist.Location = new System.Drawing.Point(397, 2227);
+            this.hislist.Location = new System.Drawing.Point(397, 2398);
             this.hislist.Name = "hislist";
             this.hislist.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.hislist.Size = new System.Drawing.Size(125, 72);
@@ -2358,7 +2364,7 @@
             // 
             this.pg4.AutoSize = true;
             this.pg4.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg4.Location = new System.Drawing.Point(291, 1564);
+            this.pg4.Location = new System.Drawing.Point(290, 1691);
             this.pg4.Name = "pg4";
             this.pg4.Size = new System.Drawing.Size(136, 21);
             this.pg4.TabIndex = 269;
@@ -2370,7 +2376,7 @@
             // 
             this.pg3.AutoSize = true;
             this.pg3.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg3.Location = new System.Drawing.Point(475, 1542);
+            this.pg3.Location = new System.Drawing.Point(474, 1669);
             this.pg3.Name = "pg3";
             this.pg3.Size = new System.Drawing.Size(97, 21);
             this.pg3.TabIndex = 268;
@@ -2382,7 +2388,7 @@
             // 
             this.pg2.AutoSize = true;
             this.pg2.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg2.Location = new System.Drawing.Point(645, 1520);
+            this.pg2.Location = new System.Drawing.Point(644, 1647);
             this.pg2.Name = "pg2";
             this.pg2.Size = new System.Drawing.Size(89, 21);
             this.pg2.TabIndex = 267;
@@ -2394,7 +2400,7 @@
             // 
             this.pg1.AutoSize = true;
             this.pg1.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg1.Location = new System.Drawing.Point(74, 1520);
+            this.pg1.Location = new System.Drawing.Point(73, 1647);
             this.pg1.Name = "pg1";
             this.pg1.Size = new System.Drawing.Size(174, 21);
             this.pg1.TabIndex = 266;
@@ -2406,7 +2412,7 @@
             // 
             this.pg8.AutoSize = true;
             this.pg8.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg8.Location = new System.Drawing.Point(475, 1564);
+            this.pg8.Location = new System.Drawing.Point(474, 1691);
             this.pg8.Name = "pg8";
             this.pg8.Size = new System.Drawing.Size(148, 21);
             this.pg8.TabIndex = 274;
@@ -2418,7 +2424,7 @@
             // 
             this.pg7.AutoSize = true;
             this.pg7.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg7.Location = new System.Drawing.Point(645, 1586);
+            this.pg7.Location = new System.Drawing.Point(644, 1713);
             this.pg7.Name = "pg7";
             this.pg7.Size = new System.Drawing.Size(119, 21);
             this.pg7.TabIndex = 273;
@@ -2430,7 +2436,7 @@
             // 
             this.pg6.AutoSize = true;
             this.pg6.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg6.Location = new System.Drawing.Point(74, 1542);
+            this.pg6.Location = new System.Drawing.Point(73, 1669);
             this.pg6.Name = "pg6";
             this.pg6.Size = new System.Drawing.Size(122, 21);
             this.pg6.TabIndex = 272;
@@ -2442,7 +2448,7 @@
             // 
             this.pg5.AutoSize = true;
             this.pg5.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg5.Location = new System.Drawing.Point(291, 1520);
+            this.pg5.Location = new System.Drawing.Point(290, 1647);
             this.pg5.Name = "pg5";
             this.pg5.Size = new System.Drawing.Size(98, 21);
             this.pg5.TabIndex = 271;
@@ -2454,7 +2460,7 @@
             // 
             this.pg12.AutoSize = true;
             this.pg12.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg12.Location = new System.Drawing.Point(645, 1542);
+            this.pg12.Location = new System.Drawing.Point(644, 1669);
             this.pg12.Name = "pg12";
             this.pg12.Size = new System.Drawing.Size(68, 21);
             this.pg12.TabIndex = 278;
@@ -2466,7 +2472,7 @@
             // 
             this.pg11.AutoSize = true;
             this.pg11.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg11.Location = new System.Drawing.Point(74, 1564);
+            this.pg11.Location = new System.Drawing.Point(73, 1691);
             this.pg11.Name = "pg11";
             this.pg11.Size = new System.Drawing.Size(106, 21);
             this.pg11.TabIndex = 277;
@@ -2478,7 +2484,7 @@
             // 
             this.pg10.AutoSize = true;
             this.pg10.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg10.Location = new System.Drawing.Point(291, 1542);
+            this.pg10.Location = new System.Drawing.Point(290, 1669);
             this.pg10.Name = "pg10";
             this.pg10.Size = new System.Drawing.Size(95, 21);
             this.pg10.TabIndex = 276;
@@ -2490,7 +2496,7 @@
             // 
             this.pg9.AutoSize = true;
             this.pg9.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg9.Location = new System.Drawing.Point(475, 1520);
+            this.pg9.Location = new System.Drawing.Point(474, 1647);
             this.pg9.Name = "pg9";
             this.pg9.Size = new System.Drawing.Size(121, 21);
             this.pg9.TabIndex = 275;
@@ -2502,7 +2508,7 @@
             // 
             this.pg24.AutoSize = true;
             this.pg24.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg24.Location = new System.Drawing.Point(648, 1735);
+            this.pg24.Location = new System.Drawing.Point(647, 1862);
             this.pg24.Name = "pg24";
             this.pg24.Size = new System.Drawing.Size(53, 21);
             this.pg24.TabIndex = 291;
@@ -2514,7 +2520,7 @@
             // 
             this.pg23.AutoSize = true;
             this.pg23.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg23.Location = new System.Drawing.Point(473, 1735);
+            this.pg23.Location = new System.Drawing.Point(472, 1862);
             this.pg23.Name = "pg23";
             this.pg23.Size = new System.Drawing.Size(166, 21);
             this.pg23.TabIndex = 290;
@@ -2526,7 +2532,7 @@
             // 
             this.pg22.AutoSize = true;
             this.pg22.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg22.Location = new System.Drawing.Point(473, 1713);
+            this.pg22.Location = new System.Drawing.Point(472, 1840);
             this.pg22.Name = "pg22";
             this.pg22.Size = new System.Drawing.Size(104, 21);
             this.pg22.TabIndex = 289;
@@ -2538,7 +2544,7 @@
             // 
             this.pg21.AutoSize = true;
             this.pg21.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg21.Location = new System.Drawing.Point(473, 1691);
+            this.pg21.Location = new System.Drawing.Point(472, 1818);
             this.pg21.Name = "pg21";
             this.pg21.Size = new System.Drawing.Size(50, 21);
             this.pg21.TabIndex = 288;
@@ -2550,7 +2556,7 @@
             // 
             this.pg20.AutoSize = true;
             this.pg20.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg20.Location = new System.Drawing.Point(73, 1735);
+            this.pg20.Location = new System.Drawing.Point(72, 1862);
             this.pg20.Name = "pg20";
             this.pg20.Size = new System.Drawing.Size(93, 21);
             this.pg20.TabIndex = 287;
@@ -2562,7 +2568,7 @@
             // 
             this.pg19.AutoSize = true;
             this.pg19.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg19.Location = new System.Drawing.Point(648, 1713);
+            this.pg19.Location = new System.Drawing.Point(647, 1840);
             this.pg19.Name = "pg19";
             this.pg19.Size = new System.Drawing.Size(103, 21);
             this.pg19.TabIndex = 286;
@@ -2574,7 +2580,7 @@
             // 
             this.pg18.AutoSize = true;
             this.pg18.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg18.Location = new System.Drawing.Point(73, 1713);
+            this.pg18.Location = new System.Drawing.Point(72, 1840);
             this.pg18.Name = "pg18";
             this.pg18.Size = new System.Drawing.Size(126, 21);
             this.pg18.TabIndex = 285;
@@ -2586,7 +2592,7 @@
             // 
             this.pg17.AutoSize = true;
             this.pg17.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg17.Location = new System.Drawing.Point(279, 1691);
+            this.pg17.Location = new System.Drawing.Point(278, 1818);
             this.pg17.Name = "pg17";
             this.pg17.Size = new System.Drawing.Size(138, 21);
             this.pg17.TabIndex = 284;
@@ -2598,7 +2604,7 @@
             // 
             this.pg16.AutoSize = true;
             this.pg16.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg16.Location = new System.Drawing.Point(279, 1735);
+            this.pg16.Location = new System.Drawing.Point(278, 1862);
             this.pg16.Name = "pg16";
             this.pg16.Size = new System.Drawing.Size(100, 21);
             this.pg16.TabIndex = 283;
@@ -2610,7 +2616,7 @@
             // 
             this.pg15.AutoSize = true;
             this.pg15.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg15.Location = new System.Drawing.Point(279, 1713);
+            this.pg15.Location = new System.Drawing.Point(278, 1840);
             this.pg15.Name = "pg15";
             this.pg15.Size = new System.Drawing.Size(50, 21);
             this.pg15.TabIndex = 282;
@@ -2622,7 +2628,7 @@
             // 
             this.pg14.AutoSize = true;
             this.pg14.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg14.Location = new System.Drawing.Point(648, 1691);
+            this.pg14.Location = new System.Drawing.Point(647, 1818);
             this.pg14.Name = "pg14";
             this.pg14.Size = new System.Drawing.Size(98, 21);
             this.pg14.TabIndex = 281;
@@ -2634,7 +2640,7 @@
             // 
             this.pg13.AutoSize = true;
             this.pg13.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg13.Location = new System.Drawing.Point(73, 1691);
+            this.pg13.Location = new System.Drawing.Point(72, 1818);
             this.pg13.Name = "pg13";
             this.pg13.Size = new System.Drawing.Size(117, 21);
             this.pg13.TabIndex = 280;
@@ -2645,7 +2651,7 @@
             // pgtxtbox
             // 
             this.pgtxtbox.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pgtxtbox.Location = new System.Drawing.Point(136, 1778);
+            this.pgtxtbox.Location = new System.Drawing.Point(135, 1905);
             this.pgtxtbox.Name = "pgtxtbox";
             this.pgtxtbox.Size = new System.Drawing.Size(239, 25);
             this.pgtxtbox.TabIndex = 294;
@@ -2656,7 +2662,7 @@
             // 
             this.pg25.AutoSize = true;
             this.pg25.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg25.Location = new System.Drawing.Point(73, 1779);
+            this.pg25.Location = new System.Drawing.Point(72, 1906);
             this.pg25.Name = "pg25";
             this.pg25.Size = new System.Drawing.Size(59, 21);
             this.pg25.TabIndex = 293;
@@ -2668,7 +2674,7 @@
             // 
             this.pg30.AutoSize = true;
             this.pg30.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg30.Location = new System.Drawing.Point(74, 1608);
+            this.pg30.Location = new System.Drawing.Point(73, 1735);
             this.pg30.Name = "pg30";
             this.pg30.Size = new System.Drawing.Size(245, 21);
             this.pg30.TabIndex = 297;
@@ -2679,7 +2685,7 @@
             // 
             this.pg27.AutoSize = true;
             this.pg27.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg27.Location = new System.Drawing.Point(291, 1586);
+            this.pg27.Location = new System.Drawing.Point(290, 1713);
             this.pg27.Name = "pg27";
             this.pg27.Size = new System.Drawing.Size(175, 21);
             this.pg27.TabIndex = 296;
@@ -2690,7 +2696,7 @@
             // 
             this.pg26.AutoSize = true;
             this.pg26.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg26.Location = new System.Drawing.Point(475, 1586);
+            this.pg26.Location = new System.Drawing.Point(474, 1713);
             this.pg26.Name = "pg26";
             this.pg26.Size = new System.Drawing.Size(101, 21);
             this.pg26.TabIndex = 295;
@@ -2701,7 +2707,7 @@
             // 
             this.pg29.AutoSize = true;
             this.pg29.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg29.Location = new System.Drawing.Point(74, 1586);
+            this.pg29.Location = new System.Drawing.Point(73, 1713);
             this.pg29.Name = "pg29";
             this.pg29.Size = new System.Drawing.Size(194, 21);
             this.pg29.TabIndex = 298;
@@ -2712,7 +2718,7 @@
             // 
             this.pg28.AutoSize = true;
             this.pg28.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg28.Location = new System.Drawing.Point(645, 1564);
+            this.pg28.Location = new System.Drawing.Point(644, 1691);
             this.pg28.Name = "pg28";
             this.pg28.Size = new System.Drawing.Size(94, 21);
             this.pg28.TabIndex = 303;
@@ -2722,7 +2728,7 @@
             // pgtxtbox2
             // 
             this.pgtxtbox2.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pgtxtbox2.Location = new System.Drawing.Point(137, 1628);
+            this.pgtxtbox2.Location = new System.Drawing.Point(136, 1755);
             this.pgtxtbox2.Name = "pgtxtbox2";
             this.pgtxtbox2.Size = new System.Drawing.Size(239, 25);
             this.pgtxtbox2.TabIndex = 305;
@@ -2732,7 +2738,7 @@
             // 
             this.pg31.AutoSize = true;
             this.pg31.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg31.Location = new System.Drawing.Point(74, 1630);
+            this.pg31.Location = new System.Drawing.Point(73, 1757);
             this.pg31.Name = "pg31";
             this.pg31.Size = new System.Drawing.Size(59, 21);
             this.pg31.TabIndex = 304;
@@ -2744,7 +2750,7 @@
             // 
             this.pg34.AutoSize = true;
             this.pg34.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg34.Location = new System.Drawing.Point(648, 1757);
+            this.pg34.Location = new System.Drawing.Point(647, 1884);
             this.pg34.Name = "pg34";
             this.pg34.Size = new System.Drawing.Size(73, 21);
             this.pg34.TabIndex = 308;
@@ -2755,7 +2761,7 @@
             // 
             this.pg33.AutoSize = true;
             this.pg33.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg33.Location = new System.Drawing.Point(279, 1757);
+            this.pg33.Location = new System.Drawing.Point(278, 1884);
             this.pg33.Name = "pg33";
             this.pg33.Size = new System.Drawing.Size(241, 21);
             this.pg33.TabIndex = 307;
@@ -2766,7 +2772,7 @@
             // 
             this.pg32.AutoSize = true;
             this.pg32.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pg32.Location = new System.Drawing.Point(73, 1757);
+            this.pg32.Location = new System.Drawing.Point(72, 1884);
             this.pg32.Name = "pg32";
             this.pg32.Size = new System.Drawing.Size(198, 21);
             this.pg32.TabIndex = 306;
@@ -2777,7 +2783,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(398, 2249);
+            this.label11.Location = new System.Drawing.Point(398, 2420);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(99, 25);
             this.label11.TabIndex = 365;
@@ -2787,7 +2793,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(33, 2249);
+            this.label10.Location = new System.Drawing.Point(30, 2424);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(169, 25);
             this.label10.TabIndex = 364;
@@ -2797,7 +2803,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(321, 2058);
+            this.label9.Location = new System.Drawing.Point(321, 2229);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(131, 25);
             this.label9.TabIndex = 363;
@@ -2807,7 +2813,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(32, 1825);
+            this.label8.Location = new System.Drawing.Point(29, 1972);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(150, 25);
             this.label8.TabIndex = 362;
@@ -2817,7 +2823,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(30, 2005);
+            this.label7.Location = new System.Drawing.Point(30, 2163);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(182, 25);
             this.label7.TabIndex = 361;
@@ -2827,7 +2833,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(30, 2059);
+            this.label6.Location = new System.Drawing.Point(30, 2230);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(130, 25);
             this.label6.TabIndex = 360;
@@ -2837,7 +2843,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(31, 1460);
+            this.label4.Location = new System.Drawing.Point(30, 1587);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 25);
             this.label4.TabIndex = 359;
@@ -2877,7 +2883,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(563, 2058);
+            this.label5.Location = new System.Drawing.Point(563, 2229);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(163, 25);
             this.label5.TabIndex = 366;
@@ -3006,7 +3012,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Leelawadee UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(76, 1356);
+            this.label23.Location = new System.Drawing.Point(77, 1356);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(68, 20);
             this.label23.TabIndex = 379;
@@ -3113,7 +3119,7 @@
             this.button2.BackColor = System.Drawing.Color.Gainsboro;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(0, 1450);
+            this.button2.Location = new System.Drawing.Point(0, 1570);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(800, 1);
             this.button2.TabIndex = 388;
@@ -3137,7 +3143,7 @@
             this.button4.BackColor = System.Drawing.Color.Gainsboro;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(0, 1809);
+            this.button4.Location = new System.Drawing.Point(0, 1956);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(800, 1);
             this.button4.TabIndex = 390;
@@ -3149,7 +3155,7 @@
             this.button5.BackColor = System.Drawing.Color.Gainsboro;
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(0, 1993);
+            this.button5.Location = new System.Drawing.Point(-3, 2140);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(800, 1);
             this.button5.TabIndex = 391;
@@ -3161,7 +3167,7 @@
             this.button6.BackColor = System.Drawing.Color.Gainsboro;
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(-3, 2044);
+            this.button6.Location = new System.Drawing.Point(0, 2211);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(800, 1);
             this.button6.TabIndex = 392;
@@ -3173,7 +3179,7 @@
             this.button14.BackColor = System.Drawing.Color.Gainsboro;
             this.button14.FlatAppearance.BorderSize = 0;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Location = new System.Drawing.Point(0, 2238);
+            this.button14.Location = new System.Drawing.Point(0, 2409);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(800, 1);
             this.button14.TabIndex = 393;
@@ -3184,7 +3190,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(50, 1667);
+            this.label24.Location = new System.Drawing.Point(49, 1794);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(91, 21);
             this.label24.TabIndex = 395;
@@ -3194,7 +3200,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(50, 1496);
+            this.label25.Location = new System.Drawing.Point(49, 1623);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(83, 21);
             this.label25.TabIndex = 394;
@@ -3205,7 +3211,7 @@
             this.button19.BackColor = System.Drawing.Color.Gainsboro;
             this.button19.FlatAppearance.BorderSize = 0;
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Location = new System.Drawing.Point(38, 1495);
+            this.button19.Location = new System.Drawing.Point(37, 1622);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(1, 183);
             this.button19.TabIndex = 398;
@@ -3217,7 +3223,7 @@
             this.button18.BackColor = System.Drawing.Color.Gainsboro;
             this.button18.FlatAppearance.BorderSize = 0;
             this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button18.Location = new System.Drawing.Point(38, 1677);
+            this.button18.Location = new System.Drawing.Point(37, 1804);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(10, 1);
             this.button18.TabIndex = 397;
@@ -3229,7 +3235,7 @@
             this.button17.BackColor = System.Drawing.Color.Gainsboro;
             this.button17.FlatAppearance.BorderSize = 0;
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.Location = new System.Drawing.Point(38, 1510);
+            this.button17.Location = new System.Drawing.Point(37, 1637);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(10, 1);
             this.button17.TabIndex = 396;
@@ -3241,7 +3247,7 @@
             this.button15.BackColor = System.Drawing.Color.Gainsboro;
             this.button15.FlatAppearance.BorderSize = 0;
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Location = new System.Drawing.Point(303, 2060);
+            this.button15.Location = new System.Drawing.Point(303, 2231);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(1, 170);
             this.button15.TabIndex = 399;
@@ -3253,7 +3259,7 @@
             this.button16.BackColor = System.Drawing.Color.Gainsboro;
             this.button16.FlatAppearance.BorderSize = 0;
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Location = new System.Drawing.Point(550, 2060);
+            this.button16.Location = new System.Drawing.Point(550, 2231);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(1, 170);
             this.button16.TabIndex = 400;
@@ -3264,7 +3270,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(69, 1958);
+            this.label26.Location = new System.Drawing.Point(66, 2105);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(40, 21);
             this.label26.TabIndex = 404;
@@ -3274,7 +3280,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(69, 1927);
+            this.label27.Location = new System.Drawing.Point(66, 2074);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(40, 21);
             this.label27.TabIndex = 403;
@@ -3284,7 +3290,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(69, 1867);
+            this.label28.Location = new System.Drawing.Point(66, 2014);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(40, 21);
             this.label28.TabIndex = 402;
@@ -3294,7 +3300,7 @@
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(69, 1897);
+            this.label29.Location = new System.Drawing.Point(66, 2044);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(40, 21);
             this.label29.TabIndex = 401;
@@ -3328,7 +3334,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(341, 2008);
+            this.label30.Location = new System.Drawing.Point(341, 2166);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(35, 21);
             this.label30.TabIndex = 407;
@@ -3367,12 +3373,53 @@
             this.med7.UseVisualStyleBackColor = true;
             this.med7.CheckedChanged += new System.EventHandler(this.med7_CheckedChanged);
             // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Leelawadee UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(95, 1470);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(49, 20);
+            this.label31.TabIndex = 411;
+            this.label31.Text = "Other:";
+            // 
+            // otherTextBox
+            // 
+            this.otherTextBox.Font = new System.Drawing.Font("Leelawadee UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.otherTextBox.Location = new System.Drawing.Point(248, 1470);
+            this.otherTextBox.Multiline = true;
+            this.otherTextBox.Name = "otherTextBox";
+            this.otherTextBox.Size = new System.Drawing.Size(541, 75);
+            this.otherTextBox.TabIndex = 412;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // button22
+            // 
+            this.button22.BackColor = System.Drawing.Color.Gainsboro;
+            this.button22.FlatAppearance.BorderSize = 0;
+            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button22.Location = new System.Drawing.Point(109, 1453);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(730, 1);
+            this.button22.TabIndex = 414;
+            this.button22.Text = "button22";
+            this.button22.UseVisualStyleBackColor = false;
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            // 
             // reportControlEGD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.label31);
             this.Controls.Add(this.med7l);
             this.Controls.Add(this.med7txt);
             this.Controls.Add(this.med7);
@@ -3569,10 +3616,12 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button14);
+            this.Controls.Add(this.button22);
+            this.Controls.Add(this.otherTextBox);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.Name = "reportControlEGD";
-            this.Size = new System.Drawing.Size(800, 2526);
+            this.Size = new System.Drawing.Size(800, 2650);
             this.Load += new System.EventHandler(this.ReportControl_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.a5txt_KeyDown);
             this.panel1.ResumeLayout(false);
@@ -3794,5 +3843,10 @@
         private System.Windows.Forms.Label med7l;
         public System.Windows.Forms.TextBox med7txt;
         public System.Windows.Forms.CheckBox med7;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Button button22;
+        public System.Windows.Forms.TextBox otherTextBox;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
     }
 }
