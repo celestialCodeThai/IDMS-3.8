@@ -124,6 +124,20 @@ namespace IDMS.Page
                     break;
             }
 
+            string pictureMode = Load.getOption("option_value", "pictureMode");
+            switch (pictureMode)
+            {
+                case "1":
+                    radioButton3.Checked = true;
+                    break;
+                case "2":
+                    radioButton4.Checked = true;
+                    break;
+                default:
+                    radioButton3.Checked = true;
+                    break;
+            }
+
             string useCamera = Load.getOption("option_value", "useCamera");
             switch (useCamera)
             {
@@ -874,6 +888,22 @@ namespace IDMS.Page
             if (checkB)
             {
                 save.updateOption("option_value", "reportType", "2");
+            }
+        }
+
+        private void handleChangePictureMode(object sender, EventArgs e)
+        {
+            bool ckeckSquare = radioButton3.Checked;
+            bool checkWide = radioButton4.Checked;
+            DataAccess save = new DataAccess();
+
+            if (ckeckSquare)
+            {
+                save.updateOption("option_value", "pictureMode", "1");
+            }
+            if (checkWide)
+            {
+                save.updateOption("option_value", "pictureMode", "2");
             }
         }
 
