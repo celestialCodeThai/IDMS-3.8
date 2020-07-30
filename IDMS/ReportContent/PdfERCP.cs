@@ -1149,7 +1149,73 @@ namespace IDMS.ReportContent
 
 
         }
+
         private PdfPTable GetImg(Document pdfDoc, PdfWriter writer, imageReport output)
+        {
+            string[] P1 = new string[] { "A", "B", "C", "D", "E", "F", "G", "H" };
+            iTextSharp.text.Image picPdf1 = null, picPdf2 = null, picPdf3 = null, picPdf4 = null, picPdf5 = null, picPdf6 = null, picPdf7 = null, picPdf8 = null;
+            iTextSharp.text.Image[] picPDF;
+            picPDF = new iTextSharp.text.Image[] { picPdf1, picPdf2, picPdf3, picPdf4, picPdf5, picPdf6, picPdf7, picPdf8 };
+
+            PdfPTable imgTable = new PdfPTable(2);
+            PdfContentByte cb = writer.DirectContent;
+
+            Font f1 = FontFactory.GetFont("Roboto", 14, Font.BOLD, BaseColor.BLACK);
+            Font f2 = FontFactory.GetFont("Roboto", 30, Font.BOLD, new BaseColor(54, 103, 255));
+            BaseFont bf = BaseFont.CreateFont("c:/windows/fonts/micross.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font thai = new Font(bf, 10, Font.NORMAL, BaseColor.BLACK);
+            Font thaiGreen = new Font(bf, 10, Font.NORMAL, BaseColor.GREEN);
+
+            Font thaiRed = new Font(bf, 10, Font.NORMAL, BaseColor.RED);
+
+            int BodyY = BodyEnd - IMG_SIZE - 5;
+            int LoopX = BODY_X;
+            int LoopY = 200;
+
+            int i = 0;
+            for (int e = 0; e < output.imgCount; e++)
+            {
+                if (output.imgPath[i] != null)
+                {
+                    if (output.imgPath[i].Contains("ERCP") == true)
+                    {
+                        i++;
+                    }
+                }
+
+            }
+
+
+            int imgperpage;
+            if (i < 8) { imgperpage = i; } else { imgperpage = 8; }
+            for (int z = 0; z < imgperpage; z++)
+            {
+                Image img = Image.FromFile(output.imgPath[z]);
+                iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(img, 500, output.recImage[z]), System.Drawing.Imaging.ImageFormat.Jpeg);
+                picPDF[z] = v;
+                picPDF[z].ScaleAbsolute(IMG_SIZE, IMG_SIZE);
+                picPDF[z].SetAbsolutePosition(LoopX, LoopY);
+                pdfDoc.Add(picPDF[z]);
+                PlaceChunckB(writer, P1[z], LoopX, LoopY - 15);
+                PlaceChunck(writer, output.cBoxes[z].Text, LoopX + 15, LoopY - 15);
+                if (z == 3)
+                {
+                    LoopX = BODY_X; LoopY = LoopY - IMG_SIZE - 20;
+                }
+                else
+                { LoopX += IMG_SIZE + SMALL_GAP; }
+            }
+
+            cb.MoveTo(BODY_X + IMG_SIZE * 2 + 50, 5);
+            cb.LineTo(BODY_X + IMG_SIZE * 3 + SMALL_GAP * 3 + 125, 5);
+            cb.Stroke();
+            PlaceChunck(writer, "Signature", BODY_X + IMG_SIZE * 2 + 50, 10);
+
+            return imgTable;
+
+        }
+
+        private PdfPTable GetImg_Wide(Document pdfDoc, PdfWriter writer, imageReport output)
         {
             string[] P1 = new string[] { "A", "B", "C", "D", "E", "F", "G", "H" };
             iTextSharp.text.Image picPdf1 = null, picPdf2 = null, picPdf3 = null, picPdf4 = null, picPdf5 = null, picPdf6 = null, picPdf7 = null, picPdf8 = null;
