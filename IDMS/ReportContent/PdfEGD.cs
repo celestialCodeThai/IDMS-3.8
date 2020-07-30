@@ -1365,7 +1365,6 @@ namespace IDMS.ReportContent
             Font thaiGreen = new Font(bf, 10, Font.NORMAL, BaseColor.GREEN);
             Font thaiRed = new Font(bf, 10, Font.NORMAL, BaseColor.RED);
 
-
             int BodyY = BodyEnd - IMG_SIZE - 5;
             int LoopX = BODY_X;
             int LoopY = 200;
