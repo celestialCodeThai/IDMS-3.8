@@ -1218,7 +1218,7 @@ namespace IDMS.ReportContent
             if (extraline > 0)
             {
                 j = gap * extraline;
-                f10y -= j;
+                f11y -= j;
 
             }
             finding11.SetSimpleColumn(otherLabel, BodyX + 17, f11y, 580, 317, 15, Element.ALIGN_LEFT);
@@ -1228,7 +1228,7 @@ namespace IDMS.ReportContent
             finding1.Go(); finding2.Go(); finding3.Go(); finding3b.Go(); finding4.Go(); finding5.Go(); finding6.Go(); finding7.Go(); finding8.Go(); finding8b.Go(); finding9.Go(); finding10.Go(); finding11.Go();
             //Line
             int Fline = f11y - BodySpace;
-            extraline = calculatePDFWidth(fd10, 80);
+            extraline = calculatePDFWidth(otherValue, 80);
             if (extraline > 0)
             {
                 j = gap * extraline;
