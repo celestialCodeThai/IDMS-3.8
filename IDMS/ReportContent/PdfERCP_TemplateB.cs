@@ -478,8 +478,8 @@ namespace IDMS.ReportContent
             //d9.SetSimpleColumn(getHisname, infoX, BodyY - (BodySpace * 7), 580, 317, 15, Element.ALIGN_LEFT); d9.Go();
 
 
-            int HIS_BODY = BodyY - (BodySpace * 9);
-            int newline = calculatePDFWidth(hisname, 83);
+            int HIS_BODY = BodyY - (BodySpace * 8);
+            int newline = calculatePDFWidth(pdxname, 83);
             if (newline > 0)
             {
 
