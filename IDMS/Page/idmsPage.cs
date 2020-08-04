@@ -298,7 +298,8 @@ namespace IDMS
         private void Statistic_Click(object sender, EventArgs e)
         {
             usercontrolPanel.Controls.Clear();
-            UserControl stat = new statUC();
+            //UserControl stat = new statUC();
+            UserControl stat = new statistics_UC();
             usercontrolPanel.Controls.Add(stat);
         }
     }

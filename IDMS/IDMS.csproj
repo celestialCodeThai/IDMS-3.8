@@ -217,6 +217,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Page\statistics_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\statistics_UC.Designer.cs">
+      <DependentUpon>statistics_UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Popup\ConfirnClearData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -513,6 +519,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Page\settingUC.resx">
       <DependentUpon>settingUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\statistics_UC.resx">
+      <DependentUpon>statistics_UC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Page\statUC.resx">
       <DependentUpon>statUC.cs</DependentUpon>
