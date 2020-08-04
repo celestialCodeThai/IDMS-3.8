@@ -267,7 +267,7 @@ namespace IDMS.Page
 
 
             imgFolder = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "/";
-            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/pictures/" + PRO ;
+            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/pictures/" + PRO + "/";
 
             imgFolder_oldversion = imgFolder_oldversion.Replace("idmsCASE", "idmsData");
 
@@ -964,7 +964,7 @@ namespace IDMS.Page
             string imageName;
 
             //if ((imagelistTable.Rows[0].Cells[0].Value != null) && (imagelistTable.Rows[0].Cells[0].Value.ToString() != ""))
-            if (imagelistTable.Rows.Count>1)
+            if (imagelistTable.Rows.Count > 1)
             {
                 switch (PRO)
                 {
@@ -2221,7 +2221,7 @@ namespace IDMS.Page
             bool IS_EXIST = true;
             imgFolderS = IDMS.World.Settings.savePath + "/images/" + ReportMulti.REALID + "/" + a + "/";
 
-            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + ReportMulti.REALID + "/pictures/" + a;
+            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + ReportMulti.REALID + "/pictures/" + a + "/";
             //  string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + HN + "/" + PROCEDURE + "/pictures/";
             imgFolder_oldversion = imgFolder_oldversion.Replace("idmsCASE", "idmsData");
 
@@ -2287,8 +2287,8 @@ namespace IDMS.Page
                 Directory.CreateDirectory(current_fullpath);
 
             string current_fullpath_img = String.Format("{0}\\" + hnID + "\\" + PRO + "\\", current_fullpath);
-            if (!Directory.Exists(current_fullpath+ "\\"+  PRO + "\\"))
-                Directory.CreateDirectory(current_fullpath + "\\"+ PRO + "\\");
+            if (!Directory.Exists(current_fullpath + "\\" + PRO + "\\"))
+                Directory.CreateDirectory(current_fullpath + "\\" + PRO + "\\");
 
 
 
