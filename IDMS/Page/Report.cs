@@ -267,7 +267,7 @@ namespace IDMS.Page
 
 
             imgFolder = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "/";
-            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "/pictures/";
+            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/pictures/" + PRO ;
 
             imgFolder_oldversion = imgFolder_oldversion.Replace("idmsCASE", "idmsData");
 
@@ -2221,7 +2221,7 @@ namespace IDMS.Page
             bool IS_EXIST = true;
             imgFolderS = IDMS.World.Settings.savePath + "/images/" + ReportMulti.REALID + "/" + a + "/";
 
-            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + ReportMulti.REALID + "/" + a + "/pictures/";
+            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + ReportMulti.REALID + "/pictures/" + a;
             //  string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + HN + "/" + PROCEDURE + "/pictures/";
             imgFolder_oldversion = imgFolder_oldversion.Replace("idmsCASE", "idmsData");
 
