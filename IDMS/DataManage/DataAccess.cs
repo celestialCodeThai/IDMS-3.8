@@ -970,5 +970,93 @@ namespace IDMS.DataManage
 
 
         }
+
+        public string getCaseCount(bool isTotal, string procedure)
+        {
+            string query = "SELECT COUNT(caseid) FROM `patientcase`";
+
+            if (!isTotal)
+            {
+                query = "SELECT COUNT(caseid) FROM `patientcase` WHERE `Procedure` LIKE '%" + procedure + "%'";
+            }
+
+            MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+            MySqlCommand sql_cmd = new MySqlCommand(query, connection);
+
+            connection.Open();
+
+            int countTotal = Convert.ToInt32(sql_cmd.ExecuteScalar());
+
+            connection.Close();
+            connection.Dispose();
+
+            return countTotal.ToString();
+
+        }
+
+        public string getPatientCount(string key)
+        {
+            string query = "SELECT COUNT(hn) FROM `patientdata`";
+            if (key != "total")
+            {
+                query = "SELECT COUNT(hn) FROM `patientdata` WHERE sex = '" + key + "'";
+            }
+            MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+            MySqlCommand sql_cmd = new MySqlCommand(query, connection);
+
+            connection.Open();
+
+            int countTotal = Convert.ToInt32(sql_cmd.ExecuteScalar());
+
+            connection.Close();
+            connection.Dispose();
+
+            return countTotal.ToString();
+        }
+
+        public string getPatientAge(string key)
+        {
+            string query = "SELECT COUNT(hn) FROM `patientdata` WHERE age BETWEEN '70' AND '200'";
+            if (key != "70")
+            {
+                switch (key)
+                {
+                    case "15":
+                        query = "SELECT COUNT(hn) FROM `patientdata` WHERE age BETWEEN '15' AND '29'";
+                        break;
+                    case "30":
+                        query = "SELECT COUNT(hn) FROM `patientdata` WHERE age BETWEEN '30' AND '39'";
+                        break;
+                    case "40":
+                        query = "SELECT COUNT(hn) FROM `patientdata` WHERE age BETWEEN '40' AND '49'";
+                        break;
+                    case "50":
+                        query = "SELECT COUNT(hn) FROM `patientdata` WHERE age BETWEEN '50' AND '59'";
+                        break;
+                    case "60":
+                        query = "SELECT COUNT(hn) FROM `patientdata` WHERE age BETWEEN '60' AND '69'";
+                        break;
+                    default:
+                        query = "SELECT COUNT(hn) FROM `patientdata` WHERE age BETWEEN '201' AND '202'";
+                        break;
+
+                }
+            }
+            MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+            MySqlCommand sql_cmd = new MySqlCommand(query, connection);
+
+            connection.Open();
+
+            int countTotal = Convert.ToInt32(sql_cmd.ExecuteScalar());
+
+            connection.Close();
+            connection.Dispose();
+
+            return countTotal.ToString();
+        }
+
+
+
+
     }
 }

@@ -1171,7 +1171,6 @@ namespace IDMS.Page
 
             label9.Text = "เคสทั้งหมด " + count.ToString();
          
-            reader.Close();
             connection.Close();
             connection.Dispose();
 
