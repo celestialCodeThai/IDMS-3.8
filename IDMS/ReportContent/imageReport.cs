@@ -373,8 +373,6 @@ namespace IDMS.ReportContent
 
         }
 
-
-        //top
         public void clearPicture()
         {
             for (int i = 0; i < imgCount; i++)
@@ -1067,6 +1065,13 @@ namespace IDMS.ReportContent
             e.Effect = DragDropEffects.Move;
         }
 
+        public void setDefaultRectangle()
+        {
+            for(int i = 0; i < 66; i++)
+            {
+                recImage[i] = new Rectangle(0, 0, 0, 0);
+            }
+        }
 
 
     }

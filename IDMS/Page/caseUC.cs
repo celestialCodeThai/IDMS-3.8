@@ -228,11 +228,17 @@ namespace IDMS.Page
                 pro = row.Cells["Procedure"].Value.ToString();
 
                 string imgFolder = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(caseid);
-                string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(caseid) + "/" + pro + "/pictures/";
+
+                String PROCEDURE = pro;
+                if (pro.Contains("Colonoscopy")) { PROCEDURE = "COL"; }
+                string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(caseid) + "/pictures/" + PROCEDURE;
                 imgFolder_oldversion = imgFolder_oldversion.Replace("idmsCASE", "idmsData");
 
                 //หลังบรรทัดนี้  imgFolder_oldversion  = IDMS.World.Settings.savePath \ specialCharReplace(caseid)           \ pro \pictures\
                 //หลังบรรทัดนี้  imgFolder_oldversion  = C:\idmsData                   \HN y2000-DATE 21.07.63-TIME 09.52.01  \EGD  \pictures\
+
+           // C:\idmsData\262003824 - 030863 - 082817\pictures\COL
+
                 if (pro.Contains("/"))
                 {
                     imgFolder_oldversion = imgFolder_oldversion.Replace(pro + "/pictures/", "");

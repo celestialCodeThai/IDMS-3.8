@@ -70,9 +70,15 @@ namespace IDMS.ReportContent
             Filesave = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "-HN " + filename + "-TIME " + DateTime.Now.ToString("HH") + "." + DateTime.Now.ToString("mm") + "." + DateTime.Now.ToString("ss") + ".pdf";
 
             string imgFolder = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "/";
-            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "/";
+            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/" ;
 
             imgFolder_oldversion = imgFolder_oldversion.Replace("idmsCASE", "idmsData");
+
+        //หลังบรรทัดนี้  imgFolder_oldversion  = C:\idmsData                   \HN y2000-DATE 21.07.63-TIME 09.52.01  \EGD  \pictures\
+
+        // C:\idmsData\262003824 - 030863 - 082817\pictures\COL
+       // C:\idmsData\262003824 - 030863 - 082817
+
 
             if ((!System.IO.Directory.Exists(imgFolder)) && (!System.IO.Directory.Exists(imgFolder_oldversion)))
             {

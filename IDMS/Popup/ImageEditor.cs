@@ -62,7 +62,7 @@ namespace IDMS.Popup
 
 
 
-               // Bitmap res = new Bitmap(500, 500);
+                // Bitmap res = new Bitmap(500, 500);
                 int t = 0, l = 0;
                 int newW = (pic.Image.Width * 3) / 4;
                 int newH = (pic.Image.Height * 3) / 4;
@@ -110,6 +110,7 @@ namespace IDMS.Popup
             }
             pic.Refresh();
         }
+
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             if (editMode == "CROP_2")
@@ -625,21 +626,32 @@ namespace IDMS.Popup
         {
             Graphics g = Graphics.FromImage(pic.Image);
 
+            Point a1 = Point.Empty;
+            Point a2 = Point.Empty;
+            Point a3 = Point.Empty;
+
             if (LineisClick)
             {
+                a1.X = (mouseDownPosition.X * 4) / 3;
+                a1.Y = (mouseDownPosition.Y * 4) / 3;
 
-                // Graphics g = Graphics.FromImage(pic.Image);
+                a2.X = (mouseMovePosition.X * 4) / 3;
+                a2.Y = (mouseMovePosition.Y * 4) / 3;
+
+               
                 Pen p = new Pen(Color.SpringGreen, 5);
                 p.StartCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
-                g.DrawLine(p, mouseDownPosition, mouseMovePosition);
+                g.DrawLine(p, a1, a2);
                 p.Dispose();
             }
             else
             {
-                // Graphics g = Graphics.FromImage(pic.Image);
+                a3.X = (textLocation.X * 4) / 3;
+                a3.Y = (textLocation.Y * 4) / 3;
+
                 g.DrawString(txt.Text,
-                    new Font("Tahoma", Convert.ToInt32(25)),
-                    new SolidBrush(Color.SpringGreen), textLocation);
+                    new Font("Tahoma", Convert.ToInt32(30)),
+                    new SolidBrush(Color.SpringGreen), a3);
                 textLocation = Invalid;
             }
             isEdit = true;
@@ -729,11 +741,11 @@ namespace IDMS.Popup
         {
             Mode.Text = "";
             _originalImage = pic.Image.Clone() as Image;
-          //  pic.Width = _originalImage.Width;
-           // pic.Height = _originalImage.Height;
+            //  pic.Width = _originalImage.Width;
+            // pic.Height = _originalImage.Height;
 
-            pic.Width = (_originalImage.Width*3 )/ 4;
-            pic.Height = (_originalImage.Height*3 )/ 4;
+            pic.Width = (_originalImage.Width * 3) / 4;
+            pic.Height = (_originalImage.Height * 3) / 4;
 
 
 
@@ -932,8 +944,8 @@ namespace IDMS.Popup
         {
             Mode.Text = "";
             _originalImage = pic.Image.Clone() as Image;
-            pic.Width = (_originalImage.Width*3)/4;
-            pic.Height = (_originalImage.Height*3)/4;
+            pic.Width = (_originalImage.Width * 3) / 4;
+            pic.Height = (_originalImage.Height * 3) / 4;
 
             //   panel1.Width = _originalImage.Width;
             //  this.Height = panel1.Height + pic.Height+40;
