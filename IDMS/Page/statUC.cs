@@ -200,6 +200,7 @@ namespace IDMS.Page
 
             return table;
         }
+
         static DataTable GetCameraTable()
         {
          SQLiteConnection sql_con;         
@@ -219,11 +220,14 @@ namespace IDMS.Page
             reader.Close();
             sql_con.Close();
             sql_con.Dispose();
+
             int rows = ds.Tables[0].Rows.Count;
             string[] Camera = new string[rows];
             for (int i = 0; i < rows; i++)
             {
                 Camera[i] = ds.Tables[0].Rows[i]["brand"].ToString() + " " + ds.Tables[0].Rows[i]["model"].ToString();
+
+                
             }
           
             DataTable table = new DataTable();
