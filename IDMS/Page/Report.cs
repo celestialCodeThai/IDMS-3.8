@@ -109,7 +109,6 @@ namespace IDMS.Page
             table.Columns.Add("Image List");
             InitializeComponent();
             this.idms = mainPage;
-
             MySqlConnection connectionP = new MySqlConnection(dbhelper.CnnVal("db"));
             connectionP.Open();
 
@@ -607,6 +606,29 @@ namespace IDMS.Page
                 return false;
             }
         }
+
+        private void clearRecImage()
+        {
+            switch (PRO)
+            {
+                case "EGD":
+                    EGDControl.setDefaultRectangle();
+                    break;
+                case "COL":
+                    EGDControl.setDefaultRectangle();
+                    break;
+                case "ERCP":
+                    EGDControl.setDefaultRectangle();
+                    break;
+                case "BRONCO":
+                    EGDControl.setDefaultRectangle();
+                    break;
+                case "ENT":
+                    EGDControl.setDefaultRectangle();
+                    break;
+            }
+        }
+
         private void CLEAR_IMAGE()
         {
             if (casepro != "")
@@ -615,9 +637,6 @@ namespace IDMS.Page
 
                 for (int v = 0; v < table.Rows.Count; v++)
                 {
-
-
-
                     //string imageName = imagelistTable.CurrentRow.Cells[0].Value.ToString();
                     string imageName = imagelistTable.Rows[v].Cells[0].Value.ToString();
                     //System.Windows.Forms.MessageBox.Show(imageName);
@@ -627,6 +646,7 @@ namespace IDMS.Page
                     if (PRO == "EGD")
                     {
                         EGDControl.setPicture(imgFolder + imageName);
+
                     }
                     if (PRO == "COL")
                     {
@@ -784,6 +804,7 @@ namespace IDMS.Page
         {
 
             CLEAR_IMAGE();
+            clearRecImage();
 
 
 
@@ -2247,6 +2268,7 @@ namespace IDMS.Page
             }
             // MessageBox.Show(imagelistTable.RowCount.ToString());
             CLEAR_IMAGE();
+            clearRecImage();
         }
 
         public String specialCharReplace(String hn)
