@@ -20,7 +20,7 @@ namespace IDMS.DataManage
             string[] field = { "a5",
                                 "med1", "med2", "med3", "med4", "med5", "med6", "med7",
                                 "history", "f8",
-                               
+
                                 "cdx1", "cdx2", "cdx3", "cdx4",
                                 "pdx1", "pdx2", "pdx3", "pdx4",
                                 "c1", "c5",
@@ -31,7 +31,7 @@ namespace IDMS.DataManage
                                 "pg11", "pg12", "pg13", "pg14", "pg15", "pg16", "pg17", "pg18", "pg19", "pg20",
                                 "pg21", "pg22", "pg23","pg24", "pg25", "pg26", "pg27", "pg28", "pg29", "pg30",
                                 "pg31", "pg32", "pg33", "pg34","r6"
-                                
+
         };
 
 
@@ -48,7 +48,7 @@ namespace IDMS.DataManage
             report.med7txt.Text, 
 
             //
-            report.commentText.Text,     
+            report.commentText.Text,
             report.f8txt.Text, 
 
 
@@ -726,23 +726,30 @@ namespace IDMS.DataManage
                     int fieldNumber = i + 1;
                     string imagePoint = save.getValueWithTableName(caseid, "image_point", "point_" + fieldNumber + "");
 
-                    string[] imagePointDatas = imagePoint.Split('=');
-                    string[] pointX = imagePointDatas[1].Split(',');
-                    string[] pointY = imagePointDatas[2].Split(',');
-                    string[] pointWidth = imagePointDatas[3].Split(',');
-                    string[] pointHeight = imagePointDatas[4].Split('}');
+                    if (imagePoint == null || imagePoint == "")
+                    {
+                        report.recImage[i] = new Rectangle(0, 0, 0, 0);
+                    }
+                    else
+                    {
+                        string[] imagePointDatas = imagePoint.Split('=');
+                        string[] pointX = imagePointDatas[1].Split(',');
+                        string[] pointY = imagePointDatas[2].Split(',');
+                        string[] pointWidth = imagePointDatas[3].Split(',');
+                        string[] pointHeight = imagePointDatas[4].Split('}');
 
-                    int AXIS_X = Int32.Parse(pointX[0]);
-                    int AXIS_Y = Int32.Parse(pointY[0]);
-                    int CROP_WIDTH = Int32.Parse(pointWidth[0]);
-                    int CROP_HEIGHT = Int32.Parse(pointHeight[0]);
-                    report.recImage[i] = new Rectangle(AXIS_X, AXIS_Y, CROP_WIDTH, CROP_HEIGHT);
+                        int AXIS_X = Int32.Parse(pointX[0]);
+                        int AXIS_Y = Int32.Parse(pointY[0]);
+                        int CROP_WIDTH = Int32.Parse(pointWidth[0]);
+                        int CROP_HEIGHT = Int32.Parse(pointHeight[0]);
+                        report.recImage[i] = new Rectangle(AXIS_X, AXIS_Y, CROP_WIDTH, CROP_HEIGHT);
+                    }
 
                     report.setPictureWithPoint(Value, report.recImage[i]);
                     //=========================================================================================================
 
-               //     report.cBoxIndex[i] = Convert.ToInt32(save.getValue(caseid, "cb" + k));
-                //    report.cBoxes[i].SelectedIndex = report.cBoxIndex[i];
+                    //     report.cBoxIndex[i] = Convert.ToInt32(save.getValue(caseid, "cb" + k));
+                    //    report.cBoxes[i].SelectedIndex = report.cBoxIndex[i];
                     imageName = Value.Replace(rep.imgFolder, null);
                     rep.selectImageTable.Rows.Add(imageName);
 
