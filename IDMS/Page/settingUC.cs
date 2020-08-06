@@ -997,5 +997,10 @@ namespace IDMS.Page
         {
 
         }
+
+        private void cTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

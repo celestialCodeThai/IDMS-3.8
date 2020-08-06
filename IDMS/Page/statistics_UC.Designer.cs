@@ -65,14 +65,8 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel13 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.egd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ercp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.broncho = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -90,6 +84,7 @@
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -393,72 +388,43 @@
             // 
             // panel13
             // 
+            this.panel13.AutoSize = true;
+            this.panel13.Controls.Add(this.dataGridView3);
             this.panel13.Controls.Add(this.dataGridView2);
             this.panel13.Controls.Add(this.dataGridView1);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.Location = new System.Drawing.Point(0, 920);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(1650, 300);
-            this.panel13.TabIndex = 2;
+            this.panel13.Size = new System.Drawing.Size(1650, 193);
+            this.panel13.TabIndex = 4;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.name,
-            this.egd,
-            this.colono,
-            this.ercp,
-            this.broncho,
-            this.ent,
-            this.total});
-            this.dataGridView1.Location = new System.Drawing.Point(131, 54);
+            this.dataGridView1.Location = new System.Drawing.Point(80, 20);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(635, 150);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Name";
-            this.name.Name = "name";
-            // 
-            // egd
-            // 
-            this.egd.HeaderText = "EGD";
-            this.egd.Name = "egd";
-            // 
-            // colono
-            // 
-            this.colono.HeaderText = "Colono";
-            this.colono.Name = "colono";
-            // 
-            // ercp
-            // 
-            this.ercp.HeaderText = "ERCP";
-            this.ercp.Name = "ercp";
-            // 
-            // broncho
-            // 
-            this.broncho.HeaderText = "Broncho";
-            this.broncho.Name = "broncho";
-            // 
-            // ent
-            // 
-            this.ent.HeaderText = "ENT";
-            this.ent.Name = "ent";
-            // 
-            // total
-            // 
-            this.total.HeaderText = "Total";
-            this.total.Name = "total";
             // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(927, 207);
+            this.dataGridView2.Location = new System.Drawing.Point(1025, 40);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView2.Size = new System.Drawing.Size(8, 8);
             this.dataGridView2.TabIndex = 1;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(885, 40);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView3.TabIndex = 2;
             // 
             // statistics_UC
             // 
@@ -492,7 +458,9 @@
             this.panel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -528,14 +496,8 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn egd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colono;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ercp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn broncho;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn total;
     }
 }

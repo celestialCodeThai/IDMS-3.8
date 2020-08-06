@@ -21,10 +21,14 @@ namespace IDMS.Page
         {
             InitializeComponent();
 
+
             loadCountCase();
             loadPatient();
+            loadDoctorTable();
 
         }
+
+      
 
         private void loadCountCase()
         {
@@ -59,6 +63,45 @@ namespace IDMS.Page
             chart2.Series["age"].Points.AddXY("50-59 yrs", yrs_50);
             chart2.Series["age"].Points.AddXY("60-69 yrs", yrs_60);
             chart2.Series["age"].Points.AddXY(">70 yrs", yrs_70);
+
+        }
+        /*
+        private void loadDoctorTable()
+        {
+            for(int i =1;i<21;i++)
+            {
+                string index = i.ToString();
+                dataGridView1.Rows.Add("Surachai "+ index, "20", "25", "45", "56", "77", "999");
+                dataGridView1.Columns[0].Visible = false;
+            }
+            
+        }
+        */
+
+        private void loadDoctorTable()
+        {
+            string query = "SELECT * FROM `patientdata`";
+
+            try
+            {
+                MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+
+                connection.Open();
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                dataGridView1.DataSource = dt;
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            dataGridView1.Columns[2].Visible = false; 
 
         }
 
