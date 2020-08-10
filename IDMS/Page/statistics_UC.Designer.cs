@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -64,9 +64,25 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.dataGridView7 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -82,9 +98,18 @@
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.panel13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            this.panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.panel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            this.panel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            this.panel18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -342,18 +367,18 @@
             // 
             // chart2
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart2.Legends.Add(legend3);
+            chartArea5.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chart2.Legends.Add(legend5);
             this.chart2.Location = new System.Drawing.Point(25, 25);
             this.chart2.Name = "chart2";
-            series3.ChartArea = "ChartArea1";
-            series3.Font = new System.Drawing.Font("Leelawadee UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series3.IsValueShownAsLabel = true;
-            series3.Legend = "Legend1";
-            series3.Name = "age";
-            this.chart2.Series.Add(series3);
+            series5.ChartArea = "ChartArea1";
+            series5.Font = new System.Drawing.Font("Leelawadee UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series5.IsValueShownAsLabel = true;
+            series5.Legend = "Legend1";
+            series5.Name = "age";
+            this.chart2.Series.Add(series5);
             this.chart2.Size = new System.Drawing.Size(822, 442);
             this.chart2.TabIndex = 0;
             this.chart2.Text = "chart2";
@@ -369,19 +394,19 @@
             // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart1.Legends.Add(legend4);
+            chartArea6.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chart1.Legends.Add(legend6);
             this.chart1.Location = new System.Drawing.Point(25, 25);
             this.chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Font = new System.Drawing.Font("Leelawadee UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series4.IsValueShownAsLabel = true;
-            series4.Legend = "Legend1";
-            series4.Name = "sPatient";
-            this.chart1.Series.Add(series4);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series6.Font = new System.Drawing.Font("Leelawadee UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series6.IsValueShownAsLabel = true;
+            series6.Legend = "Legend1";
+            series6.Name = "sPatient";
+            this.chart1.Series.Add(series6);
             this.chart1.Size = new System.Drawing.Size(607, 442);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -389,14 +414,47 @@
             // panel13
             // 
             this.panel13.AutoSize = true;
-            this.panel13.Controls.Add(this.dataGridView3);
+            this.panel13.Controls.Add(this.label14);
+            this.panel13.Controls.Add(this.label13);
             this.panel13.Controls.Add(this.dataGridView2);
             this.panel13.Controls.Add(this.dataGridView1);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.Location = new System.Drawing.Point(0, 920);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(1650, 193);
+            this.panel13.Size = new System.Drawing.Size(1650, 343);
             this.panel13.TabIndex = 4;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Leelawadee UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label14.Location = new System.Drawing.Point(1055, 5);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(122, 30);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Instrument";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Leelawadee UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label13.Location = new System.Drawing.Point(80, 5);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(80, 30);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Doctor";
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(1055, 40);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(535, 300);
+            this.dataGridView2.TabIndex = 1;
             // 
             // dataGridView1
             // 
@@ -405,36 +463,191 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(80, 20);
+            this.dataGridView1.Location = new System.Drawing.Point(80, 40);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(635, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(735, 300);
             this.dataGridView1.TabIndex = 0;
             // 
-            // dataGridView2
+            // panel14
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(1025, 40);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(8, 8);
-            this.dataGridView2.TabIndex = 1;
+            this.panel14.AutoSize = true;
+            this.panel14.Controls.Add(this.label15);
+            this.panel14.Controls.Add(this.dataGridView4);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel14.Location = new System.Drawing.Point(0, 1263);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(1650, 343);
+            this.panel14.TabIndex = 5;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Leelawadee UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label15.Location = new System.Drawing.Point(80, 5);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(170, 30);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Doctor assistant";
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView4.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView4.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Location = new System.Drawing.Point(80, 40);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.Size = new System.Drawing.Size(735, 300);
+            this.dataGridView4.TabIndex = 0;
+            // 
+            // panel15
+            // 
+            this.panel15.AutoSize = true;
+            this.panel15.Controls.Add(this.label16);
+            this.panel15.Controls.Add(this.dataGridView3);
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel15.Location = new System.Drawing.Point(0, 1606);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(1650, 343);
+            this.panel15.TabIndex = 6;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Leelawadee UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label16.Location = new System.Drawing.Point(80, 5);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(129, 30);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Scrub nurse";
             // 
             // dataGridView3
             // 
+            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView3.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView3.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(885, 40);
+            this.dataGridView3.Location = new System.Drawing.Point(80, 40);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView3.TabIndex = 2;
+            this.dataGridView3.Size = new System.Drawing.Size(735, 300);
+            this.dataGridView3.TabIndex = 0;
+            // 
+            // panel16
+            // 
+            this.panel16.AutoSize = true;
+            this.panel16.Controls.Add(this.label17);
+            this.panel16.Controls.Add(this.dataGridView5);
+            this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel16.Location = new System.Drawing.Point(0, 1949);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(1650, 343);
+            this.panel16.TabIndex = 7;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Leelawadee UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label17.Location = new System.Drawing.Point(80, 5);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(180, 30);
+            this.label17.TabIndex = 3;
+            this.label17.Text = "Circulating nurse";
+            // 
+            // dataGridView5
+            // 
+            this.dataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView5.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView5.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView5.Location = new System.Drawing.Point(80, 40);
+            this.dataGridView5.Name = "dataGridView5";
+            this.dataGridView5.Size = new System.Drawing.Size(735, 300);
+            this.dataGridView5.TabIndex = 0;
+            // 
+            // panel17
+            // 
+            this.panel17.AutoSize = true;
+            this.panel17.Controls.Add(this.label18);
+            this.panel17.Controls.Add(this.dataGridView6);
+            this.panel17.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel17.Location = new System.Drawing.Point(0, 2292);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(1650, 343);
+            this.panel17.TabIndex = 8;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Leelawadee UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label18.Location = new System.Drawing.Point(80, 5);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(184, 30);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Nurse anesthetist";
+            // 
+            // dataGridView6
+            // 
+            this.dataGridView6.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView6.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView6.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView6.Location = new System.Drawing.Point(80, 40);
+            this.dataGridView6.Name = "dataGridView6";
+            this.dataGridView6.Size = new System.Drawing.Size(735, 300);
+            this.dataGridView6.TabIndex = 0;
+            // 
+            // panel18
+            // 
+            this.panel18.AutoSize = true;
+            this.panel18.Controls.Add(this.label19);
+            this.panel18.Controls.Add(this.dataGridView7);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel18.Location = new System.Drawing.Point(0, 2635);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(1650, 343);
+            this.panel18.TabIndex = 9;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Leelawadee UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label19.Location = new System.Drawing.Point(80, 5);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(72, 30);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "ICD10";
+            // 
+            // dataGridView7
+            // 
+            this.dataGridView7.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView7.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView7.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView7.Location = new System.Drawing.Point(80, 40);
+            this.dataGridView7.Name = "dataGridView7";
+            this.dataGridView7.Size = new System.Drawing.Size(1500, 300);
+            this.dataGridView7.TabIndex = 0;
             // 
             // statistics_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel18);
+            this.Controls.Add(this.panel17);
+            this.Controls.Add(this.panel16);
+            this.Controls.Add(this.panel15);
+            this.Controls.Add(this.panel14);
             this.Controls.Add(this.panel13);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel1);
             this.Name = "statistics_UC";
             this.Size = new System.Drawing.Size(1650, 3000);
+            this.Load += new System.EventHandler(this.statistics_UC_Load);
             this.panel1.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -456,9 +669,24 @@
             this.panel11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.panel13.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -496,8 +724,24 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DataGridView dataGridView5;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.DataGridView dataGridView6;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.DataGridView dataGridView7;
     }
 }

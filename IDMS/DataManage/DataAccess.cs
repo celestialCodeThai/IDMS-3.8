@@ -1055,6 +1055,41 @@ namespace IDMS.DataManage
             return countTotal.ToString();
         }
 
+        public int getProcedureCase(string name, string procedure, string column)
+        {
+            string query = "SELECT COUNT(caseid) FROM `patientcase` WHERE `Procedure` LIKE '%" + procedure + "%' AND `" + column + "` = '" + name + "'";
+
+            MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+            MySqlCommand sql_cmd = new MySqlCommand(query, connection);
+
+            connection.Open();
+
+            int countTotal = Convert.ToInt32(sql_cmd.ExecuteScalar());
+
+            connection.Close();
+            connection.Dispose();
+
+            return countTotal;
+        }
+
+        public int getInstrumentCase(string name)
+        {
+            string query = "SELECT COUNT(caseid) FROM `patientcase` WHERE `Instruments` = '" + name + "'";
+
+            MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+            MySqlCommand sql_cmd = new MySqlCommand(query, connection);
+
+            connection.Open();
+
+            int countTotal = Convert.ToInt32(sql_cmd.ExecuteScalar());
+
+            connection.Close();
+            connection.Dispose();
+
+            return countTotal;
+        }
+
+
 
 
 
