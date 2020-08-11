@@ -23,8 +23,10 @@ namespace IDMS.Page
         DataTable circulatingNurseTable = new DataTable();
         DataTable nurseAnesthetistTable = new DataTable();
 
-        DataTable icd10Table = new DataTable();
-        DataTable tempTable = new DataTable();
+        DataTable preDx1_Table = new DataTable();
+        DataTable preDx2_Table = new DataTable();
+        DataTable preDx3_Table = new DataTable();
+        DataTable preDx4_Table = new DataTable();
 
 
         public statistics_UC()
@@ -58,9 +60,14 @@ namespace IDMS.Page
             loadTable("Anesthesist");
             dataGridView6.DataSource = nurseAnesthetistTable;
 
-            loadIcd10();
-            dataGridView7.DataSource = icd10Table;
+            loadPreDx1();
+            //loadPreDx1("PreDX2");
+            //loadPreDx1("PreDX3");
+            //loadPreDx1("PreDX4");
+            dataGridView7.DataSource = preDx1_Table;
             dataGridView7.Columns[0].Width = 500;
+
+
 
         }
 
@@ -150,25 +157,42 @@ namespace IDMS.Page
             nurseAnesthetistTable.Columns.Add("Total");
             nurseAnesthetistTable.PrimaryKey = new DataColumn[] { nurseAnesthetistTable.Columns["Name"] };
 
-            icd10Table.Columns.Add("ICD10");
-            icd10Table.Columns.Add("EGD");
-            icd10Table.Columns.Add("Colono");
-            icd10Table.Columns.Add("ERCP");
-            icd10Table.Columns.Add("Broncho");
-            icd10Table.Columns.Add("ENT");
-            icd10Table.Columns.Add("Total");
+            preDx1_Table.Columns.Add("ICD10");
+            preDx1_Table.Columns.Add("EGD");
+            preDx1_Table.Columns.Add("Colono");
+            preDx1_Table.Columns.Add("ERCP");
+            preDx1_Table.Columns.Add("Broncho");
+            preDx1_Table.Columns.Add("ENT");
+            preDx1_Table.Columns.Add("Total");
+            preDx1_Table.PrimaryKey = new DataColumn[] { preDx1_Table.Columns["ICD10"] };
 
-            icd10Table.PrimaryKey = new DataColumn[] { icd10Table.Columns["ICD10"] };
+            preDx2_Table.Columns.Add("ICD10");
+            preDx2_Table.Columns.Add("EGD");
+            preDx2_Table.Columns.Add("Colono");
+            preDx2_Table.Columns.Add("ERCP");
+            preDx2_Table.Columns.Add("Broncho");
+            preDx2_Table.Columns.Add("ENT");
+            preDx2_Table.Columns.Add("Total");
+            preDx2_Table.PrimaryKey = new DataColumn[] { preDx2_Table.Columns["ICD10"] };
 
-            tempTable.Columns.Add("ICD10");
-            tempTable.Columns.Add("EGD");
-            tempTable.Columns.Add("Colono");
-            tempTable.Columns.Add("ERCP");
-            tempTable.Columns.Add("Broncho");
-            tempTable.Columns.Add("ENT");
-            tempTable.Columns.Add("Total");
+            preDx3_Table.Columns.Add("ICD10");
+            preDx3_Table.Columns.Add("EGD");
+            preDx3_Table.Columns.Add("Colono");
+            preDx3_Table.Columns.Add("ERCP");
+            preDx3_Table.Columns.Add("Broncho");
+            preDx3_Table.Columns.Add("ENT");
+            preDx3_Table.Columns.Add("Total");
+            preDx3_Table.PrimaryKey = new DataColumn[] { preDx3_Table.Columns["ICD10"] };
 
-            tempTable.PrimaryKey = new DataColumn[] { tempTable.Columns["ICD10"] };
+            preDx4_Table.Columns.Add("ICD10");
+            preDx4_Table.Columns.Add("EGD");
+            preDx4_Table.Columns.Add("Colono");
+            preDx4_Table.Columns.Add("ERCP");
+            preDx4_Table.Columns.Add("Broncho");
+            preDx4_Table.Columns.Add("ENT");
+            preDx4_Table.Columns.Add("Total");
+            preDx4_Table.PrimaryKey = new DataColumn[] { preDx4_Table.Columns["ICD10"] };
+
         }
 
 
@@ -376,9 +400,8 @@ namespace IDMS.Page
         }
 
 
-        private void loadIcd10()
+        private void loadPreDx1()
         {
-            //ICD10_1
             string column = "PreDX1";
             string query = "SELECT * FROM `patientcase`";
             DataTable dt = new DataTable();
@@ -407,7 +430,7 @@ namespace IDMS.Page
             {
                 string name = rows[i][column].ToString();
 
-                if (!icd10Table.Rows.Contains(name) && name != "")
+                if (!preDx1_Table.Rows.Contains(name) && name != "")
                 {
                     int egd = load.getProcedureCase(name, "EGD", column);
                     int colono = load.getProcedureCase(name, "Col", column);
@@ -418,7 +441,7 @@ namespace IDMS.Page
                     int totalProcedure = egd + colono + ercp + broncho + ent;
 
                     DataRow row;
-                    row = icd10Table.NewRow();
+                    row = preDx1_Table.NewRow();
 
                     row["ICD10"] = rows[i][column];
                     row["EGD"] = egd;
@@ -428,217 +451,195 @@ namespace IDMS.Page
                     row["ENT"] = ent;
                     row["Total"] = totalProcedure;
 
-                    icd10Table.Rows.Add(row);
+                    preDx1_Table.Rows.Add(row);
 
                 }
 
             }
-
-
-            //ICD10_2
-            column = "PreDX2";
-            try
-            {
-                MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
-                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
-
-                connection.Open();
-
-                adapter.Fill(dt);
-
-                connection.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            numberOfRecords = dt.Rows.Count;
-            rows = dt.Select();
-
-            for (int i = 0; i < numberOfRecords; i++)
-            {
-                string name = rows[i][column].ToString();
-
-                if (!tempTable.Rows.Contains(name) && name != "")
-                {
-                    int egd = load.getProcedureCase(name, "EGD", column);
-                    int colono = load.getProcedureCase(name, "Col", column);
-                    int ercp = load.getProcedureCase(name, "ERCP", column);
-                    int broncho = load.getProcedureCase(name, "BRONCO", column);
-                    int ent = load.getProcedureCase(name, "ENT", column);
-
-                    int totalProcedure = egd + colono + ercp + broncho + ent;
-
-                    DataRow row;
-                    row = tempTable.NewRow();
-
-                    row["ICD10"] = rows[i][column];
-                    row["EGD"] = egd;
-                    row["Colono"] = colono;
-                    row["ERCP"] = ercp;
-                    row["Broncho"] = broncho;
-                    row["ENT"] = ent;
-                    row["Total"] = totalProcedure;
-
-                    tempTable.Rows.Add(row);
-
-                }
-
-                icd10Table.Merge(tempTable);
-
-                try
-                {
-                    tempTable.Clear();
-                }
-                catch (DataException e)
-                {
-                    // Process exception and return.
-                    Console.WriteLine("Exception of type {0} occurred.",
-                        e.GetType());
-                }
-
-            }
-
-
-            //ICD10_3
-            column = "PreDX3";
-            try
-            {
-                MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
-                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
-
-                connection.Open();
-
-                adapter.Fill(dt);
-
-                connection.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            numberOfRecords = dt.Rows.Count;
-            rows = dt.Select();
-
-            for (int i = 0; i < numberOfRecords; i++)
-            {
-                string name = rows[i][column].ToString();
-
-                if (!tempTable.Rows.Contains(name) && name != "")
-                {
-                    int egd = load.getProcedureCase(name, "EGD", column);
-                    int colono = load.getProcedureCase(name, "Col", column);
-                    int ercp = load.getProcedureCase(name, "ERCP", column);
-                    int broncho = load.getProcedureCase(name, "BRONCO", column);
-                    int ent = load.getProcedureCase(name, "ENT", column);
-
-                    int totalProcedure = egd + colono + ercp + broncho + ent;
-
-                    DataRow row;
-                    row = tempTable.NewRow();
-
-                    row["ICD10"] = rows[i][column];
-                    row["EGD"] = egd;
-                    row["Colono"] = colono;
-                    row["ERCP"] = ercp;
-                    row["Broncho"] = broncho;
-                    row["ENT"] = ent;
-                    row["Total"] = totalProcedure;
-
-                    tempTable.Rows.Add(row);
-
-                }
-
-                icd10Table.Merge(tempTable);
-
-                try
-                {
-                    tempTable.Clear();
-                }
-                catch (DataException e)
-                {
-                    // Process exception and return.
-                    Console.WriteLine("Exception of type {0} occurred.",
-                        e.GetType());
-                }
-
-            }
-
-            
-            //ICD10_4
-            column = "PreDX4";
-            try
-            {
-                MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
-                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
-
-                connection.Open();
-
-                adapter.Fill(dt);
-
-                connection.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            numberOfRecords = dt.Rows.Count;
-            rows = dt.Select();
-
-            for (int i = 0; i < numberOfRecords; i++)
-            {
-                string name = rows[i][column].ToString();
-
-                if (!tempTable.Rows.Contains(name) && name != "")
-                {
-                    int egd = load.getProcedureCase(name, "EGD", column);
-                    int colono = load.getProcedureCase(name, "Col", column);
-                    int ercp = load.getProcedureCase(name, "ERCP", column);
-                    int broncho = load.getProcedureCase(name, "BRONCO", column);
-                    int ent = load.getProcedureCase(name, "ENT", column);
-
-                    int totalProcedure = egd + colono + ercp + broncho + ent;
-
-                    DataRow row;
-                    row = tempTable.NewRow();
-
-                    row["ICD10"] = rows[i][column];
-                    row["EGD"] = egd;
-                    row["Colono"] = colono;
-                    row["ERCP"] = ercp;
-                    row["Broncho"] = broncho;
-                    row["ENT"] = ent;
-                    row["Total"] = totalProcedure;
-
-                    tempTable.Rows.Add(row);
-
-                }
-
-                icd10Table.Merge(tempTable);
-
-                try
-                {
-                    tempTable.Clear();
-                }
-                catch (DataException e)
-                {
-                    // Process exception and return.
-                    Console.WriteLine("Exception of type {0} occurred.",
-                        e.GetType());
-                }
-
-            }
-
-            
-
 
         }
 
 
+        private void loadPreDx2()
+        {
+            string column = "PreDX2";
+            string query = "SELECT * FROM `patientcase`";
+            DataTable dt = new DataTable();
+
+            try
+            {
+                MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+
+                connection.Open();
+
+                adapter.Fill(dt);
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            int numberOfRecords = dt.Rows.Count;
+
+            DataRow[] rows = dt.Select();
+
+            for (int i = 0; i < numberOfRecords; i++)
+            {
+                string name = rows[i][column].ToString();
+
+                if (!preDx2_Table.Rows.Contains(name) && name != "")
+                {
+                    int egd = load.getProcedureCase(name, "EGD", column);
+                    int colono = load.getProcedureCase(name, "Col", column);
+                    int ercp = load.getProcedureCase(name, "ERCP", column);
+                    int broncho = load.getProcedureCase(name, "BRONCO", column);
+                    int ent = load.getProcedureCase(name, "ENT", column);
+
+                    int totalProcedure = egd + colono + ercp + broncho + ent;
+
+                    DataRow row;
+                    row = preDx2_Table.NewRow();
+
+                    row["ICD10"] = rows[i][column];
+                    row["EGD"] = egd;
+                    row["Colono"] = colono;
+                    row["ERCP"] = ercp;
+                    row["Broncho"] = broncho;
+                    row["ENT"] = ent;
+                    row["Total"] = totalProcedure;
+
+                    preDx2_Table.Rows.Add(row);
+
+                }
+
+            }
+
+        }
+
+
+        private void loadPreDx3()
+        {
+            string column = "PreDX3";
+            string query = "SELECT * FROM `patientcase`";
+            DataTable dt = new DataTable();
+
+            try
+            {
+                MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+
+                connection.Open();
+
+                adapter.Fill(dt);
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            int numberOfRecords = dt.Rows.Count;
+
+            DataRow[] rows = dt.Select();
+
+            for (int i = 0; i < numberOfRecords; i++)
+            {
+                string name = rows[i][column].ToString();
+
+                if (!preDx3_Table.Rows.Contains(name) && name != "")
+                {
+                    int egd = load.getProcedureCase(name, "EGD", column);
+                    int colono = load.getProcedureCase(name, "Col", column);
+                    int ercp = load.getProcedureCase(name, "ERCP", column);
+                    int broncho = load.getProcedureCase(name, "BRONCO", column);
+                    int ent = load.getProcedureCase(name, "ENT", column);
+
+                    int totalProcedure = egd + colono + ercp + broncho + ent;
+
+                    DataRow row;
+                    row = preDx3_Table.NewRow();
+
+                    row["ICD10"] = rows[i][column];
+                    row["EGD"] = egd;
+                    row["Colono"] = colono;
+                    row["ERCP"] = ercp;
+                    row["Broncho"] = broncho;
+                    row["ENT"] = ent;
+                    row["Total"] = totalProcedure;
+
+                    preDx3_Table.Rows.Add(row);
+
+                }
+
+            }
+
+        }
+
+
+        private void loadPreDx4()
+        {
+            string column = "PreDX4";
+            string query = "SELECT * FROM `patientcase`";
+            DataTable dt = new DataTable();
+
+            try
+            {
+                MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+
+                connection.Open();
+
+                adapter.Fill(dt);
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            int numberOfRecords = dt.Rows.Count;
+
+            DataRow[] rows = dt.Select();
+
+            for (int i = 0; i < numberOfRecords; i++)
+            {
+                string name = rows[i][column].ToString();
+
+                if (!preDx4_Table.Rows.Contains(name) && name != "")
+                {
+                    int egd = load.getProcedureCase(name, "EGD", column);
+                    int colono = load.getProcedureCase(name, "Col", column);
+                    int ercp = load.getProcedureCase(name, "ERCP", column);
+                    int broncho = load.getProcedureCase(name, "BRONCO", column);
+                    int ent = load.getProcedureCase(name, "ENT", column);
+
+                    int totalProcedure = egd + colono + ercp + broncho + ent;
+
+                    DataRow row;
+                    row = preDx4_Table.NewRow();
+
+                    row["ICD10"] = rows[i][column];
+                    row["EGD"] = egd;
+                    row["Colono"] = colono;
+                    row["ERCP"] = ercp;
+                    row["Broncho"] = broncho;
+                    row["ENT"] = ent;
+                    row["Total"] = totalProcedure;
+
+                    preDx4_Table.Rows.Add(row);
+
+                }
+
+            }
+
+        }
 
 
     }
+
 }
