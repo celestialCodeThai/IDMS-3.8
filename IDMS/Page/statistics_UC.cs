@@ -17,17 +17,21 @@ namespace IDMS.Page
     {
         DataAccess load = new DataAccess();
 
+
         DataTable doctorTable = new DataTable();
         DataTable doctorAssistantTable = new DataTable();
         DataTable scrubNurseTable = new DataTable();
         DataTable circulatingNurseTable = new DataTable();
         DataTable nurseAnesthetistTable = new DataTable();
+        DataTable instrumentsTable = new DataTable();
+
+        DataTable roomTable = new DataTable();
+        DataTable financeTable = new DataTable();
 
         DataTable preDx1_Table = new DataTable();
         DataTable preDx2_Table = new DataTable();
         DataTable preDx3_Table = new DataTable();
         DataTable preDx4_Table = new DataTable();
-
 
         public statistics_UC()
         {
@@ -45,28 +49,39 @@ namespace IDMS.Page
 
             addTableColumn();
 
-            loadTable("Doctor");
+            loadProcedureTable("Doctor");
             dataGridView1.DataSource = doctorTable;
 
-            loadTable("Doctor 2");
+            loadProcedureTable("Doctor 2");
             dataGridView4.DataSource = doctorAssistantTable;
 
-            loadTable("Scrub Nurse");
+            loadProcedureTable("Scrub Nurse");
             dataGridView3.DataSource = scrubNurseTable;
 
-            loadTable("Circulating Nurse");
+            loadProcedureTable("Circulating Nurse");
             dataGridView5.DataSource = circulatingNurseTable;
 
-            loadTable("Anesthesist");
+            loadProcedureTable("Anesthesist");
             dataGridView6.DataSource = nurseAnesthetistTable;
 
+            loadTable("Instruments");
+            dataGridView2.DataSource = instrumentsTable;
+
+            loadTable("Procedure Room");
+            dataGridView8.DataSource = roomTable;
+
+            loadTable("finance");
+            dataGridView9.DataSource = financeTable;
+
+
+            
+
             loadPreDx1();
-            //loadPreDx1("PreDX2");
-            //loadPreDx1("PreDX3");
-            //loadPreDx1("PreDX4");
+            loadPreDx2();
+            loadPreDx3();
+            loadPreDx4();
             dataGridView7.DataSource = preDx1_Table;
             dataGridView7.Columns[0].Width = 500;
-
 
 
         }
@@ -193,10 +208,23 @@ namespace IDMS.Page
             preDx4_Table.Columns.Add("Total");
             preDx4_Table.PrimaryKey = new DataColumn[] { preDx4_Table.Columns["ICD10"] };
 
+            instrumentsTable.Columns.Add("Name");
+            instrumentsTable.Columns.Add("Case");
+            instrumentsTable.PrimaryKey = new DataColumn[] { instrumentsTable.Columns["Name"] };
+
+            roomTable.Columns.Add("Room");
+            roomTable.Columns.Add("Case");
+            roomTable.PrimaryKey = new DataColumn[] { roomTable.Columns["Room"] };
+
+            financeTable.Columns.Add("Financial");
+            financeTable.Columns.Add("Case");
+            financeTable.PrimaryKey = new DataColumn[] { financeTable.Columns["Financial"] };
+
+
         }
 
 
-        private void loadTable(string column)
+        private void loadProcedureTable(string column)
         {
             string query = "SELECT * FROM `patientcase`";
             DataTable dt = new DataTable();
@@ -400,6 +428,115 @@ namespace IDMS.Page
         }
 
 
+
+        private void loadTable(string column)
+        {
+            string query = "SELECT * FROM `patientcase`";
+            DataTable dt = new DataTable();
+
+            try
+            {
+                MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+
+                connection.Open();
+
+                adapter.Fill(dt);
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            int numberOfRecords = dt.Rows.Count;
+
+            DataRow[] rows = dt.Select();
+
+            switch (column)
+            {
+                case "Instruments":
+                    for (int i = 0; i < numberOfRecords; i++)
+                    {
+                        string name = rows[i][column].ToString();
+
+                        if (!instrumentsTable.Rows.Contains(name) && name != "")
+                        {
+
+                            int totalCase = load.getCase(name, column);
+
+                            DataRow row = instrumentsTable.NewRow();
+
+                            row["Name"] = rows[i]["Instruments"];
+                            row["Case"] = totalCase;
+
+                            instrumentsTable.Rows.Add(row);
+
+                        }
+
+                    }
+                    break;
+
+
+                case "Procedure Room":
+                    for (int i = 0; i < numberOfRecords; i++)
+                    {
+                        string name = rows[i][column].ToString();
+
+                        if (!roomTable.Rows.Contains(name) && name != "")
+                        {
+
+                            int totalCase = load.getCase(name, column);
+
+                            DataRow row = roomTable.NewRow();
+
+                            row["Room"] = rows[i]["Procedure Room"];
+                            row["Case"] = totalCase;
+
+                            roomTable.Rows.Add(row);
+
+                        }
+
+                    }
+                    break;
+
+                case "finance":
+                    for (int i = 0; i < numberOfRecords; i++)
+                    {
+                        string name = rows[i][column].ToString();
+
+                        if (!financeTable.Rows.Contains(name) && name != "")
+                        {
+
+                            int totalCase = load.getCase(name, column);
+
+                            DataRow row = financeTable.NewRow();
+
+                            row["Financial"] = rows[i]["finance"];
+                            row["Case"] = totalCase;
+
+                            financeTable.Rows.Add(row);
+
+                        }
+
+                    }
+                    break;
+
+
+                    
+
+
+
+
+
+            }
+
+
+        }
+
+
+
         private void loadPreDx1()
         {
             string column = "PreDX1";
@@ -512,7 +649,56 @@ namespace IDMS.Page
                     row["Total"] = totalProcedure;
 
                     preDx2_Table.Rows.Add(row);
+                }
+            }
 
+            foreach (DataRow DX_ROW in preDx2_Table.Rows)
+            {
+                string DX2_KEY = DX_ROW["ICD10"].ToString();
+
+                int DX2_EGD = Convert.ToInt32(DX_ROW["EGD"]);
+                int DX2_Colono = Convert.ToInt32(DX_ROW["Colono"]);
+                int DX2_ERCP = Convert.ToInt32(DX_ROW["ERCP"]);
+                int DX2_Broncho = Convert.ToInt32(DX_ROW["Broncho"]);
+                int DX2_ENT = Convert.ToInt32(DX_ROW["ENT"]);
+                int DX2_Total = Convert.ToInt32(DX_ROW["Total"]);
+
+                if (preDx1_Table.Rows.Contains(DX2_KEY))
+                {
+                    foreach (DataRow ORI_ROW in preDx1_Table.Rows)
+                    {
+                        string ORI_KEY = ORI_ROW["ICD10"].ToString();
+                        if (ORI_KEY == DX2_KEY)
+                        {
+                            int UPDATE_EGD = Convert.ToInt32(ORI_ROW["EGD"]);
+                            int UPDATE_Colono = Convert.ToInt32(ORI_ROW["Colono"]);
+                            int UPDATE_ERCP = Convert.ToInt32(ORI_ROW["ERCP"]);
+                            int UPDATE_Broncho = Convert.ToInt32(ORI_ROW["Broncho"]);
+                            int UPDATE_ENT = Convert.ToInt32(ORI_ROW["ENT"]);
+                            int UPDATE_Total = Convert.ToInt32(ORI_ROW["Total"]);
+
+                            ORI_ROW["EGD"] = UPDATE_EGD + DX2_EGD;
+                            ORI_ROW["Colono"] = UPDATE_Colono + DX2_Colono;
+                            ORI_ROW["ERCP"] = UPDATE_ERCP + DX2_ERCP;
+                            ORI_ROW["Broncho"] = UPDATE_Broncho + DX2_Broncho;
+                            ORI_ROW["ENT"] = UPDATE_ENT + DX2_ENT;
+                            ORI_ROW["Total"] = UPDATE_Total + DX2_Total;
+
+                        }
+
+                    }
+                }
+                else
+                {
+                    DataRow newRow = preDx1_Table.NewRow();
+                    newRow["ICD10"] = DX2_KEY;
+                    newRow["EGD"] = DX2_EGD;
+                    newRow["Colono"] = DX2_Colono;
+                    newRow["ERCP"] = DX2_ERCP;
+                    newRow["Broncho"] = DX2_Broncho;
+                    newRow["ENT"] = DX2_ENT;
+                    newRow["Total"] = DX2_Total;
+                    preDx1_Table.Rows.Add(newRow);
                 }
 
             }
@@ -572,7 +758,56 @@ namespace IDMS.Page
                     row["Total"] = totalProcedure;
 
                     preDx3_Table.Rows.Add(row);
+                }
+            }
 
+            foreach (DataRow DX_ROW in preDx3_Table.Rows)
+            {
+                string DX3_KEY = DX_ROW["ICD10"].ToString();
+
+                int DX3_EGD = Convert.ToInt32(DX_ROW["EGD"]);
+                int DX3_Colono = Convert.ToInt32(DX_ROW["Colono"]);
+                int DX3_ERCP = Convert.ToInt32(DX_ROW["ERCP"]);
+                int DX3_Broncho = Convert.ToInt32(DX_ROW["Broncho"]);
+                int DX3_ENT = Convert.ToInt32(DX_ROW["ENT"]);
+                int DX3_Total = Convert.ToInt32(DX_ROW["Total"]);
+
+                if (preDx1_Table.Rows.Contains(DX3_KEY))
+                {
+                    foreach (DataRow ORI_ROW in preDx1_Table.Rows)
+                    {
+                        string ORI_KEY = ORI_ROW["ICD10"].ToString();
+                        if (ORI_KEY == DX3_KEY)
+                        {
+                            int UPDATE_EGD = Convert.ToInt32(ORI_ROW["EGD"]);
+                            int UPDATE_Colono = Convert.ToInt32(ORI_ROW["Colono"]);
+                            int UPDATE_ERCP = Convert.ToInt32(ORI_ROW["ERCP"]);
+                            int UPDATE_Broncho = Convert.ToInt32(ORI_ROW["Broncho"]);
+                            int UPDATE_ENT = Convert.ToInt32(ORI_ROW["ENT"]);
+                            int UPDATE_Total = Convert.ToInt32(ORI_ROW["Total"]);
+
+                            ORI_ROW["EGD"] = UPDATE_EGD + DX3_EGD;
+                            ORI_ROW["Colono"] = UPDATE_Colono + DX3_Colono;
+                            ORI_ROW["ERCP"] = UPDATE_ERCP + DX3_ERCP;
+                            ORI_ROW["Broncho"] = UPDATE_Broncho + DX3_Broncho;
+                            ORI_ROW["ENT"] = UPDATE_ENT + DX3_ENT;
+                            ORI_ROW["Total"] = UPDATE_Total + DX3_Total;
+
+                        }
+
+                    }
+                }
+                else
+                {
+                    DataRow newRow = preDx1_Table.NewRow();
+                    newRow["ICD10"] = DX3_KEY;
+                    newRow["EGD"] = DX3_EGD;
+                    newRow["Colono"] = DX3_Colono;
+                    newRow["ERCP"] = DX3_ERCP;
+                    newRow["Broncho"] = DX3_Broncho;
+                    newRow["ENT"] = DX3_ENT;
+                    newRow["Total"] = DX3_Total;
+                    preDx1_Table.Rows.Add(newRow);
                 }
 
             }
@@ -632,12 +867,64 @@ namespace IDMS.Page
                     row["Total"] = totalProcedure;
 
                     preDx4_Table.Rows.Add(row);
+                }
+            }
 
+            foreach (DataRow DX_ROW in preDx4_Table.Rows)
+            {
+                string DX4_KEY = DX_ROW["ICD10"].ToString();
+
+                int DX4_EGD = Convert.ToInt32(DX_ROW["EGD"]);
+                int DX4_Colono = Convert.ToInt32(DX_ROW["Colono"]);
+                int DX4_ERCP = Convert.ToInt32(DX_ROW["ERCP"]);
+                int DX4_Broncho = Convert.ToInt32(DX_ROW["Broncho"]);
+                int DX4_ENT = Convert.ToInt32(DX_ROW["ENT"]);
+                int DX4_Total = Convert.ToInt32(DX_ROW["Total"]);
+
+                if (preDx1_Table.Rows.Contains(DX4_KEY))
+                {
+                    foreach (DataRow ORI_ROW in preDx1_Table.Rows)
+                    {
+                        string ORI_KEY = ORI_ROW["ICD10"].ToString();
+                        if (ORI_KEY == DX4_KEY)
+                        {
+                            int UPDATE_EGD = Convert.ToInt32(ORI_ROW["EGD"]);
+                            int UPDATE_Colono = Convert.ToInt32(ORI_ROW["Colono"]);
+                            int UPDATE_ERCP = Convert.ToInt32(ORI_ROW["ERCP"]);
+                            int UPDATE_Broncho = Convert.ToInt32(ORI_ROW["Broncho"]);
+                            int UPDATE_ENT = Convert.ToInt32(ORI_ROW["ENT"]);
+                            int UPDATE_Total = Convert.ToInt32(ORI_ROW["Total"]);
+
+                            ORI_ROW["EGD"] = UPDATE_EGD + DX4_EGD;
+                            ORI_ROW["Colono"] = UPDATE_Colono + DX4_Colono;
+                            ORI_ROW["ERCP"] = UPDATE_ERCP + DX4_ERCP;
+                            ORI_ROW["Broncho"] = UPDATE_Broncho + DX4_Broncho;
+                            ORI_ROW["ENT"] = UPDATE_ENT + DX4_ENT;
+                            ORI_ROW["Total"] = UPDATE_Total + DX4_Total;
+
+                        }
+
+                    }
+                }
+                else
+                {
+                    DataRow newRow = preDx1_Table.NewRow();
+                    newRow["ICD10"] = DX4_KEY;
+                    newRow["EGD"] = DX4_EGD;
+                    newRow["Colono"] = DX4_Colono;
+                    newRow["ERCP"] = DX4_ERCP;
+                    newRow["Broncho"] = DX4_Broncho;
+                    newRow["ENT"] = DX4_ENT;
+                    newRow["Total"] = DX4_Total;
+                    preDx1_Table.Rows.Add(newRow);
                 }
 
             }
 
         }
+
+
+
 
 
     }

@@ -504,6 +504,7 @@ namespace IDMS.Page
 
             return checker;
         }
+
         private void RegisterButton_Click(object sender, EventArgs e)
         {
             pro = "";
@@ -549,12 +550,7 @@ namespace IDMS.Page
                 string b = regisDate.Text + "-" + regisTime.Text;
                 string regisday = regisDate.Text;
                 string pRoom = "";
-                /*
-                if (procedureRoom.SelectedItem != null)
-                {
-                    pRoom = procedureRoom.SelectedItem.ToString();
-                }
-                */
+              
                 pRoom = procedureRoom.Text;
                 string inst = instruments.Text;
 
@@ -563,7 +559,6 @@ namespace IDMS.Page
                     if (inst != "") { inst += "$"; }
                     inst += in2.Text;
                 }
-            
 
                 string d1 = doc1.Text;
                 string d2 = "";
@@ -669,7 +664,7 @@ namespace IDMS.Page
                 
                 string finance = financeValue.Text;
 
-                db.AddNewCase(caseId, cname, hn.Text, pro, pRoom, indi, inst, predx1, predx2, predx3, predx4, b, regisday, d1, d2, sc, cc, ac, "Prepare", finance);
+                db.AddNewCase(caseId, cname, hn.Text, pro, pRoom, indi, inst, predx1, predx2, predx3, predx4, b, regisday, d1, d2, sc, cc, ac, "Prepare", finance, w);
 
                
 

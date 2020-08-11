@@ -1633,7 +1633,7 @@ namespace IDMS.Page
 
                 cbm.AddNewCase(newid, infoname.Text, infohn.Text, PRO, infoproroom.Text, indication.Text
                         , infoinstrument.Text, pdx1.Text, pdx2.Text, pdx3.Text, pdx4.Text, date, day, infodoc.Text, infoass.Text,
-                          infosnurse.Text, infocnurse.Text, anes.Text, "Done", "Edit");
+                          infosnurse.Text, infocnurse.Text, anes.Text, "Done", "editFinance","editType");
 
 
                 ReportMulti.tabcount--;
