@@ -92,6 +92,8 @@
             this.panel19 = new System.Windows.Forms.Panel();
             this.label23 = new System.Windows.Forms.Label();
             this.dataGridView11 = new System.Windows.Forms.DataGridView();
+            this.label24 = new System.Windows.Forms.Label();
+            this.dataGridView12 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -124,6 +126,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
             this.panel19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -722,6 +725,8 @@
             // panel19
             // 
             this.panel19.AutoSize = true;
+            this.panel19.Controls.Add(this.dataGridView12);
+            this.panel19.Controls.Add(this.label24);
             this.panel19.Controls.Add(this.label23);
             this.panel19.Controls.Add(this.dataGridView11);
             this.panel19.Dock = System.Windows.Forms.DockStyle.Top;
@@ -751,6 +756,28 @@
             this.dataGridView11.Name = "dataGridView11";
             this.dataGridView11.Size = new System.Drawing.Size(735, 300);
             this.dataGridView11.TabIndex = 0;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Leelawadee UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label24.Location = new System.Drawing.Point(840, 5);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(88, 30);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "Finding";
+            // 
+            // dataGridView12
+            // 
+            this.dataGridView12.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView12.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView12.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView12.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView12.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView12.Location = new System.Drawing.Point(845, 40);
+            this.dataGridView12.Name = "dataGridView12";
+            this.dataGridView12.Size = new System.Drawing.Size(735, 300);
+            this.dataGridView12.TabIndex = 5;
             // 
             // statistics_UC
             // 
@@ -813,6 +840,7 @@
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -878,5 +906,7 @@
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.DataGridView dataGridView11;
+        private System.Windows.Forms.DataGridView dataGridView12;
+        private System.Windows.Forms.Label label24;
     }
 }

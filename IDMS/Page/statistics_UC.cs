@@ -38,6 +38,10 @@ namespace IDMS.Page
         DataTable bronchoMedicationTable = new DataTable();
         DataTable entMedicationTable = new DataTable();
 
+        DataTable findingTable = new DataTable();
+        DataTable bronchoFindingTable = new DataTable();
+
+
         public statistics_UC()
         {
             InitializeComponent();
@@ -112,6 +116,10 @@ namespace IDMS.Page
             dataGridView7.DataSource = preDx1_Table;
             dataGridView7.Columns[0].Width = 500;
 
+            loadTableFinding();
+            loadBronchoTableFinding();
+            mergeFinding();
+            dataGridView12.DataSource = findingTable;
 
         }
 
@@ -271,6 +279,14 @@ namespace IDMS.Page
             entMedicationTable.Columns.Add("ปริมาณ");
             entMedicationTable.Columns.Add("หน่วย");
             entMedicationTable.PrimaryKey = new DataColumn[] { entMedicationTable.Columns["ตัวยาที่ใช้"] };
+
+            findingTable.Columns.Add("ชนิดของโรค");
+            findingTable.Columns.Add("จำนวน");
+            findingTable.PrimaryKey = new DataColumn[] { findingTable.Columns["ชนิดของโรค"] };
+
+            bronchoFindingTable.Columns.Add("ชนิดของโรค");
+            bronchoFindingTable.Columns.Add("จำนวน");
+            bronchoFindingTable.PrimaryKey = new DataColumn[] { bronchoFindingTable.Columns["ชนิดของโรค"] };
         }
 
 
@@ -1087,6 +1103,7 @@ namespace IDMS.Page
 
         }
 
+
         private void mergeEntMedication()
         {
             foreach (DataRow entRow in entMedicationTable.Rows)
@@ -1137,6 +1154,258 @@ namespace IDMS.Page
 
             }
 
+
+        }
+
+
+        private void mergeFinding()
+        {
+
+            foreach (DataRow bronchoRow in bronchoFindingTable.Rows)
+            {
+                string bronchoKey = bronchoRow["ชนิดของโรค"].ToString();
+
+                if (findingTable.Rows.Contains(bronchoKey))
+                {
+                    foreach (DataRow oriRow in findingTable.Rows)
+                    {
+                        string key = oriRow["ชนิดของโรค"].ToString();
+                        if (key == bronchoKey)
+                        {
+                            int updateValue = Convert.ToInt32(oriRow["จำนวน"]);
+
+                            oriRow["จำนวน"] = updateValue + 1;
+
+                        }
+
+                    }
+                }
+
+                else
+                {
+                    DataRow newRow = findingTable.NewRow();
+                    newRow["ชนิดของโรค"] = bronchoKey;
+                    newRow["จำนวน"] = 1;
+                    findingTable.Rows.Add(newRow);
+                }
+
+            }
+
+        }
+
+
+        private void loadTableFinding()
+        {
+
+
+            string query = "SELECT * FROM `report` WHERE 'ABNORMAL' IN(sf1,sf2,sf3,sf4,sf5,sf6,sf7,sf8,sf9,sf10)";
+            DataTable dt = new DataTable();
+
+            try
+            {
+                MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+
+                connection.Open();
+
+                adapter.Fill(dt);
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            for (int i = 1; i < 11; i++)
+            {
+                string key = "f" + i.ToString();
+                foreach (DataRow row in dt.Rows)
+                {
+                    dynamic value = row[key].ToString();
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        if (value.Contains(","))
+                        {
+                            string[] columnValues = value.Split(',');
+                            foreach (string val in columnValues)
+                            {
+
+                                if (findingTable.Rows.Contains(val))
+                                {
+                                    foreach (DataRow oriRow in findingTable.Rows)
+                                    {
+                                        string keyOri = oriRow["ชนิดของโรค"].ToString();
+                                        if (keyOri == val)
+                                        {
+                                            int updateValue = Convert.ToInt32(oriRow["จำนวน"]);
+
+                                            oriRow["จำนวน"] = updateValue + 1;
+
+                                        }
+
+                                    }
+
+                                }
+
+                                else
+                                {
+                                    DataRow newRow = findingTable.NewRow();
+                                    newRow["ชนิดของโรค"] = val;
+                                    newRow["จำนวน"] = 1;
+
+                                    findingTable.Rows.Add(newRow);
+
+                                }
+
+                            }
+
+                        }
+
+
+                        else
+                        {
+                            if (findingTable.Rows.Contains(value))
+                            {
+                                foreach (DataRow oriRow in findingTable.Rows)
+                                {
+                                    string keyOri = oriRow["ชนิดของโรค"].ToString();
+                                    if (keyOri == value)
+                                    {
+                                        int updateValue = Convert.ToInt32(oriRow["จำนวน"]);
+
+                                        oriRow["จำนวน"] = updateValue + 1;
+
+                                    }
+
+                                }
+
+                            }
+
+                            else
+                            {
+                                DataRow newRow = findingTable.NewRow();
+                                newRow["ชนิดของโรค"] = value;
+                                newRow["จำนวน"] = 1;
+
+                                findingTable.Rows.Add(newRow);
+
+                            }
+                        }
+
+                    }
+
+                }
+            }
+
+
+
+        }
+
+
+        private void loadBronchoTableFinding()
+        {
+
+
+            string query = "SELECT * FROM `broncoreport` WHERE 'ABNORMAL' IN(sf1,sf2,sf3,sf4,sf5,sf6,sf7,sf8,sf9,sf10)";
+            DataTable dt = new DataTable();
+
+            try
+            {
+                MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+
+                connection.Open();
+
+                adapter.Fill(dt);
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            for (int i = 1; i < 11; i++)
+            {
+                string key = "f" + i.ToString();
+                foreach (DataRow row in dt.Rows)
+                {
+                    dynamic value = row[key].ToString();
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        if (value.Contains(","))
+                        {
+                            string[] columnValues = value.Split(',');
+                            foreach (string val in columnValues)
+                            {
+
+                                if (bronchoFindingTable.Rows.Contains(val))
+                                {
+                                    foreach (DataRow oriRow in bronchoFindingTable.Rows)
+                                    {
+                                        string keyOri = oriRow["ชนิดของโรค"].ToString();
+                                        if (keyOri == val)
+                                        {
+                                            int updateValue = Convert.ToInt32(oriRow["จำนวน"]);
+
+                                            oriRow["จำนวน"] = updateValue + 1;
+
+                                        }
+
+                                    }
+
+                                }
+
+                                else
+                                {
+                                    DataRow newRow = bronchoFindingTable.NewRow();
+                                    newRow["ชนิดของโรค"] = val;
+                                    newRow["จำนวน"] = 1;
+
+                                    bronchoFindingTable.Rows.Add(newRow);
+
+                                }
+
+                            }
+
+                        }
+
+
+                        else
+                        {
+                            if (bronchoFindingTable.Rows.Contains(value))
+                            {
+                                foreach (DataRow oriRow in bronchoFindingTable.Rows)
+                                {
+                                    string keyOri = oriRow["ชนิดของโรค"].ToString();
+                                    if (keyOri == value)
+                                    {
+                                        int updateValue = Convert.ToInt32(oriRow["จำนวน"]);
+
+                                        oriRow["จำนวน"] = updateValue + 1;
+
+                                    }
+
+                                }
+
+                            }
+
+                            else
+                            {
+                                DataRow newRow = bronchoFindingTable.NewRow();
+                                newRow["ชนิดของโรค"] = value;
+                                newRow["จำนวน"] = 1;
+
+                                bronchoFindingTable.Rows.Add(newRow);
+
+                            }
+                        }
+
+                    }
+
+                }
+            }
 
         }
 
