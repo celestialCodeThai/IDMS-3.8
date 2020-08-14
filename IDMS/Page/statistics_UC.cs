@@ -27,11 +27,16 @@ namespace IDMS.Page
 
         DataTable roomTable = new DataTable();
         DataTable financeTable = new DataTable();
+        DataTable patientTypeAndFinanceTable = new DataTable();
 
         DataTable preDx1_Table = new DataTable();
         DataTable preDx2_Table = new DataTable();
         DataTable preDx3_Table = new DataTable();
         DataTable preDx4_Table = new DataTable();
+
+        DataTable medicationTable = new DataTable();
+        DataTable bronchoMedicationTable = new DataTable();
+        DataTable entMedicationTable = new DataTable();
 
         public statistics_UC()
         {
@@ -73,8 +78,32 @@ namespace IDMS.Page
             loadTable("finance");
             dataGridView9.DataSource = financeTable;
 
+            loadTable("patientType");
+            dataGridView10.DataSource = patientTypeAndFinanceTable;
 
-            
+            loadMedication("Buscopan", "med1", "mg.");
+            loadMedication("Diprivan", "med2", "mg.");
+            loadMedication("Dormicum", "med3", "mg.");
+            loadMedication("Pethidine", "med4", "mg.");
+            loadMedication("Fentanyl", "med5", "mcg.");
+            loadMedication("Propofol", "med7", "mg.");
+
+            loadBronchoMedication("Midazolam", "med1", "mg.");
+            loadBronchoMedication("Fentanyl", "med2", "mcg.");
+            loadBronchoMedication("Lidocaine", "med3", "mL.");
+            loadBronchoMedication("Atropine", "med4", "mg.");
+            loadBronchoMedication("Pethidine", "med5", "mg.");
+
+            loadEntMedication("Buscopan", "med1", "mg.");
+            loadEntMedication("Xylocaine 10% Spray", "med2", "mg.");
+            loadEntMedication("Dormicum", "med3", "mg.");
+            loadEntMedication("Pethidine", "med4", "mg.");
+            loadEntMedication("Fentanyl", "med5", "mcg.");
+            loadEntMedication("Propofol", "med7", "mg.");
+
+            mergeBronchoMedication();
+            mergeEntMedication();
+            dataGridView11.DataSource = medicationTable;
 
             loadPreDx1();
             loadPreDx2();
@@ -220,7 +249,28 @@ namespace IDMS.Page
             financeTable.Columns.Add("Case");
             financeTable.PrimaryKey = new DataColumn[] { financeTable.Columns["Financial"] };
 
+            patientTypeAndFinanceTable.Columns.Add("Type");
+            patientTypeAndFinanceTable.Columns.Add("จ่ายเอง");
+            patientTypeAndFinanceTable.Columns.Add("ต้นสังกัด");
+            patientTypeAndFinanceTable.Columns.Add("ต่างด้าวขึ้นทะเบียน");
+            patientTypeAndFinanceTable.Columns.Add("บัตรทอง");
+            patientTypeAndFinanceTable.Columns.Add("ประกันสังคม");
+            patientTypeAndFinanceTable.PrimaryKey = new DataColumn[] { patientTypeAndFinanceTable.Columns["Type"] };
 
+            bronchoMedicationTable.Columns.Add("ตัวยาที่ใช้");
+            bronchoMedicationTable.Columns.Add("ปริมาณ");
+            bronchoMedicationTable.Columns.Add("หน่วย");
+            bronchoMedicationTable.PrimaryKey = new DataColumn[] { bronchoMedicationTable.Columns["ตัวยาที่ใช้"] };
+
+            medicationTable.Columns.Add("ตัวยาที่ใช้");
+            medicationTable.Columns.Add("ปริมาณ");
+            medicationTable.Columns.Add("หน่วย");
+            medicationTable.PrimaryKey = new DataColumn[] { medicationTable.Columns["ตัวยาที่ใช้"] };
+
+            entMedicationTable.Columns.Add("ตัวยาที่ใช้");
+            entMedicationTable.Columns.Add("ปริมาณ");
+            entMedicationTable.Columns.Add("หน่วย");
+            entMedicationTable.PrimaryKey = new DataColumn[] { entMedicationTable.Columns["ตัวยาที่ใช้"] };
         }
 
 
@@ -428,7 +478,6 @@ namespace IDMS.Page
         }
 
 
-
         private void loadTable(string column)
         {
             string query = "SELECT * FROM `patientcase`";
@@ -468,7 +517,7 @@ namespace IDMS.Page
 
                             DataRow row = instrumentsTable.NewRow();
 
-                            row["Name"] = rows[i]["Instruments"];
+                            row["Name"] = rows[i][column];
                             row["Case"] = totalCase;
 
                             instrumentsTable.Rows.Add(row);
@@ -491,7 +540,7 @@ namespace IDMS.Page
 
                             DataRow row = roomTable.NewRow();
 
-                            row["Room"] = rows[i]["Procedure Room"];
+                            row["Room"] = rows[i][column];
                             row["Case"] = totalCase;
 
                             roomTable.Rows.Add(row);
@@ -513,7 +562,7 @@ namespace IDMS.Page
 
                             DataRow row = financeTable.NewRow();
 
-                            row["Financial"] = rows[i]["finance"];
+                            row["Financial"] = rows[i][column];
                             row["Case"] = totalCase;
 
                             financeTable.Rows.Add(row);
@@ -523,8 +572,34 @@ namespace IDMS.Page
                     }
                     break;
 
+                case "patientType":
+                    for (int i = 0; i < numberOfRecords; i++)
+                    {
+                        string name = rows[i][column].ToString();
 
-                    
+                        if (!patientTypeAndFinanceTable.Rows.Contains(name) && name != "")
+                        {
+                            int totalCase = load.getCase(name, column);
+                            string type = rows[i][column].ToString();
+
+                            DataRow row = patientTypeAndFinanceTable.NewRow();
+
+                            row["Type"] = type;
+                            row["จ่ายเอง"] = load.getCasePatientType(type, "จ่ายเอง");
+                            row["ต้นสังกัด"] = load.getCasePatientType(type, "ต้นสังกัด");
+                            row["ต่างด้าวขึ้นทะเบียน"] = load.getCasePatientType(type, "ต่างด้าวขึ้นทะเบียน");
+                            row["บัตรทอง"] = load.getCasePatientType(type, "บัตรทอง");
+                            row["ประกันสังคม"] = load.getCasePatientType(type, "ประกันสังคม");
+
+                            patientTypeAndFinanceTable.Rows.Add(row);
+                        }
+
+                    }
+                    break;
+
+
+
+
 
 
 
@@ -534,7 +609,6 @@ namespace IDMS.Page
 
 
         }
-
 
 
         private void loadPreDx1()
@@ -924,7 +998,147 @@ namespace IDMS.Page
         }
 
 
+        private void loadBronchoMedication(string name, string column, string unit)
+        {
+            DataRow newRow = bronchoMedicationTable.NewRow();
 
+            newRow["ตัวยาที่ใช้"] = name;
+            newRow["ปริมาณ"] = load.sumBronchoMedication(column);
+            newRow["หน่วย"] = unit;
+            bronchoMedicationTable.Rows.Add(newRow);
+
+        }
+
+
+        private void loadMedication(string name, string column, string unit)
+        {
+            DataRow newRow = medicationTable.NewRow();
+
+            newRow["ตัวยาที่ใช้"] = name;
+            newRow["ปริมาณ"] = load.sumMedication(column);
+            newRow["หน่วย"] = unit;
+            medicationTable.Rows.Add(newRow);
+
+        }
+
+
+        private void loadEntMedication(string name, string column, string unit)
+        {
+            DataRow newRow = entMedicationTable.NewRow();
+
+            newRow["ตัวยาที่ใช้"] = name;
+            newRow["ปริมาณ"] = load.sumEntMedication(column);
+            newRow["หน่วย"] = unit;
+            entMedicationTable.Rows.Add(newRow);
+
+        }
+
+
+        private void mergeBronchoMedication()
+        {
+            foreach (DataRow bronchoRow in bronchoMedicationTable.Rows)
+            {
+                string bronchoKey = bronchoRow["ตัวยาที่ใช้"].ToString();
+                int bronchoValue = Convert.ToInt32(bronchoRow["ปริมาณ"]);
+
+                if (medicationTable.Rows.Contains(bronchoKey))
+                {
+                    foreach (DataRow oriRow in medicationTable.Rows)
+                    {
+                        string key = oriRow["ตัวยาที่ใช้"].ToString();
+                        if (key == bronchoKey)
+                        {
+                            int updateValue = Convert.ToInt32(oriRow["ปริมาณ"]);
+
+                            oriRow["ปริมาณ"] = updateValue + bronchoValue;
+
+                        }
+
+                    }
+                }
+
+                else
+                {
+                    string unit = "";
+                    switch (bronchoKey)
+                    {
+                        case "Fentanyl":
+                            unit = "mcg.";
+                            break;
+
+                        case "Lidocaine":
+                            unit = "mL.";
+                            break;
+                        default:
+                            unit = "mg.";
+                            break;
+                    }
+
+                    DataRow newRow = medicationTable.NewRow();
+                    newRow["ตัวยาที่ใช้"] = bronchoKey;
+                    newRow["ปริมาณ"] = bronchoValue;
+                    newRow["หน่วย"] = unit;
+
+                    medicationTable.Rows.Add(newRow);
+                }
+
+            }
+
+
+        }
+
+        private void mergeEntMedication()
+        {
+            foreach (DataRow entRow in entMedicationTable.Rows)
+            {
+                string entKey = entRow["ตัวยาที่ใช้"].ToString();
+                int entValue = Convert.ToInt32(entRow["ปริมาณ"]);
+
+                if (medicationTable.Rows.Contains(entKey))
+                {
+                    foreach (DataRow oriRow in medicationTable.Rows)
+                    {
+                        string key = oriRow["ตัวยาที่ใช้"].ToString();
+                        if (key == entKey)
+                        {
+                            int updateValue = Convert.ToInt32(oriRow["ปริมาณ"]);
+
+                            oriRow["ปริมาณ"] = updateValue + entValue;
+
+                        }
+
+                    }
+                }
+
+                else
+                {
+                    string unit = "";
+                    switch (entKey)
+                    {
+                        case "Fentanyl":
+                            unit = "mcg.";
+                            break;
+
+                        case "Lidocaine":
+                            unit = "mL.";
+                            break;
+                        default:
+                            unit = "mg.";
+                            break;
+                    }
+
+                    DataRow newRow = medicationTable.NewRow();
+                    newRow["ตัวยาที่ใช้"] = entKey;
+                    newRow["ปริมาณ"] = entValue;
+                    newRow["หน่วย"] = unit;
+
+                    medicationTable.Rows.Add(newRow);
+                }
+
+            }
+
+
+        }
 
 
     }

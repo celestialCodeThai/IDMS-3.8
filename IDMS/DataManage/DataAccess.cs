@@ -40,7 +40,7 @@ namespace IDMS.DataManage
         }
 
         public void AddNewCase(string caseid, string name, string hn, string pro, string pr, string indi, string itm, string d1, string d2, string d3, string d4,
-            string date, string day, string doc1, string doc2, string sn, string cn, string an, string sts, string financeValue,string w)
+            string date, string day, string doc1, string doc2, string sn, string cn, string an, string sts, string financeValue, string w)
         {
             using (MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db")))
             {
@@ -1089,6 +1089,118 @@ namespace IDMS.DataManage
 
             return countTotal;
         }
+
+        public int getCasePatientType(string type, string finance)
+        {
+            string query = "SELECT COUNT(caseid) FROM `patientcase` WHERE `patientType` = '" + type + "' AND `finance` = '" + finance + "'";
+
+            MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+            MySqlCommand sql_cmd = new MySqlCommand(query, connection);
+
+            connection.Open();
+
+            int countTotal = Convert.ToInt32(sql_cmd.ExecuteScalar());
+
+            connection.Close();
+            connection.Dispose();
+
+            return countTotal;
+        }
+
+
+        public int sumMedication(string column)
+        {
+            string query = "SELECT report.caseid, report." + column + ", patientcase.Procedure FROM `report` INNER JOIN `patientcase` ON report.caseid=patientcase.caseid WHERE patientcase.Procedure != 'ENT'";
+
+            MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+
+            DataTable dt = new DataTable();
+
+            try
+            {
+                connection.Open();
+
+                adapter.Fill(dt);
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            int countTotal = 0;
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                dynamic value = dr[column].ToString();
+                if (!string.IsNullOrEmpty(value))
+                {
+                    countTotal += Convert.ToInt32(value);
+                }
+            }
+
+            return countTotal;
+
+        }
+
+
+        public int sumEntMedication(string column)
+        {
+            string query = "SELECT report.caseid, report." + column + ", patientcase.Procedure FROM `report` INNER JOIN `patientcase` ON report.caseid=patientcase.caseid WHERE patientcase.Procedure = 'ENT'";
+
+            MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+
+            DataTable dt = new DataTable();
+
+            try
+            {
+                connection.Open();
+
+                adapter.Fill(dt);
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            int countTotal = 0;
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                dynamic value = dr[column].ToString();
+                if (!string.IsNullOrEmpty(value))
+                {
+                    countTotal += Convert.ToInt32(value);
+                }
+            }
+
+            return countTotal;
+
+        }
+
+
+        public int sumBronchoMedication(string column)
+        {
+            string query = "SELECT sum("+ column + ") FROM `broncoreport`";
+
+            MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+            MySqlCommand sql_cmd = new MySqlCommand(query, connection);
+
+            connection.Open();
+
+            int countTotal = Convert.ToInt32(sql_cmd.ExecuteScalar());
+
+            connection.Close();
+            connection.Dispose();
+
+            return countTotal;
+        }
+
 
 
 
