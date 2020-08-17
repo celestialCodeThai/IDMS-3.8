@@ -17,6 +17,10 @@ namespace IDMS.Page
     {
         DataAccess load = new DataAccess();
 
+        DateTime startDate;
+        DateTime endDate;
+        string DATE_1;
+        string DATE_2;
 
         DataTable doctorTable = new DataTable();
         DataTable doctorAssistantTable = new DataTable();
@@ -46,7 +50,8 @@ namespace IDMS.Page
         {
             InitializeComponent();
 
-
+            dateTimePicker1.Value = DateTime.Today.AddDays(1 - DateTime.Today.Day);
+            dateTimePicker2.Value = DateTime.Today;
 
         }
 
@@ -58,6 +63,7 @@ namespace IDMS.Page
 
             addTableColumn();
 
+            //
             loadProcedureTable("Doctor");
             dataGridView1.DataSource = doctorTable;
 
@@ -73,6 +79,8 @@ namespace IDMS.Page
             loadProcedureTable("Anesthesist");
             dataGridView6.DataSource = nurseAnesthetistTable;
 
+
+            //
             loadTable("Instruments");
             dataGridView2.DataSource = instrumentsTable;
 
@@ -85,6 +93,8 @@ namespace IDMS.Page
             loadTable("patientType");
             dataGridView10.DataSource = patientTypeAndFinanceTable;
 
+
+            //
             loadMedication("Buscopan", "med1", "mg.");
             loadMedication("Diprivan", "med2", "mg.");
             loadMedication("Dormicum", "med3", "mg.");
@@ -109,6 +119,8 @@ namespace IDMS.Page
             mergeEntMedication();
             dataGridView11.DataSource = medicationTable;
 
+
+            //ICD10
             loadPreDx1();
             loadPreDx2();
             loadPreDx3();
@@ -116,6 +128,8 @@ namespace IDMS.Page
             dataGridView7.DataSource = preDx1_Table;
             dataGridView7.Columns[0].Width = 500;
 
+
+            //
             loadTableFinding();
             loadBronchoTableFinding();
             mergeFinding();
@@ -126,12 +140,13 @@ namespace IDMS.Page
 
         private void loadCountCase()
         {
-            label2.Text = load.getCaseCount(true, "");
-            label4.Text = load.getCaseCount(false, "EGD");
-            label6.Text = load.getCaseCount(false, "Colono");
-            label8.Text = load.getCaseCount(false, "ERCP");
-            label10.Text = load.getCaseCount(false, "BRONCO");
-            label12.Text = load.getCaseCount(false, "ENT");
+
+            label2.Text = load.getCaseCount(true, "", DATE_1, DATE_2);
+            label4.Text = load.getCaseCount(false, "EGD", DATE_1, DATE_2);
+            label6.Text = load.getCaseCount(false, "Colono", DATE_1, DATE_2);
+            label8.Text = load.getCaseCount(false, "ERCP", DATE_1, DATE_2);
+            label10.Text = load.getCaseCount(false, "BRONCO", DATE_1, DATE_2);
+            label12.Text = load.getCaseCount(false, "ENT", DATE_1, DATE_2);
         }
 
 
@@ -287,12 +302,13 @@ namespace IDMS.Page
             bronchoFindingTable.Columns.Add("ชนิดของโรค");
             bronchoFindingTable.Columns.Add("จำนวน");
             bronchoFindingTable.PrimaryKey = new DataColumn[] { bronchoFindingTable.Columns["ชนิดของโรค"] };
+
         }
 
 
         private void loadProcedureTable(string column)
         {
-            string query = "SELECT * FROM `patientcase`";
+            string query = "SELECT * FROM `patientcase` WHERE `Day` BETWEEN '" + DATE_1 + "' AND '" + DATE_2 + "'";
             DataTable dt = new DataTable();
 
             try
@@ -324,11 +340,11 @@ namespace IDMS.Page
 
                         if (!doctorTable.Rows.Contains(name) && name != "")
                         {
-                            int egd = load.getProcedureCase(name, "EGD", column);
-                            int colono = load.getProcedureCase(name, "Col", column);
-                            int ercp = load.getProcedureCase(name, "ERCP", column);
-                            int broncho = load.getProcedureCase(name, "BRONCO", column);
-                            int ent = load.getProcedureCase(name, "ENT", column);
+                            int egd = load.getProcedureCase(name, "EGD", column, DATE_1, DATE_2);
+                            int colono = load.getProcedureCase(name, "Col", column, DATE_1, DATE_2);
+                            int ercp = load.getProcedureCase(name, "ERCP", column, DATE_1, DATE_2);
+                            int broncho = load.getProcedureCase(name, "BRONCO", column, DATE_1, DATE_2);
+                            int ent = load.getProcedureCase(name, "ENT", column, DATE_1, DATE_2);
 
                             int totalProcedure = egd + colono + ercp + broncho + ent;
 
@@ -358,11 +374,11 @@ namespace IDMS.Page
 
                         if (!doctorAssistantTable.Rows.Contains(name) && name != "")
                         {
-                            int egd = load.getProcedureCase(name, "EGD", column);
-                            int colono = load.getProcedureCase(name, "Col", column);
-                            int ercp = load.getProcedureCase(name, "ERCP", column);
-                            int broncho = load.getProcedureCase(name, "BRONCO", column);
-                            int ent = load.getProcedureCase(name, "ENT", column);
+                            int egd = load.getProcedureCase(name, "EGD", column, DATE_1, DATE_2);
+                            int colono = load.getProcedureCase(name, "Col", column, DATE_1, DATE_2);
+                            int ercp = load.getProcedureCase(name, "ERCP", column, DATE_1, DATE_2);
+                            int broncho = load.getProcedureCase(name, "BRONCO", column, DATE_1, DATE_2);
+                            int ent = load.getProcedureCase(name, "ENT", column, DATE_1, DATE_2);
 
                             int totalProcedure = egd + colono + ercp + broncho + ent;
 
@@ -392,11 +408,11 @@ namespace IDMS.Page
 
                         if (!scrubNurseTable.Rows.Contains(name) && name != "")
                         {
-                            int egd = load.getProcedureCase(name, "EGD", column);
-                            int colono = load.getProcedureCase(name, "Col", column);
-                            int ercp = load.getProcedureCase(name, "ERCP", column);
-                            int broncho = load.getProcedureCase(name, "BRONCO", column);
-                            int ent = load.getProcedureCase(name, "ENT", column);
+                            int egd = load.getProcedureCase(name, "EGD", column, DATE_1, DATE_2);
+                            int colono = load.getProcedureCase(name, "Col", column, DATE_1, DATE_2);
+                            int ercp = load.getProcedureCase(name, "ERCP", column, DATE_1, DATE_2);
+                            int broncho = load.getProcedureCase(name, "BRONCO", column, DATE_1, DATE_2);
+                            int ent = load.getProcedureCase(name, "ENT", column, DATE_1, DATE_2);
 
                             int totalProcedure = egd + colono + ercp + broncho + ent;
 
@@ -426,11 +442,11 @@ namespace IDMS.Page
 
                         if (!circulatingNurseTable.Rows.Contains(name) && name != "")
                         {
-                            int egd = load.getProcedureCase(name, "EGD", column);
-                            int colono = load.getProcedureCase(name, "Col", column);
-                            int ercp = load.getProcedureCase(name, "ERCP", column);
-                            int broncho = load.getProcedureCase(name, "BRONCO", column);
-                            int ent = load.getProcedureCase(name, "ENT", column);
+                            int egd = load.getProcedureCase(name, "EGD", column, DATE_1, DATE_2);
+                            int colono = load.getProcedureCase(name, "Col", column, DATE_1, DATE_2);
+                            int ercp = load.getProcedureCase(name, "ERCP", column, DATE_1, DATE_2);
+                            int broncho = load.getProcedureCase(name, "BRONCO", column, DATE_1, DATE_2);
+                            int ent = load.getProcedureCase(name, "ENT", column, DATE_1, DATE_2);
 
                             int totalProcedure = egd + colono + ercp + broncho + ent;
 
@@ -460,11 +476,11 @@ namespace IDMS.Page
 
                         if (!nurseAnesthetistTable.Rows.Contains(name) && name != "")
                         {
-                            int egd = load.getProcedureCase(name, "EGD", column);
-                            int colono = load.getProcedureCase(name, "Col", column);
-                            int ercp = load.getProcedureCase(name, "ERCP", column);
-                            int broncho = load.getProcedureCase(name, "BRONCO", column);
-                            int ent = load.getProcedureCase(name, "ENT", column);
+                            int egd = load.getProcedureCase(name, "EGD", column, DATE_1, DATE_2);
+                            int colono = load.getProcedureCase(name, "Col", column, DATE_1, DATE_2);
+                            int ercp = load.getProcedureCase(name, "ERCP", column, DATE_1, DATE_2);
+                            int broncho = load.getProcedureCase(name, "BRONCO", column, DATE_1, DATE_2);
+                            int ent = load.getProcedureCase(name, "ENT", column, DATE_1, DATE_2);
 
                             int totalProcedure = egd + colono + ercp + broncho + ent;
 
@@ -496,7 +512,7 @@ namespace IDMS.Page
 
         private void loadTable(string column)
         {
-            string query = "SELECT * FROM `patientcase`";
+            string query = "SELECT * FROM `patientcase` WHERE `Day` BETWEEN '" + DATE_1 + "' AND '" + DATE_2 + "'";
             DataTable dt = new DataTable();
 
             try
@@ -529,7 +545,7 @@ namespace IDMS.Page
                         if (!instrumentsTable.Rows.Contains(name) && name != "")
                         {
 
-                            int totalCase = load.getCase(name, column);
+                            int totalCase = load.getCase(name, column, DATE_1, DATE_2);
 
                             DataRow row = instrumentsTable.NewRow();
 
@@ -552,7 +568,7 @@ namespace IDMS.Page
                         if (!roomTable.Rows.Contains(name) && name != "")
                         {
 
-                            int totalCase = load.getCase(name, column);
+                            int totalCase = load.getCase(name, column, DATE_1, DATE_2);
 
                             DataRow row = roomTable.NewRow();
 
@@ -574,7 +590,7 @@ namespace IDMS.Page
                         if (!financeTable.Rows.Contains(name) && name != "")
                         {
 
-                            int totalCase = load.getCase(name, column);
+                            int totalCase = load.getCase(name, column, DATE_1, DATE_2);
 
                             DataRow row = financeTable.NewRow();
 
@@ -595,17 +611,17 @@ namespace IDMS.Page
 
                         if (!patientTypeAndFinanceTable.Rows.Contains(name) && name != "")
                         {
-                            int totalCase = load.getCase(name, column);
+                            int totalCase = load.getCase(name, column, DATE_1, DATE_2);
                             string type = rows[i][column].ToString();
 
                             DataRow row = patientTypeAndFinanceTable.NewRow();
 
                             row["Type"] = type;
-                            row["จ่ายเอง"] = load.getCasePatientType(type, "จ่ายเอง");
-                            row["ต้นสังกัด"] = load.getCasePatientType(type, "ต้นสังกัด");
-                            row["ต่างด้าวขึ้นทะเบียน"] = load.getCasePatientType(type, "ต่างด้าวขึ้นทะเบียน");
-                            row["บัตรทอง"] = load.getCasePatientType(type, "บัตรทอง");
-                            row["ประกันสังคม"] = load.getCasePatientType(type, "ประกันสังคม");
+                            row["จ่ายเอง"] = load.getCasePatientType(type, "จ่ายเอง", DATE_1, DATE_2);
+                            row["ต้นสังกัด"] = load.getCasePatientType(type, "ต้นสังกัด", DATE_1, DATE_2);
+                            row["ต่างด้าวขึ้นทะเบียน"] = load.getCasePatientType(type, "ต่างด้าวขึ้นทะเบียน", DATE_1, DATE_2);
+                            row["บัตรทอง"] = load.getCasePatientType(type, "บัตรทอง", DATE_1, DATE_2);
+                            row["ประกันสังคม"] = load.getCasePatientType(type, "ประกันสังคม", DATE_1, DATE_2);
 
                             patientTypeAndFinanceTable.Rows.Add(row);
                         }
@@ -630,7 +646,7 @@ namespace IDMS.Page
         private void loadPreDx1()
         {
             string column = "PreDX1";
-            string query = "SELECT * FROM `patientcase`";
+            string query = "SELECT * FROM `patientcase` WHERE `Day` BETWEEN '" + DATE_1 + "' AND '" + DATE_2 + "'";
             DataTable dt = new DataTable();
 
             try
@@ -659,11 +675,11 @@ namespace IDMS.Page
 
                 if (!preDx1_Table.Rows.Contains(name) && name != "")
                 {
-                    int egd = load.getProcedureCase(name, "EGD", column);
-                    int colono = load.getProcedureCase(name, "Col", column);
-                    int ercp = load.getProcedureCase(name, "ERCP", column);
-                    int broncho = load.getProcedureCase(name, "BRONCO", column);
-                    int ent = load.getProcedureCase(name, "ENT", column);
+                    int egd = load.getProcedureCase(name, "EGD", column, DATE_1, DATE_2);
+                    int colono = load.getProcedureCase(name, "Col", column, DATE_1, DATE_2);
+                    int ercp = load.getProcedureCase(name, "ERCP", column, DATE_1, DATE_2);
+                    int broncho = load.getProcedureCase(name, "BRONCO", column, DATE_1, DATE_2);
+                    int ent = load.getProcedureCase(name, "ENT", column, DATE_1, DATE_2);
 
                     int totalProcedure = egd + colono + ercp + broncho + ent;
 
@@ -690,7 +706,7 @@ namespace IDMS.Page
         private void loadPreDx2()
         {
             string column = "PreDX2";
-            string query = "SELECT * FROM `patientcase`";
+            string query = "SELECT * FROM `patientcase` WHERE `Day` BETWEEN '" + DATE_1 + "' AND '" + DATE_2 + "'";
             DataTable dt = new DataTable();
 
             try
@@ -719,11 +735,11 @@ namespace IDMS.Page
 
                 if (!preDx2_Table.Rows.Contains(name) && name != "")
                 {
-                    int egd = load.getProcedureCase(name, "EGD", column);
-                    int colono = load.getProcedureCase(name, "Col", column);
-                    int ercp = load.getProcedureCase(name, "ERCP", column);
-                    int broncho = load.getProcedureCase(name, "BRONCO", column);
-                    int ent = load.getProcedureCase(name, "ENT", column);
+                    int egd = load.getProcedureCase(name, "EGD", column, DATE_1, DATE_2);
+                    int colono = load.getProcedureCase(name, "Col", column, DATE_1, DATE_2);
+                    int ercp = load.getProcedureCase(name, "ERCP", column, DATE_1, DATE_2);
+                    int broncho = load.getProcedureCase(name, "BRONCO", column, DATE_1, DATE_2);
+                    int ent = load.getProcedureCase(name, "ENT", column, DATE_1, DATE_2);
 
                     int totalProcedure = egd + colono + ercp + broncho + ent;
 
@@ -799,7 +815,7 @@ namespace IDMS.Page
         private void loadPreDx3()
         {
             string column = "PreDX3";
-            string query = "SELECT * FROM `patientcase`";
+            string query = "SELECT * FROM `patientcase` WHERE `Day` BETWEEN '" + DATE_1 + "' AND '" + DATE_2 + "'";
             DataTable dt = new DataTable();
 
             try
@@ -828,11 +844,11 @@ namespace IDMS.Page
 
                 if (!preDx3_Table.Rows.Contains(name) && name != "")
                 {
-                    int egd = load.getProcedureCase(name, "EGD", column);
-                    int colono = load.getProcedureCase(name, "Col", column);
-                    int ercp = load.getProcedureCase(name, "ERCP", column);
-                    int broncho = load.getProcedureCase(name, "BRONCO", column);
-                    int ent = load.getProcedureCase(name, "ENT", column);
+                    int egd = load.getProcedureCase(name, "EGD", column, DATE_1, DATE_2);
+                    int colono = load.getProcedureCase(name, "Col", column, DATE_1, DATE_2);
+                    int ercp = load.getProcedureCase(name, "ERCP", column, DATE_1, DATE_2);
+                    int broncho = load.getProcedureCase(name, "BRONCO", column, DATE_1, DATE_2);
+                    int ent = load.getProcedureCase(name, "ENT", column, DATE_1, DATE_2);
 
                     int totalProcedure = egd + colono + ercp + broncho + ent;
 
@@ -908,7 +924,7 @@ namespace IDMS.Page
         private void loadPreDx4()
         {
             string column = "PreDX4";
-            string query = "SELECT * FROM `patientcase`";
+            string query = "SELECT * FROM `patientcase` WHERE `Day` BETWEEN '" + DATE_1 + "' AND '" + DATE_2 + "'";
             DataTable dt = new DataTable();
 
             try
@@ -937,11 +953,11 @@ namespace IDMS.Page
 
                 if (!preDx4_Table.Rows.Contains(name) && name != "")
                 {
-                    int egd = load.getProcedureCase(name, "EGD", column);
-                    int colono = load.getProcedureCase(name, "Col", column);
-                    int ercp = load.getProcedureCase(name, "ERCP", column);
-                    int broncho = load.getProcedureCase(name, "BRONCO", column);
-                    int ent = load.getProcedureCase(name, "ENT", column);
+                    int egd = load.getProcedureCase(name, "EGD", column, DATE_1, DATE_2);
+                    int colono = load.getProcedureCase(name, "Col", column, DATE_1, DATE_2);
+                    int ercp = load.getProcedureCase(name, "ERCP", column, DATE_1, DATE_2);
+                    int broncho = load.getProcedureCase(name, "BRONCO", column, DATE_1, DATE_2);
+                    int ent = load.getProcedureCase(name, "ENT", column, DATE_1, DATE_2);
 
                     int totalProcedure = egd + colono + ercp + broncho + ent;
 
@@ -1019,7 +1035,7 @@ namespace IDMS.Page
             DataRow newRow = bronchoMedicationTable.NewRow();
 
             newRow["ตัวยาที่ใช้"] = name;
-            newRow["ปริมาณ"] = load.sumBronchoMedication(column);
+            newRow["ปริมาณ"] = load.sumBronchoMedication(column, DATE_1, DATE_2);
             newRow["หน่วย"] = unit;
             bronchoMedicationTable.Rows.Add(newRow);
 
@@ -1031,7 +1047,7 @@ namespace IDMS.Page
             DataRow newRow = medicationTable.NewRow();
 
             newRow["ตัวยาที่ใช้"] = name;
-            newRow["ปริมาณ"] = load.sumMedication(column);
+            newRow["ปริมาณ"] = load.sumMedication(column, DATE_1, DATE_2);
             newRow["หน่วย"] = unit;
             medicationTable.Rows.Add(newRow);
 
@@ -1043,7 +1059,7 @@ namespace IDMS.Page
             DataRow newRow = entMedicationTable.NewRow();
 
             newRow["ตัวยาที่ใช้"] = name;
-            newRow["ปริมาณ"] = load.sumEntMedication(column);
+            newRow["ปริมาณ"] = load.sumEntMedication(column, DATE_1, DATE_2);
             newRow["หน่วย"] = unit;
             entMedicationTable.Rows.Add(newRow);
 
@@ -1196,9 +1212,7 @@ namespace IDMS.Page
 
         private void loadTableFinding()
         {
-
-
-            string query = "SELECT * FROM `report` WHERE 'ABNORMAL' IN(sf1,sf2,sf3,sf4,sf5,sf6,sf7,sf8,sf9,sf10)";
+            string query = "SELECT report.*,patientcase.Day FROM `report` INNER JOIN `patientcase` ON report.caseid = patientcase.caseid  WHERE 'ABNORMAL' IN(report.sf1,report.sf2,report.sf3,report.sf4,report.sf5,report.sf6,report.sf7,report.sf8,report.sf9,report.sf10) AND patientcase.Day BETWEEN '" + DATE_1 + "' AND '" + DATE_2 + "'";
             DataTable dt = new DataTable();
 
             try
@@ -1222,7 +1236,7 @@ namespace IDMS.Page
                 string key = "f" + i.ToString();
                 foreach (DataRow row in dt.Rows)
                 {
-                    dynamic value = row[key].ToString();
+                    dynamic value = row[key].ToString().Replace(" ", "");
                     if (!string.IsNullOrEmpty(value))
                     {
                         if (value.Contains(","))
@@ -1307,7 +1321,8 @@ namespace IDMS.Page
         {
 
 
-            string query = "SELECT * FROM `broncoreport` WHERE 'ABNORMAL' IN(sf1,sf2,sf3,sf4,sf5,sf6,sf7,sf8,sf9,sf10)";
+            //string query = "SELECT * FROM `broncoreport` WHERE 'ABNORMAL' IN(sf1,sf2,sf3,sf4,sf5,sf6,sf7,sf8,sf9,sf10)";
+            string query = "SELECT broncoreport.*,patientcase.Day FROM `broncoreport` INNER JOIN `patientcase` ON broncoreport.caseid = patientcase.caseid  WHERE 'ABNORMAL' IN(broncoreport.sf1,broncoreport.sf2,broncoreport.sf3,broncoreport.sf4,broncoreport.sf5,broncoreport.sf6,broncoreport.sf7,broncoreport.sf8,broncoreport.sf9,broncoreport.sf10) AND patientcase.Day BETWEEN '" + DATE_1 + "' AND '" + DATE_2 + "'";
             DataTable dt = new DataTable();
 
             try
@@ -1409,6 +1424,105 @@ namespace IDMS.Page
 
         }
 
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            startDate = dateTimePicker1.Value;
+            DATE_1 = startDate.ToString("dd/MM/yyyy");
+
+        }
+
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            endDate = dateTimePicker2.Value;
+            DATE_2 = endDate.ToString("dd/MM/yyyy");
+
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            loadCountCase();
+
+            doctorTable.Clear();
+            loadProcedureTable("Doctor");
+            dataGridView1.DataSource = doctorTable;
+
+            doctorAssistantTable.Clear();
+            loadProcedureTable("Doctor 2");
+            dataGridView4.DataSource = doctorAssistantTable;
+
+            scrubNurseTable.Clear();
+            loadProcedureTable("Scrub Nurse");
+            dataGridView3.DataSource = scrubNurseTable;
+
+            circulatingNurseTable.Clear();
+            loadProcedureTable("Circulating Nurse");
+            dataGridView5.DataSource = circulatingNurseTable;
+
+            nurseAnesthetistTable.Clear();
+            loadProcedureTable("Anesthesist");
+            dataGridView6.DataSource = nurseAnesthetistTable;
+
+            instrumentsTable.Clear();
+            loadTable("Instruments");
+            dataGridView2.DataSource = instrumentsTable;
+
+            roomTable.Clear();
+            loadTable("Procedure Room");
+            dataGridView8.DataSource = roomTable;
+
+            financeTable.Clear();
+            loadTable("finance");
+            dataGridView9.DataSource = financeTable;
+
+            patientTypeAndFinanceTable.Clear();
+            loadTable("patientType");
+            dataGridView10.DataSource = patientTypeAndFinanceTable;
+
+            preDx1_Table.Clear();
+            loadPreDx1();
+            loadPreDx2();
+            loadPreDx3();
+            loadPreDx4();
+            dataGridView7.DataSource = preDx1_Table;
+
+            medicationTable.Clear();
+            bronchoMedicationTable.Clear();
+            entMedicationTable.Clear();
+
+            loadMedication("Buscopan", "med1", "mg.");
+            loadMedication("Diprivan", "med2", "mg.");
+            loadMedication("Dormicum", "med3", "mg.");
+            loadMedication("Pethidine", "med4", "mg.");
+            loadMedication("Fentanyl", "med5", "mcg.");
+            loadMedication("Propofol", "med7", "mg.");
+
+            loadBronchoMedication("Midazolam", "med1", "mg.");
+            loadBronchoMedication("Fentanyl", "med2", "mcg.");
+            loadBronchoMedication("Lidocaine", "med3", "mL.");
+            loadBronchoMedication("Atropine", "med4", "mg.");
+            loadBronchoMedication("Pethidine", "med5", "mg.");
+
+            loadEntMedication("Buscopan", "med1", "mg.");
+            loadEntMedication("Xylocaine 10% Spray", "med2", "mg.");
+            loadEntMedication("Dormicum", "med3", "mg.");
+            loadEntMedication("Pethidine", "med4", "mg.");
+            loadEntMedication("Fentanyl", "med5", "mcg.");
+            loadEntMedication("Propofol", "med7", "mg.");
+
+            mergeBronchoMedication();
+            mergeEntMedication();
+            dataGridView11.DataSource = medicationTable;
+
+            findingTable.Clear();
+            bronchoFindingTable.Clear();
+            loadTableFinding();
+            loadBronchoTableFinding();
+            mergeFinding();
+            dataGridView12.DataSource = findingTable;
+        }
 
     }
 

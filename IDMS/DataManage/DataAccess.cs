@@ -972,13 +972,13 @@ namespace IDMS.DataManage
 
         }
 
-        public string getCaseCount(bool isTotal, string procedure)
+        public string getCaseCount(bool isTotal, string procedure, string startDate, string endDate)
         {
-            string query = "SELECT COUNT(caseid) FROM `patientcase`";
+            string query = "SELECT COUNT(caseid) FROM `patientcase` WHERE `Day` BETWEEN '" + startDate + "' AND '" + endDate + "'";
 
             if (!isTotal)
             {
-                query = "SELECT COUNT(caseid) FROM `patientcase` WHERE `Procedure` LIKE '%" + procedure + "%'";
+                query = "SELECT COUNT(caseid) FROM `patientcase` WHERE `Procedure` LIKE '%" + procedure + "%' AND `Day` BETWEEN '" + startDate + "' AND '" + endDate + "'";
             }
 
             MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
@@ -1056,9 +1056,9 @@ namespace IDMS.DataManage
             return countTotal.ToString();
         }
 
-        public int getProcedureCase(string name, string procedure, string column)
+        public int getProcedureCase(string name, string procedure, string column, string startDate, string endDate)
         {
-            string query = "SELECT COUNT(caseid) FROM `patientcase` WHERE `Procedure` LIKE '%" + procedure + "%' AND `" + column + "` = '" + name + "'";
+            string query = "SELECT COUNT(caseid) FROM `patientcase` WHERE `Procedure` LIKE '%" + procedure + "%' AND `" + column + "` = '" + name + "' AND `Day` BETWEEN '" + startDate + "' AND '" + endDate + "'";
 
             MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
             MySqlCommand sql_cmd = new MySqlCommand(query, connection);
@@ -1073,9 +1073,9 @@ namespace IDMS.DataManage
             return countTotal;
         }
 
-        public int getCase(string name, string column)
+        public int getCase(string name, string column, string startDate, string endDate)
         {
-            string query = "SELECT COUNT(caseid) FROM `patientcase` WHERE `" + column + "` = '" + name + "'";
+            string query = "SELECT COUNT(caseid) FROM `patientcase` WHERE `" + column + "` = '" + name + "' AND `Day` BETWEEN '" + startDate + "' AND '" + endDate + "'";
 
             MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
             MySqlCommand sql_cmd = new MySqlCommand(query, connection);
@@ -1090,9 +1090,9 @@ namespace IDMS.DataManage
             return countTotal;
         }
 
-        public int getCasePatientType(string type, string finance)
+        public int getCasePatientType(string type, string finance, string startDate, string endDate)
         {
-            string query = "SELECT COUNT(caseid) FROM `patientcase` WHERE `patientType` = '" + type + "' AND `finance` = '" + finance + "'";
+            string query = "SELECT COUNT(caseid) FROM `patientcase` WHERE `patientType` = '" + type + "' AND `finance` = '" + finance + "' AND `Day` BETWEEN '" + startDate + "' AND '" + endDate + "'";
 
             MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
             MySqlCommand sql_cmd = new MySqlCommand(query, connection);
@@ -1108,9 +1108,9 @@ namespace IDMS.DataManage
         }
 
 
-        public int sumMedication(string column)
+        public int sumMedication(string column, string startDate, string endDate)
         {
-            string query = "SELECT report.caseid, report." + column + ", patientcase.Procedure FROM `report` INNER JOIN `patientcase` ON report.caseid=patientcase.caseid WHERE patientcase.Procedure != 'ENT'";
+            string query = "SELECT report.caseid, report." + column + ", patientcase.Procedure FROM `report` INNER JOIN `patientcase` ON report.caseid=patientcase.caseid WHERE patientcase.Procedure != 'ENT' AND patientcase.Day BETWEEN '" + startDate + "' AND '" + endDate + "'";
 
             MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
@@ -1146,9 +1146,9 @@ namespace IDMS.DataManage
         }
 
 
-        public int sumEntMedication(string column)
+        public int sumEntMedication(string column, string startDate, string endDate)
         {
-            string query = "SELECT report.caseid, report." + column + ", patientcase.Procedure FROM `report` INNER JOIN `patientcase` ON report.caseid=patientcase.caseid WHERE patientcase.Procedure = 'ENT'";
+            string query = "SELECT report.*,patientcase.Procedure FROM `report` INNER JOIN `patientcase` ON report.caseid=patientcase.caseid WHERE patientcase.Procedure = 'ENT' AND patientcase.Day BETWEEN '" + startDate + "' AND '" + endDate + "'";
 
             MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
@@ -1184,25 +1184,41 @@ namespace IDMS.DataManage
         }
 
 
-        public int sumBronchoMedication(string column)
+        public int sumBronchoMedication(string column, string startDate, string endDate)
         {
-            string query = "SELECT sum("+ column + ") FROM `broncoreport`";
+            string query = "SELECT broncoreport.*,patientcase.Procedure FROM `broncoreport` INNER JOIN `patientcase` ON broncoreport.caseid=patientcase.caseid WHERE patientcase.Day BETWEEN '" + startDate + "' AND '" + endDate + "'";
 
             MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
-            MySqlCommand sql_cmd = new MySqlCommand(query, connection);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
 
-            connection.Open();
+            DataTable dt = new DataTable();
 
-            int countTotal = Convert.ToInt32(sql_cmd.ExecuteScalar());
+            try
+            {
+                connection.Open();
 
-            connection.Close();
-            connection.Dispose();
+                adapter.Fill(dt);
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            int countTotal = 0;
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                dynamic value = dr[column].ToString();
+                if (!string.IsNullOrEmpty(value))
+                {
+                    countTotal += Convert.ToInt32(value);
+                }
+            }
 
             return countTotal;
         }
-
-
-
 
 
 
