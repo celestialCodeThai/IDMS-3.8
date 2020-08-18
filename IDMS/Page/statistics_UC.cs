@@ -126,7 +126,7 @@ namespace IDMS.Page
             loadPreDx3();
             loadPreDx4();
             dataGridView7.DataSource = preDx1_Table;
-            dataGridView7.Columns[0].Width = 500;
+            //dataGridView7.Columns[0].Width = 500;
 
 
             //
@@ -541,7 +541,6 @@ namespace IDMS.Page
                     for (int i = 0; i < numberOfRecords; i++)
                     {
                         string name = rows[i][column].ToString();
-
                         if (!instrumentsTable.Rows.Contains(name) && name != "")
                         {
 
@@ -555,6 +554,26 @@ namespace IDMS.Page
                             instrumentsTable.Rows.Add(row);
 
                         }
+
+                        /*
+                        string[] name = rows[i][column].ToString().Split('$');
+                        foreach (string ins in name)
+                        {
+                            if (!instrumentsTable.Rows.Contains(ins) && ins != "")
+                            {
+
+                                int totalCase = load.getCase(ins, column, DATE_1, DATE_2);
+
+                                DataRow row = instrumentsTable.NewRow();
+
+                                row["Name"] = rows[i][column];
+                                row["Case"] = totalCase;
+
+                                instrumentsTable.Rows.Add(row);
+
+                            }
+                        }
+                        */
 
                     }
                     break;
