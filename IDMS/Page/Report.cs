@@ -1619,33 +1619,6 @@ namespace IDMS.Page
 
 
 
-
-
-        public void saveMultiRecord(string caseid)
-        {
-
-            string newid = caseid + PRO;
-
-            if (checkDBExist(newid))
-            {
-
-                DataAccess cbm = new DataAccess();
-
-                cbm.AddNewCase(newid, infoname.Text, infohn.Text, PRO, infoproroom.Text, indication.Text
-                        , infoinstrument.Text, pdx1.Text, pdx2.Text, pdx3.Text, pdx4.Text, date, day, infodoc.Text, infoass.Text,
-                          infosnurse.Text, infocnurse.Text, anes.Text, "Done", "editFinance","editType");
-
-
-                ReportMulti.tabcount--;
-                if (ReportMulti.tabcount == 0)
-                {
-                    cbm.DeleteRow(caseid);
-                }
-
-            }
-        }
-
-
         public bool checkDBExist(string thishn)
         {
             MySqlDataReader checkreader;

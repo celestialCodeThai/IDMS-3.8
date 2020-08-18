@@ -42,6 +42,9 @@ namespace IDMS.DataManage
 
         public string patientType { get; set; }
 
+        public string cameraA { get; set; }
+        public string cameraB { get; set; }
+
 
     }
 }

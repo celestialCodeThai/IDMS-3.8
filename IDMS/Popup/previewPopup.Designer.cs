@@ -97,7 +97,6 @@
             this.appoitment.TabIndex = 21;
             this.appoitment.TabStop = false;
             this.appoitment.Text = "Appointment";
-            this.appoitment.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // regisTime
             // 
@@ -120,7 +119,6 @@
             this.regisDate.Size = new System.Drawing.Size(63, 13);
             this.regisDate.TabIndex = 0;
             this.regisDate.Text = "99/99/9999";
-            this.regisDate.Click += new System.EventHandler(this.regisDate_Click);
             // 
             // indication
             // 
@@ -174,7 +172,6 @@
             this.preDiagnosisValue.Size = new System.Drawing.Size(104, 13);
             this.preDiagnosisValue.TabIndex = 0;
             this.preDiagnosisValue.Text = "preDiagnosisValue";
-            this.preDiagnosisValue.Click += new System.EventHandler(this.preDx1_Click);
             // 
             // patientInfo
             // 
@@ -210,7 +207,6 @@
             this.nationalityValue.Size = new System.Drawing.Size(240, 27);
             this.nationalityValue.TabIndex = 64;
             this.nationalityValue.Text = "nationalityValue";
-            this.nationalityValue.TextChanged += new System.EventHandler(this.nationalityValue_TextChanged);
             // 
             // ageValue
             // 
@@ -220,7 +216,6 @@
             this.ageValue.Size = new System.Drawing.Size(240, 27);
             this.ageValue.TabIndex = 63;
             this.ageValue.Text = "ageValue";
-            this.ageValue.TextChanged += new System.EventHandler(this.ageValue_TextChanged);
             // 
             // typeValue
             // 
@@ -320,7 +315,6 @@
             this.hnValue.TabIndex = 35;
             this.hnValue.Text = "hnValue";
             this.hnValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.hnValue.Click += new System.EventHandler(this.hnValue_Click);
             // 
             // hnLabel
             // 
@@ -582,7 +576,6 @@
             this.instrumentsValue_1.Size = new System.Drawing.Size(300, 30);
             this.instrumentsValue_1.TabIndex = 60;
             this.instrumentsValue_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.instrumentsValue_1.Click += new System.EventHandler(this.instrumentsValue_Click_1);
             // 
             // selectButton_1
             // 
@@ -662,8 +655,6 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Confirm Patient\'s Data Before Examination";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.previewPopup_FormClosing);
-            this.Load += new System.EventHandler(this.previewPopup_Load);
             this.appoitment.ResumeLayout(false);
             this.appoitment.PerformLayout();
             this.indication.ResumeLayout(false);

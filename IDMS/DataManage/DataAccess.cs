@@ -40,7 +40,7 @@ namespace IDMS.DataManage
         }
 
         public void AddNewCase(string caseid, string name, string hn, string pro, string pr, string indi, string itm, string d1, string d2, string d3, string d4,
-            string date, string day, string doc1, string doc2, string sn, string cn, string an, string sts, string financeValue, string w)
+            string date, string day, string doc1, string doc2, string sn, string cn, string an, string sts, string financeValue, string w,string c1, string c2)
         {
             using (MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db")))
             {
@@ -67,9 +67,11 @@ namespace IDMS.DataManage
                     Anesthesist = an,
                     caseStatus = sts,
                     finance = financeValue,
-                    patientType = w
+                    patientType = w,
+                    cameraA = c1,
+                    cameraB = c2,
                 });
-                connection.Execute("INSERT INTO patientcase(`caseid`,`Patient Name`,`hn`,`Procedure`,`Procedure Room`,`Indication`,`Instruments`,`PreDX1`,`PreDX2`,`PreDX3`,`PreDX4`,`Date`,`Day`,`Doctor`,`Doctor 2`,`Scrub Nurse`,`Circulating Nurse`,`Anesthesist`,`status`,`finance`,`patientType`)VALUES (@caseID,@pname,@hnid,@procedure,@ProcedureRoom,@indication,@Intruments,@preDX1,@preDX2,@preDX3,@preDX4,@regisDate,@Day,@docName,@docName2,@sNurse,@cNurse,@Anesthesist,@caseStatus,@finance,@patientType)", data);
+                connection.Execute("INSERT INTO patientcase(`caseid`,`Patient Name`,`hn`,`Procedure`,`Procedure Room`,`Indication`,`Instruments`,`PreDX1`,`PreDX2`,`PreDX3`,`PreDX4`,`Date`,`Day`,`Doctor`,`Doctor 2`,`Scrub Nurse`,`Circulating Nurse`,`Anesthesist`,`status`,`finance`,`patientType`,`cameraA`,`cameraB`)VALUES (@caseID,@pname,@hnid,@procedure,@ProcedureRoom,@indication,@Intruments,@preDX1,@preDX2,@preDX3,@preDX4,@regisDate,@Day,@docName,@docName2,@sNurse,@cNurse,@Anesthesist,@caseStatus,@finance,@patientType,@cameraA,@cameraB)", data);
             }
         }
 

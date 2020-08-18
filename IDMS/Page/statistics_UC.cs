@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using MySql.Data.MySqlClient;
 using IDMS.DataManage;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace IDMS.Page
 {
@@ -28,6 +29,7 @@ namespace IDMS.Page
         DataTable circulatingNurseTable = new DataTable();
         DataTable nurseAnesthetistTable = new DataTable();
         DataTable instrumentsTable = new DataTable();
+        DataTable cameraB_Table = new DataTable();
 
         DataTable roomTable = new DataTable();
         DataTable financeTable = new DataTable();
@@ -50,8 +52,9 @@ namespace IDMS.Page
         {
             InitializeComponent();
 
-            dateTimePicker1.Value = DateTime.Today.AddDays(1 - DateTime.Today.Day);
+            dateTimePicker1.Value = new DateTime(2020, 1, 1);//DateTime.Today.AddDays(1 - DateTime.Today.Day);
             dateTimePicker2.Value = DateTime.Today;
+
 
         }
 
@@ -65,33 +68,62 @@ namespace IDMS.Page
 
             //
             loadProcedureTable("Doctor");
-            dataGridView1.DataSource = doctorTable;
+            dgvDoctor.DataSource = doctorTable;
+            dgvDoctor.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDoctor.Columns[0].Width = 400;
+            dgvDoctor.RowHeadersVisible = false;
 
             loadProcedureTable("Doctor 2");
-            dataGridView4.DataSource = doctorAssistantTable;
+            dgvDoctor2.DataSource = doctorAssistantTable;
+            dgvDoctor2.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDoctor2.Columns[0].Width = 400;
+            dgvDoctor2.RowHeadersVisible = false;
 
             loadProcedureTable("Scrub Nurse");
-            dataGridView3.DataSource = scrubNurseTable;
+            dgvScrubNurse.DataSource = scrubNurseTable;
+            dgvScrubNurse.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvScrubNurse.Columns[0].Width = 400;
+            dgvScrubNurse.RowHeadersVisible = false;
 
             loadProcedureTable("Circulating Nurse");
-            dataGridView5.DataSource = circulatingNurseTable;
+            dgvCirculatingNurse.DataSource = circulatingNurseTable;
+            dgvCirculatingNurse.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvCirculatingNurse.Columns[0].Width = 400;
+            dgvCirculatingNurse.RowHeadersVisible = false;
 
             loadProcedureTable("Anesthesist");
-            dataGridView6.DataSource = nurseAnesthetistTable;
+            dgvAnesthistNurse.DataSource = nurseAnesthetistTable;
+            dgvAnesthistNurse.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvAnesthistNurse.Columns[0].Width = 400;
+            dgvAnesthistNurse.RowHeadersVisible = false;
 
 
             //
-            loadTable("Instruments");
+            loadTable("cameraA");
+            loadTable("cameraB");
+            mergeInstrument();
             dataGridView2.DataSource = instrumentsTable;
+            dataGridView2.RowHeadersVisible = false;
+            dataGridView2.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridView2.Columns[0].Width = 350;
 
             loadTable("Procedure Room");
             dataGridView8.DataSource = roomTable;
+            dataGridView8.RowHeadersVisible = false;
+            dataGridView8.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridView8.Columns[0].Width = 350;
 
             loadTable("finance");
             dataGridView9.DataSource = financeTable;
+            dataGridView9.RowHeadersVisible = false;
+            dataGridView9.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridView9.Columns[0].Width = 350;
 
             loadTable("patientType");
             dataGridView10.DataSource = patientTypeAndFinanceTable;
+            dataGridView10.RowHeadersVisible = false;
+            dataGridView10.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridView10.Columns[0].Width = 400;
 
 
             //
@@ -118,6 +150,9 @@ namespace IDMS.Page
             mergeBronchoMedication();
             mergeEntMedication();
             dataGridView11.DataSource = medicationTable;
+            dataGridView11.RowHeadersVisible = false;
+            dataGridView11.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridView11.Columns[0].Width = 350;
 
 
             //ICD10
@@ -126,7 +161,10 @@ namespace IDMS.Page
             loadPreDx3();
             loadPreDx4();
             dataGridView7.DataSource = preDx1_Table;
-            //dataGridView7.Columns[0].Width = 500;
+            dataGridView7.RowHeadersVisible = false;
+            dataGridView7.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridView7.Columns[0].Width = 600;
+            dataGridView7.RowHeadersVisible = false;
 
 
             //
@@ -134,6 +172,9 @@ namespace IDMS.Page
             loadBronchoTableFinding();
             mergeFinding();
             dataGridView12.DataSource = findingTable;
+            dataGridView12.RowHeadersVisible = false;
+            dataGridView12.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridView12.Columns[0].Width = 400;
 
         }
 
@@ -152,14 +193,19 @@ namespace IDMS.Page
 
         private void loadPatient()
         {
+            //Chart1
             string male = load.getPatientCount("Male");
             string female = load.getPatientCount("Female");
             string total = load.getPatientCount("total");
 
-            chart1.Titles.Add("Total Patients : " + total + "");
+            chart1.Titles.Add(new Title("Total Patients : " + total + "", Docking.Top, new Font("Leelawadee UI", 15f, FontStyle.Bold), Color.Black));
             chart1.Series["sPatient"].Points.AddXY("Male", male);
             chart1.Series["sPatient"].Points.AddXY("Female", female);
+            chart1.Series["sPatient"].Label = "#PERCENT";
+            chart1.Series[0].LegendText = "#VALX";
 
+
+            //Chart2
             string yrs_15 = load.getPatientAge("15");
             string yrs_30 = load.getPatientAge("30");
             string yrs_40 = load.getPatientAge("40");
@@ -172,8 +218,11 @@ namespace IDMS.Page
             chart2.Series["age"].Points.AddXY("40-49 yrs", yrs_40);
             chart2.Series["age"].Points.AddXY("50-59 yrs", yrs_50);
             chart2.Series["age"].Points.AddXY("60-69 yrs", yrs_60);
-            chart2.Series["age"].Points.AddXY(">70 yrs", yrs_70);
+            chart2.Series["age"].Points.AddXY("706 yrs", yrs_70);
 
+
+            chart2.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+            chart2.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
         }
 
 
@@ -188,6 +237,7 @@ namespace IDMS.Page
             doctorTable.Columns.Add("Total");
             doctorTable.PrimaryKey = new DataColumn[] { doctorTable.Columns["Name"] };
 
+
             doctorAssistantTable.Columns.Add("Name");
             doctorAssistantTable.Columns.Add("EGD");
             doctorAssistantTable.Columns.Add("Colono");
@@ -196,6 +246,7 @@ namespace IDMS.Page
             doctorAssistantTable.Columns.Add("ENT");
             doctorAssistantTable.Columns.Add("Total");
             doctorAssistantTable.PrimaryKey = new DataColumn[] { doctorAssistantTable.Columns["Name"] };
+
 
             scrubNurseTable.Columns.Add("Name");
             scrubNurseTable.Columns.Add("EGD");
@@ -206,6 +257,7 @@ namespace IDMS.Page
             scrubNurseTable.Columns.Add("Total");
             scrubNurseTable.PrimaryKey = new DataColumn[] { scrubNurseTable.Columns["Name"] };
 
+
             circulatingNurseTable.Columns.Add("Name");
             circulatingNurseTable.Columns.Add("EGD");
             circulatingNurseTable.Columns.Add("Colono");
@@ -214,6 +266,7 @@ namespace IDMS.Page
             circulatingNurseTable.Columns.Add("ENT");
             circulatingNurseTable.Columns.Add("Total");
             circulatingNurseTable.PrimaryKey = new DataColumn[] { circulatingNurseTable.Columns["Name"] };
+
 
             nurseAnesthetistTable.Columns.Add("Name");
             nurseAnesthetistTable.Columns.Add("EGD");
@@ -224,6 +277,7 @@ namespace IDMS.Page
             nurseAnesthetistTable.Columns.Add("Total");
             nurseAnesthetistTable.PrimaryKey = new DataColumn[] { nurseAnesthetistTable.Columns["Name"] };
 
+
             preDx1_Table.Columns.Add("ICD10");
             preDx1_Table.Columns.Add("EGD");
             preDx1_Table.Columns.Add("Colono");
@@ -232,6 +286,7 @@ namespace IDMS.Page
             preDx1_Table.Columns.Add("ENT");
             preDx1_Table.Columns.Add("Total");
             preDx1_Table.PrimaryKey = new DataColumn[] { preDx1_Table.Columns["ICD10"] };
+
 
             preDx2_Table.Columns.Add("ICD10");
             preDx2_Table.Columns.Add("EGD");
@@ -242,6 +297,7 @@ namespace IDMS.Page
             preDx2_Table.Columns.Add("Total");
             preDx2_Table.PrimaryKey = new DataColumn[] { preDx2_Table.Columns["ICD10"] };
 
+
             preDx3_Table.Columns.Add("ICD10");
             preDx3_Table.Columns.Add("EGD");
             preDx3_Table.Columns.Add("Colono");
@@ -250,6 +306,7 @@ namespace IDMS.Page
             preDx3_Table.Columns.Add("ENT");
             preDx3_Table.Columns.Add("Total");
             preDx3_Table.PrimaryKey = new DataColumn[] { preDx3_Table.Columns["ICD10"] };
+
 
             preDx4_Table.Columns.Add("ICD10");
             preDx4_Table.Columns.Add("EGD");
@@ -260,17 +317,26 @@ namespace IDMS.Page
             preDx4_Table.Columns.Add("Total");
             preDx4_Table.PrimaryKey = new DataColumn[] { preDx4_Table.Columns["ICD10"] };
 
+
             instrumentsTable.Columns.Add("Name");
             instrumentsTable.Columns.Add("Case");
             instrumentsTable.PrimaryKey = new DataColumn[] { instrumentsTable.Columns["Name"] };
+
+
+            cameraB_Table.Columns.Add("Name");
+            cameraB_Table.Columns.Add("Case");
+            cameraB_Table.PrimaryKey = new DataColumn[] { cameraB_Table.Columns["Name"] };
+
 
             roomTable.Columns.Add("Room");
             roomTable.Columns.Add("Case");
             roomTable.PrimaryKey = new DataColumn[] { roomTable.Columns["Room"] };
 
+
             financeTable.Columns.Add("Financial");
             financeTable.Columns.Add("Case");
             financeTable.PrimaryKey = new DataColumn[] { financeTable.Columns["Financial"] };
+
 
             patientTypeAndFinanceTable.Columns.Add("Type");
             patientTypeAndFinanceTable.Columns.Add("จ่ายเอง");
@@ -280,24 +346,29 @@ namespace IDMS.Page
             patientTypeAndFinanceTable.Columns.Add("ประกันสังคม");
             patientTypeAndFinanceTable.PrimaryKey = new DataColumn[] { patientTypeAndFinanceTable.Columns["Type"] };
 
+
             bronchoMedicationTable.Columns.Add("ตัวยาที่ใช้");
             bronchoMedicationTable.Columns.Add("ปริมาณ");
             bronchoMedicationTable.Columns.Add("หน่วย");
             bronchoMedicationTable.PrimaryKey = new DataColumn[] { bronchoMedicationTable.Columns["ตัวยาที่ใช้"] };
+
 
             medicationTable.Columns.Add("ตัวยาที่ใช้");
             medicationTable.Columns.Add("ปริมาณ");
             medicationTable.Columns.Add("หน่วย");
             medicationTable.PrimaryKey = new DataColumn[] { medicationTable.Columns["ตัวยาที่ใช้"] };
 
+
             entMedicationTable.Columns.Add("ตัวยาที่ใช้");
             entMedicationTable.Columns.Add("ปริมาณ");
             entMedicationTable.Columns.Add("หน่วย");
             entMedicationTable.PrimaryKey = new DataColumn[] { entMedicationTable.Columns["ตัวยาที่ใช้"] };
 
+
             findingTable.Columns.Add("ชนิดของโรค");
             findingTable.Columns.Add("จำนวน");
             findingTable.PrimaryKey = new DataColumn[] { findingTable.Columns["ชนิดของโรค"] };
+
 
             bronchoFindingTable.Columns.Add("ชนิดของโรค");
             bronchoFindingTable.Columns.Add("จำนวน");
@@ -537,7 +608,7 @@ namespace IDMS.Page
 
             switch (column)
             {
-                case "Instruments":
+                case "cameraA":
                     for (int i = 0; i < numberOfRecords; i++)
                     {
                         string name = rows[i][column].ToString();
@@ -554,30 +625,28 @@ namespace IDMS.Page
                             instrumentsTable.Rows.Add(row);
 
                         }
-
-                        /*
-                        string[] name = rows[i][column].ToString().Split('$');
-                        foreach (string ins in name)
-                        {
-                            if (!instrumentsTable.Rows.Contains(ins) && ins != "")
-                            {
-
-                                int totalCase = load.getCase(ins, column, DATE_1, DATE_2);
-
-                                DataRow row = instrumentsTable.NewRow();
-
-                                row["Name"] = rows[i][column];
-                                row["Case"] = totalCase;
-
-                                instrumentsTable.Rows.Add(row);
-
-                            }
-                        }
-                        */
-
                     }
                     break;
 
+                case "cameraB":
+                    for (int i = 0; i < numberOfRecords; i++)
+                    {
+                        string name = rows[i][column].ToString();
+                        if (!cameraB_Table.Rows.Contains(name) && name != "")
+                        {
+
+                            int totalCase = load.getCase(name, column, DATE_1, DATE_2);
+
+                            DataRow row = cameraB_Table.NewRow();
+
+                            row["Name"] = rows[i][column];
+                            row["Case"] = totalCase;
+
+                            cameraB_Table.Rows.Add(row);
+
+                        }
+                    }
+                    break;
 
                 case "Procedure Room":
                     for (int i = 0; i < numberOfRecords; i++)
@@ -1085,6 +1154,43 @@ namespace IDMS.Page
         }
 
 
+        private void mergeInstrument()
+        {
+            foreach (DataRow cameraB_Row in cameraB_Table.Rows)
+            {
+                string cameraB_Key = cameraB_Row["Name"].ToString();
+                int cameraB_Value = Convert.ToInt32(cameraB_Row["Case"]);
+
+                if (instrumentsTable.Rows.Contains(cameraB_Key))
+                {
+                    foreach (DataRow oriRow in instrumentsTable.Rows)
+                    {
+                        string key = oriRow["Name"].ToString();
+                        if (key == cameraB_Key)
+                        {
+                            int updateValue = Convert.ToInt32(oriRow["Case"]);
+
+                            oriRow["Case"] = updateValue + cameraB_Value;
+
+                        }
+
+                    }
+                }
+
+                else
+                {
+                    DataRow newRow = instrumentsTable.NewRow();
+                    newRow["Name"] = cameraB_Key;
+                    newRow["Case"] = cameraB_Value;
+
+                    instrumentsTable.Rows.Add(newRow);
+                }
+
+            }
+
+        }
+
+
         private void mergeBronchoMedication()
         {
             foreach (DataRow bronchoRow in bronchoMedicationTable.Rows)
@@ -1470,22 +1576,24 @@ namespace IDMS.Page
 
             doctorAssistantTable.Clear();
             loadProcedureTable("Doctor 2");
-            dataGridView4.DataSource = doctorAssistantTable;
+            dgvScrubNurse.DataSource = doctorAssistantTable;
 
             scrubNurseTable.Clear();
             loadProcedureTable("Scrub Nurse");
-            dataGridView3.DataSource = scrubNurseTable;
+            dgvDoctor2.DataSource = scrubNurseTable;
 
             circulatingNurseTable.Clear();
             loadProcedureTable("Circulating Nurse");
-            dataGridView5.DataSource = circulatingNurseTable;
+            dgvCirculatingNurse.DataSource = circulatingNurseTable;
 
             nurseAnesthetistTable.Clear();
             loadProcedureTable("Anesthesist");
-            dataGridView6.DataSource = nurseAnesthetistTable;
+            dgvDoctor.DataSource = nurseAnesthetistTable;
 
             instrumentsTable.Clear();
-            loadTable("Instruments");
+            cameraB_Table.Clear();
+            loadTable("cameraA");
+            loadTable("cameraB");
             dataGridView2.DataSource = instrumentsTable;
 
             roomTable.Clear();
@@ -1541,6 +1649,13 @@ namespace IDMS.Page
             loadBronchoTableFinding();
             mergeFinding();
             dataGridView12.DataSource = findingTable;
+        }
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = DateTime.Today;
+            dateTimePicker2.Value = DateTime.Today;
         }
 
     }
