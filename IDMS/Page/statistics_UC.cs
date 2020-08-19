@@ -75,58 +75,76 @@ namespace IDMS.Page
             dgvDoctor.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvDoctor.Columns[0].Width = 400;
             dgvDoctor.RowHeadersVisible = false;
+            dgvDoctor.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDoctor.Columns[0].DefaultCellStyle.Padding = new Padding(40, 0, 0, 0);
 
             loadProcedureTable("Doctor 2");
             dgvDoctor2.DataSource = doctorAssistantTable;
             dgvDoctor2.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvDoctor2.Columns[0].Width = 400;
             dgvDoctor2.RowHeadersVisible = false;
+            dgvDoctor2.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDoctor2.Columns[0].DefaultCellStyle.Padding = new Padding(40, 0, 0, 0);
 
             loadProcedureTable("Scrub Nurse");
             dgvScrubNurse.DataSource = scrubNurseTable;
             dgvScrubNurse.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvScrubNurse.Columns[0].Width = 400;
             dgvScrubNurse.RowHeadersVisible = false;
+            dgvScrubNurse.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvScrubNurse.Columns[0].DefaultCellStyle.Padding = new Padding(40, 0, 0, 0);
 
             loadProcedureTable("Circulating Nurse");
             dgvCirculatingNurse.DataSource = circulatingNurseTable;
             dgvCirculatingNurse.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvCirculatingNurse.Columns[0].Width = 400;
             dgvCirculatingNurse.RowHeadersVisible = false;
+            dgvCirculatingNurse.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvCirculatingNurse.Columns[0].DefaultCellStyle.Padding = new Padding(40, 0, 0, 0);
 
             loadProcedureTable("Anesthesist");
             dgvAnesthistNurse.DataSource = nurseAnesthetistTable;
             dgvAnesthistNurse.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvAnesthistNurse.Columns[0].Width = 400;
             dgvAnesthistNurse.RowHeadersVisible = false;
+            dgvAnesthistNurse.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvAnesthistNurse.Columns[0].DefaultCellStyle.Padding = new Padding(40, 0, 0, 0);
 
 
             //
             loadTable("cameraA");
             loadTable("cameraB");
             mergeInstrument();
-            dataGridView2.DataSource = instrumentsTable;
-            dataGridView2.RowHeadersVisible = false;
-            dataGridView2.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridView2.Columns[0].Width = 350;
+            dgvInstrument.DataSource = instrumentsTable;
+            dgvInstrument.RowHeadersVisible = false;
+            dgvInstrument.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvInstrument.Columns[0].Width = 350;
+            dgvInstrument.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvInstrument.Columns[0].DefaultCellStyle.Padding = new Padding(40, 0, 0, 0);
 
             loadTable("Procedure Room");
-            dataGridView8.DataSource = roomTable;
-            dataGridView8.RowHeadersVisible = false;
-            dataGridView8.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridView8.Columns[0].Width = 350;
+            dgvRoom.DataSource = roomTable;
+            dgvRoom.RowHeadersVisible = false;
+            dgvRoom.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvRoom.Columns[0].Width = 350;
+            dgvRoom.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvRoom.Columns[0].DefaultCellStyle.Padding = new Padding(40, 0, 0, 0);
 
             loadTable("finance");
-            dataGridView9.DataSource = financeTable;
-            dataGridView9.RowHeadersVisible = false;
-            dataGridView9.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridView9.Columns[0].Width = 350;
+            dgvFinancial.DataSource = financeTable;
+            dgvFinancial.RowHeadersVisible = false;
+            dgvFinancial.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvFinancial.Columns[0].Width = 350;
+            dgvFinancial.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvFinancial.Columns[0].DefaultCellStyle.Padding = new Padding(40, 0, 0, 0);
 
             loadTable("patientType");
-            dataGridView10.DataSource = patientTypeAndFinanceTable;
-            dataGridView10.RowHeadersVisible = false;
-            dataGridView10.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridView10.Columns[0].Width = 400;
+            dgvPatientType.DataSource = patientTypeAndFinanceTable;
+            dgvPatientType.RowHeadersVisible = false;
+            dgvPatientType.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvPatientType.Columns[0].Width = 400;
+            dgvPatientType.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvPatientType.Columns[0].DefaultCellStyle.Padding = new Padding(40, 0, 0, 0);
 
 
             //
@@ -152,10 +170,12 @@ namespace IDMS.Page
 
             mergeBronchoMedication();
             mergeEntMedication();
-            dataGridView11.DataSource = medicationTable;
-            dataGridView11.RowHeadersVisible = false;
-            dataGridView11.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridView11.Columns[0].Width = 350;
+            dgvMedication.DataSource = medicationTable;
+            dgvMedication.RowHeadersVisible = false;
+            dgvMedication.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvMedication.Columns[0].Width = 450;
+            dgvMedication.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvMedication.Columns[0].DefaultCellStyle.Padding = new Padding(40, 0, 0, 0);
 
 
             //ICD10
@@ -163,21 +183,25 @@ namespace IDMS.Page
             loadPreDx2();
             loadPreDx3();
             loadPreDx4();
-            dataGridView7.DataSource = preDx1_Table;
-            dataGridView7.RowHeadersVisible = false;
-            dataGridView7.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridView7.Columns[0].Width = 600;
-            dataGridView7.RowHeadersVisible = false;
+            dgvICD10.DataSource = preDx1_Table;
+            dgvICD10.RowHeadersVisible = false;
+            dgvICD10.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvICD10.Columns[0].Width = 700;
+            dgvICD10.RowHeadersVisible = false;
+            dgvICD10.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvICD10.Columns[0].DefaultCellStyle.Padding = new Padding(40, 0, 0, 0);
 
 
             //
             loadTableFinding();
             loadBronchoTableFinding();
             mergeFinding();
-            dataGridView12.DataSource = findingTable;
-            dataGridView12.RowHeadersVisible = false;
-            dataGridView12.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridView12.Columns[0].Width = 400;
+            dgvFinding.DataSource = findingTable;
+            dgvFinding.RowHeadersVisible = false;
+            dgvFinding.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvFinding.Columns[0].Width = 500;
+            dgvFinding.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvFinding.Columns[0].DefaultCellStyle.Padding = new Padding(40, 0, 0, 0);
 
         }
 
@@ -1604,26 +1628,26 @@ namespace IDMS.Page
             cameraB_Table.Clear();
             loadTable("cameraA");
             loadTable("cameraB");
-            dataGridView2.DataSource = instrumentsTable;
+            dgvInstrument.DataSource = instrumentsTable;
 
             roomTable.Clear();
             loadTable("Procedure Room");
-            dataGridView8.DataSource = roomTable;
+            dgvRoom.DataSource = roomTable;
 
             financeTable.Clear();
             loadTable("finance");
-            dataGridView9.DataSource = financeTable;
+            dgvFinancial.DataSource = financeTable;
 
             patientTypeAndFinanceTable.Clear();
             loadTable("patientType");
-            dataGridView10.DataSource = patientTypeAndFinanceTable;
+            dgvPatientType.DataSource = patientTypeAndFinanceTable;
 
             preDx1_Table.Clear();
             loadPreDx1();
             loadPreDx2();
             loadPreDx3();
             loadPreDx4();
-            dataGridView7.DataSource = preDx1_Table;
+            dgvICD10.DataSource = preDx1_Table;
 
             medicationTable.Clear();
             bronchoMedicationTable.Clear();
@@ -1651,14 +1675,14 @@ namespace IDMS.Page
 
             mergeBronchoMedication();
             mergeEntMedication();
-            dataGridView11.DataSource = medicationTable;
+            dgvMedication.DataSource = medicationTable;
 
             findingTable.Clear();
             bronchoFindingTable.Clear();
             loadTableFinding();
             loadBronchoTableFinding();
             mergeFinding();
-            dataGridView12.DataSource = findingTable;
+            dgvFinding.DataSource = findingTable;
         }
 
 
@@ -1679,14 +1703,14 @@ namespace IDMS.Page
             dgvCirculatingNurse.ClearSelection();
             dgvAnesthistNurse.ClearSelection();
 
-            dataGridView2.ClearSelection();
-            dataGridView9.ClearSelection();
-            dataGridView8.ClearSelection();
-            dataGridView10.ClearSelection();
+            dgvInstrument.ClearSelection();
+            dgvRoom.ClearSelection();
+            dgvFinancial.ClearSelection();
+            dgvPatientType.ClearSelection();
 
-            dataGridView11.ClearSelection();
-            dataGridView12.ClearSelection();
-            dataGridView7.ClearSelection();
+            dgvMedication.ClearSelection();
+            dgvFinding.ClearSelection();
+            dgvICD10.ClearSelection();
         }
 
 
