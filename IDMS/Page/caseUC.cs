@@ -78,6 +78,7 @@ namespace IDMS.Page
             reloadCollection();
 
             loadTotalCase();
+
         }
 
         public void reloadCollection()
@@ -237,23 +238,23 @@ namespace IDMS.Page
                 //หลังบรรทัดนี้  imgFolder_oldversion  = IDMS.World.Settings.savePath \ specialCharReplace(caseid)           \ pro \pictures\
                 //หลังบรรทัดนี้  imgFolder_oldversion  = C:\idmsData                   \HN y2000-DATE 21.07.63-TIME 09.52.01  \EGD  \pictures\
 
-           // C:\idmsData\262003824 - 030863 - 082817\pictures\COL
+                // C:\idmsData\262003824 - 030863 - 082817\pictures\COL
 
                 if (pro.Contains("/"))
                 {
                     imgFolder_oldversion = imgFolder_oldversion.Replace(pro + "/pictures/", "");
                 }
-                if ((!System.IO.Directory.Exists(imgFolder))&& (System.IO.Directory.Exists(imgFolder_oldversion)))
+                if ((!System.IO.Directory.Exists(imgFolder)) && (System.IO.Directory.Exists(imgFolder_oldversion)))
                 {
                     imgFolder = imgFolder_oldversion;
-                  
+
                 }
-               
 
 
 
-                 //   MessageBox.Show(imgFolder_oldversion);
-              
+
+                //   MessageBox.Show(imgFolder_oldversion);
+
 
 
 
@@ -1176,7 +1177,7 @@ namespace IDMS.Page
             int count = Convert.ToInt32(sql_cmd.ExecuteScalar());
 
             label9.Text = "เคสทั้งหมด " + count.ToString();
-         
+
             connection.Close();
             connection.Dispose();
 

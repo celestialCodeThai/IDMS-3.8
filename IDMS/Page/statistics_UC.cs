@@ -55,6 +55,8 @@ namespace IDMS.Page
             dateTimePicker1.Value = new DateTime(2020, 1, 1);//DateTime.Today.AddDays(1 - DateTime.Today.Day);
             dateTimePicker2.Value = DateTime.Today;
 
+            
+
 
         }
 
@@ -201,8 +203,9 @@ namespace IDMS.Page
             chart1.Titles.Add(new Title("Total Patients : " + total + "", Docking.Top, new Font("Leelawadee UI", 15f, FontStyle.Bold), Color.Black));
             chart1.Series["sPatient"].Points.AddXY("Male", male);
             chart1.Series["sPatient"].Points.AddXY("Female", female);
-            chart1.Series["sPatient"].Label = "#PERCENT";
-            chart1.Series[0].LegendText = "#VALX";
+            chart1.Series["sPatient"].Points[0].Label = "#PERCENT{P0}" + " (" + male + ")";
+            chart1.Series["sPatient"].Points[1].Label = "#PERCENT{P0}" + " (" + female + ")";
+            chart1.Series["sPatient"].LegendText = "#VALX";
 
 
             //Chart2
@@ -218,7 +221,7 @@ namespace IDMS.Page
             chart2.Series["age"].Points.AddXY("40-49 yrs", yrs_40);
             chart2.Series["age"].Points.AddXY("50-59 yrs", yrs_50);
             chart2.Series["age"].Points.AddXY("60-69 yrs", yrs_60);
-            chart2.Series["age"].Points.AddXY("706 yrs", yrs_70);
+            chart2.Series["age"].Points.AddXY("70+ yrs", yrs_70);
 
 
             chart2.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
@@ -1658,6 +1661,30 @@ namespace IDMS.Page
             dateTimePicker2.Value = DateTime.Today;
         }
 
+
+        private void datagridview_SelectionChanged(object sender, EventArgs e)
+        {
+            dgvDoctor.ClearSelection();
+            dgvDoctor2.ClearSelection();
+            dgvScrubNurse.ClearSelection();
+            dgvCirculatingNurse.ClearSelection();
+            dgvAnesthistNurse.ClearSelection();
+
+            dataGridView2.ClearSelection();
+            dataGridView9.ClearSelection();
+            dataGridView8.ClearSelection();
+            dataGridView10.ClearSelection();
+
+            dataGridView11.ClearSelection();
+            dataGridView12.ClearSelection();
+            dataGridView7.ClearSelection();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = new DateTime(2020, 1, 1);
+            dateTimePicker2.Value = DateTime.Today;
+        }
     }
 
 }
