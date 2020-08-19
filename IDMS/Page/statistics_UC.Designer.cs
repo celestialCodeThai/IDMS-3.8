@@ -110,6 +110,8 @@
             this.label25 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.panel24 = new System.Windows.Forms.Panel();
+            this.label26 = new System.Windows.Forms.Label();
+            this.panel25 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
@@ -153,6 +155,7 @@
             this.panel13.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel24.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView2
@@ -355,6 +358,7 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.White;
+            this.panel9.Controls.Add(this.panel25);
             this.panel9.Controls.Add(this.panel24);
             this.panel9.Controls.Add(this.button3);
             this.panel9.Controls.Add(this.label25);
@@ -373,11 +377,11 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Leelawadee UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(60, 225);
+            this.button2.Location = new System.Drawing.Point(320, 235);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(120, 40);
             this.button2.TabIndex = 5;
-            this.button2.Text = "Today";
+            this.button2.Text = "ดูเฉพาะวันนี้";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -387,18 +391,18 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Leelawadee UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(380, 225);
+            this.button1.Location = new System.Drawing.Point(220, 120);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 40);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Submit";
+            this.button1.Text = "ยืนยัน";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.Font = new System.Drawing.Font("Leelawadee UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(310, 80);
+            this.dateTimePicker2.Location = new System.Drawing.Point(310, 60);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 30);
             this.dateTimePicker2.TabIndex = 1;
@@ -407,7 +411,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Leelawadee UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(40, 80);
+            this.dateTimePicker1.Location = new System.Drawing.Point(40, 60);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 30);
             this.dateTimePicker1.TabIndex = 0;
@@ -1081,10 +1085,10 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Leelawadee UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label25.Location = new System.Drawing.Point(260, 85);
+            this.label25.Font = new System.Drawing.Font("Leelawadee UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label25.Location = new System.Drawing.Point(260, 65);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(29, 23);
+            this.label25.Size = new System.Drawing.Size(30, 23);
             this.label25.TabIndex = 6;
             this.label25.Text = "To";
             // 
@@ -1094,22 +1098,42 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Leelawadee UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(220, 225);
+            this.button3.Location = new System.Drawing.Point(120, 235);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(120, 40);
             this.button3.TabIndex = 7;
-            this.button3.Text = "Reset";
+            this.button3.Text = "ดูทั้งหมด";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel24
             // 
             this.panel24.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel24.Controls.Add(this.label26);
             this.panel24.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel24.Location = new System.Drawing.Point(0, 0);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(550, 40);
             this.panel24.TabIndex = 8;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Leelawadee UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(144, 4);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(261, 28);
+            this.label26.TabIndex = 9;
+            this.label26.Text = "กรุณาเลือกช่วงวันที่ต้องการดู";
+            // 
+            // panel25
+            // 
+            this.panel25.BackColor = System.Drawing.Color.DarkGray;
+            this.panel25.Location = new System.Drawing.Point(12, 200);
+            this.panel25.Name = "panel25";
+            this.panel25.Size = new System.Drawing.Size(520, 1);
+            this.panel25.TabIndex = 9;
             // 
             // statistics_UC
             // 
@@ -1182,6 +1206,8 @@
             this.panel10.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel24.ResumeLayout(false);
+            this.panel24.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1263,5 +1289,7 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel24;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Panel panel25;
     }
 }

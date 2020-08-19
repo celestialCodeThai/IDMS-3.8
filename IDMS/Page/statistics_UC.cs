@@ -55,7 +55,8 @@ namespace IDMS.Page
             dateTimePicker1.Value = new DateTime(2020, 1, 1);//DateTime.Today.AddDays(1 - DateTime.Today.Day);
             dateTimePicker2.Value = DateTime.Today;
 
-            
+
+
 
 
         }
@@ -1571,19 +1572,25 @@ namespace IDMS.Page
 
         private void button1_Click(object sender, EventArgs e)
         {
+            reloadDatas();
+        }
+
+
+        private void reloadDatas()
+        {
             loadCountCase();
 
             doctorTable.Clear();
             loadProcedureTable("Doctor");
-            dataGridView1.DataSource = doctorTable;
+            dgvDoctor.DataSource = doctorTable;
 
             doctorAssistantTable.Clear();
             loadProcedureTable("Doctor 2");
-            dgvScrubNurse.DataSource = doctorAssistantTable;
+            dgvDoctor2.DataSource = doctorAssistantTable;
 
             scrubNurseTable.Clear();
             loadProcedureTable("Scrub Nurse");
-            dgvDoctor2.DataSource = scrubNurseTable;
+            dgvScrubNurse.DataSource = scrubNurseTable;
 
             circulatingNurseTable.Clear();
             loadProcedureTable("Circulating Nurse");
@@ -1591,7 +1598,7 @@ namespace IDMS.Page
 
             nurseAnesthetistTable.Clear();
             loadProcedureTable("Anesthesist");
-            dgvDoctor.DataSource = nurseAnesthetistTable;
+            dgvAnesthistNurse.DataSource = nurseAnesthetistTable;
 
             instrumentsTable.Clear();
             cameraB_Table.Clear();
@@ -1659,6 +1666,8 @@ namespace IDMS.Page
         {
             dateTimePicker1.Value = DateTime.Today;
             dateTimePicker2.Value = DateTime.Today;
+
+            reloadDatas();
         }
 
 
@@ -1680,11 +1689,16 @@ namespace IDMS.Page
             dataGridView7.ClearSelection();
         }
 
+
         private void button3_Click(object sender, EventArgs e)
         {
             dateTimePicker1.Value = new DateTime(2020, 1, 1);
             dateTimePicker2.Value = DateTime.Today;
+
+            reloadDatas();
         }
+
+
     }
 
 }
