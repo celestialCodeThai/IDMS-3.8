@@ -835,7 +835,6 @@ namespace IDMS.Page
             if (camera != null)
             {
                 instruments.Text = cameraid + "-" + camera;
-                MessageBox.Show("cName == " + cameraid + "-" + camera);
             }
         }
 
