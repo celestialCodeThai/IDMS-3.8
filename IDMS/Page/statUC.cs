@@ -422,6 +422,8 @@ namespace IDMS.Page
 
             return table;
         }
+
+
         private void button6_Click(object sender, EventArgs e)
         {
             try
@@ -475,6 +477,8 @@ namespace IDMS.Page
             }
 
         }
+
+
         public bool WriteDataTableToExcel(System.Data.DataTable dataTable, string worksheetName, string saveAsLocation, string ReporType)
         {
             Microsoft.Office.Interop.Excel.Application excel;
@@ -586,6 +590,8 @@ namespace IDMS.Page
         /// <param name="fontColor"></param>
         /// <param name="IsFontbool"></param>
         /// 
+
+
         public int AddtableExcel(int rowcount, Microsoft.Office.Interop.Excel.Worksheet excelSheet, DataTable dataTable, string ReporType)
         {
             Microsoft.Office.Interop.Excel.Range excelCellrange;

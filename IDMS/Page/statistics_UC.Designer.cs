@@ -278,7 +278,6 @@
             this.button4.TabIndex = 10;
             this.button4.Text = "Export CSV";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel25

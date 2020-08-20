@@ -1723,34 +1723,49 @@ namespace IDMS.Page
             reloadDatas();
         }
 
+
         private void button4_Click(object sender, EventArgs e)
         {
-            //And as Tim pointed out, if you are on .net >= 4, you can make it even shorter:
 
-            StringBuilder sb = new StringBuilder();
+            dataTableToCsv(doctorTable, "doctor");
+            dataTableToCsv(doctorAssistantTable, "doctorAssistant");
+            dataTableToCsv(scrubNurseTable, "scrubNurse");
+            dataTableToCsv(circulatingNurseTable, "circulatingNurse");
+            dataTableToCsv(nurseAnesthetistTable, "nurseAnesthetist");
 
-            IEnumerable<string> columnNames = doctorTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName);
-            sb.AppendLine(string.Join(",", columnNames));
+            MessageBox.Show(this, "Data saved in CSV format at desktop", "Successfully Saved", MessageBoxButtons.OK, MessageBoxIcon.Question);
 
-            foreach (DataRow row in doctorTable.Rows)
-            {
-                IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
-                sb.AppendLine(string.Join(",", fields));
-            }
-
-            MessageBox.Show("Working!");
-
-            File.WriteAllText("test.csv", sb.ToString());
-            //As suggested by Christian, if you want to handle special characters escaping in fields, replace the loop block by:
-            /*
-            foreach (DataRow row in doctorTable.Rows)
-            {
-                IEnumerable<string> fields = row.ItemArray.Select(field =>
-                  string.Concat("\"", field.ToString().Replace("\"", "\"\""), "\""));
-                sb.AppendLine(string.Join(",", fields));
-            }
-            */
         }
+
+
+        private void dataTableToCsv(DataTable table, string fileName)
+        {
+            try
+            {
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                StringBuilder sb = new StringBuilder();
+                IEnumerable<string> columnNames;
+
+                //Doctor CSV
+                columnNames = table.Columns.Cast<DataColumn>().Select(column => column.ColumnName);
+                sb.AppendLine(string.Join(",", columnNames));
+
+                foreach (DataRow row in table.Rows)
+                {
+                    IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
+                    sb.AppendLine(string.Join(",", fields));
+                }
+
+                File.WriteAllText(path + "\\" + fileName + ".csv", sb.ToString(), Encoding.Default);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
     }
 
 }
