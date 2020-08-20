@@ -1733,6 +1733,15 @@ namespace IDMS.Page
             dataTableToCsv(circulatingNurseTable, "circulatingNurse");
             dataTableToCsv(nurseAnesthetistTable, "nurseAnesthetist");
 
+            dataTableToCsv(instrumentsTable, "instrumentsTable");
+            dataTableToCsv(roomTable, "roomTable");
+            dataTableToCsv(financeTable, "financeTable");
+            dataTableToCsv(patientTypeAndFinanceTable, "patientTypeTable");
+
+            dataTableToCsv(medicationTable, "medicationTable");
+            dataTableToCsv(findingTable, "findingTable");
+            dataTableToCsv(preDx1_Table, "icd10Table");
+
             MessageBox.Show(this, "Data saved in CSV format at desktop", "Successfully Saved", MessageBoxButtons.OK, MessageBoxIcon.Question);
 
         }
