@@ -72,6 +72,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel25 = new System.Windows.Forms.Panel();
             this.panel24 = new System.Windows.Forms.Panel();
             this.label26 = new System.Windows.Forms.Label();
@@ -144,7 +145,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvMedication = new System.Windows.Forms.DataGridView();
-            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -265,6 +265,21 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(550, 300);
             this.panel9.TabIndex = 1;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Leelawadee UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(40, 125);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(200, 40);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "Export CSV";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Visible = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel25
             // 
@@ -1479,20 +1494,6 @@
             this.dgvMedication.TabIndex = 5;
             this.dgvMedication.VirtualMode = true;
             this.dgvMedication.SelectionChanged += new System.EventHandler(this.datagridview_SelectionChanged);
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Leelawadee UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(40, 125);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(200, 40);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Export CSV";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // statistics_UC
             // 
