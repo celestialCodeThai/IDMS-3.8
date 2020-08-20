@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using MySql.Data.MySqlClient;
 using IDMS.DataManage;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.IO;
 
 namespace IDMS.Page
 {
@@ -1722,7 +1723,34 @@ namespace IDMS.Page
             reloadDatas();
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //And as Tim pointed out, if you are on .net >= 4, you can make it even shorter:
 
+            StringBuilder sb = new StringBuilder();
+
+            IEnumerable<string> columnNames = doctorTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName);
+            sb.AppendLine(string.Join(",", columnNames));
+
+            foreach (DataRow row in doctorTable.Rows)
+            {
+                IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
+                sb.AppendLine(string.Join(",", fields));
+            }
+
+            MessageBox.Show("Working!");
+
+            File.WriteAllText("test.csv", sb.ToString());
+            //As suggested by Christian, if you want to handle special characters escaping in fields, replace the loop block by:
+            /*
+            foreach (DataRow row in doctorTable.Rows)
+            {
+                IEnumerable<string> fields = row.ItemArray.Select(field =>
+                  string.Concat("\"", field.ToString().Replace("\"", "\"\""), "\""));
+                sb.AppendLine(string.Join(",", fields));
+            }
+            */
+        }
     }
 
 }
