@@ -432,7 +432,7 @@ namespace IDMS.ReportContent
             if (reportControl.med5.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med5.Text + " " + reportControl.med5txt.Text + " mcg"; }
             if (reportControl.med6.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med6txt.Text + " mg"; }
 
-            if (medname.Length > 60)
+             if (medname.Length > 60)
             {
                 medname = medname.Substring(0, 60) + "...";
             }
@@ -446,7 +446,14 @@ namespace IDMS.ReportContent
 
 
             Phrase getInstname = new Phrase(instname, Thai);
-            string indiname = reportControl.indi.Text; ; Phrase getIndiname = new Phrase(indiname, Thai);
+            string indiname = reportControl.indi.Text;
+
+            if (indiname.Length > 60)
+            {
+                indiname = indiname.Substring(0, 60) + "...";
+            }
+
+            Phrase getIndiname = new Phrase(indiname, Thai);
 
 
 

@@ -396,6 +396,12 @@ namespace IDMS.ReportContent
 
             if (reportControl.r8.Checked == true) { if (indiname != "") { indiname += ", "; } indiname += reportControl.r82.Text; }
 
+
+            if (indiname.Length > 60)
+            {
+                indiname = indiname.Substring(0, 60) + "...";
+            }
+
             Phrase getIndiname = new Phrase(indiname, Thai);
 
 

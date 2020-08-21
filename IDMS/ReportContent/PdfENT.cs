@@ -74,7 +74,7 @@ namespace IDMS.ReportContent
             Filesave = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "-HN " + filename + "-TIME " + DateTime.Now.ToString("HH") + "." + DateTime.Now.ToString("mm") + "." + DateTime.Now.ToString("ss") + ".pdf";
 
             string imgFolder = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "/";
-            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/" ;
+            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/";
 
             imgFolder_oldversion = imgFolder_oldversion.Replace("idmsCASE", "idmsData");
 
@@ -438,6 +438,11 @@ namespace IDMS.ReportContent
             if (reportControl.r4.Checked == true) { if (indiname != "") { indiname += ", "; } indiname += reportControl.r4.Text; }
 
             if (reportControl.r8.Checked == true) { if (indiname != "") { indiname += ", "; } indiname += reportControl.r82.Text; }
+
+            if (indiname.Length > 60)
+            {
+                indiname = indiname.Substring(0, 60) + "...";
+            }
 
             Phrase getIndiname = new Phrase(indiname, Thai);
 
@@ -1146,7 +1151,7 @@ namespace IDMS.ReportContent
             PlaceChunckHeadMini2(writer, Load.getsettingtext("1", "line1"), 0, 780);
             PlaceChunckHeadMini2(writer, Load.getsettingtext("1", "line2"), 0, 770);
 
-          
+
 
             PdfPCell headerTableCell_0 = new PdfPCell(png);
             headerTableCell_0.HorizontalAlignment = Element.ALIGN_LEFT;

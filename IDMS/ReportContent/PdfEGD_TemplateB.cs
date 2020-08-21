@@ -605,6 +605,12 @@ namespace IDMS.ReportContent
             Phrase getInstname = new Phrase(instname, Thai);
 
             string indicationValue_2 = reportControl.commentText.Text;
+
+            if (indicationValue_2.Length > 60)
+            {
+                indicationValue_2 = indicationValue_2.Substring(0, 60) + "...";
+            }
+
             Phrase getIndiname = new Phrase(indicationValue_2, Thai);
 
             string pdxname = ""; int predxCount = 0;

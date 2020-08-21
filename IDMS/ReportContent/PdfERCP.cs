@@ -431,7 +431,14 @@ namespace IDMS.ReportContent
             string instname = report.infoinstrument.Text;
 
             Phrase getInstname = new Phrase(instname, Thai);
-            string indiname = report.indication.Text; Phrase getIndiname = new Phrase(indiname, Thai);
+            string indiname = report.indication.Text;
+
+            if (indiname.Length > 60)
+            {
+                indiname = indiname.Substring(0, 60) + "...";
+            }
+
+            Phrase getIndiname = new Phrase(indiname, Thai);
 
 
             string pdxname = ""; int predxCount = 0;
