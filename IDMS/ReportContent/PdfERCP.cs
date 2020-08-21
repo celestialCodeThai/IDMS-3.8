@@ -425,15 +425,9 @@ namespace IDMS.ReportContent
             Phrase getMedname = new Phrase(medname, Thai);
 
             string instname = report.infoinstrument.Text;
-            if (report.in2.Text != "" && instname != "")
-            {
-                instname += ", ";
-                instname += report.in2.Text;
-            }
 
             Phrase getInstname = new Phrase(instname, Thai);
             string indiname = report.indication.Text; Phrase getIndiname = new Phrase(indiname, Thai);
-
 
 
             string pdxname = ""; int predxCount = 0;

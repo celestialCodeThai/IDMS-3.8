@@ -952,17 +952,11 @@ namespace IDMS.Page
                 registerDay.Text = reader["Day"].ToString();
                 infoproroom.Text = reader["Procedure Room"].ToString();
                 indication.Text = reader["Indication"].ToString();
+                MessageBox.Show(indication.Text.Length.ToString());
 
-                if (reader["Instruments"].ToString().Contains("$"))
-                {
-                    string[] tokens = reader["Instruments"].ToString().Split('$');
-                    infoinstrument.Text = tokens[0];
-                    in2.Text = tokens[1];
-                }
-                else
-                {
-                    infoinstrument.Text = reader["Instruments"].ToString();
-                }
+                infoinstrument.Text = reader["cameraA"].ToString();
+                in2.Text = reader["cameraB"].ToString();
+
                 infohn.Text = reader["hn"].ToString();
                 infoname.Text = reader["Patient Name"].ToString();
 
