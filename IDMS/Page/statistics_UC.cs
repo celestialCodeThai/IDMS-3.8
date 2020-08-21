@@ -48,6 +48,8 @@ namespace IDMS.Page
         DataTable findingTable = new DataTable();
         DataTable bronchoFindingTable = new DataTable();
 
+        DataTable patientDataTable = new DataTable();
+
 
         public statistics_UC()
         {
@@ -1733,16 +1735,19 @@ namespace IDMS.Page
             dataTableToCsv(circulatingNurseTable, "circulatingNurse");
             dataTableToCsv(nurseAnesthetistTable, "nurseAnesthetist");
 
-            dataTableToCsv(instrumentsTable, "instrumentsTable");
-            dataTableToCsv(roomTable, "roomTable");
-            dataTableToCsv(financeTable, "financeTable");
-            dataTableToCsv(patientTypeAndFinanceTable, "patientTypeTable");
+            dataTableToCsv(instrumentsTable, "instruments");
+            dataTableToCsv(roomTable, "room");
+            dataTableToCsv(financeTable, "finance");
+            dataTableToCsv(patientTypeAndFinanceTable, "patientType");
 
-            dataTableToCsv(medicationTable, "medicationTable");
-            dataTableToCsv(findingTable, "findingTable");
-            dataTableToCsv(preDx1_Table, "icd10Table");
+            dataTableToCsv(medicationTable, "medication");
+            dataTableToCsv(findingTable, "finding");
+            dataTableToCsv(preDx1_Table, "icd10");
 
-            MessageBox.Show(this, "Data saved in CSV format at desktop", "Successfully Saved", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            loadPatientDataToCsv();
+            dataTableToCsv(patientDataTable, "patientData");
+
+            MessageBox.Show(this, "Data saved in CSV format at Documents idmsCSV", "Successfully Saved", MessageBoxButtons.OK, MessageBoxIcon.Question);
 
         }
 
@@ -1751,7 +1756,7 @@ namespace IDMS.Page
         {
             try
             {
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 StringBuilder sb = new StringBuilder();
                 IEnumerable<string> columnNames;
 
@@ -1765,7 +1770,7 @@ namespace IDMS.Page
                     sb.AppendLine(string.Join(",", fields));
                 }
 
-                File.WriteAllText(path + "\\" + fileName + ".csv", sb.ToString(), Encoding.Default);
+                File.WriteAllText(path + "\\idmsCSV" + "\\" + fileName + ".csv", sb.ToString(), Encoding.Default);
 
             }
             catch (Exception ex)
@@ -1775,6 +1780,28 @@ namespace IDMS.Page
 
         }
 
+
+        private void loadPatientDataToCsv()
+        {
+            string query = "SELECT * FROM `patientdata`";
+
+            try
+            {
+                MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+
+                connection.Open();
+
+                adapter.Fill(patientDataTable);
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
     }
 
 }

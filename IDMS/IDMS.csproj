@@ -684,6 +684,7 @@
     <Content Include="idms_logo.ico" />
     <Content Include="logo1_Q05_icon.ico" />
     <Content Include="Popup\index.html" />
+    <None Include="Resources\csv.png" />
     <None Include="Resources\remove.png" />
     <None Include="Resources\tick.png" />
     <None Include="Resources\crop8.png" />
