@@ -1630,7 +1630,7 @@ namespace IDMS.ReportContent
                 Image a = Image.FromFile(output.imgPath[x]);
                 //top
                 // iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWay(a, 500), System.Drawing.Imaging.ImageFormat.Jpeg);
-                iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(a, 500, output.recImage[z]), System.Drawing.Imaging.ImageFormat.Jpeg);
+                iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(a, 500, output.recImage[x]), System.Drawing.Imaging.ImageFormat.Jpeg);
                 picPDF[z] = v;
                 picPDF[z].ScaleAbsolute(size, size);
                 picPDF[z].SetAbsolutePosition(LoopX, LoopY);
@@ -1650,12 +1650,16 @@ namespace IDMS.ReportContent
             return imgTable;
 
         }
+
+
         public float calculatePDFStringWidth(string a)
         {
             var chunk = new Chunk(a);
             float WidthWithCharSpacing = chunk.GetWidthPoint() + chunk.GetCharacterSpacing() * (chunk.Content.Length - 1);
             return WidthWithCharSpacing;
         }
+
+
         public int calculatePDFWidth(string a, int b)
         {
             var chunk = new Chunk(a);
@@ -1672,6 +1676,8 @@ namespace IDMS.ReportContent
 
             return line;
         }
+
+
         private void PlaceChunck(PdfWriter writer, String text, int x, int y)
         {
             PdfContentByte cb = writer.DirectContent;
@@ -1706,6 +1712,7 @@ namespace IDMS.ReportContent
             cb.EndText();
             cb.RestoreState();
         }
+
 
         private void PlaceChunckB(PdfWriter writer, String text, int x, int y)
         {
@@ -1743,6 +1750,7 @@ namespace IDMS.ReportContent
             cb.RestoreState();
         }
 
+
         private void PlaceChunckIMG(PdfWriter writer, String text, int x, int y)
         {
             PdfContentByte cb = writer.DirectContent;
@@ -1756,6 +1764,7 @@ namespace IDMS.ReportContent
             cb.EndText();
             cb.RestoreState();
         }
+
 
         private void PlaceChunckSignature(PdfWriter writer, String text, int x, int y)
         {
