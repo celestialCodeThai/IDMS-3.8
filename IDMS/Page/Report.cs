@@ -951,8 +951,9 @@ namespace IDMS.Page
                 inforegis.Text = reader["date"].ToString();
                 registerDay.Text = reader["Day"].ToString();
                 infoproroom.Text = reader["Procedure Room"].ToString();
-                indication.Text = reader["Indication"].ToString();
-                MessageBox.Show(indication.Text.Length.ToString());
+                indication.Text = reader["Indication"].ToString();            
+
+              
 
                 infoinstrument.Text = reader["cameraA"].ToString();
                 in2.Text = reader["cameraB"].ToString();

@@ -420,6 +420,10 @@ namespace IDMS.ReportContent
             if (reportControl.med6.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med6txt.Text + " mg"; }
             if (reportControl.med7.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med7.Text + " " + reportControl.med7txt.Text + " mg"; }
 
+            if (medname.Length > 60)
+            {
+                medname = medname.Substring(0, 60) + "...";
+            }
 
             Phrase getMedname = new Phrase(medname, Thai);
 

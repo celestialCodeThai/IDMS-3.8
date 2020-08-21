@@ -407,7 +407,7 @@ namespace IDMS.ReportContent
             PdfContentByte cb = writer.DirectContent;
 
             DataManage.DataAccess load = new DataManage.DataAccess();
-          
+
             string headerColor = load.getOption("option_value", "headerColor");
             Font f1 = FontFactory.GetFont("Roboto", 12, Font.BOLD, Black);
             switch (headerColor)
@@ -495,7 +495,7 @@ namespace IDMS.ReportContent
 
             Font ThaiGreen = new Font(bf, 10, iTextSharp.text.Font.NORMAL, BaseColor.GREEN);
             Font ThaiRed = new Font(bf, 10, iTextSharp.text.Font.NORMAL, BaseColor.RED);
-          
+
             ColumnText ct = new ColumnText(cb);
             ColumnText ct1 = new ColumnText(cb);
             ColumnText ct2 = new ColumnText(cb);
@@ -539,7 +539,7 @@ namespace IDMS.ReportContent
             Phrase HistorytBody = new Phrase("Patient history:", f2);
             Phrase CNurseBody = new Phrase("Circulation nurse:", f2);
             Phrase ProRoomBody = new Phrase("Procedure room:", f2);
-        
+
             ColumnText d1 = new ColumnText(cb);
             ColumnText d2 = new ColumnText(cb);
             ColumnText d3 = new ColumnText(cb);
@@ -591,6 +591,11 @@ namespace IDMS.ReportContent
             if (reportControl.med5.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med5.Text + " " + reportControl.med5txt.Text + " mcg"; }
             if (reportControl.med6.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med6txt.Text + " mg"; }
             if (reportControl.med7.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med7.Text + " " + reportControl.med7txt.Text + " mg"; }
+
+            if (medname.Length > 60)
+            {
+                medname = medname.Substring(0, 60) + "...";
+            }
 
 
             Phrase getMedname = new Phrase(medname, Thai);

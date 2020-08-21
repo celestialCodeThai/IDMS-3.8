@@ -79,7 +79,7 @@ namespace IDMS.ReportContent
             Filesave = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "-HN " + filename + "-TIME " + DateTime.Now.ToString("HH") + "." + DateTime.Now.ToString("mm") + "." + DateTime.Now.ToString("ss") + ".pdf";
 
             string imgFolder = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "/";
-            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/" ;
+            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/";
 
             imgFolder_oldversion = imgFolder_oldversion.Replace("idmsCASE", "idmsData");
 
@@ -185,7 +185,7 @@ namespace IDMS.ReportContent
 
             return PNG;
         }
-        
+
         public static int BodyEnd;
         //reportBody
         private PdfPTable GetBodyERCP(Document pdfDoc, PdfWriter writer, Report report, reportControlERCP reportControl, imageReport output, string ORIGINAL_ID)
@@ -379,6 +379,10 @@ namespace IDMS.ReportContent
             if (reportControl.med6.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med6txt.Text + " mg"; }
             if (reportControl.med7.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med7.Text + " " + reportControl.med7txt.Text + " mg"; }
 
+            if (medname.Length > 60)
+            {
+                medname = medname.Substring(0, 60) + "...";
+            }
 
             Phrase getMedname = new Phrase(medname, Thai);
 
