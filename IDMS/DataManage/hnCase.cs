@@ -40,6 +40,11 @@ namespace IDMS.DataManage
         public string caseStatus { get; set; }
         public string finance { get; set; }
 
+        public string patientType { get; set; }
+
+        public string cameraA { get; set; }
+        public string cameraB { get; set; }
+
 
     }
 }

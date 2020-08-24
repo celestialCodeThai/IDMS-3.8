@@ -559,6 +559,7 @@
             this.cTable.Size = new System.Drawing.Size(538, 329);
             this.cTable.TabIndex = 47;
             this.cTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cTable_CellClick);
+            this.cTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cTable_CellContentClick);
             // 
             // groupBox2
             // 

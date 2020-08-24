@@ -953,16 +953,9 @@ namespace IDMS.Page
                 infoproroom.Text = reader["Procedure Room"].ToString();
                 indication.Text = reader["Indication"].ToString();
 
-                if (reader["Instruments"].ToString().Contains("$"))
-                {
-                    string[] tokens = reader["Instruments"].ToString().Split('$');
-                    infoinstrument.Text = tokens[0];
-                    in2.Text = tokens[1];
-                }
-                else
-                {
-                    infoinstrument.Text = reader["Instruments"].ToString();
-                }
+                infoinstrument.Text = reader["cameraA"].ToString();
+                in2.Text = reader["cameraB"].ToString();
+
                 infohn.Text = reader["hn"].ToString();
                 infoname.Text = reader["Patient Name"].ToString();
 
@@ -1617,33 +1610,6 @@ namespace IDMS.Page
         bool page5 = false;
         bool page6 = false;
 
-
-
-
-
-        public void saveMultiRecord(string caseid)
-        {
-
-            string newid = caseid + PRO;
-
-            if (checkDBExist(newid))
-            {
-
-                DataAccess cbm = new DataAccess();
-
-                cbm.AddNewCase(newid, infoname.Text, infohn.Text, PRO, infoproroom.Text, indication.Text
-                        , infoinstrument.Text, pdx1.Text, pdx2.Text, pdx3.Text, pdx4.Text, date, day, infodoc.Text, infoass.Text,
-                          infosnurse.Text, infocnurse.Text, anes.Text, "Done", "Edit");
-
-
-                ReportMulti.tabcount--;
-                if (ReportMulti.tabcount == 0)
-                {
-                    cbm.DeleteRow(caseid);
-                }
-
-            }
-        }
 
 
         public bool checkDBExist(string thishn)

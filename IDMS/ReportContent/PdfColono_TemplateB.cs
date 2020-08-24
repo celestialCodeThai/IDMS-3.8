@@ -607,15 +607,14 @@ namespace IDMS.ReportContent
             if (reportControl.med6.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med6txt.Text + " mg"; }
             if (reportControl.med7.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med7.Text + " " + reportControl.med7txt.Text + " mg"; }
 
+            if (medname.Length > 60)
+            {
+                medname = medname.Substring(0, 60) + "...";
+            }
 
             Phrase getMedname = new Phrase(medname, Thai);
 
             string instname = report.infoinstrument.Text;
-            if (report.in2.Text != "" && instname != "")
-            {
-                instname += ", ";
-                instname += report.in2.Text;
-            }
 
             Phrase getInstname = new Phrase(instname, Thai);
 
@@ -623,6 +622,12 @@ namespace IDMS.ReportContent
             //string indiname = report.indication.Text;
             //Phrase getIndiname = new Phrase(indiname, Thai);
             string indicationValue_2 = reportControl.commentText.Text;
+
+            if (indicationValue_2.Length > 60)
+            {
+                indicationValue_2 = indicationValue_2.Substring(0, 60) + "...";
+            }
+
             Phrase getIndiname = new Phrase(indicationValue_2, Thai);
 
             string pdxname = ""; int predxCount = 0;
@@ -1773,7 +1778,9 @@ namespace IDMS.ReportContent
             for (int z = 0; z < j - X3; z++)
             {
                 Image a = Image.FromFile(output.imgPath[x]);
-                iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(a, 500, output.recImage[z]), System.Drawing.Imaging.ImageFormat.Jpeg);
+                //top
+                iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(a, 500, output.recImage[x]), System.Drawing.Imaging.ImageFormat.Jpeg);
+                //  iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(img, System.Drawing.Imaging.ImageFormat.Jpeg);
                 picPDF[z] = v;
                 picPDF[z].ScaleAbsolute(size, size);
                 picPDF[z].SetAbsolutePosition(LoopX, LoopY);

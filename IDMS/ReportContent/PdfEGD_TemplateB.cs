@@ -410,7 +410,7 @@ namespace IDMS.ReportContent
             PdfContentByte cb = writer.DirectContent;
 
             DataManage.DataAccess load = new DataManage.DataAccess();
-          
+
             string headerColor = load.getOption("option_value", "headerColor");
             Font f1 = FontFactory.GetFont("Roboto", 12, Font.BOLD, Black);
             switch (headerColor)
@@ -498,7 +498,7 @@ namespace IDMS.ReportContent
 
             Font ThaiGreen = new Font(bf, 10, iTextSharp.text.Font.NORMAL, BaseColor.GREEN);
             Font ThaiRed = new Font(bf, 10, iTextSharp.text.Font.NORMAL, BaseColor.RED);
-          
+
             ColumnText ct = new ColumnText(cb);
             ColumnText ct1 = new ColumnText(cb);
             ColumnText ct2 = new ColumnText(cb);
@@ -543,7 +543,7 @@ namespace IDMS.ReportContent
             Phrase HistorytBody = new Phrase("Patient history:", f2);
             Phrase CNurseBody = new Phrase("Circulation nurse:", f2);
             Phrase ProRoomBody = new Phrase("Procedure room:", f2);
-        
+
             ColumnText d1 = new ColumnText(cb);
             ColumnText d2 = new ColumnText(cb);
             ColumnText d3 = new ColumnText(cb);
@@ -596,22 +596,25 @@ namespace IDMS.ReportContent
             if (reportControl.med6.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med6txt.Text + " mg"; }
             if (reportControl.med7.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med7.Text + " " + reportControl.med7txt.Text + " mg"; }
 
+            if (medname.Length > 60)
+            {
+                medname = medname.Substring(0, 60) + "...";
+            }
+
 
             Phrase getMedname = new Phrase(medname, Thai);
 
             string instname = report.infoinstrument.Text;
-            if (report.in2.Text != "" && instname != "")
-            {
-                instname += ", ";
-                instname += report.in2.Text;
-            }
 
             Phrase getInstname = new Phrase(instname, Thai);
 
-            //top
-            //string indiname = report.indication.Text;
-            //Phrase getIndiname = new Phrase(indiname, Thai);
             string indicationValue_2 = reportControl.commentText.Text;
+
+            if (indicationValue_2.Length > 60)
+            {
+                indicationValue_2 = indicationValue_2.Substring(0, 60) + "...";
+            }
+
             Phrase getIndiname = new Phrase(indicationValue_2, Thai);
 
             string pdxname = ""; int predxCount = 0;
@@ -1707,7 +1710,9 @@ namespace IDMS.ReportContent
             for (int z = 0; z < j - X3; z++)
             {
                 Image a = Image.FromFile(output.imgPath[x]);
-                iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(a, 500, output.recImage[z]), System.Drawing.Imaging.ImageFormat.Jpeg);
+                //top
+                // iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWay(a, 500), System.Drawing.Imaging.ImageFormat.Jpeg);
+                iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(a, 500, output.recImage[x]), System.Drawing.Imaging.ImageFormat.Jpeg);
                 picPDF[z] = v;
                 picPDF[z].ScaleAbsolute(size, size);
                 picPDF[z].SetAbsolutePosition(LoopX, LoopY);
@@ -1813,6 +1818,8 @@ namespace IDMS.ReportContent
             float WidthWithCharSpacing = chunk.GetWidthPoint() + chunk.GetCharacterSpacing() * (chunk.Content.Length - 1);
             return WidthWithCharSpacing;
         }
+
+
         public int calculatePDFWidth(string a, int b)
         {
             var chunk = new Chunk(a);
@@ -1829,6 +1836,8 @@ namespace IDMS.ReportContent
 
             return line;
         }
+
+
         private void PlaceChunck(PdfWriter writer, String text, int x, int y)
         {
             PdfContentByte cb = writer.DirectContent;
@@ -1863,6 +1872,7 @@ namespace IDMS.ReportContent
             cb.EndText();
             cb.RestoreState();
         }
+
 
         private void PlaceChunckB(PdfWriter writer, String text, int x, int y)
         {
@@ -1900,6 +1910,7 @@ namespace IDMS.ReportContent
             cb.RestoreState();
         }
 
+
         private void PlaceChunckIMG(PdfWriter writer, String text, int x, int y)
         {
             PdfContentByte cb = writer.DirectContent;
@@ -1913,6 +1924,7 @@ namespace IDMS.ReportContent
             cb.EndText();
             cb.RestoreState();
         }
+
 
         private void PlaceChunckSignature(PdfWriter writer, String text, int x, int y)
         {

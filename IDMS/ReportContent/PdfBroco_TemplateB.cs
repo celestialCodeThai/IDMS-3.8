@@ -80,7 +80,7 @@ namespace IDMS.ReportContent
             Filesave = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "-HN " + filename + "-TIME " + DateTime.Now.ToString("HH") + "." + DateTime.Now.ToString("mm") + "." + DateTime.Now.ToString("ss") + ".pdf";
 
             string imgFolder = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "/";
-            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/" ;
+            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/";
 
             imgFolder_oldversion = imgFolder_oldversion.Replace("idmsCASE", "idmsData");
 
@@ -346,7 +346,7 @@ namespace IDMS.ReportContent
         }
         public static int BodyEnd;
         //reportBody
-        private PdfPTable GetBodyERCP(Document pdfDoc, PdfWriter writer, Report report, reportControlBronco reportControl, imageReport output,string ORIGINAL_ID)
+        private PdfPTable GetBodyERCP(Document pdfDoc, PdfWriter writer, Report report, reportControlBronco reportControl, imageReport output, string ORIGINAL_ID)
         {
             PdfPTable BodyTable = new PdfPTable(2);
             PdfContentByte cb = writer.DirectContent;
@@ -536,6 +536,11 @@ namespace IDMS.ReportContent
             if (reportControl.med5.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med5.Text + " " + reportControl.med5txt.Text + " mcg"; }
             if (reportControl.med6.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med6txt.Text + " mg"; }
 
+            if (medname.Length > 60)
+            {
+                medname = medname.Substring(0, 60) + "...";
+            }
+
 
             Phrase getMedname = new Phrase(medname, Thai);
 
@@ -544,12 +549,20 @@ namespace IDMS.ReportContent
             if (reportControl.ct2.Text != "") { if (instname != "") { instname += "  --  "; } instname += reportControl.ct2.Text; }
             if (reportControl.ct3.Text != "") { if (instname != "") { instname += " at "; } instname += reportControl.ct3.Text; }
 
+
+
             Phrase getInstname = new Phrase(instname, Thai);
 
             //top
             //string indiname = report.indication.Text;
             //Phrase getIndiname = new Phrase(indiname, Thai);
             string indicationValue_2 = reportControl.commentText.Text;
+
+            if (indicationValue_2.Length > 60)
+            {
+                indicationValue_2 = indicationValue_2.Substring(0, 60) + "...";
+            }
+
             Phrase getIndiname = new Phrase(indicationValue_2, Thai);
 
 
@@ -1741,9 +1754,9 @@ namespace IDMS.ReportContent
 
             for (int z = 0; z < j - X3; z++)
             {
-                Image a = Image.FromFile(output.imgPath[x]);              
+                Image a = Image.FromFile(output.imgPath[x]);
                 //top
-                iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(a, 500, output.recImage[z]), System.Drawing.Imaging.ImageFormat.Jpeg);
+                iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(a, 500, output.recImage[x]), System.Drawing.Imaging.ImageFormat.Jpeg);
                 //  iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(img, System.Drawing.Imaging.ImageFormat.Jpeg);
                 picPDF[z] = v;
                 picPDF[z].ScaleAbsolute(size, size);

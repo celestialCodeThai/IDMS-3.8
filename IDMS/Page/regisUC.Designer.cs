@@ -533,7 +533,6 @@
             this.nationBox.Name = "nationBox";
             this.nationBox.Size = new System.Drawing.Size(221, 33);
             this.nationBox.TabIndex = 28;
-            this.nationBox.SelectedIndexChanged += new System.EventHandler(this.nationBox_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -604,7 +603,6 @@
             this.doc1.Name = "doc1";
             this.doc1.Size = new System.Drawing.Size(530, 33);
             this.doc1.TabIndex = 44;
-            this.doc1.SelectedIndexChanged += new System.EventHandler(this.doc1_SelectedIndexChanged);
             // 
             // label18
             // 
@@ -678,7 +676,6 @@
             this.groupBox1.TabIndex = 64;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Staff\'s infomation";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // bon3
             // 
@@ -1329,7 +1326,6 @@
             this.groupBox6.TabIndex = 19;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Procedure";
-            this.groupBox6.Enter += new System.EventHandler(this.groupBox6_Enter);
             // 
             // button4
             // 
@@ -1425,7 +1421,6 @@
             this.procedure3.TabIndex = 60;
             this.procedure3.Text = "ERCP";
             this.procedure3.UseVisualStyleBackColor = true;
-            this.procedure3.CheckedChanged += new System.EventHandler(this.procedure3_CheckedChanged);
             // 
             // procedure2
             // 
@@ -1437,7 +1432,6 @@
             this.procedure2.TabIndex = 59;
             this.procedure2.Text = "Colonoscopy";
             this.procedure2.UseVisualStyleBackColor = true;
-            this.procedure2.CheckedChanged += new System.EventHandler(this.procedure2_CheckedChanged);
             // 
             // procedure1
             // 
@@ -1516,7 +1510,6 @@
             this.instruments.ReadOnly = true;
             this.instruments.Size = new System.Drawing.Size(254, 29);
             this.instruments.TabIndex = 34;
-            this.instruments.TextChanged += new System.EventHandler(this.instruments_TextChanged);
             // 
             // label7
             // 
@@ -1586,7 +1579,6 @@
             this.groupBox7.TabIndex = 79;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Financial (Optional)";
-            this.groupBox7.Enter += new System.EventHandler(this.groupBox7_Enter);
             // 
             // comboBox2
             // 
@@ -1639,7 +1631,6 @@
             this.financeValue.Name = "financeValue";
             this.financeValue.Size = new System.Drawing.Size(200, 33);
             this.financeValue.TabIndex = 45;
-            this.financeValue.SelectedIndexChanged += new System.EventHandler(this.fina_SelectedIndexChanged);
             // 
             // label28
             // 
@@ -1688,7 +1679,6 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.Name = "regisUC";
             this.Size = new System.Drawing.Size(1689, 977);
-            this.Load += new System.EventHandler(this.regisUC_Load);
             this.Leave += new System.EventHandler(this.regisUC_Leave);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

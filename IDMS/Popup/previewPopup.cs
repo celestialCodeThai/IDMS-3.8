@@ -27,11 +27,14 @@ namespace IDMS.Popup
             MySqlDataReader readerPro;
             MySqlConnection connectionP = new MySqlConnection(dbhelper.CnnVal("db"));
 
+
             connectionP.Open();
             MySqlCommand myCommandPro = new MySqlCommand("select * from patientcase where caseid='" + caseid + "'", connectionP);
             readerPro = myCommandPro.ExecuteReader();
 
+
             caseId = caseid;
+
 
             while (readerPro.Read())
             {
@@ -78,7 +81,7 @@ namespace IDMS.Popup
                 circulatingNurseValue.Text = circulatingNurse;
                 anesthesistValue.Text = anesthesist;
 
-                if(instrumentsValue_2.Text.Length>0)
+                if (instrumentsValue_2.Text.Length > 0)
                 {
                     removeButton.Visible = true;
                 }
@@ -115,67 +118,9 @@ namespace IDMS.Popup
             getPatienData.Close();
         }
 
-        private void regisDate_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
 
-        }
-
-        private void ward_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label20_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void label20_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void regisDate_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void t5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void firstnameValue_Click(object sender, EventArgs e)
-        {
-
-        }
         string cameraid;
+
 
         private string getcameraData()
         {
@@ -190,6 +135,8 @@ namespace IDMS.Popup
             }
 
         }
+
+
         private void instrumentsClick(object sender, EventArgs e)
         {
             string camera = getcameraData();
@@ -199,15 +146,6 @@ namespace IDMS.Popup
             }
         }
 
-        private void instrumentsValue_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void preDx1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void submitValue_Click(object sender, EventArgs e)
         {
@@ -219,6 +157,8 @@ namespace IDMS.Popup
             string updateScrubNurse = "`Scrub Nurse`";
             string updateCirculatingNurse = "`Circulating Nurse`";
             string updateAnesthesist = "`Anesthesist`";
+            string updateCameraA = "`cameraA`";
+            string updateCameraB = "`cameraB`";
 
             string name = firstNameValue.Text;
             string lastName = lastNameValue.Text;
@@ -230,6 +170,8 @@ namespace IDMS.Popup
             string scrubNurse = scrubNurseValue.Text;
             string circulatingNurse = circulatingNurseValue.Text;
             string anesthesist = anesthesistValue.Text;
+            string cameraA = instrumentsValue_1.Text;
+            string cameraB = instrumentsValue_2.Text;
 
             string patientcaseUpdateQuery = "UPDATE patientcase SET " +
                     updateFullName + " = '" + fullName + "'," +
@@ -239,6 +181,8 @@ namespace IDMS.Popup
                     updateScrubNurse + " = '" + scrubNurse + "'," +
                     updateCirculatingNurse + " = '" + circulatingNurse + "'," +
                     updateAnesthesist + " = '" + anesthesist + "'," +
+                    updateCameraA + " = '" + cameraA + "'," +
+                    updateCameraB + " = '" + cameraB + "'," +
                     updateCamera + " = '" + camera +
                     "' WHERE `patientcase`.`caseid` = '" + caseId + "'";
 
@@ -271,56 +215,19 @@ namespace IDMS.Popup
             Close();
         }
 
+
         public string GetMyResult()
         {
             return clickValue;
         }
 
-        private void sexValue_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void nationalityValue_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void previewPopup_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void instrumentsValue_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void hnValue_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ageValue_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void nationalityValue_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void previewPopup_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
 
         private void cancel_Click(object sender, EventArgs e)
         {
             clickValue = "cancel";
             Close();
         }
+
 
         private void selectButton_2_Click(object sender, EventArgs e)
         {
@@ -332,11 +239,13 @@ namespace IDMS.Popup
             }
         }
 
+
         private void removeButton_Click(object sender, EventArgs e)
         {
             instrumentsValue_2.Text = "";
             removeButton.Visible = false;
-            //System.Diagnostics.Debug.WriteLine(instrumentsValue_2.Text.Length);
         }
+
+
     }
 }

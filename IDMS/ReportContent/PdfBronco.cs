@@ -74,7 +74,7 @@ namespace IDMS.ReportContent
             Filesave = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "-HN " + filename + "-TIME " + DateTime.Now.ToString("HH") + "." + DateTime.Now.ToString("mm") + "." + DateTime.Now.ToString("ss") + ".pdf";
 
             string imgFolder = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "/";
-            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/" ;
+            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/";
 
             imgFolder_oldversion = imgFolder_oldversion.Replace("idmsCASE", "idmsData");
 
@@ -426,8 +426,8 @@ namespace IDMS.ReportContent
             string antname = ""; string anesname = report.anes.Text;
 
 
-           
-            if (reportControl.cxr.Text!="") { if (antname != "") { antname += ", "; } antname += reportControl.cxr.Text; }
+
+            if (reportControl.cxr.Text != "") { if (antname != "") { antname += ", "; } antname += reportControl.cxr.Text; }
             if (reportControl.cxr2.Text != "") { if (antname != "") { antname += "  --  "; } antname += reportControl.cxr2.Text; }
             if (reportControl.cxr3.Text != "") { if (antname != "") { antname += " at "; } antname += reportControl.cxr3.Text; }
             Phrase getAnesname = new Phrase(anesname, Thai);
@@ -443,6 +443,10 @@ namespace IDMS.ReportContent
             if (reportControl.med5.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med5.Text + " " + reportControl.med5txt.Text + " mcg"; }
             if (reportControl.med6.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med6txt.Text + " mg"; }
 
+             if (medname.Length > 60)
+            {
+                medname = medname.Substring(0, 60) + "...";
+            }
 
             Phrase getMedname = new Phrase(medname, Thai);
 
@@ -451,18 +455,23 @@ namespace IDMS.ReportContent
             if (reportControl.ct2.Text != "") { if (instname != "") { instname += "  --  "; } instname += reportControl.ct2.Text; }
             if (reportControl.ct3.Text != "") { if (instname != "") { instname += " at "; } instname += reportControl.ct3.Text; }
 
+
             Phrase getInstname = new Phrase(instname, Thai);
-            string indiname = reportControl.indi.Text; ; Phrase getIndiname = new Phrase(indiname, Thai);
+            string indiname = reportControl.indi.Text;
+
+            if (indiname.Length > 60)
+            {
+                indiname = indiname.Substring(0, 60) + "...";
+            }
+
+            Phrase getIndiname = new Phrase(indiname, Thai);
 
 
 
-            string pdxname = ""; 
-          
-         
-                pdxname = reportControl.predx.Text;
+            string pdxname = "";
 
-           
 
+            pdxname = reportControl.predx.Text;
 
 
 
@@ -478,7 +487,7 @@ namespace IDMS.ReportContent
             if (reportControl.ro1.Checked == true) { if (proroomname != "") { proroomname += ", "; } proroomname += reportControl.ro1.Text; }
             if (reportControl.ro2.Checked == true) { if (proroomname != "") { proroomname += ", "; } proroomname += reportControl.ro2.Text; }
             if (reportControl.ro3.Checked == true) { if (proroomname != "") { proroomname += ", "; } proroomname += reportControl.ro3.Text; }
-            if (reportControl.ro4.Checked == true) { if (proroomname != "") { proroomname += ", "; } proroomname += reportControl.ro4.Text+" "+reportControl.ro4txt.Text; }
+            if (reportControl.ro4.Checked == true) { if (proroomname != "") { proroomname += ", "; } proroomname += reportControl.ro4.Text + " " + reportControl.ro4txt.Text; }
 
 
 
@@ -507,7 +516,7 @@ namespace IDMS.ReportContent
 
             d1.SetSimpleColumn(getDocname, infoX, BodyY, 580, 317, 15, Element.ALIGN_LEFT); d1.Go();
             d2.SetSimpleColumn(getNursename, infoX, BodyY - BodySpace, 580, 317, 15, Element.ALIGN_LEFT); d2.Go();
-            d4.SetSimpleColumn(getAnesname, infoX + infoX2-7, BodyY, 580, 317, 15, Element.ALIGN_LEFT); d4.Go();
+            d4.SetSimpleColumn(getAnesname, infoX + infoX2 - 7, BodyY, 580, 317, 15, Element.ALIGN_LEFT); d4.Go();
             d5.SetSimpleColumn(getMedname, infoX, BodyY - (BodySpace * 3), 580, 317, 15, Element.ALIGN_LEFT); d5.Go();
             d6.SetSimpleColumn(getInstname, infoX, BodyY - (BodySpace * 4), 580, 317, 15, Element.ALIGN_LEFT); d6.Go();
             d7.SetSimpleColumn(getAntname, infoX, BodyY - (BodySpace * 5), 580, 317, 15, Element.ALIGN_LEFT); d7.Go();
@@ -532,8 +541,8 @@ namespace IDMS.ReportContent
 
 
             d3.SetSimpleColumn(getIndiname, infoX, BodyY - (BodySpace * 2), 580, 317, 15, Element.ALIGN_LEFT); d3.Go();
-            d10.SetSimpleColumn(getCnursename, infoX + infoX2 -7, BodyY - BodySpace, 580, 317, 15, Element.ALIGN_LEFT); d10.Go();
-            d11.SetSimpleColumn(getproroomname, infoX + infoX2-7, BodyY - (BodySpace * 2), 580, 317, 15, Element.ALIGN_LEFT); d11.Go();
+            d10.SetSimpleColumn(getCnursename, infoX + infoX2 - 7, BodyY - BodySpace, 580, 317, 15, Element.ALIGN_LEFT); d10.Go();
+            d11.SetSimpleColumn(getproroomname, infoX + infoX2 - 7, BodyY - (BodySpace * 2), 580, 317, 15, Element.ALIGN_LEFT); d11.Go();
 
 
 
@@ -975,7 +984,7 @@ namespace IDMS.ReportContent
             finding4.SetSimpleColumn(F04, BodyX, f4y, 580, 317, 15, Element.ALIGN_LEFT);
 
 
-            df4.SetSimpleColumn(getFD4, FX+20, f4y, 580, 317, 15, Element.ALIGN_LEFT); df4.Go();
+            df4.SetSimpleColumn(getFD4, FX + 20, f4y, 580, 317, 15, Element.ALIGN_LEFT); df4.Go();
 
             //f5
             int f5y = f4y - BodySpace;
@@ -1117,7 +1126,8 @@ namespace IDMS.ReportContent
             string ptxt = "";
 
             if (reportControl.pg1.Checked == true)
-            { if (ptxt != "") { ptxt += ", "; }
+            {
+                if (ptxt != "") { ptxt += ", "; }
 
 
                 ptxt += reportControl.pg1.Text;
@@ -1127,7 +1137,8 @@ namespace IDMS.ReportContent
             }
 
             if (reportControl.pg2.Checked == true)
-            { if (ptxt != "") { ptxt += ", "; }
+            {
+                if (ptxt != "") { ptxt += ", "; }
 
                 ptxt += reportControl.pg2.Text;
                 if (reportControl.pg2_1.Text != "") { ptxt += " " + reportControl.pg2_1.Text; }
@@ -1137,33 +1148,37 @@ namespace IDMS.ReportContent
             if (reportControl.pg3.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg3.Text; }
             if (reportControl.pg4.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg4.Text; }
             if (reportControl.pg5.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg5.Text; }
-            if (reportControl.pg6.Checked == true) {
+            if (reportControl.pg6.Checked == true)
+            {
                 if (ptxt != "") { ptxt += "-"; }
 
                 ptxt += reportControl.pg6.Text;
                 if (reportControl.pg6_1.Text != "") { ptxt += reportControl.pg6_1.Text; }
 
             }
-            if (reportControl.pg7.Checked == true) {
+            if (reportControl.pg7.Checked == true)
+            {
                 if (ptxt != "") { ptxt += ", "; }
                 ptxt += reportControl.pg7.Text;
-                if (reportControl.pg7_1.Text != "") { ptxt += " "+reportControl.pg7txt.Text +" "+reportControl.pg7_1.Text; }
-                if (reportControl.pg7_2.Text != "") { ptxt += " "+reportControl.pg7txt2.Text +" "+ reportControl.pg7_2.Text; }
+                if (reportControl.pg7_1.Text != "") { ptxt += " " + reportControl.pg7txt.Text + " " + reportControl.pg7_1.Text; }
+                if (reportControl.pg7_2.Text != "") { ptxt += " " + reportControl.pg7txt2.Text + " " + reportControl.pg7_2.Text; }
 
             }
-            if (reportControl.pg8.Checked == true) {
+            if (reportControl.pg8.Checked == true)
+            {
                 if (ptxt != "") { ptxt += ", "; }
 
                 ptxt += reportControl.pg8.Text;
-                if (reportControl.pg8_1.Text != "") { ptxt += " "+ reportControl.pg8_1.Text; }
+                if (reportControl.pg8_1.Text != "") { ptxt += " " + reportControl.pg8_1.Text; }
             }
-            if (reportControl.pg9.Checked == true) {
+            if (reportControl.pg9.Checked == true)
+            {
                 if (ptxt != "") { ptxt += ", "; }
 
                 ptxt += reportControl.pg9.Text;
                 if (reportControl.pg9_1.Text != "") { ptxt += " " + reportControl.pg9_1.Text; }
                 if (reportControl.pg9_2.Text != "") { ptxt += " segment " + reportControl.pg9_2.Text; }
-                if (reportControl.pg9_3.Text != "") { ptxt += " Fluid instilled " + reportControl.pg9_3.Text+" mL"; }
+                if (reportControl.pg9_3.Text != "") { ptxt += " Fluid instilled " + reportControl.pg9_3.Text + " mL"; }
                 if (reportControl.pg9_4.Text != "") { ptxt += " Return " + reportControl.pg9_4.Text + " mL"; }
                 if (reportControl.pg9_5.Text != "") { ptxt += " Appearance " + reportControl.pg9_5.Text; }
 
@@ -1184,9 +1199,10 @@ namespace IDMS.ReportContent
             if (reportControl.pg18.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg23.Text; }
             if (reportControl.pg19.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg24.Text; }
             if (reportControl.pg20.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg25.Text; }
-            if ((reportControl.pg26.Checked == true)&&(reportControl.pg26_1.Text!="")) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg26_1.Text; }
+            if ((reportControl.pg26.Checked == true) && (reportControl.pg26_1.Text != "")) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg26_1.Text; }
 
-            if (reportControl.pg27.Checked == true) {
+            if (reportControl.pg27.Checked == true)
+            {
                 if (ptxt != "") { ptxt += ", "; }
                 ptxt += reportControl.pg27.Text;
                 if (reportControl.pg27_1.Text != "") { ptxt += " " + reportControl.pg27_1.Text; }
@@ -1223,11 +1239,12 @@ namespace IDMS.ReportContent
             if (reportControl.pg40.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg40.Text; }
             if (reportControl.pg41.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg41.Text; }
 
-            if (reportControl.pg42.Checked == true) { if (ptxt != "") { ptxt += ","; } ptxt += reportControl.pg42.Text+" "; }
-            if (reportControl.pg43_1.Text != "") {
+            if (reportControl.pg42.Checked == true) { if (ptxt != "") { ptxt += ","; } ptxt += reportControl.pg42.Text + " "; }
+            if (reportControl.pg43_1.Text != "")
+            {
                 if (ptxt != "") { ptxt += "-"; }
-                ptxt += reportControl.pg43txt.Text+" "+reportControl.pg43_1.Text + " cm ";
-                if(reportControl.pg43.Checked == true) { ptxt += reportControl.pg43.Text; }
+                ptxt += reportControl.pg43txt.Text + " " + reportControl.pg43_1.Text + " cm ";
+                if (reportControl.pg43.Checked == true) { ptxt += reportControl.pg43.Text; }
             }
             if (reportControl.pg44_1.Text != "")
             {
@@ -1277,7 +1294,7 @@ namespace IDMS.ReportContent
                 ptxt += reportControl.pg51txt.Text + " " + reportControl.pg51_1.Text + " cm ";
                 if (reportControl.pg51.Checked == true) { ptxt += reportControl.pg51.Text; }
             }
-            if ((reportControl.pg52.Checked == true)&&(reportControl.pg52_1.Text!="")) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg52_1.Text; }
+            if ((reportControl.pg52.Checked == true) && (reportControl.pg52_1.Text != "")) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg52_1.Text; }
             if (reportControl.pg53.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg53.Text; }
             if (reportControl.pg54.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg54.Text; }
             L1 = ptxt;
@@ -1285,13 +1302,13 @@ namespace IDMS.ReportContent
             Phrase getL1 = new Phrase(L1, Thai);
             string L2 = "2";
 
-        
+
 
             string spdxtxt = "";
 
             spdxtxt = reportControl.pdx.Text;
 
-           
+
             L2 = spdxtxt;
 
 
@@ -1304,12 +1321,12 @@ namespace IDMS.ReportContent
             }
             string comtxt = ""; string L7 = "";
             if (reportControl.c1.Checked == true) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c1.Text; }
-            if ((reportControl.c2.Checked == true)&& (reportControl.c2txt.Text!="")) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c2.Text+" "+ reportControl.c2txt.Text; }
+            if ((reportControl.c2.Checked == true) && (reportControl.c2txt.Text != "")) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c2.Text + " " + reportControl.c2txt.Text; }
             if (reportControl.c3.Checked == true) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c3.Text; }
             if ((reportControl.c4.Checked == true) && (reportControl.c4txt.Text != "")) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c4txt.Text; }
             if (reportControl.c5.Checked == true) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c5.Text; }
             if (reportControl.c6.Checked == true) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c6.Text; }
-           if (reportControl.c7.Checked == true) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c7.Text; }
+            if (reportControl.c7.Checked == true) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c7.Text; }
 
             L7 = comtxt;
 
@@ -1317,7 +1334,7 @@ namespace IDMS.ReportContent
 
 
             string retxt = "";
-           
+
 
             L5 = retxt;
             if ((retxt != "") && (reportControl.note.Text != "")) { L5 += "/"; }
@@ -1373,7 +1390,7 @@ namespace IDMS.ReportContent
 
             int lb5y = lb3y - BodySpace;
 
-           
+
             lb5.SetSimpleColumn(LB5, BodyX, lb5y, 580, 317, 15, Element.ALIGN_LEFT); lb5.Go();
             l5.SetSimpleColumn(getL5, BodyX + 50, lb5y, 580, 317, 15, Element.ALIGN_LEFT); l5.Go();
 
@@ -1597,7 +1614,7 @@ namespace IDMS.ReportContent
             {
                 Image a = Image.FromFile(output.imgPath[x]);
                 //top
-                iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(a, 500, output.recImage[z]), System.Drawing.Imaging.ImageFormat.Jpeg);
+                iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(a, 500, output.recImage[x]), System.Drawing.Imaging.ImageFormat.Jpeg);
                 //  iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(a, System.Drawing.Imaging.ImageFormat.Jpeg);
                 picPDF[z] = v;
                 picPDF[z].ScaleAbsolute(size, size);
@@ -1784,7 +1801,7 @@ namespace IDMS.ReportContent
             return b;
         }
 
-       
+
         private void PlaceChunckHead(PdfWriter writer, String text, int x, int y)
         {
             string projectDirectory;
