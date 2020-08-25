@@ -1779,12 +1779,12 @@ namespace IDMS.ReportContent
             string[] P2, P3, P4, P5, P6, P7, P8, P9, PX = null;
             P2 = new string[] { "G", "H", "I", "J", "K", "L", "M", "N" };
             P3 = new string[] { "O", "P", "Q", "R", "S", "T", "U", "V" };
-            P4 = new string[] { "W", "X", "Y", "R", "Z", "AA", "AB", "AC" };
-            P5 = new string[] { "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK" };
-            P6 = new string[] { "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "AS" };
-            P7 = new string[] { "AT", "AU", "AV", "AW", "AX", "AY", "AZ", "BA" };
-            P8 = new string[] { "BB", "BC", "BD", "BE", "BF", "BG", "BH", "BI" };
-            P9 = new string[] { "BJ", "BK", "BL", "BM", "BN" };
+            P4 = new string[] { "W", "X", "Y", "Z", "AA", "AB", "AC", "AD" };
+            P5 = new string[] { "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL" };
+            P6 = new string[] { "AM", "AN", "AO", "AP", "AQ", "AR", "AS", "AT" };
+            P7 = new string[] { "AU", "AV", "AW", "AX", "AY", "AZ", "BA", "BB" };
+            P8 = new string[] { "BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ" };
+            P9 = new string[] { "BK", "BL", "BM", "BN" };
 
 
             iTextSharp.text.Image picPdf1 = null, picPdf2 = null, picPdf3 = null, picPdf4 = null, picPdf5 = null, picPdf6 = null, picPdf7 = null, picPdf8 = null;
@@ -1841,31 +1841,32 @@ namespace IDMS.ReportContent
             int prevPage = 0;
             int currentPage = 0;
 
+
             switch (page)
             {
                 case 2:
                     PX = P2; currentPage = 14; prevPage = 6;
                     break;
                 case 3:
-                    PX = P2; currentPage = 20; prevPage = 14;
+                    PX = P3; currentPage = 22; prevPage = 14;
                     break;
                 case 4:
-                    PX = P3; currentPage = 28; prevPage = 20;
+                    PX = P4; currentPage = 30; prevPage = 22;
                     break;
                 case 5:
-                    PX = P4; currentPage = 36; prevPage = 28;
+                    PX = P5; currentPage = 38; prevPage = 30;
                     break;
                 case 6:
-                    PX = P5; currentPage = 44; prevPage = 36;
+                    PX = P6; currentPage = 46; prevPage = 38;
                     break;
                 case 7:
-                    PX = P6; currentPage = 52; prevPage = 44;
+                    PX = P7; currentPage = 54; prevPage = 46;
                     break;
                 case 8:
-                    PX = P7; currentPage = 60; prevPage = 52;
+                    PX = P8; currentPage = 62; prevPage = 54;
                     break;
                 case 9:
-                    PX = P8; currentPage = 66; prevPage = 60;
+                    PX = P9; currentPage = i; prevPage = 62;
                     break;
 
             }

@@ -242,6 +242,7 @@
     <Compile Include="Popup\medTable_Template2.Designer.cs">
       <DependentUpon>medTable_Template2.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportContent\GetImageWide.cs" />
     <Compile Include="ReportContent\PdfBroco_TemplateB.cs" />
     <Compile Include="ReportContent\PdfColono_TemplateB.cs" />
     <Compile Include="ReportContent\PdfEGD_TemplateB.cs" />
