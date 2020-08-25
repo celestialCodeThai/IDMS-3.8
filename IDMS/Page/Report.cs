@@ -1788,12 +1788,12 @@ namespace IDMS.Page
                     switch (PRO)
                     {
                         case "EGD":
-                            PdfEGD egd = new PdfEGD(EGDControl);
-                            egd.GEN_PdfEGD(PRO, EGDControl, this, report, ORIGINAL_ID, Multimode);
+                            PdfEGD EGD = new PdfEGD(EGDControl);
+                            EGD.GenPDF(PRO, EGDControl, this, report, ORIGINAL_ID, Multimode);
                             break;
                         case "COL":
-                            PdfColono col = new PdfColono(COLControl);
-                            col.GEN_PdfCOL(PRO, COLControl, this, report2, ORIGINAL_ID, Multimode);
+                            PdfColono Colono = new PdfColono(COLControl);
+                            Colono.GenPDF(PRO, COLControl, this, report2, ORIGINAL_ID, Multimode);
                             break;
 
                         case "ERCP":
@@ -1802,11 +1802,11 @@ namespace IDMS.Page
                             break;
                         case "ENT":
                             PdfENT ENT = new PdfENT(ENTControl);
-                            ENT.GEN_PdfEGD(PRO, ENTControl, this, report5, ORIGINAL_ID, Multimode);
+                            ENT.GenPDF(PRO, ENTControl, this, report5, ORIGINAL_ID, Multimode);
                             break;
                         case "BRONCO":
-                            PdfBronco bronco = new PdfBronco(BRONCOControl);
-                            bronco.GEN_PdfEGD(PRO, BRONCOControl, this, report4, ORIGINAL_ID, Multimode);
+                            PdfBronco Broncho = new PdfBronco(BRONCOControl);
+                            Broncho.GenPDF(PRO, BRONCOControl, this, report4, ORIGINAL_ID, Multimode);
                             break;
                         default:
                             break;
@@ -1819,14 +1819,14 @@ namespace IDMS.Page
                     switch (PRO)
                     {
                         case "EGD":
-                            PdfEGD_TemplateB egd = new PdfEGD_TemplateB(EGDControl);
-                            egd.GenPDF(PRO, EGDControl, this, report, ORIGINAL_ID, Multimode);
+                            PdfEGD_TemplateB EGD = new PdfEGD_TemplateB(EGDControl);
+                            EGD.GenPDF(PRO, EGDControl, this, report, ORIGINAL_ID, Multimode);
                             break;
 
                         case "COL":
 
-                            PdfColono_TemplateB col = new PdfColono_TemplateB(COLControl);
-                            col.GenPDF(PRO, COLControl, this, report2, ORIGINAL_ID, Multimode);
+                            PdfColono_TemplateB Colono = new PdfColono_TemplateB(COLControl);
+                            Colono.GenPDF(PRO, COLControl, this, report2, ORIGINAL_ID, Multimode);
                             break;
 
                         case "ERCP":
@@ -1837,11 +1837,11 @@ namespace IDMS.Page
                         case "ENT":
 
                             PdfENT_TemplateB ENT = new PdfENT_TemplateB(ENTControl);
-                            ENT.GEN_PdfEGD(PRO, ENTControl, this, report5, ORIGINAL_ID, Multimode);
+                            ENT.GenPDF(PRO, ENTControl, this, report5, ORIGINAL_ID, Multimode);
                             break;
                         case "BRONCO":
-                            PdfBroco_TemplateB bronco = new PdfBroco_TemplateB(BRONCOControl);
-                            bronco.GenPDF(PRO, BRONCOControl, this, report4, ORIGINAL_ID, Multimode);
+                            PdfBroco_TemplateB Broncho = new PdfBroco_TemplateB(BRONCOControl);
+                            Broncho.GenPDF(PRO, BRONCOControl, this, report4, ORIGINAL_ID, Multimode);
                             break;
 
                         default:

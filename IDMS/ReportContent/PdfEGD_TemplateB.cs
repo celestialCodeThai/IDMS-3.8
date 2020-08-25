@@ -62,7 +62,6 @@ namespace IDMS.ReportContent
                 if (output.pic54.Enabled == true) page8 = true;
                 if (output.pic62.Enabled == true) page9 = true;
             }
-
         }
 
 

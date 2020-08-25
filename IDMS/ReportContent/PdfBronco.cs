@@ -71,7 +71,7 @@ namespace IDMS.ReportContent
         }
 
 
-        public void GEN_PdfEGD(String PRO, imageReport output, Report report, reportControlBronco ERCP, string ORIGINAL_ID, bool Multimode)
+        public void GenPDF(String PRO, imageReport output, Report report, reportControlBronco ERCP, string ORIGINAL_ID, bool Multimode)
         {
             string filename = specialCharReplace(report.infohn.Text);
             string Filesave = "";
@@ -485,7 +485,7 @@ namespace IDMS.ReportContent
             if (reportControl.med5.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med5.Text + " " + reportControl.med5txt.Text + " mcg"; }
             if (reportControl.med6.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med6txt.Text + " mg"; }
 
-             if (medname.Length > 60)
+            if (medname.Length > 60)
             {
                 medname = medname.Substring(0, 60) + "...";
             }
