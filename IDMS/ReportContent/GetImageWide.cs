@@ -78,8 +78,8 @@ namespace IDMS.ReportContent
                 picPDF[z].SetAbsolutePosition(LoopX, LoopY);
                 pdfDoc.Add(picPDF[z]);
 
-                PlaceChunckB(writer, P1[z], LoopX, LoopY - 15);
-                PlaceChunck(writer, output.cBoxes[z].Text, LoopX + 12, LoopY - 14);
+                placeChunckImageTitle(writer, P1[z], LoopX, LoopY - 15);
+                placeChunckImageDetail(writer, output.cBoxes[z].Text, LoopX + 12, LoopY - 14);
                 if (z == 2)
                 {
                     LoopX = paddingLeft; LoopY = LoopY - imageHeight - 20;
@@ -187,7 +187,9 @@ namespace IDMS.ReportContent
 
             if (i >= currentPage) { j = currentPage; }
 
+
             int x = prevPage;
+
 
             for (int z = 0; z < j - prevPage; z++)
             {
@@ -197,8 +199,8 @@ namespace IDMS.ReportContent
                 picPDF[z].ScaleAbsolute(imageWidth, imageHeight);
                 picPDF[z].SetAbsolutePosition(LoopX, LoopY);
                 pdfDoc.Add(picPDF[z]);
-                PlaceChunckB(writer, PX[z], LoopX, LoopY - 15);
-                PlaceChunck(writer, output.cBoxes[x].Text, LoopX + 12, LoopY - 14);
+                placeChunckImageTitle(writer, PX[z], LoopX, LoopY - 15);
+                placeChunckImageDetail(writer, output.cBoxes[x].Text, LoopX + 12, LoopY - 14);
                 if (z % 2 != 0)
                 {
                     LoopX = paddingLeft;
@@ -215,6 +217,7 @@ namespace IDMS.ReportContent
             int pLeft = (30 - checkLength) * 4;
             if (checkLength > 20) { pLeft += 20; }
 
+
             cb.MoveTo(200, 7);
             cb.LineTo(580, 7);
             cb.Stroke();
@@ -228,7 +231,7 @@ namespace IDMS.ReportContent
         }
 
 
-        private void PlaceChunck(PdfWriter writer, string text, int x, int y)
+        private void placeChunckImageDetail(PdfWriter writer, string text, int x, int y)
         {
             PdfContentByte cb = writer.DirectContent;
             BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
@@ -263,7 +266,7 @@ namespace IDMS.ReportContent
         }
 
 
-        private void PlaceChunckB(PdfWriter writer, string text, int x, int y)
+        private void placeChunckImageTitle(PdfWriter writer, string text, int x, int y)
         {
             PdfContentByte cb = writer.DirectContent;
             BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
