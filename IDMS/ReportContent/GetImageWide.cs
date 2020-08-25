@@ -106,7 +106,7 @@ namespace IDMS.ReportContent
         }
 
 
-        public PdfPTable MultiPage(Document pdfDoc, PdfWriter writer, int page, imageReport output, string doctorName,string procedure)
+        public PdfPTable MultiPage(Document pdfDoc, PdfWriter writer, int page, imageReport output, string doctorName, string procedure)
         {
             string[] P2, P3, P4, P5, P6, P7, P8, P9, PX = null;
             P2 = new string[] { "G", "H", "I", "J", "K", "L", "M", "N" };
@@ -142,7 +142,7 @@ namespace IDMS.ReportContent
             int j = i;
 
 
-            int paddingLeft = 65; 
+            int paddingLeft = 65;
             int BodyY = 595;
             int smallgap = 12;
             int LoopX = paddingLeft;
