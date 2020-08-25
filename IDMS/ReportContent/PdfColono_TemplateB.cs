@@ -78,7 +78,7 @@ namespace IDMS.ReportContent
         }
 
 
-        public void GEN_PdfCOL(String PRO, imageReport output, Report report, reportControlColono COL, string ORIGINAL_ID, bool Multimode)
+        public void GenPDF(String PRO, imageReport output, Report report, reportControlColono COL, string ORIGINAL_ID, bool Multimode)
         {
             string filename = specialCharReplace(report.infohn.Text);
             string Filesave = "";

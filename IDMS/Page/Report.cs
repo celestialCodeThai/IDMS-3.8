@@ -1798,7 +1798,7 @@ namespace IDMS.Page
 
                         case "ERCP":
                             PdfERCP ERCP = new PdfERCP(ERCPControl);
-                            ERCP.GEN_PdfEGD(PRO, ERCPControl, this, report3, ORIGINAL_ID, Multimode);
+                            ERCP.GenPDF(PRO, ERCPControl, this, report3, ORIGINAL_ID, Multimode);
                             break;
                         case "ENT":
                             PdfENT ENT = new PdfENT(ENTControl);
@@ -1820,19 +1820,19 @@ namespace IDMS.Page
                     {
                         case "EGD":
                             PdfEGD_TemplateB egd = new PdfEGD_TemplateB(EGDControl);
-                            egd.GEN_PdfEGD(PRO, EGDControl, this, report, ORIGINAL_ID, Multimode);
+                            egd.GenPDF(PRO, EGDControl, this, report, ORIGINAL_ID, Multimode);
                             break;
 
                         case "COL":
 
                             PdfColono_TemplateB col = new PdfColono_TemplateB(COLControl);
-                            col.GEN_PdfCOL(PRO, COLControl, this, report2, ORIGINAL_ID, Multimode);
+                            col.GenPDF(PRO, COLControl, this, report2, ORIGINAL_ID, Multimode);
                             break;
 
                         case "ERCP":
 
                             PdfERCP_TemplateB ERCP = new PdfERCP_TemplateB(ERCPControl);
-                            ERCP.GEN_PdfEGD(PRO, ERCPControl, this, report3, ORIGINAL_ID, Multimode);
+                            ERCP.GenPDF(PRO, ERCPControl, this, report3, ORIGINAL_ID, Multimode);
                             break;
                         case "ENT":
 
@@ -1841,7 +1841,7 @@ namespace IDMS.Page
                             break;
                         case "BRONCO":
                             PdfBroco_TemplateB bronco = new PdfBroco_TemplateB(BRONCOControl);
-                            bronco.GEN_PdfEGD(PRO, BRONCOControl, this, report4, ORIGINAL_ID, Multimode);
+                            bronco.GenPDF(PRO, BRONCOControl, this, report4, ORIGINAL_ID, Multimode);
                             break;
 
                         default:

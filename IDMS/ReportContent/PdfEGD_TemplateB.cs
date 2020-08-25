@@ -80,7 +80,7 @@ namespace IDMS.ReportContent
         }
 
 
-        public void GEN_PdfEGD(String PRO, imageReport output, Report report, reportControlEGD EGD, string ORIGINAL_ID, bool Multimode)
+        public void GenPDF(String PRO, imageReport output, Report report, reportControlEGD EGD, string ORIGINAL_ID, bool Multimode)
         {
             string filename = specialCharReplace(report.infohn.Text);
             string Filesave = "";
@@ -103,6 +103,7 @@ namespace IDMS.ReportContent
                 Filesave = imgFolder + PRO + "-HN " + filename + "-TIME " + DateTime.Now.ToString("HH") + "." + DateTime.Now.ToString("mm") + "." + DateTime.Now.ToString("ss") + ".pdf";
             }
 
+
             Document pdfDoc = new Document(PageSize.A4, 0, 0, 0, 0);
             PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(Filesave, FileMode.Create));
 
@@ -114,6 +115,7 @@ namespace IDMS.ReportContent
             pdfDoc.Open();
             pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
             pdfDoc.Add(GetBodyEGD(pdfDoc, writer, report, EGD, output, ORIGINAL_ID));
+
 
             string doctorName = report.infodoc.Text;
 
