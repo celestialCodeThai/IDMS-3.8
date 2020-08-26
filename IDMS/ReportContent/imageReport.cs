@@ -45,19 +45,15 @@ namespace IDMS.ReportContent
             InitializeComponent();
 
 
-            string pictureMode = load.getOption("option_value", "pictureMode");
-            bool squareMode = pictureMode == "1";
 
-            if (!squareMode)
-            {
-                setWideMode();
-            }
 
 
             D = P;
             boxes = new PictureBox[] { pic1, pic2, pic3, pic4, pic5, pic6, pic7, pic8, pic9, pic10, picture11, pic12, pic13, pic14, pic15, pic16, pic17, pic18, pic19, pic20, pic21, pic22, pic23, pic24, pic25, pic26, pic27, pic28, pic29, pic30
                 ,pic31,pic32,pic33,pic34,pic35,pic36,pic37,pic38,pic39,pic40,pic41,pic42,pic43,pic44,pic45,pic46,pic47,pic48,pic49,pic50,pic51,pic52,pic53,pic54,pic55,pic56,pic57,pic58,pic59,pic60,pic61,pic62,pic63,pic64,pic65,pic66
             };
+
+
             imgPath = new string[maxImg];
 
 
@@ -235,6 +231,16 @@ namespace IDMS.ReportContent
                     cBox.SelectionChangeCommitted += ComboBox_SelectionChangeCommitted;
                 }
             }
+
+
+            string pictureMode = load.getOption("option_value", "pictureMode");
+            bool squareMode = pictureMode == "1";
+
+            if (!squareMode)
+            {
+                setWideMode();
+            }
+
         }
 
 
@@ -1049,8 +1055,70 @@ namespace IDMS.ReportContent
 
         private void setWideMode()
         {
-            Size size = new Size(320, 130);
-            pic1.Size = size;
+            Size insSize = new Size(40, 110);
+            Size picSize = new Size(195, 110);
+            Size comboBoxSize = new Size(150, 24);
+
+            int insAxisX = -15;
+            int insAxisY = 40;
+
+            int picAxisX = 25;
+            int picAxisY = 40;
+
+            int comboBoxAxisX = 55;
+            int comboBoxAxisY = 155;
+
+            int textMarkAxisX = 25;
+            int textMarkAxisY = 155;
+
+            int markButtonAxisX = 220;
+            int markButtonAxisY = 85;
+
+            int textButtonAxisX = 220;
+            int textButtonAxisY = 120;
+
+            int nextPosition = 240;
+
+
+            foreach (PictureBox ins in INS)
+            {
+                ins.Size = insSize;
+            }
+
+
+            foreach (PictureBox picture in boxes)
+            {
+                picture.Size = picSize;
+            }
+
+
+            foreach (ComboBox comboBox in cBoxes)
+            {
+                comboBox.Size = comboBoxSize;
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                INS[i].Location = new Point(insAxisX, insAxisY);
+                insAxisX += nextPosition;
+
+                boxes[i].Location = new Point(picAxisX, picAxisY);
+                picAxisX += nextPosition;
+
+                cBoxes[i].Location = new Point(comboBoxAxisX, comboBoxAxisY);
+                comboBoxAxisX += nextPosition;
+
+                LtextMark[i].Location = new Point(textMarkAxisX, textMarkAxisY);
+                textMarkAxisX += nextPosition;
+
+                markButton[i].Location = new Point(markButtonAxisX, markButtonAxisY);
+                markButtonAxisX += nextPosition;
+
+                textButton[i].Location = new Point(textButtonAxisX, textButtonAxisY);
+                textButtonAxisX += nextPosition;
+            }
+
+
         }
 
 

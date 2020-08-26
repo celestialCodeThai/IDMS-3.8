@@ -1049,8 +1049,9 @@ namespace IDMS.ReportContent
 
         private void setWideMode()
         {
-            Size size = new Size(320, 130);
-            pic1.Size = size;
+
+
+
         }
 
     }

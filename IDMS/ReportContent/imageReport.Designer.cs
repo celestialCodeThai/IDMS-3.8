@@ -636,7 +636,7 @@
             this.cb4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.cb4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(18)))));
             this.cb4.FormattingEnabled = true;
-            this.cb4.Location = new System.Drawing.Point(588, 189);
+            this.cb4.Location = new System.Drawing.Point(852, 353);
             this.cb4.MaxLength = 20;
             this.cb4.Name = "cb4";
             this.cb4.Size = new System.Drawing.Size(112, 24);
@@ -1123,7 +1123,7 @@
             this.mt4.BackColor = System.Drawing.SystemColors.Control;
             this.mt4.Enabled = false;
             this.mt4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mt4.Location = new System.Drawing.Point(561, 191);
+            this.mt4.Location = new System.Drawing.Point(825, 355);
             this.mt4.Name = "mt4";
             this.mt4.Size = new System.Drawing.Size(27, 22);
             this.mt4.TabIndex = 70;
@@ -4562,7 +4562,7 @@
             this.m4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.m4.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.m4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.m4.Location = new System.Drawing.Point(701, 125);
+            this.m4.Location = new System.Drawing.Point(965, 289);
             this.m4.Name = "m4";
             this.m4.Size = new System.Drawing.Size(30, 30);
             this.m4.TabIndex = 98;
@@ -4577,7 +4577,7 @@
             this.e4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.e4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.e4.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.e4.Location = new System.Drawing.Point(701, 153);
+            this.e4.Location = new System.Drawing.Point(965, 317);
             this.e4.Name = "e4";
             this.e4.Size = new System.Drawing.Size(30, 30);
             this.e4.TabIndex = 97;
@@ -4955,7 +4955,7 @@
             // pic4
             // 
             this.pic4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pic4.Location = new System.Drawing.Point(561, 43);
+            this.pic4.Location = new System.Drawing.Point(825, 207);
             this.pic4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pic4.Name = "pic4";
             this.pic4.Size = new System.Drawing.Size(140, 140);
@@ -5224,7 +5224,7 @@
             // 
             // INS4
             // 
-            this.INS4.Location = new System.Drawing.Point(522, 43);
+            this.INS4.Location = new System.Drawing.Point(776, 207);
             this.INS4.Name = "INS4";
             this.INS4.Size = new System.Drawing.Size(44, 140);
             this.INS4.TabIndex = 354;
@@ -6166,7 +6166,7 @@
             this.Controls.Add(this.INS59);
             this.Controls.Add(this.INS66);
             this.Name = "imageReport";
-            this.Size = new System.Drawing.Size(732, 4000);
+            this.Size = new System.Drawing.Size(1000, 4000);
             ((System.ComponentModel.ISupportInitialize)(this.pic66)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic65)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic64)).EndInit();

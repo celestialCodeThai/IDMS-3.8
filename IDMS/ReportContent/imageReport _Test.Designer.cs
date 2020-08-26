@@ -588,10 +588,10 @@
             this.cb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(18)))));
             this.cb1.FormattingEnabled = true;
-            this.cb1.Location = new System.Drawing.Point(50, 175);
+            this.cb1.Location = new System.Drawing.Point(55, 155);
             this.cb1.MaxLength = 20;
             this.cb1.Name = "cb1";
-            this.cb1.Size = new System.Drawing.Size(200, 24);
+            this.cb1.Size = new System.Drawing.Size(120, 24);
             this.cb1.TabIndex = 31;
             // 
             // cb2
@@ -636,7 +636,7 @@
             this.cb4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.cb4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(18)))));
             this.cb4.FormattingEnabled = true;
-            this.cb4.Location = new System.Drawing.Point(806, 398);
+            this.cb4.Location = new System.Drawing.Point(856, 398);
             this.cb4.MaxLength = 20;
             this.cb4.Name = "cb4";
             this.cb4.Size = new System.Drawing.Size(112, 24);
@@ -1063,7 +1063,7 @@
             this.mt1.BackColor = System.Drawing.SystemColors.Control;
             this.mt1.Enabled = false;
             this.mt1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mt1.Location = new System.Drawing.Point(20, 175);
+            this.mt1.Location = new System.Drawing.Point(25, 155);
             this.mt1.Name = "mt1";
             this.mt1.Size = new System.Drawing.Size(27, 22);
             this.mt1.TabIndex = 67;
@@ -1123,7 +1123,7 @@
             this.mt4.BackColor = System.Drawing.SystemColors.Control;
             this.mt4.Enabled = false;
             this.mt4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mt4.Location = new System.Drawing.Point(779, 400);
+            this.mt4.Location = new System.Drawing.Point(829, 400);
             this.mt4.Name = "mt4";
             this.mt4.Size = new System.Drawing.Size(27, 22);
             this.mt4.TabIndex = 70;
@@ -4646,7 +4646,7 @@
             this.m1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.m1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.m1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.m1.Location = new System.Drawing.Point(250, 112);
+            this.m1.Location = new System.Drawing.Point(220, 85);
             this.m1.Name = "m1";
             this.m1.Size = new System.Drawing.Size(30, 30);
             this.m1.TabIndex = 62;
@@ -4660,7 +4660,7 @@
             this.e1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.e1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.e1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.e1.Location = new System.Drawing.Point(250, 140);
+            this.e1.Location = new System.Drawing.Point(220, 120);
             this.e1.Name = "e1";
             this.e1.Size = new System.Drawing.Size(30, 30);
             this.e1.TabIndex = 61;
@@ -4988,10 +4988,10 @@
             // pic1
             // 
             this.pic1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pic1.Location = new System.Drawing.Point(20, 40);
+            this.pic1.Location = new System.Drawing.Point(25, 40);
             this.pic1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pic1.Name = "pic1";
-            this.pic1.Size = new System.Drawing.Size(230, 130);
+            this.pic1.Size = new System.Drawing.Size(195, 110);
             this.pic1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic1.TabIndex = 1;
             this.pic1.TabStop = false;
@@ -5208,15 +5208,15 @@
             // 
             // INS1
             // 
-            this.INS1.Location = new System.Drawing.Point(-20, 40);
+            this.INS1.Location = new System.Drawing.Point(-15, 40);
             this.INS1.Name = "INS1";
-            this.INS1.Size = new System.Drawing.Size(40, 130);
+            this.INS1.Size = new System.Drawing.Size(40, 110);
             this.INS1.TabIndex = 352;
             this.INS1.TabStop = false;
             // 
             // INS3
             // 
-            this.INS3.Location = new System.Drawing.Point(510, 40);
+            this.INS3.Location = new System.Drawing.Point(500, 40);
             this.INS3.Name = "INS3";
             this.INS3.Size = new System.Drawing.Size(40, 130);
             this.INS3.TabIndex = 353;
@@ -5233,9 +5233,9 @@
             // INS2
             // 
             this.INS2.BackColor = System.Drawing.Color.White;
-            this.INS2.Location = new System.Drawing.Point(240, 40);
+            this.INS2.Location = new System.Drawing.Point(215, 40);
             this.INS2.Name = "INS2";
-            this.INS2.Size = new System.Drawing.Size(40, 130);
+            this.INS2.Size = new System.Drawing.Size(40, 120);
             this.INS2.TabIndex = 356;
             this.INS2.TabStop = false;
             // 
