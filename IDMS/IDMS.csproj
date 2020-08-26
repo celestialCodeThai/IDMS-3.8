@@ -243,6 +243,12 @@
       <DependentUpon>medTable_Template2.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportContent\GetImageWide.cs" />
+    <Compile Include="ReportContent\imageReport _Test.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportContent\imageReport _Test.Designer.cs">
+      <DependentUpon>imageReport _Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportContent\PdfBroco_TemplateB.cs" />
     <Compile Include="ReportContent\PdfColono_TemplateB.cs" />
     <Compile Include="ReportContent\PdfEGD_TemplateB.cs" />
@@ -585,6 +591,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportContent\coutput2cs.resx">
       <DependentUpon>coutput2cs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportContent\imageReport _Test.resx">
+      <DependentUpon>imageReport _Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportContent\imageReport.resx">
       <DependentUpon>imageReport.cs</DependentUpon>
