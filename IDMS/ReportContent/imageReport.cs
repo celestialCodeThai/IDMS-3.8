@@ -48,6 +48,11 @@ namespace IDMS.ReportContent
             string pictureMode = load.getOption("option_value", "pictureMode");
             bool squareMode = pictureMode == "1";
 
+            if (!squareMode)
+            {
+                setWideMode();
+            }
+
 
             D = P;
             boxes = new PictureBox[] { pic1, pic2, pic3, pic4, pic5, pic6, pic7, pic8, pic9, pic10, picture11, pic12, pic13, pic14, pic15, pic16, pic17, pic18, pic19, pic20, pic21, pic22, pic23, pic24, pic25, pic26, pic27, pic28, pic29, pic30
@@ -1039,6 +1044,13 @@ namespace IDMS.ReportContent
             {
                 recImage[i] = new Rectangle(0, 0, 0, 0);
             }
+        }
+
+
+        private void setWideMode()
+        {
+            Size size = new Size(320, 130);
+            pic1.Size = size;
         }
 
 
