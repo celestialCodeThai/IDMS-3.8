@@ -12,11 +12,13 @@ using System.IO;
 using IDMS.Popup;
 using System.Diagnostics;
 using gfoidl.Imaging;
+using IDMS.DataManage;
 
 namespace IDMS.ReportContent
 {
     public partial class imageReport : UserControl
     {
+        DataAccess load = new DataAccess();
         public int imgCount = 0;
         public static int maxImg = 66;
         public static int sizeImage = 500;
@@ -38,44 +40,57 @@ namespace IDMS.ReportContent
         public Rectangle[] recImage;
 
 
-
-
-
-
-
-
-
-
-
-
-
         public imageReport(String P)
         {
             InitializeComponent();
+
+
+            string pictureMode = load.getOption("option_value", "pictureMode");
+            bool squareMode = pictureMode == "1";
+
+
             D = P;
             boxes = new PictureBox[] { pic1, pic2, pic3, pic4, pic5, pic6, pic7, pic8, pic9, pic10, picture11, pic12, pic13, pic14, pic15, pic16, pic17, pic18, pic19, pic20, pic21, pic22, pic23, pic24, pic25, pic26, pic27, pic28, pic29, pic30
                 ,pic31,pic32,pic33,pic34,pic35,pic36,pic37,pic38,pic39,pic40,pic41,pic42,pic43,pic44,pic45,pic46,pic47,pic48,pic49,pic50,pic51,pic52,pic53,pic54,pic55,pic56,pic57,pic58,pic59,pic60,pic61,pic62,pic63,pic64,pic65,pic66
             };
             imgPath = new string[maxImg];
+
+
             cBoxes = new ComboBox[] { cb1, cb2, cb3, cb4, cb5, cb6, cb7, cb8, cb9, cb10, cb11, cb12, cb13, cb14, cb15, cb16, cb17, cb18, cb19, cb20, cb21, cb22, cb23, cb24, cb25, cb26, cb27, cb28, cb29, cb30
              ,cb31,cb32,cb33,cb34,cb35,cb36,cb37,cb38,cb39,cb40,cb41,cb42,cb43,cb44,cb45,cb46,cb47,cb48,cb49,cb50,cb51,cb52,cb53,cb54,cb55,cb56,cb57,cb58,cb59,cb60,cb61,cb62,cb63,cb64,cb65,cb66
             };
+
+
             markButton = new Button[] { m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15, m16, m17, m18, m19, m20, m21, m22, m23, m24, m25, m26, m27, m28, m29, m30
             ,m31,m32,m33,m34,m35,m36,m37,m38,m39,m40,m41,m42,m43,m44,m45,m46,m47,m48,m49,m50,m51,m52,m53,m54,m55,m56,m57,m58,m59,m60,m61,m62,m63,m64,m65,m66
             };
+
+
             textButton = new Button[] { e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16, e17, e18, e19, e20, e21, e22, e23, e24, e25, e26, e27, e28, e29, e30
             ,e31,e32,e33,e34,e35,e36,e37,e38,e39,e40,e41,e42,e43,e44,e45,e46,e47,e48,e49,e50,e51,e52,e53,e54,e55,e56,e57,e58,e59,e60,e61,e62,e63,e64,e65,e66
             };
+
+
             LtextMark = new TextBox[] { mt1, mt2, mt3, mt4, mt5, mt6, mt7, mt8, mt9, mt10, mt11, mt12, mt13, mt14, mt15, mt16, mt17, mt18, mt19, mt20, mt21, mt22, mt23, mt24, mt25, mt26, mt27, mt28, mt29, mt30
             ,mt31,mt32,mt33,mt34,mt35,mt36,mt37,mt38,mt39,mt40,mt41,mt42,mt43,mt44,mt45,mt46,mt47,mt48,mt49,mt50,mt51,mt52,mt53,mt54,mt55,mt56,mt57,mt58,mt59,mt60,mt61,mt62,mt63,mt64,mt65,mt66
             };
+
+
             INS = new PictureBox[] { INS1,INS2,INS3,INS4,INS5,INS6,INS7,INS8,INS9,INS10,INS11,INS12,INS13,INS14,INS15,INS16,INS17,INS18,INS19,INS20,INS21,INS22,INS23,INS24,INS25,INS26,INS27,INS28,INS29,INS30,INS31,INS32,INS33,INS34
                 ,INS35 ,INS36 ,INS37 ,INS38 ,INS39 ,INS40 ,INS41 ,INS42 ,INS43 ,INS44 ,INS45 ,INS46 ,INS47 ,INS48 ,INS49 ,INS50 ,INS51 ,INS52 ,INS53 ,INS54 ,INS55 ,INS56 ,INS57 ,INS58 ,INS59 ,INS60 ,INS61 ,INS62 ,INS63 ,INS64 ,INS65 ,INS66
             };
+
+
             cBoxIndex = new int[maxImg];
+
+
             recImage = new Rectangle[maxImg];
+
+
             imgCount = 0;
+
             setUnabledAll();
+
 
             foreach (var ins in INS)
             {
@@ -83,6 +98,8 @@ namespace IDMS.ReportContent
                 ins.DragDrop += INS_DragDrop;
                 ins.DragEnter += INS_DragEnter;
             }
+
+
             foreach (var box in boxes)
             {
                 box.AllowDrop = true;
@@ -91,24 +108,28 @@ namespace IDMS.ReportContent
 
                 box.MouseDoubleClick += PictureBox_MouseDoubleClick;
                 box.MouseClick += PictureBox_MouseClick;
-                box.MouseEnter += PictureBox_MouseEnter;
-                box.MouseLeave += PictureBox_MouseLeave;
                 box.MouseMove += PictureBox_MouseMove;
                 box.Enabled = false;
 
             }
+
+
             foreach (var m in markButton)
             {
 
                 m.Click += Mark_Click;
 
             }
+
+
             foreach (var t in textButton)
             {
 
                 t.Click += Edit_Click;
 
             }
+
+
             if (P == "EGD")
             {
                 foreach (var cBox in cBoxes)
@@ -132,7 +153,8 @@ namespace IDMS.ReportContent
                     cBox.SelectionChangeCommitted += ComboBox_SelectionChangeCommitted;
                 }
             }
-            else
+
+
             if (P == "Colonoscopy")
             {
                 foreach (var cBox in cBoxes)
@@ -153,6 +175,8 @@ namespace IDMS.ReportContent
                     cBox.SelectionChangeCommitted += ComboBox_SelectionChangeCommitted;
                 }
             }
+
+
             if (P == "ERCP")
             {
                 foreach (var cBox in cBoxes)
@@ -170,6 +194,8 @@ namespace IDMS.ReportContent
                     cBox.SelectionChangeCommitted += ComboBox_SelectionChangeCommitted;
                 }
             }
+
+
             if (P == "BRONCO")
             {
                 foreach (var cBox in cBoxes)
@@ -193,6 +219,8 @@ namespace IDMS.ReportContent
                     cBox.SelectionChangeCommitted += ComboBox_SelectionChangeCommitted;
                 }
             }
+
+
             if (P == "ENT")
             {
                 foreach (var cBox in cBoxes)
@@ -203,6 +231,8 @@ namespace IDMS.ReportContent
                 }
             }
         }
+
+
         private System.Delegate _delPageMethod;
         public Delegate CallingPageMethod
         {
@@ -215,17 +245,10 @@ namespace IDMS.ReportContent
             var a = (((ComboBox)sender).TabIndex) - 31;
             cBoxIndex[a] = cBoxes[a].SelectedIndex;
 
-            //   System.Windows.Forms.MessageBox.Show(a.ToString());
-
-
 
         }
 
 
-        private void imageReport_Load(object sender, EventArgs e)
-        {
-
-        }
         public void setPicture(string a)
         {
             try
@@ -249,6 +272,7 @@ namespace IDMS.ReportContent
             }
         }
 
+
         public void setPictureWithPoint(string a, Rectangle point)
         {
             try
@@ -271,6 +295,8 @@ namespace IDMS.ReportContent
                 MessageBox.Show(a + " is missing");
             }
         }
+
+
         public Bitmap MakeSquareEndoWay(Image bmp, int size)
         {
             Bitmap s = (Bitmap)bmp;
@@ -287,13 +313,12 @@ namespace IDMS.ReportContent
             g.DrawImage(s, new Rectangle(0, 0, size, size), new Rectangle(l, t, s.Width - l * 2, s.Height - t * 2), GraphicsUnit.Pixel);
             return res;
 
-            //  return s;
-
         }
+
 
         public Bitmap MakeSquareEndoWayPoint(Image bmp, int size, Rectangle point)
         {
-            Image newIMG = (Image)(new Bitmap(bmp, new Size(((bmp.Width*3)/4) ,((bmp.Height*3)/4 ))));
+            Image newIMG = (Image)(new Bitmap(bmp, new Size(((bmp.Width * 3) / 4), ((bmp.Height * 3) / 4))));
 
             bmp = newIMG;
 
@@ -344,6 +369,7 @@ namespace IDMS.ReportContent
 
         }
 
+
         public void changePicture(int b, string a, string imgname, string oldimg, Rectangle point, bool isEdit)
         {
 
@@ -372,6 +398,7 @@ namespace IDMS.ReportContent
             boxes[b].Refresh();
 
         }
+
 
         public void clearPicture()
         {
@@ -431,6 +458,8 @@ namespace IDMS.ReportContent
 
 
         }
+
+
         private void updateSelectedSwap(string tname, string sname)
         {
             if (imgCount > 0)
@@ -474,11 +503,8 @@ namespace IDMS.ReportContent
             }
 
         }
-        private void updateInsertImage(string tname, string sname)
-        {
-            //gook
 
-        }
+
         private void updateSelectedImage(string imgname)
         {
 
@@ -514,53 +540,8 @@ namespace IDMS.ReportContent
                 }
             }
         }
-        private void PictureBox_MouseEnter(object sender, EventArgs e)
-        {
-            /*
-            if (imgCount > 0)
-            {
-                var target = (PictureBox)sender;
-                var targetPath = (((PictureBox)sender).TabIndex) - 1;
 
-                Report parent = this.ParentForm as Report;
-                if (parent != null)
-                {
-                    parent.picPreview.Image = target.Image;
-                    string a = imgPath[targetPath];
 
-                    string fileName = Path.GetFileNameWithoutExtension(a);
-
-                    parent.picnamePreview.Text = fileName;
-
-                }
-            }
-            */
-
-        }
-
-        private void PictureBox_MouseLeave(object sender, EventArgs e)
-        {
-            /*
-            if (imgCount > 0)
-            {
-                var target = (PictureBox)sender;
-               // var targetPath = (((PictureBox)sender).TabIndex) - 1;
-
-                Report parent = this.ParentForm as Report;
-                if (parent != null)
-                {
-                    parent.picPreview.Image = null;
-                   // string a = imgPath[targetPath];
-
-                  //  string fileName = Path.GetFileNameWithoutExtension(a);
-
-                    parent.picnamePreview.Text = null;
-
-                }
-            }
-            */
-
-        }
         private void PictureBox_DragDrop(object sender, DragEventArgs e)
         {
 
@@ -577,12 +558,8 @@ namespace IDMS.ReportContent
                     SwapImages(source, target);
 
 
-                    //MessageBox.Show(source.Name);
-
-
                 }
             }
-            // MessageBox.Show(target.Name);
 
         }
 
@@ -591,9 +568,6 @@ namespace IDMS.ReportContent
         {
             e.Effect = DragDropEffects.Move;
         }
-
-
-
 
 
         private void PictureBox_MouseMove(object sender, MouseEventArgs e)
@@ -607,6 +581,8 @@ namespace IDMS.ReportContent
                 }
             }
         }
+
+
         private void PictureBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var a = (((PictureBox)sender).TabIndex) - 1;
@@ -669,10 +645,6 @@ namespace IDMS.ReportContent
         }
 
 
-
-
-
-
         private void SwapImages(PictureBox source, PictureBox target)
         {
             if (source.Image == null || target.Image == null)
@@ -711,6 +683,7 @@ namespace IDMS.ReportContent
 
         }
 
+
         private void PictureBox_MouseClick(object sender, MouseEventArgs e)
         {
 
@@ -737,6 +710,7 @@ namespace IDMS.ReportContent
 
         }
 
+
         private void reloadImage()
         {
             var y = 0;
@@ -756,26 +730,6 @@ namespace IDMS.ReportContent
 
 
             }
-        }
-
-        private void cb13_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cb14_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cb15_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cb9_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
 
@@ -894,6 +848,8 @@ namespace IDMS.ReportContent
 
             }
         }
+
+
         private void Mark_Click(object sender, EventArgs e)
         {
             var button = (Button)sender;
@@ -904,6 +860,8 @@ namespace IDMS.ReportContent
             marking(x, mark1[0], mark1[1], mark1[2], mark1[3], mark1[4], mark1[5], mark1[6], mark1[7], mark1[8], mark1[9], mark1[10]);
 
         }
+
+
         private void Edit_Click(object sender, EventArgs e)
         {
             var button = (Button)sender;
@@ -913,6 +871,7 @@ namespace IDMS.ReportContent
 
             editImg(x);
         }
+
 
         public void setEnabled(int i)
         {
@@ -924,6 +883,8 @@ namespace IDMS.ReportContent
 
 
         }
+
+
         public void setUnabled(int i)
         {
 
@@ -936,6 +897,8 @@ namespace IDMS.ReportContent
 
 
         }
+
+
         public void setUnabledAll()
         {
 
@@ -949,6 +912,7 @@ namespace IDMS.ReportContent
             }
 
         }
+
 
         private void INS_DragDrop(object sender, DragEventArgs e)
         {
@@ -982,6 +946,8 @@ namespace IDMS.ReportContent
 
 
         }
+
+
         private void insertImages(int lower, int higher)
         {
 
@@ -1060,14 +1026,16 @@ namespace IDMS.ReportContent
 
         }
 
+
         private void INS_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
         }
 
+
         public void setDefaultRectangle()
         {
-            for(int i = 0; i < 66; i++)
+            for (int i = 0; i < 66; i++)
             {
                 recImage[i] = new Rectangle(0, 0, 0, 0);
             }

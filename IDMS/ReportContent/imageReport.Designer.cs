@@ -928,7 +928,6 @@
             this.cb9.Name = "cb9";
             this.cb9.Size = new System.Drawing.Size(148, 28);
             this.cb9.TabIndex = 39;
-            this.cb9.SelectedIndexChanged += new System.EventHandler(this.cb9_SelectedIndexChanged);
             // 
             // cb10
             // 
@@ -997,7 +996,6 @@
             this.cb13.Name = "cb13";
             this.cb13.Size = new System.Drawing.Size(148, 28);
             this.cb13.TabIndex = 43;
-            this.cb13.SelectedIndexChanged += new System.EventHandler(this.cb13_SelectedIndexChanged);
             // 
             // cb14
             // 
@@ -1015,7 +1013,6 @@
             this.cb14.Name = "cb14";
             this.cb14.Size = new System.Drawing.Size(148, 28);
             this.cb14.TabIndex = 44;
-            this.cb14.SelectedIndexChanged += new System.EventHandler(this.cb14_SelectedIndexChanged);
             // 
             // cb15
             // 
@@ -1033,7 +1030,6 @@
             this.cb15.Name = "cb15";
             this.cb15.Size = new System.Drawing.Size(148, 28);
             this.cb15.TabIndex = 45;
-            this.cb15.SelectedIndexChanged += new System.EventHandler(this.cb15_SelectedIndexChanged);
             // 
             // cb16
             // 
@@ -8237,7 +8233,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "imageReport";
             this.Size = new System.Drawing.Size(976, 4923);
-            this.Load += new System.EventHandler(this.imageReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pic66)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic65)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic64)).EndInit();
