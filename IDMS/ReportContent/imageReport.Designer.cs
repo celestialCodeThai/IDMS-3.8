@@ -359,24 +359,24 @@
             this.pic3 = new System.Windows.Forms.PictureBox();
             this.pic2 = new System.Windows.Forms.PictureBox();
             this.pic1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.labelP1 = new System.Windows.Forms.Label();
+            this.labelP4 = new System.Windows.Forms.Label();
+            this.labelP3 = new System.Windows.Forms.Label();
+            this.labelP5 = new System.Windows.Forms.Label();
+            this.labelP6 = new System.Windows.Forms.Label();
+            this.labelP2 = new System.Windows.Forms.Label();
+            this.lineP5A = new System.Windows.Forms.Button();
+            this.lineP4A = new System.Windows.Forms.Button();
+            this.lineP4B = new System.Windows.Forms.Button();
+            this.lineP3A = new System.Windows.Forms.Button();
+            this.lineP3B = new System.Windows.Forms.Button();
+            this.lineP2B = new System.Windows.Forms.Button();
+            this.lineP2A = new System.Windows.Forms.Button();
+            this.lineP1B = new System.Windows.Forms.Button();
+            this.lineP1A = new System.Windows.Forms.Button();
+            this.lineP6B = new System.Windows.Forms.Button();
+            this.lineP6A = new System.Windows.Forms.Button();
+            this.lineP5B = new System.Windows.Forms.Button();
             this.INS1 = new System.Windows.Forms.PictureBox();
             this.INS3 = new System.Windows.Forms.PictureBox();
             this.INS4 = new System.Windows.Forms.PictureBox();
@@ -444,6 +444,15 @@
             this.INS63 = new System.Windows.Forms.PictureBox();
             this.INS61 = new System.Windows.Forms.PictureBox();
             this.swapBTN = new System.Windows.Forms.Label();
+            this.lineP7A = new System.Windows.Forms.Button();
+            this.lineP7B = new System.Windows.Forms.Button();
+            this.lineP8A = new System.Windows.Forms.Button();
+            this.labelP7 = new System.Windows.Forms.Label();
+            this.lineP8B = new System.Windows.Forms.Button();
+            this.labelP8 = new System.Windows.Forms.Label();
+            this.labelP9 = new System.Windows.Forms.Label();
+            this.lineP9A = new System.Windows.Forms.Button();
+            this.lineP9B = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pic66)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic65)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic64)).BeginInit();
@@ -4996,215 +5005,214 @@
             this.pic1.TabIndex = 1;
             this.pic1.TabStop = false;
             // 
-            // label1
+            // labelP1
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label1.Location = new System.Drawing.Point(343, 406);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 25);
-            this.label1.TabIndex = 334;
-            this.label1.Text = "Page 1";
+            this.labelP1.AutoSize = true;
+            this.labelP1.BackColor = System.Drawing.Color.Transparent;
+            this.labelP1.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelP1.Location = new System.Drawing.Point(330, 400);
+            this.labelP1.Name = "labelP1";
+            this.labelP1.Size = new System.Drawing.Size(69, 25);
+            this.labelP1.TabIndex = 334;
+            this.labelP1.Text = "Page 1";
             // 
-            // label2
+            // labelP4
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label2.Location = new System.Drawing.Point(343, 2186);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 25);
-            this.label2.TabIndex = 335;
-            this.label2.Text = "Page 4";
+            this.labelP4.AutoSize = true;
+            this.labelP4.BackColor = System.Drawing.Color.Transparent;
+            this.labelP4.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelP4.Location = new System.Drawing.Point(330, 2190);
+            this.labelP4.Name = "labelP4";
+            this.labelP4.Size = new System.Drawing.Size(69, 25);
+            this.labelP4.TabIndex = 335;
+            this.labelP4.Text = "Page 4";
             // 
-            // label3
+            // labelP3
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label3.Location = new System.Drawing.Point(343, 1599);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 25);
-            this.label3.TabIndex = 336;
-            this.label3.Text = "Page 3";
+            this.labelP3.AutoSize = true;
+            this.labelP3.BackColor = System.Drawing.Color.Transparent;
+            this.labelP3.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelP3.Location = new System.Drawing.Point(330, 1594);
+            this.labelP3.Name = "labelP3";
+            this.labelP3.Size = new System.Drawing.Size(69, 25);
+            this.labelP3.TabIndex = 336;
+            this.labelP3.Text = "Page 3";
             // 
-            // label4
+            // labelP5
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label4.Location = new System.Drawing.Point(343, 2777);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 25);
-            this.label4.TabIndex = 337;
-            this.label4.Text = "Page 5";
+            this.labelP5.AutoSize = true;
+            this.labelP5.BackColor = System.Drawing.Color.Transparent;
+            this.labelP5.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelP5.Location = new System.Drawing.Point(330, 2780);
+            this.labelP5.Name = "labelP5";
+            this.labelP5.Size = new System.Drawing.Size(69, 25);
+            this.labelP5.TabIndex = 337;
+            this.labelP5.Text = "Page 5";
             // 
-            // label5
+            // labelP6
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label5.Location = new System.Drawing.Point(343, 3378);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 25);
-            this.label5.TabIndex = 338;
-            this.label5.Text = "Page 6";
+            this.labelP6.AutoSize = true;
+            this.labelP6.BackColor = System.Drawing.Color.Transparent;
+            this.labelP6.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelP6.Location = new System.Drawing.Point(330, 3370);
+            this.labelP6.Name = "labelP6";
+            this.labelP6.Size = new System.Drawing.Size(69, 25);
+            this.labelP6.TabIndex = 338;
+            this.labelP6.Text = "Page 6";
             // 
-            // label6
+            // labelP2
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label6.Location = new System.Drawing.Point(343, 1007);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 25);
-            this.label6.TabIndex = 339;
-            this.label6.Text = "Page 2";
+            this.labelP2.AutoSize = true;
+            this.labelP2.BackColor = System.Drawing.Color.Transparent;
+            this.labelP2.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelP2.Location = new System.Drawing.Point(330, 1000);
+            this.labelP2.Name = "labelP2";
+            this.labelP2.Size = new System.Drawing.Size(69, 25);
+            this.labelP2.TabIndex = 339;
+            this.labelP2.Text = "Page 2";
             // 
-            // button1
+            // lineP5A
             // 
-            this.button1.BackColor = System.Drawing.Color.Gray;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(20, 2791);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(300, 1);
-            this.button1.TabIndex = 340;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = false;
+            this.lineP5A.BackColor = System.Drawing.Color.Gray;
+            this.lineP5A.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP5A.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP5A.Location = new System.Drawing.Point(10, 2800);
+            this.lineP5A.Name = "lineP5A";
+            this.lineP5A.Size = new System.Drawing.Size(300, 1);
+            this.lineP5A.TabIndex = 340;
+            this.lineP5A.Text = "button1";
+            this.lineP5A.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // lineP4A
             // 
-            this.button2.BackColor = System.Drawing.Color.Gray;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(20, 2201);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(300, 1);
-            this.button2.TabIndex = 341;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = false;
+            this.lineP4A.BackColor = System.Drawing.Color.Gray;
+            this.lineP4A.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP4A.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP4A.Location = new System.Drawing.Point(10, 2210);
+            this.lineP4A.Name = "lineP4A";
+            this.lineP4A.Size = new System.Drawing.Size(300, 1);
+            this.lineP4A.TabIndex = 341;
+            this.lineP4A.Text = "button2";
+            this.lineP4A.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // lineP4B
             // 
-            this.button3.BackColor = System.Drawing.Color.Gray;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(430, 2201);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(300, 1);
-            this.button3.TabIndex = 342;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = false;
+            this.lineP4B.BackColor = System.Drawing.Color.Gray;
+            this.lineP4B.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP4B.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP4B.Location = new System.Drawing.Point(420, 2210);
+            this.lineP4B.Name = "lineP4B";
+            this.lineP4B.Size = new System.Drawing.Size(300, 1);
+            this.lineP4B.TabIndex = 342;
+            this.lineP4B.Text = "button3";
+            this.lineP4B.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // lineP3A
             // 
-            this.button4.BackColor = System.Drawing.Color.Gray;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(20, 1614);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(300, 1);
-            this.button4.TabIndex = 343;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = false;
+            this.lineP3A.BackColor = System.Drawing.Color.Gray;
+            this.lineP3A.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP3A.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP3A.Location = new System.Drawing.Point(10, 1614);
+            this.lineP3A.Name = "lineP3A";
+            this.lineP3A.Size = new System.Drawing.Size(300, 1);
+            this.lineP3A.TabIndex = 343;
+            this.lineP3A.Text = "button4";
+            this.lineP3A.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // lineP3B
             // 
-            this.button5.BackColor = System.Drawing.Color.Gray;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(430, 1614);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(300, 1);
-            this.button5.TabIndex = 344;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = false;
+            this.lineP3B.BackColor = System.Drawing.Color.Gray;
+            this.lineP3B.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP3B.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP3B.Location = new System.Drawing.Point(419, 1614);
+            this.lineP3B.Name = "lineP3B";
+            this.lineP3B.Size = new System.Drawing.Size(300, 1);
+            this.lineP3B.TabIndex = 344;
+            this.lineP3B.Text = "button5";
+            this.lineP3B.UseVisualStyleBackColor = false;
             // 
-            // button6
+            // lineP2B
             // 
-            this.button6.BackColor = System.Drawing.Color.Gray;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(430, 1022);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(300, 1);
-            this.button6.TabIndex = 346;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = false;
+            this.lineP2B.BackColor = System.Drawing.Color.Gray;
+            this.lineP2B.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP2B.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP2B.Location = new System.Drawing.Point(420, 1020);
+            this.lineP2B.Name = "lineP2B";
+            this.lineP2B.Size = new System.Drawing.Size(300, 1);
+            this.lineP2B.TabIndex = 346;
+            this.lineP2B.Text = "button6";
+            this.lineP2B.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // lineP2A
             // 
-            this.button7.BackColor = System.Drawing.Color.Gray;
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(20, 1022);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(300, 1);
-            this.button7.TabIndex = 345;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = false;
+            this.lineP2A.BackColor = System.Drawing.Color.Gray;
+            this.lineP2A.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP2A.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP2A.Location = new System.Drawing.Point(10, 1020);
+            this.lineP2A.Name = "lineP2A";
+            this.lineP2A.Size = new System.Drawing.Size(300, 1);
+            this.lineP2A.TabIndex = 345;
+            this.lineP2A.Text = "button7";
+            this.lineP2A.UseVisualStyleBackColor = false;
             // 
-            // button8
+            // lineP1B
             // 
-            this.button8.BackColor = System.Drawing.Color.Gray;
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(430, 421);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(300, 1);
-            this.button8.TabIndex = 348;
-            this.button8.Text = "button8";
-            this.button8.UseVisualStyleBackColor = false;
+            this.lineP1B.BackColor = System.Drawing.Color.Gray;
+            this.lineP1B.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP1B.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP1B.Location = new System.Drawing.Point(420, 420);
+            this.lineP1B.Name = "lineP1B";
+            this.lineP1B.Size = new System.Drawing.Size(300, 1);
+            this.lineP1B.TabIndex = 348;
+            this.lineP1B.Text = "button8";
+            this.lineP1B.UseVisualStyleBackColor = false;
             // 
-            // button9
+            // lineP1A
             // 
-            this.button9.BackColor = System.Drawing.Color.Gray;
-            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(20, 421);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(300, 1);
-            this.button9.TabIndex = 347;
-            this.button9.Text = "button9";
-            this.button9.UseVisualStyleBackColor = false;
+            this.lineP1A.BackColor = System.Drawing.Color.Gray;
+            this.lineP1A.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP1A.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP1A.Location = new System.Drawing.Point(10, 420);
+            this.lineP1A.Name = "lineP1A";
+            this.lineP1A.Size = new System.Drawing.Size(300, 1);
+            this.lineP1A.TabIndex = 347;
+            this.lineP1A.UseVisualStyleBackColor = false;
             // 
-            // button10
+            // lineP6B
             // 
-            this.button10.BackColor = System.Drawing.Color.Gray;
-            this.button10.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Location = new System.Drawing.Point(430, 3393);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(300, 1);
-            this.button10.TabIndex = 350;
-            this.button10.Text = "button10";
-            this.button10.UseVisualStyleBackColor = false;
+            this.lineP6B.BackColor = System.Drawing.Color.Gray;
+            this.lineP6B.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP6B.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP6B.Location = new System.Drawing.Point(420, 3390);
+            this.lineP6B.Name = "lineP6B";
+            this.lineP6B.Size = new System.Drawing.Size(300, 1);
+            this.lineP6B.TabIndex = 350;
+            this.lineP6B.Text = "button10";
+            this.lineP6B.UseVisualStyleBackColor = false;
             // 
-            // button11
+            // lineP6A
             // 
-            this.button11.BackColor = System.Drawing.Color.Gray;
-            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Location = new System.Drawing.Point(20, 3393);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(300, 1);
-            this.button11.TabIndex = 349;
-            this.button11.Text = "button11";
-            this.button11.UseVisualStyleBackColor = false;
+            this.lineP6A.BackColor = System.Drawing.Color.Gray;
+            this.lineP6A.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP6A.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP6A.Location = new System.Drawing.Point(10, 3390);
+            this.lineP6A.Name = "lineP6A";
+            this.lineP6A.Size = new System.Drawing.Size(300, 1);
+            this.lineP6A.TabIndex = 349;
+            this.lineP6A.Text = "button11";
+            this.lineP6A.UseVisualStyleBackColor = false;
             // 
-            // button12
+            // lineP5B
             // 
-            this.button12.BackColor = System.Drawing.Color.Gray;
-            this.button12.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Location = new System.Drawing.Point(430, 2791);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(300, 1);
-            this.button12.TabIndex = 351;
-            this.button12.Text = "button12";
-            this.button12.UseVisualStyleBackColor = false;
+            this.lineP5B.BackColor = System.Drawing.Color.Gray;
+            this.lineP5B.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP5B.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP5B.Location = new System.Drawing.Point(420, 2800);
+            this.lineP5B.Name = "lineP5B";
+            this.lineP5B.Size = new System.Drawing.Size(300, 1);
+            this.lineP5B.TabIndex = 351;
+            this.lineP5B.Text = "button12";
+            this.lineP5B.UseVisualStyleBackColor = false;
             // 
             // INS1
             // 
@@ -5745,46 +5753,153 @@
             this.swapBTN.Text = "SWAP MODE";
             this.swapBTN.Visible = false;
             // 
+            // lineP7A
+            // 
+            this.lineP7A.BackColor = System.Drawing.Color.Gray;
+            this.lineP7A.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP7A.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP7A.Location = new System.Drawing.Point(10, 3450);
+            this.lineP7A.Name = "lineP7A";
+            this.lineP7A.Size = new System.Drawing.Size(300, 1);
+            this.lineP7A.TabIndex = 422;
+            this.lineP7A.Text = "button11";
+            this.lineP7A.UseVisualStyleBackColor = false;
+            this.lineP7A.Visible = false;
+            // 
+            // lineP7B
+            // 
+            this.lineP7B.BackColor = System.Drawing.Color.Gray;
+            this.lineP7B.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP7B.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP7B.Location = new System.Drawing.Point(420, 3450);
+            this.lineP7B.Name = "lineP7B";
+            this.lineP7B.Size = new System.Drawing.Size(300, 1);
+            this.lineP7B.TabIndex = 423;
+            this.lineP7B.Text = "button11";
+            this.lineP7B.UseVisualStyleBackColor = false;
+            this.lineP7B.Visible = false;
+            // 
+            // lineP8A
+            // 
+            this.lineP8A.BackColor = System.Drawing.Color.Gray;
+            this.lineP8A.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP8A.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP8A.Location = new System.Drawing.Point(10, 3500);
+            this.lineP8A.Name = "lineP8A";
+            this.lineP8A.Size = new System.Drawing.Size(300, 1);
+            this.lineP8A.TabIndex = 424;
+            this.lineP8A.Text = "button11";
+            this.lineP8A.UseVisualStyleBackColor = false;
+            this.lineP8A.Visible = false;
+            // 
+            // labelP7
+            // 
+            this.labelP7.AutoSize = true;
+            this.labelP7.BackColor = System.Drawing.Color.Transparent;
+            this.labelP7.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelP7.Location = new System.Drawing.Point(330, 3430);
+            this.labelP7.Name = "labelP7";
+            this.labelP7.Size = new System.Drawing.Size(69, 25);
+            this.labelP7.TabIndex = 425;
+            this.labelP7.Text = "Page 7";
+            this.labelP7.Visible = false;
+            // 
+            // lineP8B
+            // 
+            this.lineP8B.BackColor = System.Drawing.Color.Gray;
+            this.lineP8B.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP8B.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP8B.Location = new System.Drawing.Point(420, 3500);
+            this.lineP8B.Name = "lineP8B";
+            this.lineP8B.Size = new System.Drawing.Size(300, 1);
+            this.lineP8B.TabIndex = 426;
+            this.lineP8B.Text = "button11";
+            this.lineP8B.UseVisualStyleBackColor = false;
+            this.lineP8B.Visible = false;
+            // 
+            // labelP8
+            // 
+            this.labelP8.AutoSize = true;
+            this.labelP8.BackColor = System.Drawing.Color.Transparent;
+            this.labelP8.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelP8.Location = new System.Drawing.Point(330, 3480);
+            this.labelP8.Name = "labelP8";
+            this.labelP8.Size = new System.Drawing.Size(69, 25);
+            this.labelP8.TabIndex = 427;
+            this.labelP8.Text = "Page 8";
+            this.labelP8.Visible = false;
+            // 
+            // labelP9
+            // 
+            this.labelP9.AutoSize = true;
+            this.labelP9.BackColor = System.Drawing.Color.Transparent;
+            this.labelP9.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelP9.Location = new System.Drawing.Point(330, 3530);
+            this.labelP9.Name = "labelP9";
+            this.labelP9.Size = new System.Drawing.Size(69, 25);
+            this.labelP9.TabIndex = 428;
+            this.labelP9.Text = "Page 9";
+            this.labelP9.Visible = false;
+            // 
+            // lineP9A
+            // 
+            this.lineP9A.BackColor = System.Drawing.Color.Gray;
+            this.lineP9A.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP9A.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP9A.Location = new System.Drawing.Point(10, 3550);
+            this.lineP9A.Name = "lineP9A";
+            this.lineP9A.Size = new System.Drawing.Size(300, 1);
+            this.lineP9A.TabIndex = 429;
+            this.lineP9A.Text = "button11";
+            this.lineP9A.UseVisualStyleBackColor = false;
+            this.lineP9A.Visible = false;
+            // 
+            // lineP9B
+            // 
+            this.lineP9B.BackColor = System.Drawing.Color.Gray;
+            this.lineP9B.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lineP9B.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineP9B.Location = new System.Drawing.Point(420, 3550);
+            this.lineP9B.Name = "lineP9B";
+            this.lineP9B.Size = new System.Drawing.Size(300, 1);
+            this.lineP9B.TabIndex = 430;
+            this.lineP9B.Text = "button11";
+            this.lineP9B.UseVisualStyleBackColor = false;
+            this.lineP9B.Visible = false;
+            // 
             // imageReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lineP9B);
+            this.Controls.Add(this.lineP9A);
+            this.Controls.Add(this.labelP9);
+            this.Controls.Add(this.labelP8);
+            this.Controls.Add(this.lineP8B);
+            this.Controls.Add(this.labelP7);
+            this.Controls.Add(this.lineP8A);
+            this.Controls.Add(this.lineP7B);
+            this.Controls.Add(this.lineP7A);
             this.Controls.Add(this.swapBTN);
-            this.Controls.Add(this.INS61);
-            this.Controls.Add(this.INS57);
-            this.Controls.Add(this.INS65);
-            this.Controls.Add(this.INS53);
-            this.Controls.Add(this.INS49);
-            this.Controls.Add(this.INS45);
-            this.Controls.Add(this.INS41);
-            this.Controls.Add(this.INS37);
-            this.Controls.Add(this.INS33);
-            this.Controls.Add(this.INS13);
-            this.Controls.Add(this.INS17);
-            this.Controls.Add(this.INS21);
-            this.Controls.Add(this.INS29);
-            this.Controls.Add(this.INS9);
-            this.Controls.Add(this.INS25);
-            this.Controls.Add(this.INS5);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lineP5B);
+            this.Controls.Add(this.lineP6B);
+            this.Controls.Add(this.lineP6A);
+            this.Controls.Add(this.lineP1B);
+            this.Controls.Add(this.lineP1A);
+            this.Controls.Add(this.lineP2B);
+            this.Controls.Add(this.lineP2A);
+            this.Controls.Add(this.lineP3B);
+            this.Controls.Add(this.lineP3A);
+            this.Controls.Add(this.lineP4B);
+            this.Controls.Add(this.lineP4A);
+            this.Controls.Add(this.lineP5A);
+            this.Controls.Add(this.labelP2);
+            this.Controls.Add(this.labelP6);
+            this.Controls.Add(this.labelP5);
+            this.Controls.Add(this.labelP3);
+            this.Controls.Add(this.labelP4);
+            this.Controls.Add(this.labelP1);
             this.Controls.Add(this.m66);
             this.Controls.Add(this.e66);
             this.Controls.Add(this.m65);
@@ -6101,7 +6216,6 @@
             this.Controls.Add(this.pic3);
             this.Controls.Add(this.pic2);
             this.Controls.Add(this.pic1);
-            this.Controls.Add(this.INS1);
             this.Controls.Add(this.m57);
             this.Controls.Add(this.e57);
             this.Controls.Add(this.m58);
@@ -6116,39 +6230,13 @@
             this.Controls.Add(this.e62);
             this.Controls.Add(this.m63);
             this.Controls.Add(this.e63);
-            this.Controls.Add(this.INS2);
-            this.Controls.Add(this.INS6);
-            this.Controls.Add(this.INS8);
-            this.Controls.Add(this.INS7);
-            this.Controls.Add(this.INS4);
-            this.Controls.Add(this.INS3);
-            this.Controls.Add(this.INS10);
-            this.Controls.Add(this.INS12);
-            this.Controls.Add(this.INS11);
-            this.Controls.Add(this.INS14);
-            this.Controls.Add(this.INS16);
-            this.Controls.Add(this.INS15);
-            this.Controls.Add(this.INS18);
-            this.Controls.Add(this.INS20);
-            this.Controls.Add(this.INS19);
-            this.Controls.Add(this.INS22);
-            this.Controls.Add(this.INS24);
-            this.Controls.Add(this.INS23);
-            this.Controls.Add(this.INS26);
-            this.Controls.Add(this.INS28);
-            this.Controls.Add(this.INS27);
-            this.Controls.Add(this.INS30);
-            this.Controls.Add(this.INS32);
-            this.Controls.Add(this.INS31);
-            this.Controls.Add(this.INS34);
-            this.Controls.Add(this.INS36);
-            this.Controls.Add(this.INS35);
-            this.Controls.Add(this.INS38);
-            this.Controls.Add(this.INS40);
-            this.Controls.Add(this.INS39);
-            this.Controls.Add(this.INS42);
-            this.Controls.Add(this.INS44);
-            this.Controls.Add(this.INS43);
+            this.Controls.Add(this.INS66);
+            this.Controls.Add(this.INS62);
+            this.Controls.Add(this.INS64);
+            this.Controls.Add(this.INS63);
+            this.Controls.Add(this.INS58);
+            this.Controls.Add(this.INS60);
+            this.Controls.Add(this.INS59);
             this.Controls.Add(this.INS46);
             this.Controls.Add(this.INS48);
             this.Controls.Add(this.INS47);
@@ -6158,15 +6246,58 @@
             this.Controls.Add(this.INS54);
             this.Controls.Add(this.INS56);
             this.Controls.Add(this.INS55);
-            this.Controls.Add(this.INS62);
-            this.Controls.Add(this.INS64);
-            this.Controls.Add(this.INS63);
-            this.Controls.Add(this.INS58);
-            this.Controls.Add(this.INS60);
-            this.Controls.Add(this.INS59);
-            this.Controls.Add(this.INS66);
+            this.Controls.Add(this.INS34);
+            this.Controls.Add(this.INS36);
+            this.Controls.Add(this.INS35);
+            this.Controls.Add(this.INS38);
+            this.Controls.Add(this.INS40);
+            this.Controls.Add(this.INS39);
+            this.Controls.Add(this.INS42);
+            this.Controls.Add(this.INS44);
+            this.Controls.Add(this.INS43);
+            this.Controls.Add(this.INS22);
+            this.Controls.Add(this.INS24);
+            this.Controls.Add(this.INS23);
+            this.Controls.Add(this.INS26);
+            this.Controls.Add(this.INS28);
+            this.Controls.Add(this.INS27);
+            this.Controls.Add(this.INS30);
+            this.Controls.Add(this.INS32);
+            this.Controls.Add(this.INS31);
+            this.Controls.Add(this.INS10);
+            this.Controls.Add(this.INS12);
+            this.Controls.Add(this.INS11);
+            this.Controls.Add(this.INS14);
+            this.Controls.Add(this.INS16);
+            this.Controls.Add(this.INS15);
+            this.Controls.Add(this.INS18);
+            this.Controls.Add(this.INS20);
+            this.Controls.Add(this.INS19);
+            this.Controls.Add(this.INS2);
+            this.Controls.Add(this.INS6);
+            this.Controls.Add(this.INS8);
+            this.Controls.Add(this.INS7);
+            this.Controls.Add(this.INS4);
+            this.Controls.Add(this.INS3);
+            this.Controls.Add(this.INS9);
+            this.Controls.Add(this.INS5);
+            this.Controls.Add(this.INS1);
+            this.Controls.Add(this.INS13);
+            this.Controls.Add(this.INS17);
+            this.Controls.Add(this.INS21);
+            this.Controls.Add(this.INS25);
+            this.Controls.Add(this.INS53);
+            this.Controls.Add(this.INS49);
+            this.Controls.Add(this.INS45);
+            this.Controls.Add(this.INS41);
+            this.Controls.Add(this.INS37);
+            this.Controls.Add(this.INS33);
+            this.Controls.Add(this.INS29);
+            this.Controls.Add(this.INS61);
+            this.Controls.Add(this.INS57);
+            this.Controls.Add(this.INS65);
             this.Name = "imageReport";
-            this.Size = new System.Drawing.Size(1000, 4000);
+            this.Size = new System.Drawing.Size(732, 3600);
             ((System.ComponentModel.ISupportInitialize)(this.pic66)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic65)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic64)).EndInit();
@@ -6635,24 +6766,24 @@
         public System.Windows.Forms.PictureBox pic57;
         public System.Windows.Forms.PictureBox pic56;
         public System.Windows.Forms.PictureBox pic55;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Label labelP1;
+        private System.Windows.Forms.Label labelP4;
+        private System.Windows.Forms.Label labelP3;
+        private System.Windows.Forms.Label labelP5;
+        private System.Windows.Forms.Label labelP6;
+        private System.Windows.Forms.Label labelP2;
+        private System.Windows.Forms.Button lineP5A;
+        private System.Windows.Forms.Button lineP4A;
+        private System.Windows.Forms.Button lineP4B;
+        private System.Windows.Forms.Button lineP3A;
+        private System.Windows.Forms.Button lineP3B;
+        private System.Windows.Forms.Button lineP2B;
+        private System.Windows.Forms.Button lineP2A;
+        private System.Windows.Forms.Button lineP1B;
+        private System.Windows.Forms.Button lineP1A;
+        private System.Windows.Forms.Button lineP6B;
+        private System.Windows.Forms.Button lineP6A;
+        private System.Windows.Forms.Button lineP5B;
         private System.Windows.Forms.PictureBox INS1;
         private System.Windows.Forms.PictureBox INS3;
         private System.Windows.Forms.PictureBox INS4;
@@ -6720,5 +6851,14 @@
         private System.Windows.Forms.PictureBox INS63;
         private System.Windows.Forms.PictureBox INS61;
         private System.Windows.Forms.Label swapBTN;
+        private System.Windows.Forms.Button lineP7A;
+        private System.Windows.Forms.Button lineP7B;
+        private System.Windows.Forms.Button lineP8A;
+        private System.Windows.Forms.Label labelP7;
+        private System.Windows.Forms.Button lineP8B;
+        private System.Windows.Forms.Label labelP8;
+        private System.Windows.Forms.Label labelP9;
+        private System.Windows.Forms.Button lineP9A;
+        private System.Windows.Forms.Button lineP9B;
     }
 }

@@ -39,6 +39,25 @@ namespace IDMS.ReportContent
 
         public Rectangle[] recImage;
 
+        int insAxisX = -15;
+        int insAxisY = 40;
+
+        int picAxisX = 25;
+        int picAxisY = 40;
+
+        int comboBoxAxisX = 55;
+        int comboBoxAxisY = 155;
+
+        int textMarkAxisX = 25;
+        int textMarkAxisY = 155;
+
+        int markButtonAxisX = 220;
+        int markButtonAxisY = 85;
+
+        int textButtonAxisX = 220;
+        int textButtonAxisY = 120;
+
+        int nextAxisX = 240;
 
         public imageReport(String P)
         {
@@ -1055,30 +1074,11 @@ namespace IDMS.ReportContent
 
         private void setWideMode()
         {
+            setLineBreak();
+
             Size insSize = new Size(40, 110);
             Size picSize = new Size(195, 110);
             Size comboBoxSize = new Size(150, 24);
-
-            int insAxisX = -15;
-            int insAxisY = 40;
-
-            int picAxisX = 25;
-            int picAxisY = 40;
-
-            int comboBoxAxisX = 55;
-            int comboBoxAxisY = 155;
-
-            int textMarkAxisX = 25;
-            int textMarkAxisY = 155;
-
-            int markButtonAxisX = 220;
-            int markButtonAxisY = 85;
-
-            int textButtonAxisX = 220;
-            int textButtonAxisY = 120;
-
-            int nextPosition = 240;
-            int nextPage = 6;
 
 
             foreach (PictureBox ins in INS)
@@ -1099,59 +1099,256 @@ namespace IDMS.ReportContent
             }
 
 
-            for (int i = 0; i < 66; i++)
+            for (int i = 0; i < maxImg; i++)
             {
-                if (i != 0 && i % 3 == 0)
-                {
-                    if (i == nextPage)
-                    {
-                        insAxisY += 220;
-                        picAxisY += 220;
-                        comboBoxAxisY += 220;
-                        textMarkAxisY += 220;
-                        markButtonAxisY += 220;
-                        textButtonAxisY += 220;
+                int PAGE_1 = 6;
+                int PAGE_2 = 14;
+                int PAGE_3 = 22;
+                int PAGE_4 = 30;
+                int PAGE_5 = 38;
+                int PAGE_6 = 46;
+                int PAGE_7 = 54;
+                int PAGE_8 = 62;
 
-                        nextPage += 9;
-                    }
-                    else
+                if (i < PAGE_1)
+                {
+                    if (i != 0 && i % 3 == 0)
                     {
-                        insAxisY += 170;
-                        picAxisY += 170;
-                        comboBoxAxisY += 170;
-                        textMarkAxisY += 170;
-                        markButtonAxisY += 170;
-                        textButtonAxisY += 170;
+                        setNewImageLine();
+                        setDefaultAxisX();
                     }
-                    insAxisX = -15;
-                    picAxisX = 25;
-                    comboBoxAxisX = 55;
-                    textMarkAxisX = 25;
-                    markButtonAxisX = 220;
-                    textButtonAxisX = 220;
 
                 }
 
+
+                if (i >= PAGE_1 && i < PAGE_2)
+                {
+                    if (i == PAGE_1)
+                    {
+                        setNaxtPage();
+                        setDefaultAxisX();
+                    }
+                    if (i == 9 || i == 12)
+                    {
+                        setNewImageLine();
+                        setDefaultAxisX();
+                    }
+                }
+
+
+                if (i >= PAGE_2 && i < PAGE_3)
+                {
+                    if (i == PAGE_2)
+                    {
+                        setNaxtPage();
+                        setDefaultAxisX();
+                    }
+                    if (i == 17 || i == 20)
+                    {
+                        setNewImageLine();
+                        setDefaultAxisX();
+                    }
+                }
+
+
+                if (i >= PAGE_3 && i < PAGE_4)
+                {
+                    if (i == PAGE_3)
+                    {
+                        setNaxtPage();
+                        setDefaultAxisX();
+                    }
+                    if (i == 25 || i == 28)
+                    {
+                        setNewImageLine();
+                        setDefaultAxisX();
+                    }
+                }
+
+
+                if (i >= PAGE_4 && i < PAGE_5)
+                {
+                    if (i == PAGE_4)
+                    {
+                        setNaxtPage();
+                        setDefaultAxisX();
+                    }
+                    if (i == 33 || i == 36)
+                    {
+                        setNewImageLine();
+                        setDefaultAxisX();
+                    }
+                }
+
+
+                if (i >= PAGE_5 && i < PAGE_6)
+                {
+                    if (i == PAGE_5)
+                    {
+                        setNaxtPage();
+                        setDefaultAxisX();
+                    }
+                    if (i == 41 || i == 44)
+                    {
+                        setNewImageLine();
+                        setDefaultAxisX();
+                    }
+                }
+
+
+                if (i >= PAGE_6 && i < PAGE_7)
+                {
+                    if (i == PAGE_6)
+                    {
+                        setNaxtPage();
+                        setDefaultAxisX();
+                    }
+                    if (i == 49 || i == 52)
+                    {
+                        setNewImageLine();
+                        setDefaultAxisX();
+                    }
+                }
+
+
+                if (i >= PAGE_7 && i < PAGE_8)
+                {
+                    if (i == PAGE_7)
+                    {
+                        setNaxtPage();
+                        setDefaultAxisX();
+                    }
+                    if (i == 57 || i == 60)
+                    {
+                        setNewImageLine();
+                        setDefaultAxisX();
+                    }
+                }
+
+
+                if (i >= PAGE_8)
+                {
+                    if (i == PAGE_8)
+                    {
+                        setNaxtPage();
+                        setDefaultAxisX();
+                    }
+                    if (i == 65)
+                    {
+                        setNewImageLine();
+                        setDefaultAxisX();
+                    }
+                }
+
+
                 INS[i].Location = new Point(insAxisX, insAxisY);
-                insAxisX += nextPosition;
+                insAxisX += nextAxisX;
 
                 boxes[i].Location = new Point(picAxisX, picAxisY);
-                picAxisX += nextPosition;
+                picAxisX += nextAxisX;
 
                 cBoxes[i].Location = new Point(comboBoxAxisX, comboBoxAxisY);
-                comboBoxAxisX += nextPosition;
+                comboBoxAxisX += nextAxisX;
 
                 LtextMark[i].Location = new Point(textMarkAxisX, textMarkAxisY);
-                textMarkAxisX += nextPosition;
+                textMarkAxisX += nextAxisX;
 
                 markButton[i].Location = new Point(markButtonAxisX, markButtonAxisY);
-                markButtonAxisX += nextPosition;
+                markButtonAxisX += nextAxisX;
 
                 textButton[i].Location = new Point(textButtonAxisX, textButtonAxisY);
-                textButtonAxisX += nextPosition;
+                textButtonAxisX += nextAxisX;
+
+
             }
 
 
+        }
+
+
+        private void setLineBreak()
+        {
+            Size = new Size(732, 5060);
+            lineP7A.Visible = true;
+            labelP7.Visible = true;
+            lineP7B.Visible = true;
+
+            lineP8A.Visible = true;
+            labelP8.Visible = true;
+            lineP8B.Visible = true;
+
+            lineP9A.Visible = true;
+            labelP9.Visible = true;
+            lineP9B.Visible = true;
+
+            lineP1A.Location = new Point(10, 380);
+            labelP1.Location = new Point(330, 360);
+            lineP1B.Location = new Point(420, 380);
+
+            lineP2A.Location = new Point(10, 940);
+            labelP2.Location = new Point(330, 920);
+            lineP2B.Location = new Point(420, 940);
+
+            lineP3A.Location = new Point(10, 1500);
+            labelP3.Location = new Point(330, 1480);
+            lineP3B.Location = new Point(420, 1500);
+
+            lineP4A.Location = new Point(10, 2060);
+            labelP4.Location = new Point(330, 2040);
+            lineP4B.Location = new Point(420, 2060);
+
+            lineP5A.Location = new Point(10, 2620);
+            labelP5.Location = new Point(330, 2600);
+            lineP5B.Location = new Point(420, 2620);
+
+            lineP6A.Location = new Point(10, 3180);
+            labelP6.Location = new Point(330, 3160);
+            lineP6B.Location = new Point(420, 3180);
+
+            lineP7A.Location = new Point(10, 3740);
+            labelP7.Location = new Point(330, 3720);
+            lineP7B.Location = new Point(420, 3740);
+
+            lineP8A.Location = new Point(10, 4300);
+            labelP8.Location = new Point(330, 4280);
+            lineP8B.Location = new Point(420, 4300);
+
+            lineP9A.Location = new Point(10, 4860);
+            labelP9.Location = new Point(330, 4840);
+            lineP9B.Location = new Point(420, 4860);
+        }
+
+
+        private void setDefaultAxisX()
+        {
+            insAxisX = -15;
+            picAxisX = 25;
+            comboBoxAxisX = 55;
+            textMarkAxisX = 25;
+            markButtonAxisX = 220;
+            textButtonAxisX = 220;
+        }
+
+
+        private void setNewImageLine()
+        {
+            insAxisY += 170;
+            picAxisY += 170;
+            comboBoxAxisY += 170;
+            textMarkAxisY += 170;
+            markButtonAxisY += 170;
+            textButtonAxisY += 170;
+        }
+
+
+        private void setNaxtPage()
+        {
+            insAxisY += 220;
+            picAxisY += 220;
+            comboBoxAxisY += 220;
+            textMarkAxisY += 220;
+            markButtonAxisY += 220;
+            textButtonAxisY += 220;
         }
 
 

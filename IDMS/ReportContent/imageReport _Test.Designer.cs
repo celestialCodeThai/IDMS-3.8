@@ -6166,7 +6166,7 @@
             this.Controls.Add(this.INS59);
             this.Controls.Add(this.INS66);
             this.Name = "imageReport_Test";
-            this.Size = new System.Drawing.Size(1000, 4000);
+            this.Size = new System.Drawing.Size(1000, 3593);
             ((System.ComponentModel.ISupportInitialize)(this.pic66)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic65)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic64)).EndInit();
