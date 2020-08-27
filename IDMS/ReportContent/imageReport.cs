@@ -1078,6 +1078,7 @@ namespace IDMS.ReportContent
             int textButtonAxisY = 120;
 
             int nextPosition = 240;
+            int nextPage = 6;
 
 
             foreach (PictureBox ins in INS)
@@ -1097,8 +1098,40 @@ namespace IDMS.ReportContent
                 comboBox.Size = comboBoxSize;
             }
 
-            for (int i = 0; i < 3; i++)
+
+            for (int i = 0; i < 66; i++)
             {
+                if (i != 0 && i % 3 == 0)
+                {
+                    if (i == nextPage)
+                    {
+                        insAxisY += 220;
+                        picAxisY += 220;
+                        comboBoxAxisY += 220;
+                        textMarkAxisY += 220;
+                        markButtonAxisY += 220;
+                        textButtonAxisY += 220;
+
+                        nextPage += 9;
+                    }
+                    else
+                    {
+                        insAxisY += 170;
+                        picAxisY += 170;
+                        comboBoxAxisY += 170;
+                        textMarkAxisY += 170;
+                        markButtonAxisY += 170;
+                        textButtonAxisY += 170;
+                    }
+                    insAxisX = -15;
+                    picAxisX = 25;
+                    comboBoxAxisX = 55;
+                    textMarkAxisX = 25;
+                    markButtonAxisX = 220;
+                    textButtonAxisX = 220;
+
+                }
+
                 INS[i].Location = new Point(insAxisX, insAxisY);
                 insAxisX += nextPosition;
 
