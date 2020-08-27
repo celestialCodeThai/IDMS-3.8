@@ -59,6 +59,7 @@ namespace IDMS.ReportContent
 
         int nextAxisX = 240;
 
+
         public imageReport(String P)
         {
             InitializeComponent();
@@ -1109,6 +1110,9 @@ namespace IDMS.ReportContent
                 int PAGE_6 = 46;
                 int PAGE_7 = 54;
                 int PAGE_8 = 62;
+                int ROW_1 = 3;
+                int ROW_2 = 6;
+
 
                 if (i < PAGE_1)
                 {
@@ -1128,7 +1132,7 @@ namespace IDMS.ReportContent
                         setNaxtPage();
                         setDefaultAxisX();
                     }
-                    if (i == 9 || i == 12)
+                    if (i == PAGE_1 + ROW_1 || i == PAGE_1 + ROW_2)
                     {
                         setNewImageLine();
                         setDefaultAxisX();
@@ -1143,7 +1147,7 @@ namespace IDMS.ReportContent
                         setNaxtPage();
                         setDefaultAxisX();
                     }
-                    if (i == 17 || i == 20)
+                    if (i == PAGE_2 + ROW_1 || i == PAGE_2 + ROW_2)
                     {
                         setNewImageLine();
                         setDefaultAxisX();
@@ -1158,7 +1162,7 @@ namespace IDMS.ReportContent
                         setNaxtPage();
                         setDefaultAxisX();
                     }
-                    if (i == 25 || i == 28)
+                    if (i == PAGE_3 + ROW_1 || i == PAGE_3 + ROW_2)
                     {
                         setNewImageLine();
                         setDefaultAxisX();
@@ -1173,7 +1177,7 @@ namespace IDMS.ReportContent
                         setNaxtPage();
                         setDefaultAxisX();
                     }
-                    if (i == 33 || i == 36)
+                    if (i == PAGE_4 + ROW_1 || i == PAGE_4 + ROW_2)
                     {
                         setNewImageLine();
                         setDefaultAxisX();
@@ -1188,7 +1192,7 @@ namespace IDMS.ReportContent
                         setNaxtPage();
                         setDefaultAxisX();
                     }
-                    if (i == 41 || i == 44)
+                    if (i == PAGE_5 + ROW_1 || i == PAGE_5 + ROW_2)
                     {
                         setNewImageLine();
                         setDefaultAxisX();
@@ -1203,7 +1207,7 @@ namespace IDMS.ReportContent
                         setNaxtPage();
                         setDefaultAxisX();
                     }
-                    if (i == 49 || i == 52)
+                    if (i == PAGE_6 + ROW_1 || i == PAGE_6 + ROW_2)
                     {
                         setNewImageLine();
                         setDefaultAxisX();
@@ -1218,7 +1222,7 @@ namespace IDMS.ReportContent
                         setNaxtPage();
                         setDefaultAxisX();
                     }
-                    if (i == 57 || i == 60)
+                    if (i == PAGE_7 + ROW_1 || i == PAGE_7 + ROW_2)
                     {
                         setNewImageLine();
                         setDefaultAxisX();
@@ -1233,7 +1237,7 @@ namespace IDMS.ReportContent
                         setNaxtPage();
                         setDefaultAxisX();
                     }
-                    if (i == 65)
+                    if (i == PAGE_8 + ROW_1)
                     {
                         setNewImageLine();
                         setDefaultAxisX();
@@ -1259,9 +1263,7 @@ namespace IDMS.ReportContent
                 textButton[i].Location = new Point(textButtonAxisX, textButtonAxisY);
                 textButtonAxisX += nextAxisX;
 
-
             }
-
 
         }
 
