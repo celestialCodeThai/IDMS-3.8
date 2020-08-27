@@ -791,7 +791,6 @@
             this.patientHN.TabIndex = 10;
             this.patientHN.Text = "label1";
             this.patientHN.Visible = false;
-            this.patientHN.TextChanged += new System.EventHandler(this.patientFirstName_TextChanged);
             // 
             // patientSurname
             // 
@@ -985,10 +984,7 @@
             this.imagelistTable.Size = new System.Drawing.Size(207, 262);
             this.imagelistTable.TabIndex = 1;
             this.imagelistTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.imagelistTable_CellMouseClick);
-            this.imagelistTable.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.imagelistTable_CellMouseEnter);
-            this.imagelistTable.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.imagelistTable_CellMouseLeave);
             this.imagelistTable.DoubleClick += new System.EventHandler(this.imagelistTable_DoubleClick);
-            this.imagelistTable.MouseClick += new System.Windows.Forms.MouseEventHandler(this.imagelistTable_MouseClick);
             // 
             // picPreview
             // 
