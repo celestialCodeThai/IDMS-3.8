@@ -34,10 +34,12 @@ namespace IDMS.Page
         const int IMG_SIZE = 130;
         public static int fileCount;
 
+
         private idmsPage idms;
         public string imgFolder;
         public int currentRow;
         public static Report Current;
+
 
         string PRO = "";
         imageReport EGDControl;
@@ -53,6 +55,7 @@ namespace IDMS.Page
         reportControlBronco report4;
         reportControlENT report5;
 
+
         public bool Multimode;
         public DataTable table = new DataTable();
         string hnid;
@@ -60,9 +63,11 @@ namespace IDMS.Page
         public string casepro;
         AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
 
+
         MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
         MySqlDataReader reader;
         MySqlDataReader readerPro;
+
 
         public string date;
         public string day;
@@ -74,13 +79,17 @@ namespace IDMS.Page
         public static imageReport SaveBRONCOControl;
         public static imageReport SaveERCPControl;
 
+
         public static UserControl Savereport;
+
 
         public static reportControlColono RC;
         public static imageReport RCIMG;
 
+
         public static reportControlEGD RE;
         public static imageReport REIMG;
+
 
         public static reportControlERCP RCP;
         public static imageReport RCPIMG;
@@ -92,11 +101,10 @@ namespace IDMS.Page
         public static reportControlENT Savereport5;
 
 
-
-
         public static Report Saveinfo;
         public static string ALL_PRO;
         public static bool SaveMultimode;
+
 
         public Report(idmsPage mainPage, string hn, string cid, string pro)
         {
@@ -323,20 +331,11 @@ namespace IDMS.Page
         }
 
 
-
-
-
-
-
-
         delegate void DelUserControlMetod(string name);
-
 
 
         private void Report_Load(object sender, EventArgs e)
         {
-            //  reloadImageList();
-
             DelUserControlMetod delUserControl = new DelUserControlMetod(updateTable);
             if (PRO == "EGD")
             {
@@ -360,6 +359,7 @@ namespace IDMS.Page
             }
         }
 
+
         public void updateTable(string name)
         {
             string fileName = Path.GetFileName(name);
@@ -373,6 +373,7 @@ namespace IDMS.Page
                 }
             }
         }
+
 
         public void reloadImageList()
         {
@@ -404,6 +405,7 @@ namespace IDMS.Page
 
 
         }
+
 
         private void imagelistTable_DoubleClick(object sender, EventArgs e)
         {
@@ -511,10 +513,6 @@ namespace IDMS.Page
         }
 
 
-
-
-
-
         private void imagelistTable_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             /*
@@ -615,16 +613,16 @@ namespace IDMS.Page
                     EGDControl.setDefaultRectangle();
                     break;
                 case "COL":
-                    EGDControl.setDefaultRectangle();
+                    COLControl.setDefaultRectangle();
                     break;
                 case "ERCP":
-                    EGDControl.setDefaultRectangle();
+                    ERCPControl.setDefaultRectangle();
                     break;
                 case "BRONCO":
-                    EGDControl.setDefaultRectangle();
+                    BRONCOControl.setDefaultRectangle();
                     break;
                 case "ENT":
-                    EGDControl.setDefaultRectangle();
+                    ENTControl.setDefaultRectangle();
                     break;
             }
         }
@@ -758,37 +756,7 @@ namespace IDMS.Page
 
                         }
                     }
-                    /*
-                    if (PRO == "EGD")
-                    {
-                        picPreview.Image = EGDControl.MakeSquareEndoWayPoint(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500, EGDControl.recImage[0]);
-                    }
-                    else
-                    {
-                        if (PRO == "COL")
-                        {
-                            picPreview.Image = COLControl.MakeSquareEndoWayPoint(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500, COLControl.recImage[0]);
-                        }
-                        else
-                        {
-                            if (PRO == "ERCP")
-                            {
-                                picPreview.Image = ENTControl.MakeSquareEndoWayPoint(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500, ENTControl.recImage[0]);
 
-                            }
-                            else
-                            {
-                                if (PRO == "BRONCO")
-                                {
-                                    picPreview.Image = BRONCOControl.MakeSquareEndoWayPoint(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500, BRONCOControl.recImage[0]);
-
-                                }
-
-                            }
-
-                        }
-                    }
-                    */
                     string imageName2 = imagelistTable.Rows[0].Cells[0].Value.ToString();
 
                     imageName2 = imagelistTable.CurrentRow.Cells[0].Value.ToString();
