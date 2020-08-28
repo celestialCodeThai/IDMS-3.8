@@ -45,7 +45,7 @@ namespace IDMS.DataManage
         public string cameraA { get; set; }
         public string cameraB { get; set; }
 
-
     }
+
 }
 
