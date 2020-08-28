@@ -12,6 +12,10 @@ namespace IDMS.DataManage
 {
     class manageReportENT
     {
+
+        DataAccess load = new DataAccess();
+
+
         public void saveReportField(UserControl reportcon, string caseid, UserControl inforeport)
         {
             reportControlENT report = (reportControlENT)reportcon;
@@ -231,6 +235,8 @@ namespace IDMS.DataManage
             save.addReportFieldnew(caseid, data, field);
 
         }
+
+
         public void saveEditField(UserControl reportcon, string caseid, UserControl inforeport)
         {
             reportControlERCP report = (reportControlERCP)reportcon;
@@ -244,6 +250,8 @@ namespace IDMS.DataManage
 
 
         }
+
+
         private void setbuttonB(int a0, Button a1, Button a2, Button a3, TextBox b)
         {
             switch (a0)
@@ -297,6 +305,8 @@ namespace IDMS.DataManage
                     break;
             }
         }
+
+
         public void LoadReportField(UserControl reportcon, string caseid, UserControl inforeport)
         {
             reportControlENT report = (reportControlENT)reportcon;
@@ -661,11 +671,13 @@ namespace IDMS.DataManage
         }
 
 
-
         public void savepicture(UserControl reportcon, string caseid)
         {
             imageReport report = (imageReport)reportcon;
-            DataAccess save = new DataAccess();
+
+            string pictureMode = load.getOption("option_value", "pictureMode");
+            bool squareMode = pictureMode == "1";
+
             int k;
             string[] field = new string[66];
             string[] cfield = new string[66];
@@ -683,8 +695,8 @@ namespace IDMS.DataManage
 
             }
 
-            save.addReportFieldnew(caseid, data, field);
-            save.addReportFieldnew(caseid, cdata, cfield);
+            load.addReportFieldnew(caseid, data, field);
+            load.addReportFieldnew(caseid, cdata, cfield);
 
             //top ==============================================================================================================================================
 
@@ -699,17 +711,20 @@ namespace IDMS.DataManage
 
             //System.Diagnostics.Debug.Write("recImage Value = " + report.recImage[0].ToString());
 
-            save.imagePointInsertOrUpdate(caseid, imagesPointDatas, imagesPointField);
+            load.imagePointInsertOrUpdate(caseid, imagesPointDatas, imagesPointField, squareMode);
 
             // ================================================================================================================================================
         }
+
 
         public void Loadpicture(UserControl r, UserControl reportcon, string caseid)
         {
             imageReport report = (imageReport)reportcon;
             Report rep = (Report)r;
 
-            DataAccess save = new DataAccess();
+            string pictureMode = load.getOption("option_value", "pictureMode");
+            bool squareMode = pictureMode == "1";
+
             string imageName = "";
             string Value = "";
             int k;
@@ -717,14 +732,21 @@ namespace IDMS.DataManage
             {
                 k = i + 1;
 
-                if (save.getValue(caseid, "img" + k) != "")
+                if (load.getValue(caseid, "img" + k) != "")
                 {
-                    Value = save.getValue(caseid, "img" + k);
-                    //report.setPicture(Value);
+                    Value = load.getValue(caseid, "img" + k);
 
-                    //top =====================================================================================================
                     int fieldNumber = i + 1;
-                    string imagePoint = save.getValueWithTableName(caseid, "image_point", "point_" + fieldNumber + "");
+
+                    string imagePoint;
+                    if (squareMode)
+                    {
+                        imagePoint = load.getValueWithTableName(caseid, "image_point", "point_" + fieldNumber + "");
+                    }
+                    else
+                    {
+                        imagePoint = load.getValueWithTableName(caseid, "image_point_wide", "point_" + fieldNumber + "");
+                    }
 
                     if (imagePoint == null || imagePoint == "")
                     {
@@ -746,10 +768,6 @@ namespace IDMS.DataManage
                     }
 
                     report.setPictureWithPoint(Value, report.recImage[i]);
-                    //=========================================================================================================
-
-                    //     report.cBoxIndex[i] = Convert.ToInt32(save.getValue(caseid, "cb" + k));
-                    //    report.cBoxes[i].SelectedIndex = report.cBoxIndex[i];
                     imageName = Value.Replace(rep.imgFolder, null);
                     rep.selectImageTable.Rows.Add(imageName);
 

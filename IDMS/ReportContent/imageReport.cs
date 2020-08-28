@@ -349,10 +349,13 @@ namespace IDMS.ReportContent
 
         public Bitmap MakeSquareEndoWayPoint(Image bmp, int size, Rectangle point)
         {
+
             Image newIMG = (Image)(new Bitmap(bmp, new Size(((bmp.Width * 3) / 4), ((bmp.Height * 3) / 4))));
 
             bmp = newIMG;
 
+
+             //default
             if (point.Width == 0)
             {
                 Bitmap s = (Bitmap)bmp;

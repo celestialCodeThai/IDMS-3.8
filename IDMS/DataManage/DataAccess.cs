@@ -40,7 +40,7 @@ namespace IDMS.DataManage
         }
 
         public void AddNewCase(string caseid, string name, string hn, string pro, string pr, string indi, string itm, string d1, string d2, string d3, string d4,
-            string date, string day, string doc1, string doc2, string sn, string cn, string an, string sts, string financeValue, string w,string c1, string c2)
+            string date, string day, string doc1, string doc2, string sn, string cn, string an, string sts, string financeValue, string w, string c1, string c2)
         {
             using (MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db")))
             {
@@ -694,7 +694,6 @@ namespace IDMS.DataManage
             return x;
         }
 
-        //Start top function ============================================================================================================================================
 
         public string getOption(string column, string key)
         {
@@ -728,7 +727,8 @@ namespace IDMS.DataManage
             connection.Dispose();
         }
 
-        public void imagePointInsertOrUpdate(string caseId, string[] data, string[] field)
+
+        public void imagePointInsertOrUpdate(string caseId, string[] data, string[] field, bool squareMode)
         {
             using (MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db")))
             {
@@ -751,13 +751,21 @@ namespace IDMS.DataManage
                     }
                 }
 
-                string query = "INSERT INTO image_point(" + fieldList + ") VALUES ('" + CASE_ID + "'" + valueList + ") ON DUPLICATE KEY UPDATE ";
+                string query;
+                if (squareMode)
+                {
+                    query = "INSERT INTO image_point(" + fieldList + ") VALUES ('" + CASE_ID + "'" + valueList + ") ON DUPLICATE KEY UPDATE ";
+                }
+                else
+                {
+                    query = "INSERT INTO image_point_wide(" + fieldList + ") VALUES ('" + CASE_ID + "'" + valueList + ") ON DUPLICATE KEY UPDATE ";
+                }
+
 
                 connection.Execute(query + " " + updateQuery);
             }
         }
 
-        //End top ================================================================================================================================================
 
         public void AddMac(string data)
         {

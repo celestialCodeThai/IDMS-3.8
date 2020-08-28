@@ -12,6 +12,10 @@ namespace IDMS.DataManage
 {
     class manageReportERCP
     {
+
+        DataAccess load = new DataAccess();
+
+
         public void saveReportField(UserControl reportcon, string caseid, UserControl inforeport)
         {
             reportControlERCP report = (reportControlERCP)reportcon;
@@ -84,14 +88,14 @@ namespace IDMS.DataManage
                 }
             }
 
-           
+
             string[] field = { "a1", "a2", "a3", "a4", "a5",
                                 "med1", "med2", "med3", "med4", "med5", "med6", "med7",
                                 "history", "f1", "f2", "f3", "f4", "f5", "f6", "f7","f8",
                                 "pg1", "pg2", "pg3", "pg4", "pg5", "pg6", "pg7", "pg8", "pg9", "pg10",
                                 "pg11", "pg12", "pg13", "pg14", "pg15", "pg16", "pg17", "pg18", "pg19", "pg20",
-                               
-                             
+
+
                                 "cdx1", "cdx2", "cdx3", "cdx4",
                                 "pdx1", "pdx2", "pdx3", "pdx4",
                                 "bloodloss" , "c1", "c2", "c3", "c4", "c5",
@@ -122,7 +126,7 @@ namespace IDMS.DataManage
                 report.f6txt.Text,
                 report.f7txt.Text,
                 report.f8txt.Text,
-              
+
                 report.pg1.Checked.ToString(),
                 report.pg2.Checked.ToString(),
                 report.pg3.Checked.ToString(),
@@ -143,9 +147,9 @@ namespace IDMS.DataManage
                 report.pg18.Checked.ToString(),
                 report.pg19.Checked.ToString(),
                 report.pgtxtbox2.Text.ToString(),
-               
-               
-               
+
+
+
                 report.dx1.Text,
                 report.dx2.Text,
                 report.dx3.Text,
@@ -163,7 +167,7 @@ namespace IDMS.DataManage
                 report.his1.Checked.ToString(),
                 report.his2.Checked.ToString(),
                 report.his3.Checked.ToString(),
-             report.hisradio1.Checked.ToString(), 
+             report.hisradio1.Checked.ToString(),
            report.hisradio2.Checked.ToString(),
 
             report.r1.Checked.ToString(),
@@ -175,7 +179,7 @@ namespace IDMS.DataManage
                 report.r7.Checked.ToString(),
                 report.r82.Text,
 
-              
+
 
 
 
@@ -333,6 +337,8 @@ namespace IDMS.DataManage
             */
 
         }
+
+
         public void saveEditField(UserControl reportcon, string caseid, UserControl inforeport)
         {
             reportControlERCP report = (reportControlERCP)reportcon;
@@ -346,6 +352,8 @@ namespace IDMS.DataManage
 
 
         }
+
+
         private void setbuttonB(int a0, Button a1, Button a2, Button a3, TextBox b)
         {
             switch (a0)
@@ -399,6 +407,8 @@ namespace IDMS.DataManage
                     break;
             }
         }
+
+
         public void LoadReportField(UserControl reportcon, string caseid, UserControl inforeport)
         {
             reportControlERCP report = (reportControlERCP)reportcon;
@@ -539,8 +549,8 @@ namespace IDMS.DataManage
                 report.f8txt.Text = value;
             }
             value = save.getValue(caseid, "f9");
-           
-            
+
+
             //
             if (save.getValue(caseid, "pg1") == "True")
             {
@@ -630,7 +640,7 @@ namespace IDMS.DataManage
             {
                 report.pg19.Checked = true;
             }
-           
+
             value = save.getValue(caseid, "pg20");
             if (value != "")
             {
@@ -638,7 +648,7 @@ namespace IDMS.DataManage
                 report.pgtxtbox2.Text = value;
             }
 
-           
+
 
             //cdx
             value = save.getValue(caseid, "cdx1");
@@ -733,7 +743,7 @@ namespace IDMS.DataManage
                 report.hisradio2.Checked = true;
 
             }
-           
+
             //
             if (save.getValue(caseid, "rap1") == "True")
             {
@@ -766,11 +776,11 @@ namespace IDMS.DataManage
 
             }
             value = save.getValue(caseid, "r5");
-            if (value != "" )
+            if (value != "")
             {
-               
+
                 report.r5.Checked = true;
-              
+
                 report.r53.Text = value;
 
             }
@@ -786,7 +796,7 @@ namespace IDMS.DataManage
 
             }
             if (save.getValue(caseid, "r7") == "True")
-               
+
             {
                 report.r7.Checked = true;
 
@@ -884,7 +894,7 @@ namespace IDMS.DataManage
                 }
 
             }
-           
+
 
 
             //
@@ -904,12 +914,13 @@ namespace IDMS.DataManage
         }
 
 
-
-
         public void savepicture(UserControl reportcon, string caseid)
         {
             imageReport report = (imageReport)reportcon;
-            DataAccess save = new DataAccess();
+
+            string pictureMode = load.getOption("option_value", "pictureMode");
+            bool squareMode = pictureMode == "1";
+
             int k;
             string[] field = new string[66];
             string[] cfield = new string[66];
@@ -927,10 +938,8 @@ namespace IDMS.DataManage
 
             }
 
-            save.addReportFieldnew(caseid, data, field);
-            save.addReportFieldnew(caseid, cdata, cfield);
-
-            //top ==============================================================================================================================================
+            load.addReportFieldnew(caseid, data, field);
+            load.addReportFieldnew(caseid, cdata, cfield);
 
             string[] imagesPointDatas = new string[66];
             string[] imagesPointField = new string[66];
@@ -941,11 +950,8 @@ namespace IDMS.DataManage
                 imagesPointDatas[i] = report.recImage[i].ToString();
             }
 
-            //System.Diagnostics.Debug.Write("recImage Value = " + report.recImage[0].ToString());
 
-            save.imagePointInsertOrUpdate(caseid, imagesPointDatas, imagesPointField);
-
-            // ================================================================================================================================================
+            load.imagePointInsertOrUpdate(caseid, imagesPointDatas, imagesPointField, squareMode);
 
         }
 
@@ -955,7 +961,9 @@ namespace IDMS.DataManage
             imageReport report = (imageReport)reportcon;
             Report rep = (Report)r;
 
-            DataAccess save = new DataAccess();
+            string pictureMode = load.getOption("option_value", "pictureMode");
+            bool squareMode = pictureMode == "1";
+
             string imageName = "";
             string Value = "";
             int k;
@@ -963,14 +971,23 @@ namespace IDMS.DataManage
             {
                 k = i + 1;
 
-                if (save.getValue(caseid, "img" + k) != "")
+                if (load.getValue(caseid, "img" + k) != "")
                 {
-                    Value = save.getValue(caseid, "img" + k);
-                    //report.setPicture(Value);
+                    Value = load.getValue(caseid, "img" + k);
 
-                    //top =====================================================================================================
                     int fieldNumber = i + 1;
-                    string imagePoint = save.getValueWithTableName(caseid, "image_point", "point_" + fieldNumber + "");
+
+
+                    string imagePoint;
+                    if (squareMode)
+                    {
+                        imagePoint = load.getValueWithTableName(caseid, "image_point", "point_" + fieldNumber + "");
+                    }
+                    else
+                    {
+                        imagePoint = load.getValueWithTableName(caseid, "image_point_wide", "point_" + fieldNumber + "");
+                    }
+
 
                     if (imagePoint == null || imagePoint == "")
                     {
@@ -991,9 +1008,8 @@ namespace IDMS.DataManage
                         report.recImage[i] = new Rectangle(AXIS_X, AXIS_Y, CROP_WIDTH, CROP_HEIGHT);
                     }
                     report.setPictureWithPoint(Value, report.recImage[i]);
-                    //=========================================================================================================
 
-                    report.cBoxIndex[i] = Convert.ToInt32(save.getValue(caseid, "cb" + k));
+                    report.cBoxIndex[i] = Convert.ToInt32(load.getValue(caseid, "cb" + k));
                     report.cBoxes[i].SelectedIndex = report.cBoxIndex[i];
                     imageName = Value.Replace(rep.imgFolder, null);
                     rep.selectImageTable.Rows.Add(imageName);

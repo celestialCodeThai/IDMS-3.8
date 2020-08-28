@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using gfoidl.Imaging;
+using IDMS.DataManage;
 
 namespace IDMS.Popup
 {
@@ -26,6 +27,8 @@ namespace IDMS.Popup
         private Point mouseMoveCrop = Point.Empty;
 
         private List<Tuple<Point, Point>> lines = new List<Tuple<Point, Point>>();
+
+        DataAccess load = new DataAccess();
 
         string editMode = "";
         int defaultH;
@@ -44,41 +47,60 @@ namespace IDMS.Popup
             InitializeComponent();
             this.pic.MouseWheel += OnMouseWheel;
 
-
-            // paintPanel.Paint += dropShadow;
-
             outputFileName = path;
             pic.Image = MakeSquareEndoWay(Image.FromFile(outputFileName), 500);
 
             outputFileName2 = outputFileName;
-            if (defaultPoint.Width != 0)
+
+
+            string pictureMode = load.getOption("option_value", "pictureMode");
+            bool squareMode = pictureMode == "1";
+
+
+
+            if (squareMode)
             {
-                _selectionDefault = defaultPoint;
+                if (defaultPoint.Width != 0)
+                {
+                    _selectionDefault = defaultPoint;
+                }
+                else
+                {
+                    int t = 0, l = 0;
+                    int newW = (pic.Image.Width * 3) / 4;
+                    int newH = (pic.Image.Height * 3) / 4;
+
+                    if (newH > newW)
+                    {
+                        t = (newH - newW) / 2;
+                    }
+                    else
+                    {
+                        l = (newW - newH) / 2;
+                    }
+
+                    _selectionDefault = new Rectangle(l, t, newW - l * 2, newH - t * 2);
+                }
             }
             else
             {
-
-                //MessageBox.Show("in ELSE");
-
-
-
-                // Bitmap res = new Bitmap(500, 500);
-                int t = 0, l = 0;
-                int newW = (pic.Image.Width * 3) / 4;
-                int newH = (pic.Image.Height * 3) / 4;
-                if (newH > newW)
-                    t = (newH - newW) / 2;
+                if (defaultPoint.Width != 0)
+                {
+                    _selectionDefault = defaultPoint;
+                }
                 else
-                    l = (newW - newH) / 2;
+                {
+                    int newW = (pic.Image.Width * 3) / 4;
+                    int newH = (pic.Image.Height * 3) / 4;
+
+                    _selectionDefault = new Rectangle(0, 0, newW, newH);
+
+                }
 
 
-                _selectionDefault = new Rectangle(l, t, newW - l * 2, newH - t * 2);
-
-
-
-
-                // _selectionDefault =
             }
+
+
             drawSquare();
 
         }
@@ -638,7 +660,7 @@ namespace IDMS.Popup
                 a2.X = (mouseMovePosition.X * 4) / 3;
                 a2.Y = (mouseMovePosition.Y * 4) / 3;
 
-               
+
                 Pen p = new Pen(Color.SpringGreen, 5);
                 p.StartCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
                 g.DrawLine(p, a1, a2);
@@ -942,14 +964,12 @@ namespace IDMS.Popup
 
         private void button1_Click_2(object sender, EventArgs e)
         {
+     
             Mode.Text = "";
             _originalImage = pic.Image.Clone() as Image;
             pic.Width = (_originalImage.Width * 3) / 4;
             pic.Height = (_originalImage.Height * 3) / 4;
 
-            //   panel1.Width = _originalImage.Width;
-            //  this.Height = panel1.Height + pic.Height+40;
-            //   this.Width = _originalImage.Width;
             defaultW = _originalImage.Width;
             defaultH = _originalImage.Height;
 
@@ -960,7 +980,10 @@ namespace IDMS.Popup
             else
                 l = (pic.Image.Width - pic.Image.Height) / 2;
 
+
             _selectionDefault = new Rectangle(l, t, pic.Image.Width - l * 2, pic.Image.Height - t * 2);
+
+
             drawSquare();
         }
     }
