@@ -63,9 +63,6 @@
             this.txt.TabIndex = 1;
             this.txt.TextChanged += new System.EventHandler(this.txt_TextChanged);
             this.txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
-            this.txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
-            this.txt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txt_MouseDown);
-            this.txt.MouseMove += new System.Windows.Forms.MouseEventHandler(this.txt_MouseMove);
             // 
             // button2
             // 
@@ -259,7 +256,6 @@
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Enter to save";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Mode
             // 

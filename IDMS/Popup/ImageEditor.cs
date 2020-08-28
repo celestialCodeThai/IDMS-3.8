@@ -40,6 +40,7 @@ namespace IDMS.Popup
         private Rectangle _selectionDefault;
         bool isEdit = false;
 
+
         public ImageEditor(string path, Rectangle defaultPoint)
         {
 
@@ -54,7 +55,6 @@ namespace IDMS.Popup
 
             string pictureMode = load.getOption("option_value", "pictureMode");
             bool squareMode = pictureMode == "1";
-
 
 
             if (squareMode)
@@ -402,19 +402,9 @@ namespace IDMS.Popup
 
         public Bitmap MakeSquareEndoWay(Image bmp, int size)
         {
+
             Bitmap s = (Bitmap)bmp;
-            /*
-            Bitmap res = new Bitmap(size, size);
-            Graphics g = Graphics.FromImage(res);
-            g.FillRectangle(new SolidBrush(Color.White), 0, 0, size, size);
-            int t = 0, l = 0;
-            if (s.Height > s.Width)
-                t = (s.Height - s.Width) / 2;
-            else
-                l = (s.Width - s.Height) / 2;
-            g.DrawImage(s, new Rectangle(0, 0, size, size), new Rectangle(l, t, s.Width - l * 2, s.Height - t * 2), GraphicsUnit.Pixel);
-            return res;
-            */
+
             return s;
 
         }
@@ -466,7 +456,6 @@ namespace IDMS.Popup
 
                 LineisClick = true;
                 Line.BackColor = Color.SpringGreen;
-                //  mouseDownPosition = Point.Empty;
             }
             else
             {
@@ -499,7 +488,6 @@ namespace IDMS.Popup
                 {
                     Image img = pic.Image.Crop(_selection);
 
-                    // Fit image to the picturebox:
                     pic.Width = img.Width;
                     pic.Height = img.Height;
                     pic.Image = img.Fit2PictureBox(pic);
@@ -530,16 +518,6 @@ namespace IDMS.Popup
         }
 
 
-
-        private void txt_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void txt_MouseMove(object sender, MouseEventArgs e)
-        {
-        }
-
         private void txtP_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
@@ -548,6 +526,7 @@ namespace IDMS.Popup
                 mouseDownPosition2 = e.Location;
             }
         }
+
 
         private void txtP_MouseMove(object sender, MouseEventArgs e)
         {
@@ -559,6 +538,7 @@ namespace IDMS.Popup
 
         }
 
+
         private void txt_TextChanged(object sender, EventArgs e)
         {
             textLocation = mouseDownPosition;
@@ -566,16 +546,12 @@ namespace IDMS.Popup
             pic.Invalidate();
         }
 
+
         private void pic_Click(object sender, EventArgs e)
         {
 
             if (editMode == "NONE" || (editMode == "start"))
             {
-
-
-
-
-
                 modeSwitch("CROP_2");
             }
 
@@ -586,13 +562,14 @@ namespace IDMS.Popup
             }
 
         }
+
+
         bool addtextisClick = false;
         private void addtxt_Click(object sender, EventArgs e)
         {
             modeSwitch("TEXT");
             if (!addtextisClick)
             {
-
                 addtextisClick = true;
                 addtxt.BackColor = Color.SpringGreen;
 
@@ -602,20 +579,14 @@ namespace IDMS.Popup
                     LineisClick = false;
                     Line.BackColor = Color.MidnightBlue;
                 }
-
             }
             else
             {
-
-
-
-
                 txtP.Visible = false;
                 addtextisClick = false;
                 isMoving = false;
                 txt.Text = "";
                 addtxt.BackColor = Color.MidnightBlue;
-
             }
         }
 
@@ -656,18 +627,12 @@ namespace IDMS.Popup
             pic.Refresh();
         }
 
-        private void txt_KeyPress(object sender, KeyPressEventArgs e)
-        {
-        }
 
         private void txt_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                //enter key is down
-
                 ApplyChange();
-
 
                 LineisClick = false;
                 Line.BackColor = Color.MidnightBlue;
@@ -676,9 +641,6 @@ namespace IDMS.Popup
                 isMoving = false;
                 txt.Text = "";
                 addtxt.BackColor = Color.MidnightBlue;
-
-
-
 
 
                 e.Handled = true;
@@ -693,6 +655,7 @@ namespace IDMS.Popup
                 if (outputFileName.Contains("ERCP")) { procedurename = "ERCP"; }
                 string savepath = outputFileName.Replace(".jpg", null);
                 int count = 1;
+
 
                 string input = savepath;
                 int index = input.IndexOf(procedurename);
@@ -711,6 +674,7 @@ namespace IDMS.Popup
                 if (index > 0)
                     fileName = fileName.Substring(0, index);
 
+
                 foreach (string file in fileArray)
                 {
                     if (file.Contains(fileName + "MARK") == true)
@@ -725,46 +689,30 @@ namespace IDMS.Popup
                 outputFileName2 = path + fileName + "MARK" + count.ToString() + ".jpg";
                 imgname = fileName + "MARK" + count.ToString() + ".jpg";
                 pic.Image.Save(outputFileName2);
-                this.Close();
+                Close();
 
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void ImageEditor_Load(object sender, EventArgs e)
         {
             Mode.Text = "";
             _originalImage = pic.Image.Clone() as Image;
-            //  pic.Width = _originalImage.Width;
-            // pic.Height = _originalImage.Height;
 
             pic.Width = (_originalImage.Width * 3) / 4;
             pic.Height = (_originalImage.Height * 3) / 4;
 
 
-
-
-
-
-            //   panel1.Width = _originalImage.Width;
-            //  this.Height = panel1.Height + pic.Height+40;
-            //   this.Width = _originalImage.Width;
             defaultW = (_originalImage.Width * 3) / 4;
             defaultH = (_originalImage.Height * 3) / 4;
-            //   drawSquare();
-
         }
+
 
         private void Original_Click(object sender, EventArgs e)
         {
             pic.Image = _originalImage.Clone() as Image;
-
         }
-
 
 
         private void Clear_Click(object sender, EventArgs e)
@@ -784,6 +732,8 @@ namespace IDMS.Popup
             defaultImage();
             //  Oldimage.Dispose();
         }
+
+
         private void defaultImage()
         {
             pic.Image = _originalImage.Clone() as Image;
@@ -792,6 +742,8 @@ namespace IDMS.Popup
 
 
         }
+
+
         private void Crop_Click(object sender, EventArgs e)
         {
             /*
@@ -800,6 +752,7 @@ namespace IDMS.Popup
             */
             modeSwitch("CROP_2");
         }
+
 
         private void dropShadow(object sender, PaintEventArgs e)
         {
@@ -824,6 +777,7 @@ namespace IDMS.Popup
                 }
             }
         }
+
 
         public void modeSwitch(String MODE)
         {
@@ -856,6 +810,7 @@ namespace IDMS.Popup
             }
         }
 
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             modeSwitch("CROP_2");
@@ -864,46 +819,31 @@ namespace IDMS.Popup
 
         int[] sizeZoom = { 1, 2, 3, 4 };
 
+
         private void OnMouseWheel(object sender, MouseEventArgs e)
         {
-            /*
-                        if (editMode == "CROP_2")
 
-                        {
-                            int newValueX = _selectionDefault.Width - Convert.ToInt32(_selectionDefault.Width * e.Delta / 1000);
-                            int newValueY = _selectionDefault.Height - Convert.ToInt32(_selectionDefault.Height * e.Delta / 1000);
-
-                            if ((_selectionDefault.X + newValueX <= pic.Width) && (_selectionDefault.Y + newValueY <= pic.Height) && (newValueX > (pic.Height / 10)))
-                            {
-                                _selectionDefault.Width = newValueX;
-                                _selectionDefault.Height = newValueY;
-                                pic.Refresh();
-                            }
-                        }
-                        */
         }
+
 
         private void CropImage(Rectangle data)
         {
 
             Image img = pic.Image.Crop(data);
 
-            // Fit image to the picturebox:
             pic.Width = img.Width;
             pic.Height = img.Height;
             pic.Image = img.Fit2PictureBox(pic);
 
-            //  _selecting = false;
             modeSwitch("NONE");
-
-
-
         }
+
 
         private void button3_Click(object sender, EventArgs e)
         {
             CropImage(_selectionDefault);
         }
+
 
         private void crop_button1_Click(object sender, EventArgs e)
         {
@@ -922,6 +862,7 @@ namespace IDMS.Popup
 
         }
 
+
         private void crop_button2_Click(object sender, EventArgs e)
         {
             {
@@ -937,6 +878,7 @@ namespace IDMS.Popup
             }
 
         }
+
 
         private void button1_Click_2(object sender, EventArgs e)
         {
