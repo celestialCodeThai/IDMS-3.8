@@ -217,6 +217,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataManage\SaveAndLoadImage.cs" />
     <Compile Include="Page\statistics_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>

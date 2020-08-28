@@ -1013,8 +1013,7 @@ namespace IDMS.Page
 
                 manageReportBRONCO newreport = new manageReportBRONCO();
                 newreport.saveReportField(Savereport4, Savecid, Saveinfo);
-                newreport.savepicture(SaveBRONCOControl, Savecid);
-
+                SaveAndLoadImage.savepicture(SaveBRONCOControl, Savecid);
             }
             else
             {
@@ -1036,12 +1035,12 @@ namespace IDMS.Page
                                 if (FOLDER_EXIST("COL"))
                                 {
                                     newreport2.saveReportField(RC, ReportMulti.reportBid, ReportMulti.reportB);
-                                    newreport2.savepicture(RCIMG, ReportMulti.reportBid);
+                                    SaveAndLoadImage.savepicture(RCIMG, ReportMulti.reportBid);
                                 }
                                 if (FOLDER_EXIST("EGD"))
                                 {
                                     newreport.saveReportField(RE, ReportMulti.reportAid, ReportMulti.reportA);
-                                    newreport.savepicture(REIMG, ReportMulti.reportAid);
+                                    SaveAndLoadImage.savepicture(REIMG, ReportMulti.reportAid);
                                 }
 
                                 break;
@@ -1051,42 +1050,44 @@ namespace IDMS.Page
                                 if (FOLDER_EXIST("ERCP"))
                                 {
                                     newreport3.saveReportField(RCP, ReportMulti.reportCid, ReportMulti.reportC);
-                                    newreport3.savepicture(RCPIMG, ReportMulti.reportCid);
+                                    SaveAndLoadImage.savepicture(RCPIMG, ReportMulti.reportCid);
                                 }
                                 if (FOLDER_EXIST("EGD"))
                                 {
                                     newreport.saveReportField(RE, ReportMulti.reportAid, ReportMulti.reportA);
-                                    newreport.savepicture(REIMG, ReportMulti.reportAid);
+                                    SaveAndLoadImage.savepicture(REIMG, ReportMulti.reportAid);
+
                                 }
                                 break;
                             case "Colono/ERCP":
                                 if (FOLDER_EXIST("ERCP"))
                                 {
                                     newreport3.saveReportField(RCP, ReportMulti.reportCid, ReportMulti.reportC);
-                                    newreport3.savepicture(RCPIMG, ReportMulti.reportCid);
+                                    SaveAndLoadImage.savepicture(RCPIMG, ReportMulti.reportCid);
                                 }
 
                                 if (FOLDER_EXIST("COL"))
                                 {
                                     newreport2.saveReportField(RC, ReportMulti.reportBid, ReportMulti.reportB);
-                                    newreport2.savepicture(RCIMG, ReportMulti.reportBid);
+                                    SaveAndLoadImage.savepicture(RCIMG, ReportMulti.reportBid);
                                 }
                                 break;
                             case "EGD/Colono/ERCP":
                                 if (FOLDER_EXIST("ERCP"))
                                 {
                                     newreport3.saveReportField(RCP, ReportMulti.reportCid, ReportMulti.reportC);
-                                    newreport3.savepicture(RCPIMG, ReportMulti.reportCid);
+                                    SaveAndLoadImage.savepicture(RCPIMG, ReportMulti.reportCid);
                                 }
                                 if (FOLDER_EXIST("COL"))
                                 {
                                     newreport2.saveReportField(RC, ReportMulti.reportBid, ReportMulti.reportB);
-                                    newreport2.savepicture(RCIMG, ReportMulti.reportBid);
+                                    SaveAndLoadImage.savepicture(RCIMG, ReportMulti.reportBid);
                                 }
                                 if (FOLDER_EXIST("EGD"))
                                 {
                                     newreport.saveReportField(RE, ReportMulti.reportAid, ReportMulti.reportA);
-                                    newreport.savepicture(REIMG, ReportMulti.reportAid);
+                                    SaveAndLoadImage.savepicture(REIMG, ReportMulti.reportAid);
+
                                 }
                                 break;
 
@@ -1099,7 +1100,7 @@ namespace IDMS.Page
 
                             manageReportCOL newreport = new manageReportCOL();
                             newreport.saveReportField(Savereport2, Savecid, Saveinfo);
-                            newreport.savepicture(SaveCOLControl, Savecid);
+                            SaveAndLoadImage.savepicture(SaveCOLControl, Savecid);
 
                         }
                         else
@@ -1110,7 +1111,8 @@ namespace IDMS.Page
 
                                 manageReportEGD newreport = new manageReportEGD();
                                 newreport.saveReportField(Savereport, Savecid, Saveinfo);
-                                newreport.savepicture(SaveEGDControl, Savecid);
+                                SaveAndLoadImage.savepicture(SaveEGDControl, Savecid);
+
                             }
                             else
                             {
@@ -1120,7 +1122,7 @@ namespace IDMS.Page
 
                                     manageReportERCP newreport = new manageReportERCP();
                                     newreport.saveReportField(Savereport3, Savecid, Saveinfo);
-                                    newreport.savepicture(SaveERCPControl, Savecid);
+                                    SaveAndLoadImage.savepicture(SaveERCPControl, Savecid);
                                 }
                                 else
                                 {
@@ -1128,7 +1130,7 @@ namespace IDMS.Page
                                     {
                                         manageReportENT newreport = new manageReportENT();
                                         newreport.saveReportField(Savereport5, Savecid, Saveinfo);
-                                        newreport.savepicture(SaveENTControl, Savecid);
+                                        SaveAndLoadImage.savepicture(SaveENTControl, Savecid);
 
                                     }
                                 }
@@ -1163,12 +1165,12 @@ namespace IDMS.Page
                             if (FOLDER_EXIST("COL"))
                             {
                                 newreport2.saveReportField(RC, ReportMulti.reportBid, ReportMulti.reportB);
-                                newreport2.savepicture(RCIMG, ReportMulti.reportBid);
+                                SaveAndLoadImage.savepicture(RCIMG, ReportMulti.reportBid);
                             }
                             if (FOLDER_EXIST("EGD"))
                             {
                                 newreport.saveReportField(RE, ReportMulti.reportAid, ReportMulti.reportA);
-                                newreport.savepicture(REIMG, ReportMulti.reportAid);
+                                SaveAndLoadImage.savepicture(REIMG, ReportMulti.reportAid);
                             }
 
                             break;
@@ -1178,42 +1180,43 @@ namespace IDMS.Page
                             if (FOLDER_EXIST("ERCP"))
                             {
                                 newreport3.saveReportField(RCP, ReportMulti.reportCid, ReportMulti.reportC);
-                                newreport3.savepicture(RCPIMG, ReportMulti.reportCid);
+                                SaveAndLoadImage.savepicture(RCPIMG, ReportMulti.reportCid);
                             }
                             if (FOLDER_EXIST("EGD"))
                             {
                                 newreport.saveReportField(RE, ReportMulti.reportAid, ReportMulti.reportA);
-                                newreport.savepicture(REIMG, ReportMulti.reportAid);
+                                SaveAndLoadImage.savepicture(REIMG, ReportMulti.reportAid);
                             }
                             break;
                         case "Colono/ERCP":
                             if (FOLDER_EXIST("ERCP"))
                             {
                                 newreport3.saveReportField(RCP, ReportMulti.reportCid, ReportMulti.reportC);
-                                newreport3.savepicture(RCPIMG, ReportMulti.reportCid);
+                                SaveAndLoadImage.savepicture(RCPIMG, ReportMulti.reportCid);
                             }
 
                             if (FOLDER_EXIST("COL"))
                             {
                                 newreport2.saveReportField(RC, ReportMulti.reportBid, ReportMulti.reportB);
-                                newreport2.savepicture(RCIMG, ReportMulti.reportBid);
+                                SaveAndLoadImage.savepicture(RCIMG, ReportMulti.reportBid);
                             }
                             break;
                         case "EGD/Colono/ERCP":
                             if (FOLDER_EXIST("ERCP"))
                             {
                                 newreport3.saveReportField(RCP, ReportMulti.reportCid, ReportMulti.reportC);
-                                newreport3.savepicture(RCPIMG, ReportMulti.reportCid);
+                                SaveAndLoadImage.savepicture(RCPIMG, ReportMulti.reportCid);
                             }
                             if (FOLDER_EXIST("COL"))
                             {
                                 newreport2.saveReportField(RC, ReportMulti.reportBid, ReportMulti.reportB);
-                                newreport2.savepicture(RCIMG, ReportMulti.reportBid);
+                                SaveAndLoadImage.savepicture(RCIMG, ReportMulti.reportBid);
                             }
                             if (FOLDER_EXIST("EGD"))
                             {
                                 newreport.saveReportField(RE, ReportMulti.reportAid, ReportMulti.reportA);
-                                newreport.savepicture(REIMG, ReportMulti.reportAid);
+                                SaveAndLoadImage.savepicture(REIMG, ReportMulti.reportAid);
+
                             }
                             break;
 
@@ -1226,7 +1229,7 @@ namespace IDMS.Page
 
                         manageReportCOL newreport = new manageReportCOL();
                         newreport.saveReportField(Savereport2, Savecid, Saveinfo);
-                        newreport.savepicture(SaveCOLControl, Savecid);
+                        SaveAndLoadImage.savepicture(SaveCOLControl, Savecid);
 
                     }
                     else
@@ -1237,7 +1240,8 @@ namespace IDMS.Page
 
                             manageReportEGD newreport = new manageReportEGD();
                             newreport.saveReportField(Savereport, Savecid, Saveinfo);
-                            newreport.savepicture(SaveEGDControl, Savecid);
+                            SaveAndLoadImage.savepicture(SaveEGDControl, Savecid);
+
                         }
                         else
                         {
@@ -1247,7 +1251,7 @@ namespace IDMS.Page
 
                                 manageReportERCP newreport = new manageReportERCP();
                                 newreport.saveReportField(Savereport3, Savecid, Saveinfo);
-                                newreport.savepicture(SaveENTControl, Savecid);
+                                SaveAndLoadImage.savepicture(SaveENTControl, Savecid);
                             }
                             else
                             {
@@ -1255,7 +1259,7 @@ namespace IDMS.Page
                                 {
                                     manageReportBRONCO newreport = new manageReportBRONCO();
                                     newreport.saveReportField(Savereport4, Savecid, Saveinfo);
-                                    newreport.savepicture(SaveBRONCOControl, Savecid);
+                                    SaveAndLoadImage.savepicture(SaveBRONCOControl, Savecid);
 
 
                                 }
@@ -1265,7 +1269,7 @@ namespace IDMS.Page
                                     {
                                         manageReportENT newreport = new manageReportENT();
                                         newreport.saveReportField(Savereport5, Savecid, Saveinfo);
-                                        newreport.savepicture(SaveENTControl, Savecid);
+                                        SaveAndLoadImage.savepicture(SaveENTControl, Savecid);
 
 
                                     }
@@ -1478,27 +1482,28 @@ namespace IDMS.Page
                 case "EGD":
                     manageReportEGD EGD_REPORT = new manageReportEGD();
                     EGD_REPORT.LoadReportField(report, caseID, this);
-                    EGD_REPORT.Loadpicture(this, EGDControl, caseID);
+                    // EGD_REPORT.Loadpicture(this, EGDControl, caseID);
+                    SaveAndLoadImage.Loadpicture(this, EGDControl, caseID);
                     break;
                 case "COL":
                     manageReportCOL COL_REPORT = new manageReportCOL();
                     COL_REPORT.LoadReportField(report2, caseID, this);
-                    COL_REPORT.Loadpicture(this, COLControl, caseID);
+                    SaveAndLoadImage.Loadpicture(this, COLControl, caseID);
                     break;
                 case "ERCP":
                     manageReportERCP ERCP_REPORT = new manageReportERCP();
                     ERCP_REPORT.LoadReportField(report3, caseID, this);
-                    ERCP_REPORT.Loadpicture(this, ERCPControl, caseID);
+                    SaveAndLoadImage.Loadpicture(this, ERCPControl, caseID);
                     break;
                 case "ENT":
                     manageReportENT ENT_REPORT = new manageReportENT();
                     ENT_REPORT.LoadReportField(report5, caseID, this);
-                    ENT_REPORT.Loadpicture(this, ENTControl, caseID);
+                    SaveAndLoadImage.Loadpicture(this, ENTControl, caseID);
                     break;
                 case "BRONCO":
                     manageReportBRONCO BRONCO_REPORT = new manageReportBRONCO();
                     BRONCO_REPORT.LoadReportField(report4, caseID, this);
-                    BRONCO_REPORT.Loadpicture(this, BRONCOControl, caseID);
+                    SaveAndLoadImage.Loadpicture(this, BRONCOControl, caseID);
                     break;
                 default:
                     break;
