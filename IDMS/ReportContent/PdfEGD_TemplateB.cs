@@ -46,19 +46,11 @@ namespace IDMS.ReportContent
 
             if (squareMode)
             {
-                //9 21 33 45 57   =  12 12 12 12 12
                 if (output.pic9.Enabled == true) page2 = true;
                 if (output.pic21.Enabled == true) page3 = true;
                 if (output.pic33.Enabled == true) page4 = true;
                 if (output.pic45.Enabled == true) page5 = true;
                 if (output.pic57.Enabled == true) page6 = true;
-
-                /*
-                for(int i =0;i < 20;i++) {
-                    if (output.pic57.Enabled) page6 = true;
-                    if ()
-                }
-                */
             }
             else
             {
@@ -117,7 +109,7 @@ namespace IDMS.ReportContent
             string pictureMode = load.getOption("option_value", "pictureMode");
             bool squareMode = pictureMode == "1";
 
-            ///PDF Generate begin here
+            //PDF Generate begin here
             pdfDoc.Open();
             pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
             pdfDoc.Add(GetBodyEGD(pdfDoc, writer, report, EGD, output, ORIGINAL_ID));
@@ -134,20 +126,62 @@ namespace IDMS.ReportContent
                 pdfDoc.Add(wideMode.FirstPage(pdfDoc, writer, output, doctorName, "EGD"));
             }
 
-            ///Generate PDF Page 2+
-            for (int i = 2; i < 10; i++)
+            //MultiPage
+            if (page2)
             {
                 pdfDoc.NewPage();
                 pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
-                if (squareMode)
-                {
-
-                    pdfDoc.Add(GetImg2(pdfDoc, writer, i, output, report));
-                }
-                else
-                {
-                    pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, i, output, doctorName, "EGD"));
-                }
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 2, output, report)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 2, output, doctorName, "EGD")); }
+            }
+            if (page3)
+            {
+                pdfDoc.NewPage();
+                pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 3, output, report)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 3, output, doctorName, "EGD")); }
+            }
+            if (page4)
+            {
+                pdfDoc.NewPage();
+                pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 4, output, report)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 4, output, doctorName, "EGD")); }
+            }
+            if (page5)
+            {
+                pdfDoc.NewPage();
+                pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 5, output, report)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 5, output, doctorName, "EGD")); }
+            }
+            if (page6)
+            {
+                pdfDoc.NewPage();
+                pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 6, output, report)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 6, output, doctorName, "EGD")); }
+            }
+            if (page7)
+            {
+                pdfDoc.NewPage();
+                pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 7, output, report)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 7, output, doctorName, "EGD")); }
+            }
+            if (page8)
+            {
+                pdfDoc.NewPage();
+                pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 8, output, report)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 8, output, doctorName, "EGD")); }
+            }
+            if (page9)
+            {
+                pdfDoc.NewPage();
+                pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 9, output, report)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 9, output, doctorName, "EGD")); }
             }
             pdfDoc.Close();
 
