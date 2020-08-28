@@ -964,27 +964,41 @@ namespace IDMS.Popup
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-     
+            string pictureMode = load.getOption("option_value", "pictureMode");
+            bool squareMode = pictureMode == "1";
+
             Mode.Text = "";
             _originalImage = pic.Image.Clone() as Image;
             pic.Width = (_originalImage.Width * 3) / 4;
             pic.Height = (_originalImage.Height * 3) / 4;
 
-            defaultW = _originalImage.Width;
-            defaultH = _originalImage.Height;
+            if (squareMode)
+            {
+                int t = 0, l = 0;
+                int newW = (pic.Image.Width * 3) / 4;
+                int newH = (pic.Image.Height * 3) / 4;
 
-            Bitmap res = new Bitmap(500, 500);
-            int t = 0, l = 0;
-            if (pic.Image.Height > pic.Image.Width)
-                t = (pic.Image.Height - pic.Image.Width) / 2;
+                if (newH > newW)
+                {
+                    t = (newH - newW) / 2;
+                }
+                else
+                {
+                    l = (newW - newH) / 2;
+                }
+
+                _selectionDefault = new Rectangle(l, t, newW - l * 2, newH - t * 2);
+            }
             else
-                l = (pic.Image.Width - pic.Image.Height) / 2;
+            {
+                int newW = (pic.Image.Width * 3) / 4;
+                int newH = (pic.Image.Height * 3) / 4;
 
-
-            _selectionDefault = new Rectangle(l, t, pic.Image.Width - l * 2, pic.Image.Height - t * 2);
-
+                _selectionDefault = new Rectangle(0, 0, newW, newH);
+            }
 
             drawSquare();
+
         }
     }
 }
