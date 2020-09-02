@@ -120,6 +120,7 @@
             this.Statistic.Text = "Statistic";
             this.Statistic.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Statistic.UseVisualStyleBackColor = false;
+            this.Statistic.Visible = false;
             this.Statistic.Click += new System.EventHandler(this.Statistic_Click);
             // 
             // Logo

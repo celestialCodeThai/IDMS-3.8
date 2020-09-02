@@ -1292,7 +1292,7 @@ namespace IDMS.ReportContent
             {
                 if (output.imgPath[i] != null)
                 {
-                    if (output.imgPath[i].Contains("EGD") == true)
+                    if (output.imgPath[i].Contains("ERCP") == true)
                     {
                         i++;
                     }
