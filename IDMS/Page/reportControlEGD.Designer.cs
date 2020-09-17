@@ -2711,7 +2711,7 @@
             this.pg29.Name = "pg29";
             this.pg29.Size = new System.Drawing.Size(194, 21);
             this.pg29.TabIndex = 298;
-            this.pg29.Text = "Erusive/haemorrhagic gastritis";
+            this.pg29.Text = "Erosive/haemorrhagic gastritis";
             this.pg29.UseVisualStyleBackColor = true;
             // 
             // pg28
@@ -2974,9 +2974,9 @@
             this.label14.Font = new System.Drawing.Font("Leelawadee UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(62, 386);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(89, 20);
+            this.label14.Size = new System.Drawing.Size(100, 20);
             this.label14.TabIndex = 368;
-            this.label14.Text = "Oropharnyx:";
+            this.label14.Text = "Hypopharynx:";
             // 
             // label12
             // 
@@ -3412,6 +3412,7 @@
             // contextMenuStrip2
             // 
             this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
             // reportControlEGD
             // 

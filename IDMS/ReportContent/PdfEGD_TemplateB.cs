@@ -824,7 +824,7 @@ namespace IDMS.ReportContent
 
             F00 = new Phrase("Finding", f1);
 
-            F01 = new Phrase("Oropharynx:", f2);
+            F01 = new Phrase("Hypopharynx:", f2);
             F02 = new Phrase("Esophagus:", f2);
             F03 = new Phrase("EG Junction:", f2);
             F03b = new Phrase("Stomach", f2);
