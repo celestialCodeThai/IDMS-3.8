@@ -89,7 +89,7 @@ namespace IDMS.Page
 
         public void ClearData()
         {
-            financeValue.Text = "จ่ายเอง";
+            financeValue.Text = "";
 
             sexMalebutton.BackColor = Color.CornflowerBlue;
             sexMalebutton.ForeColor = Color.White;

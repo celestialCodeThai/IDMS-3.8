@@ -2631,9 +2631,9 @@
             this.label2.Font = new System.Drawing.Font("Leelawadee UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(60, 1660);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 20);
+            this.label2.Size = new System.Drawing.Size(111, 20);
             this.label2.TabIndex = 380;
-            this.label2.Text = "Terminal plenum:";
+            this.label2.Text = "Terminal ileum:";
             // 
             // label3
             // 
