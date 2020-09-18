@@ -1342,7 +1342,7 @@ namespace IDMS.ReportContent
             //thai Font
             BaseFont bf = BaseFont.CreateFont("c:/windows/fonts/micross.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             iTextSharp.text.Font Thai = new Font(bf, 10);
-
+            iTextSharp.text.Font Thai_Small = new Font(bf, 8);
             //
             ColumnText ct = new ColumnText(cb);
             ColumnText ct1 = new ColumnText(cb);
@@ -1374,7 +1374,11 @@ namespace IDMS.ReportContent
             Phrase headerAGE = new Phrase("Age:", f1);
 
             string H1 = report.infohn.Text; Phrase getHN = new Phrase(H1, Thai);
-            string H2 = report.infoname.Text; Phrase getNAME = new Phrase(H2, Thai);
+
+            string H2 = report.infoname.Text;
+            int nameLength = H2.Length;
+            Phrase getNAME = new Phrase(H2, nameLength < 25 ? Thai : Thai_Small);
+
             string H3 = report.infopro.Text; Phrase getPRO = new Phrase(H3, Thai);
             string H4 = report.inforegis.Text; Phrase getREGIS = new Phrase(H4, Thai);
             string H5 = report.Duration.Text; ; Phrase getDUR = new Phrase(H5, Thai);
