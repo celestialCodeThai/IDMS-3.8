@@ -409,7 +409,7 @@ namespace IDMS.ReportContent
             Phrase getNAME = new Phrase(H2, nameLength<25? Thai : Thai_Small);
 
             string H3 = report.infopro.Text; Phrase getPRO = new Phrase(H3, Thai);
-            string H4 = report.inforegis.Text; Phrase getREGIS = new Phrase(H4, Thai);
+            string H4 = report.inforegis.Text.Substring(0, 10); Phrase getREGIS = new Phrase(H4, Thai);
             string H5 = report.Duration.Text; ; Phrase getDUR = new Phrase(H5, Thai);
             string H6 = report.infosex.Text; Phrase getSEX = new Phrase(H6, Thai);
             string H7 = report.infoage.Text; Phrase getAGE = new Phrase(H7, Thai);
