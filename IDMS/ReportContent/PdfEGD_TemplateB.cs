@@ -17,6 +17,11 @@ using System.Windows.Forms;
 using IDMS.DataManage;
 using IDMS.ReportContent;
 
+
+
+
+
+
 namespace IDMS.ReportContent
 {
     class PdfEGD_TemplateB
@@ -38,7 +43,7 @@ namespace IDMS.ReportContent
         GetImageWide wideMode = new GetImageWide();
 
 
-        int sum_line = 0;
+        int sum_line = 500;
         int page_cut = 4;
         string PROCEDURE_IMAGE = "EGD";
 
@@ -385,7 +390,7 @@ namespace IDMS.ReportContent
 
             string H2 = report.infoname.Text;
             int nameLength = H2.Length;
-            Phrase getNAME = new Phrase(H2, nameLength<25? Thai : Thai_Small);
+            Phrase getNAME = new Phrase(H2, nameLength < 25 ? Thai : Thai_Small);
 
             string H3 = report.infopro.Text; Phrase getPRO = new Phrase(H3, Thai);
             string H4 = report.inforegis.Text.Substring(0, 10); Phrase getREGIS = new Phrase(H4, Thai);
@@ -1213,7 +1218,7 @@ namespace IDMS.ReportContent
             int f9y = f8y - BodySpace;
 
             int f8by = f8y - BodySpace;
-           
+
             extraline = calculatePDFWidth(fd8, 80);
 
             finding8b.SetSimpleColumn(F08b, BodyX - 2, f8by, 580, 317, 15, Element.ALIGN_LEFT);
@@ -1228,7 +1233,7 @@ namespace IDMS.ReportContent
 
             }
 
-          
+
 
             finding9.SetSimpleColumn(F09, BodyX + 8, f9y, 580, 317, 15, Element.ALIGN_LEFT);
 
@@ -1255,8 +1260,11 @@ namespace IDMS.ReportContent
                 f11y -= j;
 
             }
-            finding11.SetSimpleColumn(otherLabel, BodyX + 17, f11y, 580, 317, 15, Element.ALIGN_LEFT);
-            df11.SetSimpleColumn(getOtherValue, FX, f11y, 580, 317, 15, Element.ALIGN_LEFT); df11.Go();
+            finding11.SetSimpleColumn(otherLabel, BodyX + 17, f11y, 580, 267, 15, Element.ALIGN_LEFT);
+            df11.SetSimpleColumn(getOtherValue, FX, f11y, 580, 267, 15, Element.ALIGN_LEFT); df11.Go();
+
+            // ct.SetSimpleColumn(myText, dLeftSide, dBottom, dLeftSide + dCellSize, dBottom + dCellHeight, 0, Element.ALIGN_CENTER)
+
 
             finding.Go();
             finding1.Go(); finding2.Go(); finding3.Go(); finding3b.Go(); finding4.Go(); finding5.Go(); finding6.Go(); finding7.Go(); finding8.Go(); finding8b.Go(); finding9.Go(); finding10.Go(); finding11.Go();
