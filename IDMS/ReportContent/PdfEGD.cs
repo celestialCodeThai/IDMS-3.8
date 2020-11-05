@@ -1028,18 +1028,20 @@ namespace IDMS.ReportContent
             
 
             extraline = calculatePDFWidth(fd8, 80);
-            if (extraline > 0)
-            {
-                j = gap * extraline;
-                //f9y -= j;
-                f8by -= j;
-
-            }
 
             finding8b.SetSimpleColumn(F08b, BodyX - 2, f8by, 580, 317, 15, Element.ALIGN_LEFT);
             f9y = f8by - BodySpace;
 
             //f9
+            if (extraline > 0)
+            {
+                j = gap * extraline;
+                f9y -= j;
+                //f8by -= j;
+
+            }
+
+          
             finding9.SetSimpleColumn(F09, BodyX + 8, f9y, 580, 317, 15, Element.ALIGN_LEFT);
 
             df9.SetSimpleColumn(getFD9, FX, f9y, 580, 317, 15, Element.ALIGN_LEFT); df9.Go();
