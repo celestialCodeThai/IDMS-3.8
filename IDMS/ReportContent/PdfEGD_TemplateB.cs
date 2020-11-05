@@ -43,7 +43,7 @@ namespace IDMS.ReportContent
         GetImageWide wideMode = new GetImageWide();
 
 
-        int sum_line = 500;
+        int sum_line = 0;
         int page_cut = 4;
         string PROCEDURE_IMAGE = "EGD";
 
