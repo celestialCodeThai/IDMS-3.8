@@ -167,6 +167,7 @@ namespace IDMS.ReportContent
                     }
                 }
             }
+
             pdfDoc.Close();
 
 
