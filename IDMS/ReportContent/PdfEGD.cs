@@ -111,7 +111,8 @@ namespace IDMS.ReportContent
             pdfDoc.Add(GetBodyEGD(pdfDoc, writer, report, EGD, output));
 
             string doctorName = report.infodoc.Text;
-
+            //
+            /*
             if (sum_line >= page_cut)
             {
                 if (squareMode)
@@ -134,6 +135,37 @@ namespace IDMS.ReportContent
 
 
             }
+            */
+            if (sum_line >= page_cut)
+            {
+                bool[] PAGENUMBER = new bool[] { output.pic5.Enabled, output.pic17.Enabled, output.pic29.Enabled, output.pic41.Enabled, output.pic53.Enabled, output.pic65.Enabled, false, false };
+
+                if (squareMode)
+                { pdfDoc.Add(GetImg_2(pdfDoc, writer, output)); }
+                else
+                {
+                    PAGENUMBER = new bool[] { output.pic4.Enabled, output.pic12.Enabled, output.pic20.Enabled, output.pic28.Enabled, output.pic36.Enabled, output.pic44.Enabled, output.pic52.Enabled, output.pic60.Enabled };
+                    pdfDoc.Add(wideMode.FirstPage_2(pdfDoc, writer, output, doctorName, PROCEDURE_IMAGE));
+                }
+
+
+                for (int i = 0; i <= 7; i++)
+                {
+
+
+                    if (PAGENUMBER[i])
+                    {
+                        pdfDoc.NewPage();
+                        pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
+                        if (squareMode) { pdfDoc.Add(GetImg2_2(pdfDoc, writer, i + 2, output)); }
+                        else { pdfDoc.Add(wideMode.MultiPage_2(pdfDoc, writer, i + 2, output, doctorName, PROCEDURE_IMAGE)); }
+                    }
+                }
+
+
+            }
+
+            //
             else
             {
                 if (squareMode)
@@ -1616,12 +1648,13 @@ namespace IDMS.ReportContent
 
         private PdfPTable GetImg2_2(Document pdfDoc, PdfWriter writer, int page, imageReport output)
         {
+
             string[] P2, P3, P4, P5, P6, PX = null;
             P2 = new string[] { "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P" };
             P3 = new string[] { "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "AA", "AB" };
             P4 = new string[] { "AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN" };
             P5 = new string[] { "AO", "AP", "AQ", "AR", "AS", "AT", "AU", "AV", "AW", "AX", "AY", "AZ" };
-            P6 = new string[] { "BA", "BB", "BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ" };
+            P6 = new string[] { "BA", "BB", "BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ","BK","BL" };
 
             iTextSharp.text.Image picPdf1 = null, picPdf2 = null, picPdf3 = null, picPdf4 = null, picPdf5 = null, picPdf6 = null, picPdf7 = null, picPdf8 = null, picPdf9 = null, picPdf10 = null, picPdf11 = null, picPdf12 = null;
             iTextSharp.text.Image[] picPDF;
@@ -1653,17 +1686,18 @@ namespace IDMS.ReportContent
             int size = 165; int BodyY = 595;
 
             int LoopX = BodyX; int LoopY = BodyY;
+
             ///
-            int X1 = 0, X2 = 0, X3 = 0;
-            if (page == 2) { PX = P2; X1 = 21; X2 = 20; X3 = 8; }
-            if (page == 3) { PX = P3; X1 = 31; X2 = 32; X3 = 20; }
-
-            if (page == 4) { PX = P4; X1 = 43; X2 = 44; X3 = 32; }
-
-            if (page == 5) { PX = P5; X1 = 55; X2 = 56; X3 = 44; }
-            if (page == 6) { PX = P6; X1 = 56; X2 = i; X3 = 56; }
+            int X2 = 0, X3 = 0;
+            if (page == 2) { PX = P2; X2 = 16; X3 = 4; }//TODO: test4
+            if (page == 3) { PX = P3; X2 = 28; X3 = 16; }
+            
+            if (page == 4) { PX = P4; X2 = 40; X3 = 28; }
+            if (page == 5) { PX = P5; X2 = 52; X3 = 40; }
+            if (page == 6) { PX = P6; X2 = i; X3 = 52; }
+            ///
             if (i >= X2) { j = X2; }
-            ///
+
             int x = X3;
 
             for (int z = 0; z < j - X3; z++)
@@ -1684,6 +1718,7 @@ namespace IDMS.ReportContent
                 { LoopX += size + smallgap; }
                 x++;
             }
+
 
             return imgTable;
 
