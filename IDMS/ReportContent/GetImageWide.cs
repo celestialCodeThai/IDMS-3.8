@@ -304,7 +304,7 @@ namespace IDMS.ReportContent
 
         public PdfPTable MultiPage_2(Document pdfDoc, PdfWriter writer, int page, imageReport output, string doctorName, string procedure)
         {
-            string[] P2, P3, P4, P5, P6, P7, P8, P9, PX = null;
+            string[] P2, P3, P4, P5, P6, P7, P8, P9,P10, PX = null;
             P2 = new string[] { "D", "E", "F", "G", "H", "I", "J", "K" };
             P3 = new string[] { "L", "M", "N", "O", "P", "Q", "R", "S" };
             P4 = new string[] { "T", "U", "V", "W", "X", "Y", "Z", "AA" };
@@ -312,7 +312,8 @@ namespace IDMS.ReportContent
             P6 = new string[] { "AJ", "AK", "AL", "AM", "AN", "AO", "AP", "AQ" };
             P7 = new string[] { "AR", "AS", "AT", "AU", "AV", "AW", "AX", "AY" };
             P8 = new string[] { "AZ", "BA", "BB", "BC", "BD", "BE", "BF", "BG" };
-            P9 = new string[] { "BH", "BI", "BJ", "BK" };
+            P9 = new string[] { "BH", "BI", "BJ", "BK","BL","BM","BN","BO" };
+            P10 = new string[] { "BP", "BQ", "BR", "BS", "BT", "BU", "BV", "BW" };
 
 
 
@@ -355,28 +356,32 @@ namespace IDMS.ReportContent
             switch (page)
             {
                 case 2:
-                    PX = P2; currentPage = 14; prevPage = 6;
+                    PX = P2; currentPage = 11; prevPage = 3;
                     break;
                 case 3:
-                    PX = P3; currentPage = 22; prevPage = 14;
+                    PX = P3; currentPage = 19; prevPage = 11;
                     break;
                 case 4:
-                    PX = P4; currentPage = 30; prevPage = 22;
+                    PX = P4; currentPage = 27; prevPage = 19;
                     break;
                 case 5:
-                    PX = P5; currentPage = 38; prevPage = 30;
+                    PX = P5; currentPage = 35; prevPage = 27;
                     break;
                 case 6:
-                    PX = P6; currentPage = 46; prevPage = 38;
+                    PX = P6; currentPage = 43; prevPage = 35;
                     break;
                 case 7:
-                    PX = P7; currentPage = 54; prevPage = 46;
+                    PX = P7; currentPage = 51; prevPage = 43;
                     break;
                 case 8:
-                    PX = P8; currentPage = 62; prevPage = 54;
+                    PX = P8; currentPage = 59; prevPage = 51;
                     break;
                 case 9:
-                    PX = P9; currentPage = i; prevPage = 62;
+                    PX = P9; currentPage = 67; prevPage = 59;
+                    break;
+
+                case 10:
+                    PX = P10; currentPage = i; prevPage = 67;
                     break;
 
             }
