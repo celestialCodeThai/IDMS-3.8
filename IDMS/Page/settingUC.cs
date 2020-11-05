@@ -226,6 +226,8 @@ namespace IDMS.Page
             dts.Columns[0].Width = dts.Width / 6;
             dts.Columns[1].Width = dts.Width - dts.Columns[0].Width;
 
+            dts.ColumnHeadersHeight = 40;
+
 
         }
         private void loadDataList(string table)
@@ -250,6 +252,8 @@ namespace IDMS.Page
             dts.Columns[1].Visible = false;
             dts.Columns[0].Width = dts.Width / 4;
             dts.Columns[1].Width = dts.Width - dts.Columns[0].Width;
+
+            dts.ColumnHeadersHeight = 40;
 
             if (table == "doctor")
             {
@@ -732,6 +736,9 @@ namespace IDMS.Page
             cTable.Columns[1].Visible = false;
             cTable.Columns[0].Width = cTable.Width / 8;
             cTable.Columns[1].Width = cTable.Width - cTable.Columns[0].Width;
+
+            cTable.ColumnHeadersHeight = 40;
+
             //this.cTable.Font = new Font("Times", 8);
         }
 
@@ -983,6 +990,8 @@ namespace IDMS.Page
 
             procedureRoomTable.Columns[1].Visible = false;
             procedureRoomTable.Columns[0].Width = 80;
+
+            procedureRoomTable.ColumnHeadersHeight = 40;
         }
 
         private void addProcedureRoom()
