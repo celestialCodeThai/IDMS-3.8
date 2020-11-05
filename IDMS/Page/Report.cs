@@ -716,7 +716,7 @@ namespace IDMS.Page
 
 
             int row = table.Rows.Count;
-            for (int v = 0; v < row && selectImageTable.Rows.Count <= 66; v++)
+            for (int v = 0; v < row && selectImageTable.Rows.Count < 65; v++)
             {
                 string imageName = imagelistTable.Rows[0].Cells[0].Value.ToString();
                 switch (PRO)
