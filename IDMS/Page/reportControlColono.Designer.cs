@@ -306,7 +306,7 @@
             this.med5.Name = "med5";
             this.med5.Size = new System.Drawing.Size(74, 21);
             this.med5.TabIndex = 124;
-            this.med5.Text = "Fantanyl";
+            this.med5.Text = "Fentanyl";
             this.med5.UseVisualStyleBackColor = true;
             this.med5.CheckedChanged += new System.EventHandler(this.med5_CheckedChanged);
             // 
