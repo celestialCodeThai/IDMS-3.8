@@ -35,6 +35,7 @@ namespace IDMS.Page
         string path;
         string sub;
 
+
         public regisUC(idmsPage mainPage)
         {
             Current = this;
@@ -62,6 +63,7 @@ namespace IDMS.Page
             loadTemplate();
         }
 
+
         public void loadTemplate()
         {
             DataAccess load = new DataAccess();
@@ -77,15 +79,17 @@ namespace IDMS.Page
             }
         }
 
+
         public void lockEdit(bool existHn)
         {
             FirstName.ReadOnly = existHn;
             LastName.ReadOnly = existHn;
         }
 
+
         public void ClearData()
         {
-            financeValue.Text = "จ่ายเอง";
+            financeValue.Text = "";
 
             sexMalebutton.BackColor = Color.CornflowerBlue;
             sexMalebutton.ForeColor = Color.White;
@@ -99,7 +103,7 @@ namespace IDMS.Page
             opdButton.ForeColor = Color.CornflowerBlue;
             Ptype = false;
             //
-           
+
             in2.Text = "";
             indi = "";
             birth = "";
@@ -150,6 +154,8 @@ namespace IDMS.Page
 
             jqueryPanel.Url = new Uri(sub);
         }
+
+
         string autoFillName;
         string autoFillSName;
         string autoFillsex;
@@ -158,6 +164,7 @@ namespace IDMS.Page
         string autoFillBirth;
         string autoFillNation;
         string autoType;
+
 
         public void autoComplete()
         {
@@ -185,6 +192,8 @@ namespace IDMS.Page
             Completereader.Close();
             Completecon.Close();
         }
+
+
         public void autoFill(string thishn)
         {
 
@@ -195,7 +204,7 @@ namespace IDMS.Page
             MySqlCommand FillCommand = new MySqlCommand("select * from patientdata where hn='" + thishn + "'", Fillcon);
 
             Fillreader = FillCommand.ExecuteReader();
-            String fullbirthDate ="";
+            String fullbirthDate = "";
             while (Fillreader.Read())
             {
                 if (Fillreader.HasRows == true)
@@ -216,7 +225,8 @@ namespace IDMS.Page
 
                 //   28 / 8 / 2558
                 if (fullbirthDate != "" && fullbirthDate != null)
-                {string[] str = fullbirthDate.Split('/');
+                {
+                    string[] str = fullbirthDate.Split('/');
 
                     dateBirth.Text = str[0];
                     monthBirth.SelectedIndex = Convert.ToInt32(str[1]);
@@ -241,7 +251,11 @@ namespace IDMS.Page
 
 
         }
+
+
         public string existName = "";
+
+
         public bool checkDBExist(string thishn)
         {
             MySqlDataReader checkreader;
@@ -267,6 +281,7 @@ namespace IDMS.Page
 
         }
 
+
         public void connectMySQL()
         {
             IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbhelper.CnnVal("db"));
@@ -275,19 +290,24 @@ namespace IDMS.Page
 
         }
 
+
         private bool Drag;
         private int MouseX;
         private int MouseY;
+
 
         private const int WM_NCHITTEST = 0x84;
         private const int HTCLIENT = 0x1;
         private const int HTCAPTION = 0x2;
 
+
         private bool m_aeroEnabled;
+
 
         private const int CS_DROPSHADOW = 0x00020000;
         private const int WM_NCPAINT = 0x0085;
         private const int WM_ACTIVATEAPP = 0x001C;
+
 
         [System.Runtime.InteropServices.DllImport("dwmapi.dll")]
         public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarInset);
@@ -313,6 +333,8 @@ namespace IDMS.Page
             public int topHeight;
             public int bottomHeight;
         }
+
+
         protected override CreateParams CreateParams
         {
             get
@@ -323,6 +345,8 @@ namespace IDMS.Page
                     cp.ClassStyle |= CS_DROPSHADOW; return cp;
             }
         }
+
+
         private bool CheckAeroEnabled()
         {
             if (Environment.OSVersion.Version.Major >= 6)
@@ -332,6 +356,8 @@ namespace IDMS.Page
             }
             return false;
         }
+
+
         protected override void WndProc(ref Message m)
         {
             switch (m.Msg)
@@ -355,12 +381,16 @@ namespace IDMS.Page
             base.WndProc(ref m);
             if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT) m.Result = (IntPtr)HTCAPTION;
         }
+
+
         private void PanelMove_MouseDown(object sender, MouseEventArgs e)
         {
             Drag = true;
             MouseX = Cursor.Position.X - this.Left;
             MouseY = Cursor.Position.Y - this.Top;
         }
+
+
         private void PanelMove_MouseMove(object sender, MouseEventArgs e)
         {
             if (Drag)
@@ -369,14 +399,9 @@ namespace IDMS.Page
                 this.Left = Cursor.Position.X - MouseX;
             }
         }
+
+
         private void PanelMove_MouseUp(object sender, MouseEventArgs e) { Drag = false; }
-
-
-
-
-
-
-
 
 
         private const int HT_CAPTION = 0x2;
@@ -389,6 +414,8 @@ namespace IDMS.Page
             int wMsg,
             int wParam,
             int lParam);
+
+
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
@@ -402,43 +429,6 @@ namespace IDMS.Page
                 }
             }
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RegisterMenuBar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ExaminationMenuBar_Click(object sender, EventArgs e)
-        {
-            if (camOpen == false)
-            {
-                /* camOpen = true;
-                 Form Exam = new ExaminationPage();
-                 Exam.Show();
-                 this.Hide();
-                 */
-            }
-            else
-            {
-
-            }
-        }
-
-
-
-
-
-
-
 
 
 
@@ -453,10 +443,6 @@ namespace IDMS.Page
             checkdoc.Visible = false;
             checknation.Visible = false;
             checkage.Visible = false;
-
-
-
-
 
 
             if (hn.Text == "")
@@ -504,6 +490,8 @@ namespace IDMS.Page
 
             return checker;
         }
+
+
         private void RegisterButton_Click(object sender, EventArgs e)
         {
             pro = "";
@@ -549,12 +537,7 @@ namespace IDMS.Page
                 string b = regisDate.Text + "-" + regisTime.Text;
                 string regisday = regisDate.Text;
                 string pRoom = "";
-                /*
-                if (procedureRoom.SelectedItem != null)
-                {
-                    pRoom = procedureRoom.SelectedItem.ToString();
-                }
-                */
+
                 pRoom = procedureRoom.Text;
                 string inst = instruments.Text;
 
@@ -563,7 +546,6 @@ namespace IDMS.Page
                     if (inst != "") { inst += "$"; }
                     inst += in2.Text;
                 }
-            
 
                 string d1 = doc1.Text;
                 string d2 = "";
@@ -666,12 +648,16 @@ namespace IDMS.Page
                 {
                     cname = existName;
                 }
-                
+
                 string finance = financeValue.Text;
+                string cameraA = instruments.Text;
+                string cameraB = in2.Text;
 
-                db.AddNewCase(caseId, cname, hn.Text, pro, pRoom, indi, inst, predx1, predx2, predx3, predx4, b, regisday, d1, d2, sc, cc, ac, "Prepare", finance);
 
-               
+
+                db.AddNewCase(caseId, cname, hn.Text, pro, pRoom, indi, inst, predx1, predx2, predx3, predx4, b, regisday, d1, d2, sc, cc, ac, "Prepare", finance, w, cameraA, cameraB);
+
+
 
                 PopupNotifier popup = new PopupNotifier();
                 popup.TitleText = "Successfully registered";
@@ -690,6 +676,7 @@ namespace IDMS.Page
 
         }
 
+
         private void sexFemalebutton_Click(object sender, EventArgs e)
         {
             sexFemalebutton.BackColor = Color.CornflowerBlue;
@@ -700,6 +687,7 @@ namespace IDMS.Page
             sex = false;
         }
 
+
         private void sexMalebutton_Click(object sender, EventArgs e)
         {
             sexMalebutton.BackColor = Color.CornflowerBlue;
@@ -708,6 +696,7 @@ namespace IDMS.Page
             sexFemalebutton.ForeColor = Color.CornflowerBlue;
             sex = true;
         }
+
 
         private void opdButton_Click(object sender, EventArgs e)
         {
@@ -719,6 +708,7 @@ namespace IDMS.Page
             Ptype = true;
         }
 
+
         private void WardButton_Click(object sender, EventArgs e)
         {
             WardButton.BackColor = Color.CornflowerBlue;
@@ -727,12 +717,6 @@ namespace IDMS.Page
             opdButton.ForeColor = Color.CornflowerBlue;
             Ptype = false;
         }
-
-
-
-
-
-
 
 
         //For 24 H format
@@ -756,42 +740,19 @@ namespace IDMS.Page
         }
 
 
-        private void birthDate_TextChanged(object sender, EventArgs e)
-        {
-            //TimeSpan ts = DateTime.Now - Convert.ToDateTime(birthDate.Text);
-            // int age = Convert.ToInt32(ts.Days) / 365;
-            // ageText.Text = age.ToString();
-        }
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             string a = hn.Text + "-" + tempdate + "-" + temptime;
-            System.Windows.Forms.MessageBox.Show(a);
 
         }
 
 
         private string getindication()
         {
-
-
-
-
-
-
-
-
             string b = "";
             var element = jqueryPanel.Document.GetElementById("jq");
             dynamic dom = element.DomElement;
-            /*
-                        int index = (int)dom.selectedIndex(); 
-                          if (index != -1)
-                          {
-                             b = element.Children[index].InnerText;
-                            System.Windows.Forms.MessageBox.Show(b);
-                          }
-                   */
+
 
             int check = 0;
             for (int i = 0; i < 28; i++)
@@ -802,25 +763,13 @@ namespace IDMS.Page
 
                     b += dom.Children[i].InnerText;
                     check++;
-                    //  System.Windows.Forms.MessageBox.Show(b);
                 }
             }
-            //if (b.Length > 0)
-            //{
-            //    b = b.Remove(b.Length - 1);
-            //}
 
             return b;
 
 
-
-
-
-
-
         }
-
-
 
 
         string medid;
@@ -853,6 +802,7 @@ namespace IDMS.Page
 
         }
 
+
         private void predx1btn_Click(object sender, EventArgs e)
         {
             dx1.Text = getmedData();
@@ -877,6 +827,7 @@ namespace IDMS.Page
             cd4.Text = medid;
         }
 
+
         private void instu_Click(object sender, EventArgs e)
         {
 
@@ -888,44 +839,11 @@ namespace IDMS.Page
         }
 
 
-
-
-
-
-
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {/*
-            if (dateB.MaskCompleted == true)
-            {
-                TimeSpan ts2 = DateTime.Now - Convert.ToDateTime(dateB.Text);
-                int age2 = Convert.ToInt32(ts2.Days) / 365;
-                ageText.Text = age2.ToString();
-            }
-            */
-        }
-
-        private void dateB_KeyDown(object sender, KeyEventArgs e)
-        {/*
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (dateB.MaskCompleted == true)
-                {
-                    TimeSpan ts2 = DateTime.Now - Convert.ToDateTime(dateB.Text);
-                    int age2 = Convert.ToInt32(ts2.Days) / 365;
-                    ageText.Text = age2.ToString();
-                }
-
-            }
-            */
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             idms.ChangePageToCase();
 
         }
-
 
 
 
@@ -938,6 +856,7 @@ namespace IDMS.Page
             }
 
         }
+
 
         private void yearBirth_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -955,6 +874,7 @@ namespace IDMS.Page
 
         }
 
+
         private void button1_Click_3(object sender, EventArgs e)
         {
             string superdate;
@@ -963,11 +883,13 @@ namespace IDMS.Page
             MessageBox.Show(superdate);
         }
 
+
         private void regisUC_Leave(object sender, EventArgs e)
         {
             ClearData();
             setTime();
         }
+
 
         public String specialCharReplace(String hn)
         {
@@ -979,17 +901,8 @@ namespace IDMS.Page
             {
                 if (hid.Contains(regEx[i])) { hid = hid.Replace(regEx[i], "_"); }
             }
-
-            //if (hid.Contains("'")) { hid = hid.Replace("'", "_"); }
-            //if (hid.Contains('\\')) { hid = hid.Replace('\\', '_'); }
-            //if (hid.Contains('/')) { hid = hid.Replace('/', '_'); }
-
-
             return hid;
         }
-
-
-
 
 
         private void hn_TextChanged(object sender, EventArgs e)
@@ -1020,6 +933,7 @@ namespace IDMS.Page
             }
         }
 
+
         private void hn_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -1041,6 +955,7 @@ namespace IDMS.Page
 
         }
 
+
         private void FirstName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -1049,6 +964,8 @@ namespace IDMS.Page
                 e.SuppressKeyPress = true;
             }
         }
+
+
         private void dx1_TextChanged(object sender, EventArgs e)
         {
 
@@ -1122,6 +1039,7 @@ namespace IDMS.Page
 
         }
 
+
         private void groupBox3_Enter(object sender, EventArgs e)
         {
 
@@ -1158,6 +1076,7 @@ namespace IDMS.Page
         private System.Data.SQLite.SQLiteDataAdapter DB;
         private System.Data.SQLite.SQLiteDataReader reader;
 
+
         private void loadProcedureRoom()
         {
             string query = "select * from procedure_room";
@@ -1167,7 +1086,7 @@ namespace IDMS.Page
             DB = new System.Data.SQLite.SQLiteDataAdapter(query, sql_con);
             DataSet ds = new DataSet();
             DB.Fill(ds);
-          
+
             sql_con.Close();
             sql_con.Dispose();
 
@@ -1176,8 +1095,9 @@ namespace IDMS.Page
             procedureRoom.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             procedureRoom.AutoCompleteCustomSource = GetAutoSourceCollectionFromTable(ds.Tables[0]);
             procedureRoom.SelectedIndex = -1;
-           
+
         }
+
 
         private void loadDataList(string table)
         {
@@ -1196,7 +1116,7 @@ namespace IDMS.Page
             sql_con.Close();
             sql_con.Dispose();
 
-           
+
 
 
             if (table == "doctor")
@@ -1250,7 +1170,7 @@ namespace IDMS.Page
             return autoSourceCollection;
         }
 
-     
+
 
         private void pro4_CheckedChanged(object sender, EventArgs e)
         {
@@ -1281,55 +1201,6 @@ namespace IDMS.Page
             }
         }
 
-        private void instruments_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void doc1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void nationBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void fina_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox7_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void regisUC_Load(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void groupBox6_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void procedure2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void procedure3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void pro5_CheckedChanged(object sender, EventArgs e)
         {
@@ -1343,22 +1214,16 @@ namespace IDMS.Page
                 procedure2.Enabled = false;
                 procedure3.Enabled = false;
                 pro4.Enabled = false;
-
-              //  bon1.Visible = true;
-               // bon2.Visible = true;
-             //   bon3.Visible = true;
-
             }
             else
             {
-             //   bon1.Visible = false;
-              //  bon2.Visible = false;
-              //  bon3.Visible = false;
                 procedure1.Enabled = true;
                 procedure2.Enabled = true;
                 procedure3.Enabled = true;
                 pro4.Enabled = true;
             }
         }
+
+
     }
 }

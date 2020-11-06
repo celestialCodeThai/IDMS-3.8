@@ -12,6 +12,7 @@ namespace IDMS.DataManage
 {
     class manageReportBRONCO
     {
+
         public void saveReportField(UserControl reportcon, string caseid, UserControl inforeport)
         {
             reportControlBronco report = (reportControlBronco)reportcon;
@@ -142,7 +143,7 @@ namespace IDMS.DataManage
                     if (report.f12btn3.BackColor == Color.Red) { state12 = "ABNORMAL"; }
                 }
             }
-         
+
 
 
             string[] field = { "cxr1", "cxr2", "cxr3", "ct1", "ct2",
@@ -162,7 +163,7 @@ namespace IDMS.DataManage
                                 "pdx1",
                                  "r1", "r2", "r3", "r4",
 
-                                  
+
                                 "bloodloss",
                               "c1", "c2", "c3", "c4","c5", "c6", "c7",
                                 "comment",
@@ -171,130 +172,130 @@ namespace IDMS.DataManage
 
         };
             string[] data = {
-               
 
 
-         
+
+
 
             report.cxr.Text,
             report.cxr2.Text,
             report.cxr3.Text,
-            report.ct.Text, 
-            report.ct2.Text, 
-         
+            report.ct.Text,
+            report.ct2.Text,
+
             report.med1txt.Text,
             report.med2txt.Text,
-            report.med3txt.Text, 
-            report.med4txt.Text, 
-            report.med5txt.Text, 
-            report.med6txt.Text, 
+            report.med3txt.Text,
+            report.med4txt.Text,
+            report.med5txt.Text,
+            report.med6txt.Text,
 
-          
-            report.commentText.Text, 
-           
-            report.f1txt.Text, 
+
+            report.commentText.Text,
+
+            report.f1txt.Text,
             report.f2txt.Text,
-            report.f3txt.Text, 
-            report.f4txt.Text, 
-            report.f5txt.Text, 
-            report.f6txt.Text, 
-            report.f7txt.Text, 
-            report.f8txt.Text, 
-            report.f9txt.Text, 
+            report.f3txt.Text,
+            report.f4txt.Text,
+            report.f5txt.Text,
+            report.f6txt.Text,
+            report.f7txt.Text,
+            report.f8txt.Text,
+            report.f9txt.Text,
             report.f10txt.Text,
-            report.f11txt.Text, 
+            report.f11txt.Text,
 
-            report.f12txt.Text, 
+            report.f12txt.Text,
 
 
-           
-            report.pg1.Checked.ToString(), 
-            report.pg2.Checked.ToString(), 
-            report.pg3.Checked.ToString(), 
-            report.pg4.Checked.ToString(), 
-            report.pg5.Checked.ToString(), 
+
+            report.pg1.Checked.ToString(),
+            report.pg2.Checked.ToString(),
+            report.pg3.Checked.ToString(),
+            report.pg4.Checked.ToString(),
+            report.pg5.Checked.ToString(),
             report.pg6.Checked.ToString(),
-            report.pg7.Checked.ToString(), 
-            report.pg8.Checked.ToString(), 
-            report.pg9.Checked.ToString(), 
-            report.pg10.Checked.ToString(), 
-            report.pg11.Checked.ToString(), 
-            report.pg12.Checked.ToString(), 
-            report.pg13.Checked.ToString(), 
+            report.pg7.Checked.ToString(),
+            report.pg8.Checked.ToString(),
+            report.pg9.Checked.ToString(),
+            report.pg10.Checked.ToString(),
+            report.pg11.Checked.ToString(),
+            report.pg12.Checked.ToString(),
+            report.pg13.Checked.ToString(),
             report.pg14.Checked.ToString(),
-            report.pg15.Checked.ToString(), 
-            report.pg16.Checked.ToString(), 
-            report.pg17.Checked.ToString(), 
-            report.pg18.Checked.ToString(), 
-            report.pg19.Checked.ToString(), 
-            report.pg20.Checked.ToString(), 
-            report.pg21.Checked.ToString(), 
-            report.pg22.Checked.ToString(), 
-            report.pg23.Checked.ToString(), 
-            report.pg24.Checked.ToString(), 
+            report.pg15.Checked.ToString(),
+            report.pg16.Checked.ToString(),
+            report.pg17.Checked.ToString(),
+            report.pg18.Checked.ToString(),
+            report.pg19.Checked.ToString(),
+            report.pg20.Checked.ToString(),
+            report.pg21.Checked.ToString(),
+            report.pg22.Checked.ToString(),
+            report.pg23.Checked.ToString(),
+            report.pg24.Checked.ToString(),
             report.pg25.Checked.ToString(),
-            report.pg26.Checked.ToString(), 
-            report.pg27.Checked.ToString(), 
-            report.pg28.Checked.ToString(), 
-            report.pg29.Checked.ToString(), 
+            report.pg26.Checked.ToString(),
+            report.pg27.Checked.ToString(),
+            report.pg28.Checked.ToString(),
+            report.pg29.Checked.ToString(),
             report.pg30.Checked.ToString(),
-            report.pg31.Checked.ToString(), 
-            report.pg32.Checked.ToString(), 
-            report.pg33.Checked.ToString(), 
-            report.pg34.Checked.ToString(), 
-            report.pg35.Checked.ToString(), 
-            report.pg36.Checked.ToString(), 
-            report.pg37.Checked.ToString(), 
-            report.pg38.Checked.ToString(), 
-            report.pg39.Checked.ToString(), 
-            report.pg40.Checked.ToString(), 
-            report.pg41.Checked.ToString(), 
-            report.pg42.Checked.ToString(), 
-            report.pg43.Checked.ToString(), 
-            report.pg44.Checked.ToString(), 
-            report.pg45.Checked.ToString(), 
-            report.pg46.Checked.ToString(), 
-            report.pg47.Checked.ToString(), 
-            report.pg48.Checked.ToString(), 
-            report.pg49.Checked.ToString(), 
-            report.pg50.Checked.ToString(), 
-            report.pg51.Checked.ToString(), 
-            report.pg52.Checked.ToString(), 
-            report.pg53.Checked.ToString(), 
+            report.pg31.Checked.ToString(),
+            report.pg32.Checked.ToString(),
+            report.pg33.Checked.ToString(),
+            report.pg34.Checked.ToString(),
+            report.pg35.Checked.ToString(),
+            report.pg36.Checked.ToString(),
+            report.pg37.Checked.ToString(),
+            report.pg38.Checked.ToString(),
+            report.pg39.Checked.ToString(),
+            report.pg40.Checked.ToString(),
+            report.pg41.Checked.ToString(),
+            report.pg42.Checked.ToString(),
+            report.pg43.Checked.ToString(),
+            report.pg44.Checked.ToString(),
+            report.pg45.Checked.ToString(),
+            report.pg46.Checked.ToString(),
+            report.pg47.Checked.ToString(),
+            report.pg48.Checked.ToString(),
+            report.pg49.Checked.ToString(),
+            report.pg50.Checked.ToString(),
+            report.pg51.Checked.ToString(),
+            report.pg52.Checked.ToString(),
+            report.pg53.Checked.ToString(),
             report.pg54.Checked.ToString(), 
             //
-            report.pg1_1.Text, 
+            report.pg1_1.Text,
             report.pg1_2.Text,
-            report.pg1_3.Text, 
-            report.pg2_1.Text, 
-            report.pg2_2.Text, 
-            report.pg6_1.Text, 
-            report.pg7_1.Text, 
-            report.pg7_2.Text, 
-            report.pg8_1.Text, 
-            report.pg9_1.Text, 
-            report.pg9_2.Text, 
-            report.pg9_3.Text, 
-            report.pg9_4.Text, 
-            report.pg9_5.Text, 
-            report.pg26_1.Text, 
-            report.pg27_1.Text, 
-            report.pg27_2.Text, 
-            report.pg33_1.Text, 
+            report.pg1_3.Text,
+            report.pg2_1.Text,
+            report.pg2_2.Text,
+            report.pg6_1.Text,
+            report.pg7_1.Text,
+            report.pg7_2.Text,
+            report.pg8_1.Text,
+            report.pg9_1.Text,
+            report.pg9_2.Text,
+            report.pg9_3.Text,
+            report.pg9_4.Text,
+            report.pg9_5.Text,
+            report.pg26_1.Text,
+            report.pg27_1.Text,
+            report.pg27_2.Text,
+            report.pg33_1.Text,
             report.pg33_2.Text,
-            report.pg35_1.Text, 
+            report.pg35_1.Text,
             report.pg43_1.Text,
-            report.pg44_1.Text, 
-            report.pg45_1.Text, 
-            report.pg46_1.Text, 
-            report.pg47_1.Text, 
-            report.pg48_1.Text, 
-            report.pg49_1.Text, 
-            report.pg50_1.Text, 
-            report.pg51_1.Text, 
+            report.pg44_1.Text,
+            report.pg45_1.Text,
+            report.pg46_1.Text,
+            report.pg47_1.Text,
+            report.pg48_1.Text,
+            report.pg49_1.Text,
+            report.pg50_1.Text,
+            report.pg51_1.Text,
             report.pg52_1.Text,
             //cdx1-cdx4
-            report.predx.Text, 
+            report.predx.Text,
             report.indi.Text, 
             
             //
@@ -304,7 +305,7 @@ namespace IDMS.DataManage
             //
             report.ro1.Checked.ToString(),
             report.ro2.Checked.ToString(),
-            report.ro3.Checked.ToString(), 
+            report.ro3.Checked.ToString(),
             report.ro4txt.Text, 
 
             //
@@ -312,11 +313,11 @@ namespace IDMS.DataManage
             //
            
             report.c1.Checked.ToString(),
-            report.c5.Checked.ToString(), 
-          
-           
-            report.c3.Checked.ToString(), 
-            report.c6.Checked.ToString(), 
+            report.c5.Checked.ToString(),
+
+
+            report.c3.Checked.ToString(),
+            report.c6.Checked.ToString(),
             report.c7.Checked.ToString(),
            report.c2txt.Text,
             report.c4txt.Text,
@@ -324,7 +325,7 @@ namespace IDMS.DataManage
            
             //
            
-            report.note.Text, 
+            report.note.Text,
                 state1,
                 state2,
                 state3,
@@ -558,6 +559,8 @@ namespace IDMS.DataManage
             //save.updatePatientdata(caseid, "hn", info.infohn.Text);
             */
         }
+
+
         public void saveEditField(UserControl reportcon, string caseid, UserControl inforeport)
         {
             reportControlEGD report = (reportControlEGD)reportcon;
@@ -571,6 +574,8 @@ namespace IDMS.DataManage
 
 
         }
+
+
         private void setbuttonB(int a0, Button a1, Button a2, Button a3, TextBox b)
         {
             switch (a0)
@@ -624,6 +629,8 @@ namespace IDMS.DataManage
                     break;
             }
         }
+
+
         public void LoadReportField(UserControl reportcon, string caseid, UserControl inforeport)
         {
             reportControlBronco report = (reportControlBronco)reportcon;
@@ -632,12 +639,12 @@ namespace IDMS.DataManage
             DataAccess save = new DataAccess();
             string value = "";
 
-          
+
             value = save.getValueBRONCO(caseid, "cxr1");
             if (value != "")
             {
                 report.cxr.Text = value;
-                
+
             }
             value = save.getValueBRONCO(caseid, "cxr2");
             if (value != "")
@@ -712,7 +719,7 @@ namespace IDMS.DataManage
                 report.med6txt.Text = value;
                 report.med6.Checked = true;
             }
-           
+
             //
             value = save.getValueBRONCO(caseid, "history");
             if (value != "")
@@ -1030,7 +1037,7 @@ namespace IDMS.DataManage
             {
                 report.pg1_2.Text = value;
             }
-          
+
             value = save.getValueBRONCO(caseid, "pg1.3");
             if (value != "")
             {
@@ -1179,7 +1186,7 @@ namespace IDMS.DataManage
             {
                 report.predx.Text = value;
             }
-           
+
             value = save.getValueBRONCO(caseid, "cdx2");
             if (value != "")
             {
@@ -1191,7 +1198,7 @@ namespace IDMS.DataManage
             {
                 report.pdx.Text = value;
             }
-            
+
             //bloodloss
             value = save.getValueBRONCO(caseid, "bloodloss");
             if (value != "")
@@ -1243,10 +1250,10 @@ namespace IDMS.DataManage
                 report.c4.Checked = true;
                 report.c4txt.Text = value;
             }
-         
-        
+
+
             //his
-          
+
             if (save.getValueBRONCO(caseid, "r1") == "True")
             {
                 report.ro1.Checked = true;
@@ -1262,10 +1269,10 @@ namespace IDMS.DataManage
             value = save.getValueBRONCO(caseid, "r4");
             if (value != "")
             {
-             
+
                 report.ro4.Checked = true;
                 report.ro4txt.Text = value;
-             
+
 
             }
             //
@@ -1447,116 +1454,6 @@ namespace IDMS.DataManage
 
 
         }
-
-
-
-
-        public void savepicture(UserControl reportcon, string caseid)
-        {
-            imageReport report = (imageReport)reportcon;
-            DataAccess save = new DataAccess();
-            int k;
-            string[] field = new string[66];
-            string[] cfield = new string[66];
-            string[] data = new string[66];
-            string[] cdata = new string[66];
-            for (int i = 0; i < 66; i++)
-            {
-                k = i + 1;
-
-                field[i] = "img" + k.ToString();
-                data[i] = report.imgPath[i];
-                cfield[i] = "cb" + k.ToString();
-                cdata[i] = report.cBoxIndex[i].ToString();
-
-
-            }
-
-            save.addReportFieldnewBRONCO(caseid, data, field);
-            save.addReportFieldnewBRONCO(caseid, cdata, cfield);
-
-            //top ==============================================================================================================================================
-
-            string[] imagesPointDatas = new string[66];
-            string[] imagesPointField = new string[66];
-
-            for (int i = 0; i < 66; i++)
-            {
-                imagesPointField[i] = "point_" + (i + 1) + "";
-                imagesPointDatas[i] = report.recImage[i].ToString();
-            }
-
-            //System.Diagnostics.Debug.Write("recImage Value = " + report.recImage[0].ToString());
-
-            save.imagePointInsertOrUpdate(caseid, imagesPointDatas, imagesPointField);
-
-            // ================================================================================================================================================
-
-        }
-
-
-        public void Loadpicture(UserControl r, UserControl reportcon, string caseid)
-        {
-            imageReport report = (imageReport)reportcon;
-            Report rep = (Report)r;
-
-            DataAccess load = new DataAccess();
-            string imageName = "";
-            string Value = "";
-            int k;
-            for (int i = 0; i < 66; i++)
-            {
-                k = i + 1;
-
-                if (load.getValueBRONCO(caseid, "img" + k) != "")
-                {
-                    Value = load.getValueBRONCO(caseid, "img" + k);
-                    //report.setPicture(Value);
-
-                    //top =====================================================================================================
-                    int fieldNumber = i + 1;
-                    string imagePoint = load.getValueWithTableName(caseid, "image_point", "point_" + fieldNumber + "");
-
-                    if (imagePoint == null || imagePoint == "")
-                    {
-                        report.recImage[i] = new Rectangle(0, 0, 0, 0);
-                    }
-                    else
-                    {
-                        string[] imagePointDatas = imagePoint.Split('=');
-                        string[] pointX = imagePointDatas[1].Split(',');
-                        string[] pointY = imagePointDatas[2].Split(',');
-                        string[] pointWidth = imagePointDatas[3].Split(',');
-                        string[] pointHeight = imagePointDatas[4].Split('}');
-
-                        int AXIS_X = Int32.Parse(pointX[0]);
-                        int AXIS_Y = Int32.Parse(pointY[0]);
-                        int CROP_WIDTH = Int32.Parse(pointWidth[0]);
-                        int CROP_HEIGHT = Int32.Parse(pointHeight[0]);
-                        report.recImage[i] = new Rectangle(AXIS_X, AXIS_Y, CROP_WIDTH, CROP_HEIGHT);
-                    }
-                    report.setPictureWithPoint(Value, report.recImage[i]);
-                    //=========================================================================================================
-
-                    report.cBoxIndex[i] = Convert.ToInt32(load.getValueBRONCO(caseid, "cb" + k));
-                    report.cBoxes[i].SelectedIndex = report.cBoxIndex[i];
-                    imageName = Value.Replace(rep.imgFolder, null);
-                    rep.selectImageTable.Rows.Add(imageName);
-
-                    for (int v = 0; v < rep.imagelistTable.Rows.Count; v++)
-                    {
-                        if (string.Equals(rep.imagelistTable[0, v].Value as string, imageName))
-                        {
-                            rep.imagelistTable.Rows.RemoveAt(v);
-                            v--;
-                        }
-                    }
-                }
-            }
-        }
-
-
-
 
     }
 }

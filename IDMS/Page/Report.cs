@@ -34,10 +34,12 @@ namespace IDMS.Page
         const int IMG_SIZE = 130;
         public static int fileCount;
 
+
         private idmsPage idms;
         public string imgFolder;
         public int currentRow;
         public static Report Current;
+
 
         string PRO = "";
         imageReport EGDControl;
@@ -53,6 +55,7 @@ namespace IDMS.Page
         reportControlBronco report4;
         reportControlENT report5;
 
+
         public bool Multimode;
         public DataTable table = new DataTable();
         string hnid;
@@ -60,9 +63,11 @@ namespace IDMS.Page
         public string casepro;
         AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
 
+
         MySqlConnection connection = new MySqlConnection(dbhelper.CnnVal("db"));
         MySqlDataReader reader;
         MySqlDataReader readerPro;
+
 
         public string date;
         public string day;
@@ -74,13 +79,17 @@ namespace IDMS.Page
         public static imageReport SaveBRONCOControl;
         public static imageReport SaveERCPControl;
 
+
         public static UserControl Savereport;
+
 
         public static reportControlColono RC;
         public static imageReport RCIMG;
 
+
         public static reportControlEGD RE;
         public static imageReport REIMG;
+
 
         public static reportControlERCP RCP;
         public static imageReport RCPIMG;
@@ -92,11 +101,10 @@ namespace IDMS.Page
         public static reportControlENT Savereport5;
 
 
-
-
         public static Report Saveinfo;
         public static string ALL_PRO;
         public static bool SaveMultimode;
+
 
         public Report(idmsPage mainPage, string hn, string cid, string pro)
         {
@@ -323,20 +331,11 @@ namespace IDMS.Page
         }
 
 
-
-
-
-
-
-
         delegate void DelUserControlMetod(string name);
-
 
 
         private void Report_Load(object sender, EventArgs e)
         {
-            //  reloadImageList();
-
             DelUserControlMetod delUserControl = new DelUserControlMetod(updateTable);
             if (PRO == "EGD")
             {
@@ -360,6 +359,7 @@ namespace IDMS.Page
             }
         }
 
+
         public void updateTable(string name)
         {
             string fileName = Path.GetFileName(name);
@@ -373,6 +373,7 @@ namespace IDMS.Page
                 }
             }
         }
+
 
         public void reloadImageList()
         {
@@ -404,6 +405,7 @@ namespace IDMS.Page
 
 
         }
+
 
         private void imagelistTable_DoubleClick(object sender, EventArgs e)
         {
@@ -511,43 +513,6 @@ namespace IDMS.Page
         }
 
 
-
-
-
-
-        private void imagelistTable_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            /*
-            currentRow = e.RowIndex;
-            if ((rowIsNotNull(currentRow) == true))
-            {
-                imagelistTable.CurrentCell = imagelistTable.Rows[e.RowIndex].Cells[0];
-
-                string imageName = imagelistTable.CurrentRow.Cells[0].Value.ToString();
-
-                imagelistTable.CurrentCell = imagelistTable.CurrentRow.Cells[0];
-
-                Image img;
-                img = Image.FromFile(imgFolder + imageName);
-
-                picPreview.Image = img;
-                picnamePreview.Text = imageName.Substring(0, imageName.Length - 4);
-
-            }
-            */
-
-
-
-        }
-
-        private void imagelistTable_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-        {
-
-
-        }
-
-
-
         private bool rowIsNotNull(int rowIndex)
         {
             if (rowIndex >= 0)
@@ -607,6 +572,7 @@ namespace IDMS.Page
             }
         }
 
+
         private void clearRecImage()
         {
             switch (PRO)
@@ -615,19 +581,20 @@ namespace IDMS.Page
                     EGDControl.setDefaultRectangle();
                     break;
                 case "COL":
-                    EGDControl.setDefaultRectangle();
+                    COLControl.setDefaultRectangle();
                     break;
                 case "ERCP":
-                    EGDControl.setDefaultRectangle();
+                    ERCPControl.setDefaultRectangle();
                     break;
                 case "BRONCO":
-                    EGDControl.setDefaultRectangle();
+                    BRONCOControl.setDefaultRectangle();
                     break;
                 case "ENT":
-                    EGDControl.setDefaultRectangle();
+                    ENTControl.setDefaultRectangle();
                     break;
             }
         }
+
 
         private void CLEAR_IMAGE()
         {
@@ -637,159 +604,63 @@ namespace IDMS.Page
 
                 for (int v = 0; v < table.Rows.Count; v++)
                 {
-                    //string imageName = imagelistTable.CurrentRow.Cells[0].Value.ToString();
                     string imageName = imagelistTable.Rows[v].Cells[0].Value.ToString();
-                    //System.Windows.Forms.MessageBox.Show(imageName);
 
-                    // imagelistTable.CurrentCell = imagelistTable.CurrentRow.Cells[0];
+                    if (PRO == "EGD") EGDControl.setPicture(imgFolder + imageName);
+                    if (PRO == "COL") COLControl.setPicture(imgFolder + imageName);
+                    if (PRO == "ERCP") ERCPControl.setPicture(imgFolder + imageName);
+                    if (PRO == "ENT") ENTControl.setPicture(imgFolder + imageName);
+                    if (PRO == "BRONCO") BRONCOControl.setPicture(imgFolder + imageName);
 
-                    if (PRO == "EGD")
-                    {
-                        EGDControl.setPicture(imgFolder + imageName);
-
-                    }
-                    if (PRO == "COL")
-                    {
-                        COLControl.setPicture(imgFolder + imageName);
-                    }
-                    if (PRO == "ERCP")
-                    {
-                        ERCPControl.setPicture(imgFolder + imageName);
-                    }
-                    if (PRO == "ENT")
-                    {
-                        ENTControl.setPicture(imgFolder + imageName);
-                    }
-                    if (PRO == "BRONCO")
-                    {
-                        BRONCOControl.setPicture(imgFolder + imageName);
-                    }
                     selectImageTable.Rows.Add(imageName);
 
-
-
-
                 }
+
+
                 table.Clear();
 
             }
-            if (PRO == "EGD")
-            {
-                EGDControl.clearPicture();
 
-            }
-            else
-            {
-                if (PRO == "COL")
-                {
-                    COLControl.clearPicture();
 
-                }
-                else
-                {
-                    if (PRO == "ERCP")
-                    {
-                        ERCPControl.clearPicture();
+            if (PRO == "EGD") EGDControl.clearPicture();
+            if (PRO == "COL") COLControl.clearPicture();
+            if (PRO == "ERCP") ERCPControl.clearPicture();
+            if (PRO == "BRONCO") BRONCOControl.clearPicture();
+            if (PRO == "ENT") ENTControl.clearPicture();
 
-                    }
-                    else
-                    {
-                        if (PRO == "BRONCO")
-                        {
-                            BRONCOControl.clearPicture();
 
-                        }
-                        else
-                        {
-                            if (PRO == "ENT")
-                            {
-                                ENTControl.clearPicture();
-
-                            }
-
-                        }
-
-                    }
-
-                }
-            }
             selectImageTable.Rows.Clear();
             table.Clear();
             reloadImageList();
+
+
             try
             {
                 if (imagelistTable.Rows.Count > 1)
                 {
-
-                    if (PRO == "EGD")
+                    switch (PRO)
                     {
-                        picPreview.Image = EGDControl.MakeSquareEndoWay(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500);
-                    }
-                    else
-                    {
-                        if (PRO == "COL")
-                        {
+                        case "EGD":
+                            picPreview.Image = EGDControl.MakeSquareEndoWay(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500);
+                            break;
+                        case "COL":
                             picPreview.Image = COLControl.MakeSquareEndoWay(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500);
-                        }
-                        else
-                        {
-                            if (PRO == "ERCP")
-                            {
-                                picPreview.Image = ERCPControl.MakeSquareEndoWay(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500);
+                            break;
+                        case "ERCP":
+                            picPreview.Image = ERCPControl.MakeSquareEndoWay(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500);
+                            break;
+                        case "BRONCO":
+                            picPreview.Image = BRONCOControl.MakeSquareEndoWay(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500);
+                            break;
+                        case "ENT":
+                            picPreview.Image = ENTControl.MakeSquareEndoWay(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500);
+                            break;
 
-                            }
-                            else
-                            {
-                                if (PRO == "BRONCO")
-                                {
-                                    picPreview.Image = BRONCOControl.MakeSquareEndoWay(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500);
-
-                                }
-                                {
-                                    if (PRO == "ENT")
-                                    {
-                                        picPreview.Image = ENTControl.MakeSquareEndoWay(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500);
-
-                                    }
-
-                                }
-
-                            }
-
-                        }
                     }
-                    /*
-                    if (PRO == "EGD")
-                    {
-                        picPreview.Image = EGDControl.MakeSquareEndoWayPoint(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500, EGDControl.recImage[0]);
-                    }
-                    else
-                    {
-                        if (PRO == "COL")
-                        {
-                            picPreview.Image = COLControl.MakeSquareEndoWayPoint(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500, COLControl.recImage[0]);
-                        }
-                        else
-                        {
-                            if (PRO == "ERCP")
-                            {
-                                picPreview.Image = ENTControl.MakeSquareEndoWayPoint(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500, ENTControl.recImage[0]);
 
-                            }
-                            else
-                            {
-                                if (PRO == "BRONCO")
-                                {
-                                    picPreview.Image = BRONCOControl.MakeSquareEndoWayPoint(Image.FromFile(imgFolder + imagelistTable.Rows[0].Cells[0].Value.ToString()), 500, BRONCOControl.recImage[0]);
 
-                                }
-
-                            }
-
-                        }
-                    }
-                    */
                     string imageName2 = imagelistTable.Rows[0].Cells[0].Value.ToString();
+
 
                     imageName2 = imagelistTable.CurrentRow.Cells[0].Value.ToString();
                     picnamePreview.Text = imageName2.Substring(0, imageName2.Length - 4);
@@ -799,51 +670,14 @@ namespace IDMS.Page
         }
 
 
-
         private void clearImageButton_Click(object sender, EventArgs e)
         {
-
             CLEAR_IMAGE();
             clearRecImage();
-
-
 
         }
 
 
-
-
-
-
-
-        /*
-                private void selectImageTable_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-                {
-                    currentRow = e.RowIndex;
-                    if ((rowSelectIsNotNull(currentRow) == true))
-                    {
-                        selectImageTable.CurrentCell = selectImageTable.Rows[e.RowIndex].Cells[0];
-
-                        string imageName = selectImageTable.CurrentRow.Cells[0].Value.ToString();
-
-                        selectImageTable.CurrentCell = selectImageTable.CurrentRow.Cells[0];
-
-                        Image img;
-                        img = Image.FromFile(imgFolder + imageName);
-
-                        picPreview.Image = img;
-                        picnamePreview.Text = imageName.Substring(0, imageName.Length - 4);
-
-                    }
-
-                }
-                /
-                private void selectImageTable_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-                {
-                    picPreview.Image = null;
-                    picnamePreview.Text = null;
-                }
-                */
         private void importButton_Click(object sender, EventArgs e)
         {
             if (casepro != "")
@@ -872,19 +706,17 @@ namespace IDMS.Page
                 reloadImageList();
 
 
-
-
-
                 picnamePreview.Text = "";
 
 
-
-
-
             }
+
+
             selectImageTable.ClearSelection();
+
+
             int row = table.Rows.Count;
-            for (int v = 0; v < row && selectImageTable.Rows.Count <= 66; v++)
+            for (int v = 0; v < row && selectImageTable.Rows.Count < 65; v++)
             {
                 string imageName = imagelistTable.Rows[0].Cells[0].Value.ToString();
                 switch (PRO)
@@ -912,9 +744,10 @@ namespace IDMS.Page
                 imagelistTable.Rows.RemoveAt(imagelistTable.Rows[0].Index);
 
             }
-            //  table.Clear();
 
         }
+
+
         private void loadCaseData()
         {
 
@@ -928,18 +761,14 @@ namespace IDMS.Page
                 patientHN.Text = hnid;
                 patientFirstName.Text = (reader["name"].ToString());
                 patientSurname.Text = (reader["surname"].ToString());
-                //  infohn.Text = patientHN.Text;
-                // infoname.Text = reader["prefix"].ToString() + " " + patientFirstName.Text + "  " + patientSurname.Text;
                 infoage.Text = reader["age"].ToString();
                 infosex.Text = reader["sex"].ToString();
                 infoward.Text = reader["type"].ToString();
                 nation.Text = reader["nationality"].ToString();
 
-
             }
             reader.Close();
 
-            // changeFont(infoname);
 
             MySqlCommand myCommand2 = new MySqlCommand("select * from patientcase where caseid='" + caseid + "'", connection);
 
@@ -953,16 +782,9 @@ namespace IDMS.Page
                 infoproroom.Text = reader["Procedure Room"].ToString();
                 indication.Text = reader["Indication"].ToString();
 
-                if (reader["Instruments"].ToString().Contains("$"))
-                {
-                    string[] tokens = reader["Instruments"].ToString().Split('$');
-                    infoinstrument.Text = tokens[0];
-                    in2.Text = tokens[1];
-                }
-                else
-                {
-                    infoinstrument.Text = reader["Instruments"].ToString();
-                }
+                infoinstrument.Text = reader["cameraA"].ToString();
+                in2.Text = reader["cameraB"].ToString();
+
                 infohn.Text = reader["hn"].ToString();
                 infoname.Text = reader["Patient Name"].ToString();
 
@@ -977,14 +799,11 @@ namespace IDMS.Page
                 pdx4.Text = reader["PreDX4"].ToString();
                 Duration.Text = reader["Duration"].ToString();
             }
-            //changeFont(infodoc);
-            //changeFont(infoass);
-            //changeFont(infosnurse);
-            //changeFont(infocnurse);
-            //changeFont(anes);
+
+
             string imageName;
 
-            //if ((imagelistTable.Rows[0].Cells[0].Value != null) && (imagelistTable.Rows[0].Cells[0].Value.ToString() != ""))
+
             if (imagelistTable.Rows.Count > 1)
             {
                 switch (PRO)
@@ -1017,70 +836,15 @@ namespace IDMS.Page
                 }
             }
         }
-        /*
-        private void patientHN_TextChanged(object sender, EventArgs e)
-        {
-            this.patientHN.AutoCompleteCustomSource = collection;
 
-
-            MySqlCommand myCommand = new MySqlCommand("select * from patientcase where caseid='" + caseid + "'", connection);
-            reader.Close();
-
-            reader = myCommand.ExecuteReader();
-
-            while (reader.Read())
-            {
-                patientFirstName.Text = (reader["name"].ToString());
-                patientSurname.Text = (reader["surname"].ToString());
-
-            }
-
-            //imgFolder = this.patientHN.ToString();
-
-            caseInfoUpdate();
-
-        }
-        */
-        private void patientFirstName_TextChanged(object sender, EventArgs e)
-        {
-            /*
-            string cpro = "";
-            if (casepro != "")
-            {
-                if (casepro == "EGD") { cpro = "EGD"; }
-                if (casepro == "Colonoscopy") { cpro = "COL"; }
-                if (casepro == "Enterscopy") { cpro = "ERCP"; }
-            }
-            else
-            {
-                if (infopro.Text == "EGD") { cpro = "EGD"; }
-                if (infopro.Text == "Colonoscopy") { cpro = "COL"; }
-                if (infopro.Text == "Enterscopy") { cpro = "ERCP"; }
-            }
-            imgFolder = IDMS.World.Settings.savePath + "/" + caseid + "/pictures/" + cpro + "/";
-*/
-            // reloadImageList();
-
-        }
-
-        private void Export_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void caseInfoUpdate()
         {
             infohn.Text = patientHN.Text;
             infoname.Text = patientFirstName.Text + " " + patientSurname.Text;
-            // infoage.Text = 
-
 
         }
 
-        private void imagelistTable_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
 
         private void imagelistTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -1119,13 +883,8 @@ namespace IDMS.Page
         }
 
 
-
-
-
-
         private void selectImageTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-
             currentRow = e.RowIndex;
             if ((selectRowIsNotNull(currentRow) == true))
             {
@@ -1166,10 +925,6 @@ namespace IDMS.Page
             }
         }
 
-        private void infodoc_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void selectImageTable_DoubleClick(object sender, EventArgs e)
         {
@@ -1203,8 +958,6 @@ namespace IDMS.Page
         }
 
 
-
-
         private void changeFont(Label text)
         {
             string temp = text.Text.Replace(" ", null);
@@ -1220,6 +973,7 @@ namespace IDMS.Page
             }
 
         }
+
 
         public void saveReportdata()
         {
@@ -1249,83 +1003,7 @@ namespace IDMS.Page
 
             }
         }
-        /*
-        public static void QuickSave()
-        {
-            if (SaveMultimode)
-            {
-                Savecid = Savecid + SavePRO;
 
-                manageReportERCP newreport3 = new manageReportERCP();
-                manageReportCOL newreport2 = new manageReportCOL();
-                manageReportEGD newreport = new manageReportEGD();
-
-                System.Windows.Forms.MessageBox.Show("SaveData before switch" + ALL_PRO);
-
-                switch (ALL_PRO)
-                {
-                    case "EGD/Colono":
-                        newreport2.saveReportField(RC, ReportMulti.reportBid, ReportMulti.reportB);
-                        newreport.saveReportField(RE, ReportMulti.reportAid, ReportMulti.reportA);
-                        // System.Windows.Forms.MessageBox.Show("EGD/Colono");
-
-                        break;
-                    case "EGD/ERCP":
-                        newreport3.saveReportField(RCP, ReportMulti.reportCid, ReportMulti.reportC);
-
-                        newreport.saveReportField(RE, ReportMulti.reportAid, ReportMulti.reportA);
-                        // System.Windows.Forms.MessageBox.Show("EGD/ENT");
-
-                        break;
-                    case "Colono/ERCP":
-                        newreport3.saveReportField(RCP, ReportMulti.reportCid, ReportMulti.reportC);
-                        newreport2.saveReportField(RC, ReportMulti.reportBid, ReportMulti.reportB);
-                        // System.Windows.Forms.MessageBox.Show("EGD/Colono");
-
-                        break;
-                    case "EGD/Colono/ERCP":
-
-                        break;
-
-                }
-
-
-
-
-            }
-            else
-            {
-
-
-
-                switch (SavePRO)
-                {
-                    case "COL":
-                        manageReportCOL COLreport = new manageReportCOL();
-                        COLreport.saveEditField(Savereport2, Savecid, Saveinfo);
-                        break;
-                    case "EGD":
-                        manageReportEGD EGDreport = new manageReportEGD();
-                        EGDreport.saveEditField(Savereport, Savecid, Saveinfo);
-                        break;
-                    case "ERCP":
-                        manageReportERCP ERCPreport = new manageReportERCP();
-                        ERCPreport.saveEditField(Savereport3, Savecid, Saveinfo);
-                        break;
-                    case "BRONCO":
-
-                        break;
-                }
-
-
-
-
-            }
-
-
-        }
-
-*/
 
         public static void savedata()
         {
@@ -1335,8 +1013,7 @@ namespace IDMS.Page
 
                 manageReportBRONCO newreport = new manageReportBRONCO();
                 newreport.saveReportField(Savereport4, Savecid, Saveinfo);
-                newreport.savepicture(SaveBRONCOControl, Savecid);
-
+                SaveAndLoadImage.savepicture(SaveBRONCOControl, Savecid);
             }
             else
             {
@@ -1358,12 +1035,12 @@ namespace IDMS.Page
                                 if (FOLDER_EXIST("COL"))
                                 {
                                     newreport2.saveReportField(RC, ReportMulti.reportBid, ReportMulti.reportB);
-                                    newreport2.savepicture(RCIMG, ReportMulti.reportBid);
+                                    SaveAndLoadImage.savepicture(RCIMG, ReportMulti.reportBid);
                                 }
                                 if (FOLDER_EXIST("EGD"))
                                 {
                                     newreport.saveReportField(RE, ReportMulti.reportAid, ReportMulti.reportA);
-                                    newreport.savepicture(REIMG, ReportMulti.reportAid);
+                                    SaveAndLoadImage.savepicture(REIMG, ReportMulti.reportAid);
                                 }
 
                                 break;
@@ -1373,42 +1050,44 @@ namespace IDMS.Page
                                 if (FOLDER_EXIST("ERCP"))
                                 {
                                     newreport3.saveReportField(RCP, ReportMulti.reportCid, ReportMulti.reportC);
-                                    newreport3.savepicture(RCPIMG, ReportMulti.reportCid);
+                                    SaveAndLoadImage.savepicture(RCPIMG, ReportMulti.reportCid);
                                 }
                                 if (FOLDER_EXIST("EGD"))
                                 {
                                     newreport.saveReportField(RE, ReportMulti.reportAid, ReportMulti.reportA);
-                                    newreport.savepicture(REIMG, ReportMulti.reportAid);
+                                    SaveAndLoadImage.savepicture(REIMG, ReportMulti.reportAid);
+
                                 }
                                 break;
                             case "Colono/ERCP":
                                 if (FOLDER_EXIST("ERCP"))
                                 {
                                     newreport3.saveReportField(RCP, ReportMulti.reportCid, ReportMulti.reportC);
-                                    newreport3.savepicture(RCPIMG, ReportMulti.reportCid);
+                                    SaveAndLoadImage.savepicture(RCPIMG, ReportMulti.reportCid);
                                 }
 
                                 if (FOLDER_EXIST("COL"))
                                 {
                                     newreport2.saveReportField(RC, ReportMulti.reportBid, ReportMulti.reportB);
-                                    newreport2.savepicture(RCIMG, ReportMulti.reportBid);
+                                    SaveAndLoadImage.savepicture(RCIMG, ReportMulti.reportBid);
                                 }
                                 break;
                             case "EGD/Colono/ERCP":
                                 if (FOLDER_EXIST("ERCP"))
                                 {
                                     newreport3.saveReportField(RCP, ReportMulti.reportCid, ReportMulti.reportC);
-                                    newreport3.savepicture(RCPIMG, ReportMulti.reportCid);
+                                    SaveAndLoadImage.savepicture(RCPIMG, ReportMulti.reportCid);
                                 }
                                 if (FOLDER_EXIST("COL"))
                                 {
                                     newreport2.saveReportField(RC, ReportMulti.reportBid, ReportMulti.reportB);
-                                    newreport2.savepicture(RCIMG, ReportMulti.reportBid);
+                                    SaveAndLoadImage.savepicture(RCIMG, ReportMulti.reportBid);
                                 }
                                 if (FOLDER_EXIST("EGD"))
                                 {
                                     newreport.saveReportField(RE, ReportMulti.reportAid, ReportMulti.reportA);
-                                    newreport.savepicture(REIMG, ReportMulti.reportAid);
+                                    SaveAndLoadImage.savepicture(REIMG, ReportMulti.reportAid);
+
                                 }
                                 break;
 
@@ -1416,13 +1095,12 @@ namespace IDMS.Page
                     }
                     else
                     {
-                        // MessageBox.Show(SavePRO);
                         if (SavePRO == "COL")
                         {
 
                             manageReportCOL newreport = new manageReportCOL();
                             newreport.saveReportField(Savereport2, Savecid, Saveinfo);
-                            newreport.savepicture(SaveCOLControl, Savecid);
+                            SaveAndLoadImage.savepicture(SaveCOLControl, Savecid);
 
                         }
                         else
@@ -1433,7 +1111,8 @@ namespace IDMS.Page
 
                                 manageReportEGD newreport = new manageReportEGD();
                                 newreport.saveReportField(Savereport, Savecid, Saveinfo);
-                                newreport.savepicture(SaveEGDControl, Savecid);
+                                SaveAndLoadImage.savepicture(SaveEGDControl, Savecid);
+
                             }
                             else
                             {
@@ -1443,7 +1122,7 @@ namespace IDMS.Page
 
                                     manageReportERCP newreport = new manageReportERCP();
                                     newreport.saveReportField(Savereport3, Savecid, Saveinfo);
-                                    newreport.savepicture(SaveERCPControl, Savecid);
+                                    SaveAndLoadImage.savepicture(SaveERCPControl, Savecid);
                                 }
                                 else
                                 {
@@ -1451,7 +1130,7 @@ namespace IDMS.Page
                                     {
                                         manageReportENT newreport = new manageReportENT();
                                         newreport.saveReportField(Savereport5, Savecid, Saveinfo);
-                                        newreport.savepicture(SaveENTControl, Savecid);
+                                        SaveAndLoadImage.savepicture(SaveENTControl, Savecid);
 
                                     }
                                 }
@@ -1466,14 +1145,11 @@ namespace IDMS.Page
 
         }
 
+
         public static void savedataExit()
         {
             try
             {
-                //  Thread thread = new Thread(() =>
-                //  {
-
-
                 if (SaveMultimode)
                 {
                     Savecid = Savecid + SavePRO;
@@ -1489,12 +1165,12 @@ namespace IDMS.Page
                             if (FOLDER_EXIST("COL"))
                             {
                                 newreport2.saveReportField(RC, ReportMulti.reportBid, ReportMulti.reportB);
-                                newreport2.savepicture(RCIMG, ReportMulti.reportBid);
+                                SaveAndLoadImage.savepicture(RCIMG, ReportMulti.reportBid);
                             }
                             if (FOLDER_EXIST("EGD"))
                             {
                                 newreport.saveReportField(RE, ReportMulti.reportAid, ReportMulti.reportA);
-                                newreport.savepicture(REIMG, ReportMulti.reportAid);
+                                SaveAndLoadImage.savepicture(REIMG, ReportMulti.reportAid);
                             }
 
                             break;
@@ -1504,42 +1180,43 @@ namespace IDMS.Page
                             if (FOLDER_EXIST("ERCP"))
                             {
                                 newreport3.saveReportField(RCP, ReportMulti.reportCid, ReportMulti.reportC);
-                                newreport3.savepicture(RCPIMG, ReportMulti.reportCid);
+                                SaveAndLoadImage.savepicture(RCPIMG, ReportMulti.reportCid);
                             }
                             if (FOLDER_EXIST("EGD"))
                             {
                                 newreport.saveReportField(RE, ReportMulti.reportAid, ReportMulti.reportA);
-                                newreport.savepicture(REIMG, ReportMulti.reportAid);
+                                SaveAndLoadImage.savepicture(REIMG, ReportMulti.reportAid);
                             }
                             break;
                         case "Colono/ERCP":
                             if (FOLDER_EXIST("ERCP"))
                             {
                                 newreport3.saveReportField(RCP, ReportMulti.reportCid, ReportMulti.reportC);
-                                newreport3.savepicture(RCPIMG, ReportMulti.reportCid);
+                                SaveAndLoadImage.savepicture(RCPIMG, ReportMulti.reportCid);
                             }
 
                             if (FOLDER_EXIST("COL"))
                             {
                                 newreport2.saveReportField(RC, ReportMulti.reportBid, ReportMulti.reportB);
-                                newreport2.savepicture(RCIMG, ReportMulti.reportBid);
+                                SaveAndLoadImage.savepicture(RCIMG, ReportMulti.reportBid);
                             }
                             break;
                         case "EGD/Colono/ERCP":
                             if (FOLDER_EXIST("ERCP"))
                             {
                                 newreport3.saveReportField(RCP, ReportMulti.reportCid, ReportMulti.reportC);
-                                newreport3.savepicture(RCPIMG, ReportMulti.reportCid);
+                                SaveAndLoadImage.savepicture(RCPIMG, ReportMulti.reportCid);
                             }
                             if (FOLDER_EXIST("COL"))
                             {
                                 newreport2.saveReportField(RC, ReportMulti.reportBid, ReportMulti.reportB);
-                                newreport2.savepicture(RCIMG, ReportMulti.reportBid);
+                                SaveAndLoadImage.savepicture(RCIMG, ReportMulti.reportBid);
                             }
                             if (FOLDER_EXIST("EGD"))
                             {
                                 newreport.saveReportField(RE, ReportMulti.reportAid, ReportMulti.reportA);
-                                newreport.savepicture(REIMG, ReportMulti.reportAid);
+                                SaveAndLoadImage.savepicture(REIMG, ReportMulti.reportAid);
+
                             }
                             break;
 
@@ -1547,13 +1224,12 @@ namespace IDMS.Page
                 }
                 else
                 {
-                    // MessageBox.Show(SavePRO);
                     if (SavePRO == "COL")
                     {
 
                         manageReportCOL newreport = new manageReportCOL();
                         newreport.saveReportField(Savereport2, Savecid, Saveinfo);
-                        newreport.savepicture(SaveCOLControl, Savecid);
+                        SaveAndLoadImage.savepicture(SaveCOLControl, Savecid);
 
                     }
                     else
@@ -1564,7 +1240,8 @@ namespace IDMS.Page
 
                             manageReportEGD newreport = new manageReportEGD();
                             newreport.saveReportField(Savereport, Savecid, Saveinfo);
-                            newreport.savepicture(SaveEGDControl, Savecid);
+                            SaveAndLoadImage.savepicture(SaveEGDControl, Savecid);
+
                         }
                         else
                         {
@@ -1574,7 +1251,7 @@ namespace IDMS.Page
 
                                 manageReportERCP newreport = new manageReportERCP();
                                 newreport.saveReportField(Savereport3, Savecid, Saveinfo);
-                                newreport.savepicture(SaveENTControl, Savecid);
+                                SaveAndLoadImage.savepicture(SaveENTControl, Savecid);
                             }
                             else
                             {
@@ -1582,7 +1259,7 @@ namespace IDMS.Page
                                 {
                                     manageReportBRONCO newreport = new manageReportBRONCO();
                                     newreport.saveReportField(Savereport4, Savecid, Saveinfo);
-                                    newreport.savepicture(SaveBRONCOControl, Savecid);
+                                    SaveAndLoadImage.savepicture(SaveBRONCOControl, Savecid);
 
 
                                 }
@@ -1592,7 +1269,7 @@ namespace IDMS.Page
                                     {
                                         manageReportENT newreport = new manageReportENT();
                                         newreport.saveReportField(Savereport5, Savecid, Saveinfo);
-                                        newreport.savepicture(SaveENTControl, Savecid);
+                                        SaveAndLoadImage.savepicture(SaveENTControl, Savecid);
 
 
                                     }
@@ -1602,47 +1279,10 @@ namespace IDMS.Page
                     }
                 }
 
-                //  });
-                //  thread.Start();
                 LOADING_SCREEN();
-                // thread.Join();
+
             }
             catch { }
-        }
-
-
-        bool page2 = false;
-        bool page3 = false;
-        bool page4 = false;
-        bool page5 = false;
-        bool page6 = false;
-
-
-
-
-
-        public void saveMultiRecord(string caseid)
-        {
-
-            string newid = caseid + PRO;
-
-            if (checkDBExist(newid))
-            {
-
-                DataAccess cbm = new DataAccess();
-
-                cbm.AddNewCase(newid, infoname.Text, infohn.Text, PRO, infoproroom.Text, indication.Text
-                        , infoinstrument.Text, pdx1.Text, pdx2.Text, pdx3.Text, pdx4.Text, date, day, infodoc.Text, infoass.Text,
-                          infosnurse.Text, infocnurse.Text, anes.Text, "Done", "Edit");
-
-
-                ReportMulti.tabcount--;
-                if (ReportMulti.tabcount == 0)
-                {
-                    cbm.DeleteRow(caseid);
-                }
-
-            }
         }
 
 
@@ -1670,7 +1310,10 @@ namespace IDMS.Page
             return a;
 
         }
+
+
         string ORIGINAL_ID;
+
 
         private void OPEN_FOLDER_Click(object sender, EventArgs e)
         {
@@ -1681,10 +1324,10 @@ namespace IDMS.Page
                 ORIGINAL_ID = caseid.Replace(PRO, null);
             }
 
-
-
             Process.Start(imgFolder);
         }
+
+
         public string cutEnter(string b)
         {
 
@@ -1696,9 +1339,9 @@ namespace IDMS.Page
             return b;
         }
 
+
         private static bool m_bLayoutCalled = false;
         private static DateTime m_dt;
-
         public static void LOADING_SCREEN()
         {
             SplashScreen.ShowSplashScreen();
@@ -1706,88 +1349,29 @@ namespace IDMS.Page
 
             SplashScreen.SetStatus("Loading module 1");
             System.Threading.Thread.Sleep(500);
-            /*
-            SplashScreen.SetStatus("Loading module 2");
-            System.Threading.Thread.Sleep(300);
-            SplashScreen.SetStatus("Loading module 3");
-            System.Threading.Thread.Sleep(900);
-            SplashScreen.SetStatus("Loading module 4");
-            System.Threading.Thread.Sleep(100);
-            SplashScreen.SetStatus("Loading module 5");
-            System.Threading.Thread.Sleep(400);
-            SplashScreen.SetStatus("Loading module 6");
-            System.Threading.Thread.Sleep(50);
-            SplashScreen.SetStatus("Loading module 7");
-            System.Threading.Thread.Sleep(240);
-            SplashScreen.SetStatus("Loading module 8");
-            System.Threading.Thread.Sleep(900);
-            SplashScreen.SetStatus("Loading module 9");
-            System.Threading.Thread.Sleep(240);
-            SplashScreen.SetStatus("Loading module 10");
-            System.Threading.Thread.Sleep(90);
-            SplashScreen.SetStatus("Loading module 11");
-            System.Threading.Thread.Sleep(1000);
-            SplashScreen.SetStatus("Loading module 12");
-            System.Threading.Thread.Sleep(100);
-            SplashScreen.SetStatus("Loading module 13");
-            System.Threading.Thread.Sleep(500);
-            SplashScreen.SetStatus("Loading module 14", false);
-            System.Threading.Thread.Sleep(1000);
-            SplashScreen.SetStatus("Loading module 14a", false);
-            System.Threading.Thread.Sleep(1000);
-            SplashScreen.SetStatus("Loading module 14b", false);
-            System.Threading.Thread.Sleep(1000);
-            SplashScreen.SetStatus("Loading module 14c", false);
-            System.Threading.Thread.Sleep(1000);
-            SplashScreen.SetStatus("Loading module 15");
-            System.Threading.Thread.Sleep(20);
-            SplashScreen.SetStatus("Loading module 16");
-            System.Threading.Thread.Sleep(450);
-            SplashScreen.SetStatus("Loading module 17");
-            System.Threading.Thread.Sleep(240);
-            SplashScreen.SetStatus("Loading module 18");
-            System.Threading.Thread.Sleep(90);
-           */
+
             m_bLayoutCalled = true;
             m_dt = DateTime.Now;
             SplashScreen.CloseForm();
         }
+
+
         bool EDIT_ISnotPRESS = true;
         private void Edit_Click(object sender, EventArgs e)
         {
             setEDIT(infohn, EDIT_ISnotPRESS);
-            //setEDIT(infoname, EDIT_ISnotPRESS);
-
-            //setEDIT(infosex, EDIT_ISnotPRESS);
-            //setEDIT(infoage, EDIT_ISnotPRESS);
-            //setEDIT(nation, EDIT_ISnotPRESS);
-            //setEDIT(infoward, EDIT_ISnotPRESS);
-            //setEDIT(inforegis, EDIT_ISnotPRESS);
-            //setEDIT(indication, EDIT_ISnotPRESS);
-            //setEDIT(infoproroom, EDIT_ISnotPRESS);
-            //setEDIT(pdx1, EDIT_ISnotPRESS);
-            //setEDIT(pdx2, EDIT_ISnotPRESS);
-            //setEDIT(pdx3, EDIT_ISnotPRESS);
-            //setEDIT(pdx4, EDIT_ISnotPRESS);
-            //setEDIT(Duration, EDIT_ISnotPRESS);
-
-            //setEDIT(infoinstrument, EDIT_ISnotPRESS);
-            //setEDIT(in2, EDIT_ISnotPRESS);
-
-            //setEDIT(infodoc, EDIT_ISnotPRESS);
-            //setEDIT(infoass, EDIT_ISnotPRESS);
-            //setEDIT(infocnurse, EDIT_ISnotPRESS);
-            //setEDIT(infosnurse, EDIT_ISnotPRESS);
-            //setEDIT(anes, EDIT_ISnotPRESS);
             if (EDIT_ISnotPRESS)
-            { EDIT_ISnotPRESS = false; }
+            {
+                EDIT_ISnotPRESS = false;
+            }
             else
             {
                 EDIT_ISnotPRESS = true;
-
             }
 
         }
+
+
         public void setEDIT(TextBox a, bool press)
         {
             if (press)
@@ -1807,11 +1391,11 @@ namespace IDMS.Page
 
         }
 
+
         private void preReportButton_Click(object sender, EventArgs e)
         {
             try
             {
-                //Start top
                 DataAccess Load = new DataAccess();
                 string reportType = Load.getOption("option_value", "reportType");
 
@@ -1822,25 +1406,25 @@ namespace IDMS.Page
                     switch (PRO)
                     {
                         case "EGD":
-                            PdfEGD egd = new PdfEGD(EGDControl);
-                            egd.GEN_PdfEGD(PRO, EGDControl, this, report, ORIGINAL_ID, Multimode);
+                            PdfEGD EGD = new PdfEGD(EGDControl);
+                            EGD.GenPDF(PRO, EGDControl, this, report, ORIGINAL_ID, Multimode);
                             break;
                         case "COL":
-                            PdfColono col = new PdfColono(COLControl);
-                            col.GEN_PdfCOL(PRO, COLControl, this, report2, ORIGINAL_ID, Multimode);
+                            PdfColono Colono = new PdfColono(COLControl);
+                            Colono.GenPDF(PRO, COLControl, this, report2, ORIGINAL_ID, Multimode);
                             break;
 
                         case "ERCP":
                             PdfERCP ERCP = new PdfERCP(ERCPControl);
-                            ERCP.GEN_PdfEGD(PRO, ERCPControl, this, report3, ORIGINAL_ID, Multimode);
+                            ERCP.GenPDF(PRO, ERCPControl, this, report3, ORIGINAL_ID, Multimode);
                             break;
                         case "ENT":
                             PdfENT ENT = new PdfENT(ENTControl);
-                            ENT.GEN_PdfEGD(PRO, ENTControl, this, report5, ORIGINAL_ID, Multimode);
+                            ENT.GenPDF(PRO, ENTControl, this, report5, ORIGINAL_ID, Multimode);
                             break;
                         case "BRONCO":
-                            PdfBronco bronco = new PdfBronco(BRONCOControl);
-                            bronco.GEN_PdfEGD(PRO, BRONCOControl, this, report4, ORIGINAL_ID, Multimode);
+                            PdfBronco Broncho = new PdfBronco(BRONCOControl);
+                            Broncho.GenPDF(PRO, BRONCOControl, this, report4, ORIGINAL_ID, Multimode);
                             break;
                         default:
                             break;
@@ -1853,29 +1437,29 @@ namespace IDMS.Page
                     switch (PRO)
                     {
                         case "EGD":
-                            PdfEGD_TemplateB egd = new PdfEGD_TemplateB(EGDControl);
-                            egd.GEN_PdfEGD(PRO, EGDControl, this, report, ORIGINAL_ID, Multimode);
+                            PdfEGD_TemplateB EGD = new PdfEGD_TemplateB(EGDControl);
+                            EGD.GenPDF(PRO, EGDControl, this, report, ORIGINAL_ID, Multimode);
                             break;
 
                         case "COL":
 
-                            PdfColono_TemplateB col = new PdfColono_TemplateB(COLControl);
-                            col.GEN_PdfCOL(PRO, COLControl, this, report2, ORIGINAL_ID, Multimode);
+                            PdfColono_TemplateB Colono = new PdfColono_TemplateB(COLControl);
+                            Colono.GenPDF(PRO, COLControl, this, report2, ORIGINAL_ID, Multimode);
                             break;
 
                         case "ERCP":
 
                             PdfERCP_TemplateB ERCP = new PdfERCP_TemplateB(ERCPControl);
-                            ERCP.GEN_PdfEGD(PRO, ERCPControl, this, report3, ORIGINAL_ID, Multimode);
+                            ERCP.GenPDF(PRO, ERCPControl, this, report3, ORIGINAL_ID, Multimode);
                             break;
                         case "ENT":
 
                             PdfENT_TemplateB ENT = new PdfENT_TemplateB(ENTControl);
-                            ENT.GEN_PdfEGD(PRO, ENTControl, this, report5, ORIGINAL_ID, Multimode);
+                            ENT.GenPDF(PRO, ENTControl, this, report5, ORIGINAL_ID, Multimode);
                             break;
                         case "BRONCO":
-                            PdfBroco_TemplateB bronco = new PdfBroco_TemplateB(BRONCOControl);
-                            bronco.GEN_PdfEGD(PRO, BRONCOControl, this, report4, ORIGINAL_ID, Multimode);
+                            PdfBroco_TemplateB Broncho = new PdfBroco_TemplateB(BRONCOControl);
+                            Broncho.GenPDF(PRO, BRONCOControl, this, report4, ORIGINAL_ID, Multimode);
                             break;
 
                         default:
@@ -1883,45 +1467,13 @@ namespace IDMS.Page
                     }
                 }
 
-                //End top
-                /*
-                DataAccess cb = new DataAccess();
-                cb.updateDoneStatus(caseid);
-                switch (PRO)
-                {
-                    case "EGD":
-                        PdfEGD egd = new PdfEGD(EGDControl);
-                        egd.GEN_PdfEGD(PRO, EGDControl, this, report, ORIGINAL_ID, Multimode);
-                        ////break;
-                        //PdfBronco egd = new PdfBronco(EGDControl);
-                        //egd.GEN_PdfEGD(PRO, EGDControl, this, report, ORIGINAL_ID, Multimode);
-                        break;
-
-                    case "COL":
-                        PdfCOL col = new PdfCOL(COLControl);
-                        col.GEN_PdfCOL(PRO, COLControl, this, report2, ORIGINAL_ID, Multimode);
-                        break;
-
-                    case "ERCP":
-                        PdfERCP ENT = new PdfERCP(ENTControl);
-                        ENT.GEN_PdfEGD(PRO, ENTControl, this, report3, ORIGINAL_ID, Multimode);
-                        //PdfCysto ENT = new PdfCysto(ENTControl);
-                        //ENT.GEN_PdfEGD(PRO, ENTControl, this, report3, ORIGINAL_ID, Multimode);
-                        break;
-                    case "BRONCO":
-                        PdfBronco bronco = new PdfBronco(BRONCOControl);
-                        bronco.GEN_PdfEGD(PRO, BRONCOControl, this, report4, ORIGINAL_ID, Multimode);
-                        break;
-                    default:
-                        break;
-                }
-                */
             }
             catch
             {
                 MessageBox.Show("can't gen report due to some problem. try remove some picture and try again ");
             }
         }
+
 
         public void LOAD_DATA(string procedure, string caseID)
         {
@@ -1930,32 +1482,34 @@ namespace IDMS.Page
                 case "EGD":
                     manageReportEGD EGD_REPORT = new manageReportEGD();
                     EGD_REPORT.LoadReportField(report, caseID, this);
-                    EGD_REPORT.Loadpicture(this, EGDControl, caseID);
+                    // EGD_REPORT.Loadpicture(this, EGDControl, caseID);
+                    SaveAndLoadImage.Loadpicture(this, EGDControl, caseID);
                     break;
                 case "COL":
                     manageReportCOL COL_REPORT = new manageReportCOL();
                     COL_REPORT.LoadReportField(report2, caseID, this);
-                    COL_REPORT.Loadpicture(this, COLControl, caseID);
+                    SaveAndLoadImage.Loadpicture(this, COLControl, caseID);
                     break;
                 case "ERCP":
                     manageReportERCP ERCP_REPORT = new manageReportERCP();
                     ERCP_REPORT.LoadReportField(report3, caseID, this);
-                    ERCP_REPORT.Loadpicture(this, ERCPControl, caseID);
+                    SaveAndLoadImage.Loadpicture(this, ERCPControl, caseID);
                     break;
                 case "ENT":
                     manageReportENT ENT_REPORT = new manageReportENT();
                     ENT_REPORT.LoadReportField(report5, caseID, this);
-                    ENT_REPORT.Loadpicture(this, ENTControl, caseID);
+                    SaveAndLoadImage.Loadpicture(this, ENTControl, caseID);
                     break;
                 case "BRONCO":
                     manageReportBRONCO BRONCO_REPORT = new manageReportBRONCO();
                     BRONCO_REPORT.LoadReportField(report4, caseID, this);
-                    BRONCO_REPORT.Loadpicture(this, BRONCOControl, caseID);
+                    SaveAndLoadImage.Loadpicture(this, BRONCOControl, caseID);
                     break;
                 default:
                     break;
             }
         }
+
 
         private void userPanel_Scroll(object sender, ScrollEventArgs e)
         {
@@ -1964,6 +1518,7 @@ namespace IDMS.Page
                 userPanel.VerticalScroll.Value = e.NewValue;
             }
         }
+
 
         private void EditSex_Click(object sender, EventArgs e)
         {
@@ -1974,6 +1529,7 @@ namespace IDMS.Page
             else { EDIT_ISnotPRESS = true; }
 
         }
+
 
         private void EditDate_Click(object sender, EventArgs e)
         {
@@ -1989,6 +1545,7 @@ namespace IDMS.Page
             }
         }
 
+
         private void EditIndi_Click(object sender, EventArgs e)
         {
 
@@ -2002,6 +1559,7 @@ namespace IDMS.Page
                 a.EditData(caseid, "Indication", indication.Text);
             }
         }
+
 
         private void EditDuration_Click(object sender, EventArgs e)
         {
@@ -2019,6 +1577,7 @@ namespace IDMS.Page
             }
         }
 
+
         private void EditName_Click(object sender, EventArgs e)
         {
             setEDIT(infoname, EDIT_ISnotPRESS);
@@ -2034,6 +1593,7 @@ namespace IDMS.Page
 
         }
 
+
         private void EditNation_Click(object sender, EventArgs e)
         {
 
@@ -2043,6 +1603,7 @@ namespace IDMS.Page
             { EDIT_ISnotPRESS = false; }
             else { EDIT_ISnotPRESS = true; }
         }
+
 
         private void EditPreDX_Click(object sender, EventArgs e)
         {
@@ -2064,10 +1625,9 @@ namespace IDMS.Page
             }
         }
 
+
         private void EditAge_Click(object sender, EventArgs e)
         {
-
-
             setEDIT(infoage, EDIT_ISnotPRESS);
 
             if (EDIT_ISnotPRESS)
@@ -2075,6 +1635,7 @@ namespace IDMS.Page
             else { EDIT_ISnotPRESS = true; }
 
         }
+
 
         private void EditWard_Click(object sender, EventArgs e)
         {
@@ -2085,6 +1646,7 @@ namespace IDMS.Page
             { EDIT_ISnotPRESS = false; }
             else { EDIT_ISnotPRESS = true; }
         }
+
 
         private void EditRoom_Click(object sender, EventArgs e)
         {
@@ -2100,29 +1662,24 @@ namespace IDMS.Page
             }
         }
 
+
         private void EditIn_Click(object sender, EventArgs e)
         {
 
             setEDIT(infoinstrument, EDIT_ISnotPRESS);
             setEDIT(in2, EDIT_ISnotPRESS);
-            //  setEDIT(in3, EDIT_ISnotPRESS);
 
-
-
-            ;
             if (EDIT_ISnotPRESS)
             {
                 EDIT_ISnotPRESS = false;
                 cbtn1.Visible = true;
                 cbtn2.Visible = true;
-                // cbtn3.Visible = true;
             }
             else
             {
                 EDIT_ISnotPRESS = true;
                 cbtn1.Visible = false;
                 cbtn2.Visible = false;
-                // cbtn3.Visible = false;
 
                 DataAccess a = new DataAccess();
                 string t = infoinstrument.Text;
@@ -2134,9 +1691,9 @@ namespace IDMS.Page
             }
         }
 
+
         private void EditDoc_Click(object sender, EventArgs e)
         {
-
             setEDIT(infodoc, EDIT_ISnotPRESS);
 
             if (EDIT_ISnotPRESS)
@@ -2147,6 +1704,7 @@ namespace IDMS.Page
                 a.EditData(caseid, "Doctor", infodoc.Text);
             }
         }
+
 
         private void EditAss_Click(object sender, EventArgs e)
         {
@@ -2162,9 +1720,9 @@ namespace IDMS.Page
             }
         }
 
+
         private void EditAnes_Click(object sender, EventArgs e)
         {
-
             setEDIT(anes, EDIT_ISnotPRESS);
             if (EDIT_ISnotPRESS)
             { EDIT_ISnotPRESS = false; }
@@ -2174,6 +1732,7 @@ namespace IDMS.Page
                 a.EditData(caseid, "Anesthesist", anes.Text);
             }
         }
+
 
         private void EditCnurse_Click(object sender, EventArgs e)
         {
@@ -2190,7 +1749,6 @@ namespace IDMS.Page
         }
 
 
-
         private void EditSnurse_Click(object sender, EventArgs e)
         {
 
@@ -2204,7 +1762,10 @@ namespace IDMS.Page
                 a.EditData(caseid, "Scrub Nurse", infosnurse.Text);
             }
         }
+
+
         string cameraid;
+
         private string getcameraData()
         {
             using (Instrument formOptions = new Instrument())
@@ -2218,11 +1779,14 @@ namespace IDMS.Page
             }
 
         }
+
+
         private void cbtn3_Click(object sender, EventArgs e)
         {
             string camera = getcameraData();
             in3.Text = cameraid + "-" + camera;
         }
+
 
         private void cbtn2_Click(object sender, EventArgs e)
         {
@@ -2230,12 +1794,16 @@ namespace IDMS.Page
             in2.Text = cameraid + "-" + camera;
         }
 
+
         private void cbtn1_Click(object sender, EventArgs e)
         {
             string camera = getcameraData();
             infoinstrument.Text = cameraid + "-" + camera;
         }
+
+
         static string imgFolderS;
+
 
         static public bool FOLDER_EXIST(string a)
         {
@@ -2243,13 +1811,7 @@ namespace IDMS.Page
             imgFolderS = IDMS.World.Settings.savePath + "/images/" + ReportMulti.REALID + "/" + a + "/";
 
             string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + ReportMulti.REALID + "/pictures/" + a + "/";
-            //  string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + HN + "/" + PROCEDURE + "/pictures/";
             imgFolder_oldversion = imgFolder_oldversion.Replace("idmsCASE", "idmsData");
-
-            //   MessageBox.Show(imgFolderS);
-            //  MessageBox.Show(imgFolder_oldversion);
-
-
 
 
             if (!(Directory.Exists(imgFolderS)) && !(Directory.Exists(imgFolder_oldversion)))
@@ -2260,20 +1822,21 @@ namespace IDMS.Page
             return IS_EXIST;
         }
 
+
         private void import_btn_Click(object sender, EventArgs e)
         {
             using (import formOptions = new import(imgFolder, PRO))
             {
                 formOptions.ShowDialog();
             }
-            // MessageBox.Show(imagelistTable.RowCount.ToString());
             CLEAR_IMAGE();
             clearRecImage();
         }
 
-        public String specialCharReplace(String hn)
+
+        public string specialCharReplace(string hn)
         {
-            String hid = hn;
+            string hid = hn;
 
             string[] regEx = { "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "=", "|", "\\", "[", "]", "{", "}", "/", "'" };
 
@@ -2281,20 +1844,12 @@ namespace IDMS.Page
             {
                 if (hid.Contains(regEx[i])) { hid = hid.Replace(regEx[i], "_"); }
             }
-
-            //if (hid.Contains("'")) { hid = hid.Replace("'", "_"); }
-            //if (hid.Contains('\\')) { hid = hid.Replace('\\', '_'); }
-            //if (hid.Contains('/')) { hid = hid.Replace('/', '_'); }
-
             return hid;
         }
 
 
-
         public void autoDirectoryImage()
         {
-            // if (imgPath.Length <= 0)
-            // {
             if (IDMS.World.Settings.savePath == String.Empty)
             {
                 IDMS.World.Settings.savePath = System.IO.Directory.GetCurrentDirectory();

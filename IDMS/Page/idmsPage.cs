@@ -193,15 +193,9 @@ namespace IDMS
 
 
         }
-        public void ChangePageToEdit(string caseid, string hn)
-        {
-            usercontrolPanel.Controls.Clear();
-            UserControl edituc = new editUC(this, hn, caseid);
-
-            usercontrolPanel.Controls.Add(edituc);
 
 
-        }
+
         public void ChangePageToCaseTC()
         {
             usercontrolPanel.Controls.Clear();
@@ -298,7 +292,8 @@ namespace IDMS
         private void Statistic_Click(object sender, EventArgs e)
         {
             usercontrolPanel.Controls.Clear();
-            UserControl stat = new statUC();
+            //UserControl stat = new statUC();
+            UserControl stat = new statistics_UC();
             usercontrolPanel.Controls.Add(stat);
         }
     }

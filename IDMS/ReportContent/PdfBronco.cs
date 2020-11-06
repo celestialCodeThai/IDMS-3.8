@@ -13,43 +13,53 @@ using Image = System.Drawing.Image;
 using Font = iTextSharp.text.Font;
 using System.Diagnostics;
 using IDMS.Page;
+using IDMS.DataManage;
 
 namespace IDMS.ReportContent
 {
     class PdfBronco
     {
-        bool page2, page3, page4, page5, page6;
+        bool page2, page3, page4, page5, page6, page7, page8, page9;
         const int BODY_X = 65;
         const int SMALL_GAP = 2;
         const int IMG_SIZE = 130;
 
+
+        DataAccess load = new DataAccess();
+        GetImageWide wideMode = new GetImageWide();
+
+
         public PdfBronco(imageReport output)
         {
-            if (output.pic9.Enabled == true)
+            string pictureMode = load.getOption("option_value", "pictureMode");
+            bool squareMode = pictureMode == "1";
+
+            if (squareMode)
             {
-                page2 = true;
+                if (output.pic9.Enabled == true) page2 = true;
+                if (output.pic21.Enabled == true) page3 = true;
+                if (output.pic33.Enabled == true) page4 = true;
+                if (output.pic45.Enabled == true) page5 = true;
+                if (output.pic57.Enabled == true) page6 = true;
             }
-            if (output.pic21.Enabled == true)
+            else
             {
-                page3 = true;
-            }
-            if (output.pic33.Enabled == true)
-            {
-                page4 = true;
-            }
-            if (output.pic45.Enabled == true)
-            {
-                page5 = true;
-            }
-            if (output.pic57.Enabled == true)
-            {
-                page6 = true;
+                if (output.pic7.Enabled == true) page2 = true;
+                if (output.pic15.Enabled == true) page3 = true;
+                if (output.pic23.Enabled == true) page4 = true;
+                if (output.pic31.Enabled == true) page5 = true;
+                if (output.pic39.Enabled == true) page6 = true;
+                if (output.pic47.Enabled == true) page7 = true;
+                if (output.pic54.Enabled == true) page8 = true;
+                if (output.pic62.Enabled == true) page9 = true;
             }
 
         }
-        public String specialCharReplace(String hn)
+
+
+        public string specialCharReplace(string hn)
         {
-            String hid = hn;
+            string hid = hn;
 
             string[] regEx = { "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "=", "|", "\\", "[", "]", "{", "}", "/", "'" };
 
@@ -57,16 +67,11 @@ namespace IDMS.ReportContent
             {
                 if (hid.Contains(regEx[i])) { hid = hid.Replace(regEx[i], "_"); }
             }
-
-            //if (hid.Contains("'")) { hid = hid.Replace("'", "_"); }
-            //if (hid.Contains('\\')) { hid = hid.Replace('\\', '_'); }
-            //if (hid.Contains('/')) { hid = hid.Replace('/', '_'); }
-
-
             return hid;
         }
 
-        public void GEN_PdfEGD(String PRO, imageReport output, Report report, reportControlBronco ERCP, string ORIGINAL_ID, bool Multimode)
+
+        public void GenPDF(String PRO, imageReport output, Report report, reportControlBronco ERCP, string ORIGINAL_ID, bool Multimode)
         {
             string filename = specialCharReplace(report.infohn.Text);
             string Filesave = "";
@@ -74,7 +79,7 @@ namespace IDMS.ReportContent
             Filesave = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "-HN " + filename + "-TIME " + DateTime.Now.ToString("HH") + "." + DateTime.Now.ToString("mm") + "." + DateTime.Now.ToString("ss") + ".pdf";
 
             string imgFolder = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "/";
-            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/" ;
+            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/";
 
             imgFolder_oldversion = imgFolder_oldversion.Replace("idmsCASE", "idmsData");
 
@@ -93,49 +98,94 @@ namespace IDMS.ReportContent
             PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(Filesave, FileMode.Create));
 
 
+            string pictureMode = load.getOption("option_value", "pictureMode");
+            bool squareMode = pictureMode == "1";
+
+
             pdfDoc.Open();
             pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
-            pdfDoc.Add(GetBodyERCP(pdfDoc, writer, report, ERCP, output));
-            pdfDoc.Add(GetImg(pdfDoc, writer, output));
+            pdfDoc.Add(GetBodyBroncho(pdfDoc, writer, report, ERCP, output));
 
+
+            string doctorName = report.infodoc.Text;
+
+
+            //FirstPage
+            if (squareMode)
+            {
+                pdfDoc.Add(GetImg(pdfDoc, writer, output));
+            }
+            else
+            {
+                pdfDoc.Add(wideMode.FirstPage(pdfDoc, writer, output, doctorName, "BRONCO"));
+            }
+
+
+            //MultiPage
             if (page2)
             {
                 pdfDoc.NewPage();
                 pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
-                pdfDoc.Add(GetImg2(pdfDoc, writer, 2, output));
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 2, output)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 2, output, doctorName, "BRONCO")); }
             }
             if (page3)
             {
                 pdfDoc.NewPage();
                 pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
-                pdfDoc.Add(GetImg2(pdfDoc, writer, 3, output));
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 3, output)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 3, output, doctorName, "BRONCO")); }
             }
             if (page4)
             {
                 pdfDoc.NewPage();
                 pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
-                pdfDoc.Add(GetImg2(pdfDoc, writer, 4, output));
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 4, output)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 4, output, doctorName, "BRONCO")); }
             }
             if (page5)
             {
                 pdfDoc.NewPage();
                 pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
-                pdfDoc.Add(GetImg2(pdfDoc, writer, 5, output));
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 5, output)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 5, output, doctorName, "BRONCO")); }
             }
             if (page6)
             {
                 pdfDoc.NewPage();
                 pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
-                pdfDoc.Add(GetImg2(pdfDoc, writer, 6, output));
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 6, output)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 6, output, doctorName, "BRONCO")); }
+            }
+            if (page7)
+            {
+                pdfDoc.NewPage();
+                pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 7, output)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 7, output, doctorName, "BRONCO")); }
+            }
+            if (page8)
+            {
+                pdfDoc.NewPage();
+                pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 8, output)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 8, output, doctorName, "BRONCO")); }
+            }
+            if (page9)
+            {
+                pdfDoc.NewPage();
+                pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
+                if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, 9, output)); }
+                else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, 9, output, doctorName, "BRONCO")); }
             }
             pdfDoc.Close();
 
-            DataManage.DataAccess Load = new DataManage.DataAccess();
-            if (Load.getusbtext("1", "IS_USE") == "1")
+
+            if (load.getusbtext("1", "IS_USE") == "1")
             {
                 string sourceFile = Filesave;
                 string Filesave2;
-                string PATH = Load.getusbtext("1", "USB_PATH");
+                string PATH = load.getusbtext("1", "USB_PATH");
 
                 if (Directory.Exists(PATH))
                 {
@@ -167,6 +217,7 @@ namespace IDMS.ReportContent
 
         }
 
+
         public iTextSharp.text.Image getHeadImg(String PRO)
         {
             string projectDirectory;
@@ -180,6 +231,7 @@ namespace IDMS.ReportContent
 
             return PNG;
         }
+
 
         private PdfPTable GetHeader(Document pdfDoc, PdfWriter writer, String PRO, Page.Report report)
         {
@@ -254,6 +306,7 @@ namespace IDMS.ReportContent
             //thai Font
             BaseFont bf = BaseFont.CreateFont("c:/windows/fonts/micross.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             iTextSharp.text.Font Thai = new Font(bf, 10);
+            iTextSharp.text.Font Thai_Small = new Font(bf, 8);
 
             //
             ColumnText ct = new ColumnText(cb);
@@ -286,11 +339,11 @@ namespace IDMS.ReportContent
             Phrase headerAGE = new Phrase("Age:", f1);
 
             string H1 = report.infohn.Text; Phrase getHN = new Phrase(H1, Thai);
-            string H2 = report.infoname.Text; Phrase getNAME = new Phrase(H2, Thai);
+            string H2 = report.infoname.Text;
+            int nameLength = H2.Length;
+            Phrase getNAME = new Phrase(H2, nameLength < 25 ? Thai : Thai_Small);
             string H3 = report.infopro.Text; Phrase getPRO = new Phrase(H3, Thai);
-            //top
-            string H4 = report.registerDay.Text; Phrase getREGIS = new Phrase(H4, Thai);
-            //
+            string H4 = report.inforegis.Text.Substring(0, 10); Phrase getREGIS = new Phrase(H4, Thai);
             string H5 = report.Duration.Text; ; Phrase getDUR = new Phrase(H5, Thai);
             string H6 = report.infosex.Text; Phrase getSEX = new Phrase(H6, Thai);
             string H7 = report.infoage.Text; Phrase getAGE = new Phrase(H7, Thai);
@@ -322,9 +375,10 @@ namespace IDMS.ReportContent
 
             return headerTable;
         }
+
+
         public static int BodyEnd;
-        //reportBody
-        private PdfPTable GetBodyERCP(Document pdfDoc, PdfWriter writer, Report report, reportControlBronco reportControl, imageReport output)
+        private PdfPTable GetBodyBroncho(Document pdfDoc, PdfWriter writer, Report report, reportControlBronco reportControl, imageReport output)
         {
             PdfPTable BodyTable = new PdfPTable(2);
             PdfContentByte cb = writer.DirectContent;
@@ -415,8 +469,8 @@ namespace IDMS.ReportContent
             string antname = ""; string anesname = report.anes.Text;
 
 
-           
-            if (reportControl.cxr.Text!="") { if (antname != "") { antname += ", "; } antname += reportControl.cxr.Text; }
+
+            if (reportControl.cxr.Text != "") { if (antname != "") { antname += ", "; } antname += reportControl.cxr.Text; }
             if (reportControl.cxr2.Text != "") { if (antname != "") { antname += "  --  "; } antname += reportControl.cxr2.Text; }
             if (reportControl.cxr3.Text != "") { if (antname != "") { antname += " at "; } antname += reportControl.cxr3.Text; }
             Phrase getAnesname = new Phrase(anesname, Thai);
@@ -432,6 +486,10 @@ namespace IDMS.ReportContent
             if (reportControl.med5.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med5.Text + " " + reportControl.med5txt.Text + " mcg"; }
             if (reportControl.med6.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med6txt.Text + " mg"; }
 
+            if (medname.Length > 60)
+            {
+                medname = medname.Substring(0, 60) + "...";
+            }
 
             Phrase getMedname = new Phrase(medname, Thai);
 
@@ -440,18 +498,23 @@ namespace IDMS.ReportContent
             if (reportControl.ct2.Text != "") { if (instname != "") { instname += "  --  "; } instname += reportControl.ct2.Text; }
             if (reportControl.ct3.Text != "") { if (instname != "") { instname += " at "; } instname += reportControl.ct3.Text; }
 
+
             Phrase getInstname = new Phrase(instname, Thai);
-            string indiname = reportControl.indi.Text; ; Phrase getIndiname = new Phrase(indiname, Thai);
+            string indiname = reportControl.indi.Text;
+
+            if (indiname.Length > 60)
+            {
+                indiname = indiname.Substring(0, 60) + "...";
+            }
+
+            Phrase getIndiname = new Phrase(indiname, Thai);
 
 
 
-            string pdxname = ""; 
-          
-         
-                pdxname = reportControl.predx.Text;
+            string pdxname = "";
 
-           
 
+            pdxname = reportControl.predx.Text;
 
 
 
@@ -467,7 +530,7 @@ namespace IDMS.ReportContent
             if (reportControl.ro1.Checked == true) { if (proroomname != "") { proroomname += ", "; } proroomname += reportControl.ro1.Text; }
             if (reportControl.ro2.Checked == true) { if (proroomname != "") { proroomname += ", "; } proroomname += reportControl.ro2.Text; }
             if (reportControl.ro3.Checked == true) { if (proroomname != "") { proroomname += ", "; } proroomname += reportControl.ro3.Text; }
-            if (reportControl.ro4.Checked == true) { if (proroomname != "") { proroomname += ", "; } proroomname += reportControl.ro4.Text+" "+reportControl.ro4txt.Text; }
+            if (reportControl.ro4.Checked == true) { if (proroomname != "") { proroomname += ", "; } proroomname += reportControl.ro4.Text + " " + reportControl.ro4txt.Text; }
 
 
 
@@ -496,7 +559,7 @@ namespace IDMS.ReportContent
 
             d1.SetSimpleColumn(getDocname, infoX, BodyY, 580, 317, 15, Element.ALIGN_LEFT); d1.Go();
             d2.SetSimpleColumn(getNursename, infoX, BodyY - BodySpace, 580, 317, 15, Element.ALIGN_LEFT); d2.Go();
-            d4.SetSimpleColumn(getAnesname, infoX + infoX2-7, BodyY, 580, 317, 15, Element.ALIGN_LEFT); d4.Go();
+            d4.SetSimpleColumn(getAnesname, infoX + infoX2 - 7, BodyY, 580, 317, 15, Element.ALIGN_LEFT); d4.Go();
             d5.SetSimpleColumn(getMedname, infoX, BodyY - (BodySpace * 3), 580, 317, 15, Element.ALIGN_LEFT); d5.Go();
             d6.SetSimpleColumn(getInstname, infoX, BodyY - (BodySpace * 4), 580, 317, 15, Element.ALIGN_LEFT); d6.Go();
             d7.SetSimpleColumn(getAntname, infoX, BodyY - (BodySpace * 5), 580, 317, 15, Element.ALIGN_LEFT); d7.Go();
@@ -521,8 +584,8 @@ namespace IDMS.ReportContent
 
 
             d3.SetSimpleColumn(getIndiname, infoX, BodyY - (BodySpace * 2), 580, 317, 15, Element.ALIGN_LEFT); d3.Go();
-            d10.SetSimpleColumn(getCnursename, infoX + infoX2 -7, BodyY - BodySpace, 580, 317, 15, Element.ALIGN_LEFT); d10.Go();
-            d11.SetSimpleColumn(getproroomname, infoX + infoX2-7, BodyY - (BodySpace * 2), 580, 317, 15, Element.ALIGN_LEFT); d11.Go();
+            d10.SetSimpleColumn(getCnursename, infoX + infoX2 - 7, BodyY - BodySpace, 580, 317, 15, Element.ALIGN_LEFT); d10.Go();
+            d11.SetSimpleColumn(getproroomname, infoX + infoX2 - 7, BodyY - (BodySpace * 2), 580, 317, 15, Element.ALIGN_LEFT); d11.Go();
 
 
 
@@ -964,7 +1027,7 @@ namespace IDMS.ReportContent
             finding4.SetSimpleColumn(F04, BodyX, f4y, 580, 317, 15, Element.ALIGN_LEFT);
 
 
-            df4.SetSimpleColumn(getFD4, FX+20, f4y, 580, 317, 15, Element.ALIGN_LEFT); df4.Go();
+            df4.SetSimpleColumn(getFD4, FX + 20, f4y, 580, 317, 15, Element.ALIGN_LEFT); df4.Go();
 
             //f5
             int f5y = f4y - BodySpace;
@@ -1106,7 +1169,8 @@ namespace IDMS.ReportContent
             string ptxt = "";
 
             if (reportControl.pg1.Checked == true)
-            { if (ptxt != "") { ptxt += ", "; }
+            {
+                if (ptxt != "") { ptxt += ", "; }
 
 
                 ptxt += reportControl.pg1.Text;
@@ -1116,7 +1180,8 @@ namespace IDMS.ReportContent
             }
 
             if (reportControl.pg2.Checked == true)
-            { if (ptxt != "") { ptxt += ", "; }
+            {
+                if (ptxt != "") { ptxt += ", "; }
 
                 ptxt += reportControl.pg2.Text;
                 if (reportControl.pg2_1.Text != "") { ptxt += " " + reportControl.pg2_1.Text; }
@@ -1126,33 +1191,37 @@ namespace IDMS.ReportContent
             if (reportControl.pg3.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg3.Text; }
             if (reportControl.pg4.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg4.Text; }
             if (reportControl.pg5.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg5.Text; }
-            if (reportControl.pg6.Checked == true) {
+            if (reportControl.pg6.Checked == true)
+            {
                 if (ptxt != "") { ptxt += "-"; }
 
                 ptxt += reportControl.pg6.Text;
                 if (reportControl.pg6_1.Text != "") { ptxt += reportControl.pg6_1.Text; }
 
             }
-            if (reportControl.pg7.Checked == true) {
+            if (reportControl.pg7.Checked == true)
+            {
                 if (ptxt != "") { ptxt += ", "; }
                 ptxt += reportControl.pg7.Text;
-                if (reportControl.pg7_1.Text != "") { ptxt += " "+reportControl.pg7txt.Text +" "+reportControl.pg7_1.Text; }
-                if (reportControl.pg7_2.Text != "") { ptxt += " "+reportControl.pg7txt2.Text +" "+ reportControl.pg7_2.Text; }
+                if (reportControl.pg7_1.Text != "") { ptxt += " " + reportControl.pg7txt.Text + " " + reportControl.pg7_1.Text; }
+                if (reportControl.pg7_2.Text != "") { ptxt += " " + reportControl.pg7txt2.Text + " " + reportControl.pg7_2.Text; }
 
             }
-            if (reportControl.pg8.Checked == true) {
+            if (reportControl.pg8.Checked == true)
+            {
                 if (ptxt != "") { ptxt += ", "; }
 
                 ptxt += reportControl.pg8.Text;
-                if (reportControl.pg8_1.Text != "") { ptxt += " "+ reportControl.pg8_1.Text; }
+                if (reportControl.pg8_1.Text != "") { ptxt += " " + reportControl.pg8_1.Text; }
             }
-            if (reportControl.pg9.Checked == true) {
+            if (reportControl.pg9.Checked == true)
+            {
                 if (ptxt != "") { ptxt += ", "; }
 
                 ptxt += reportControl.pg9.Text;
                 if (reportControl.pg9_1.Text != "") { ptxt += " " + reportControl.pg9_1.Text; }
                 if (reportControl.pg9_2.Text != "") { ptxt += " segment " + reportControl.pg9_2.Text; }
-                if (reportControl.pg9_3.Text != "") { ptxt += " Fluid instilled " + reportControl.pg9_3.Text+" mL"; }
+                if (reportControl.pg9_3.Text != "") { ptxt += " Fluid instilled " + reportControl.pg9_3.Text + " mL"; }
                 if (reportControl.pg9_4.Text != "") { ptxt += " Return " + reportControl.pg9_4.Text + " mL"; }
                 if (reportControl.pg9_5.Text != "") { ptxt += " Appearance " + reportControl.pg9_5.Text; }
 
@@ -1173,9 +1242,10 @@ namespace IDMS.ReportContent
             if (reportControl.pg18.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg23.Text; }
             if (reportControl.pg19.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg24.Text; }
             if (reportControl.pg20.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg25.Text; }
-            if ((reportControl.pg26.Checked == true)&&(reportControl.pg26_1.Text!="")) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg26_1.Text; }
+            if ((reportControl.pg26.Checked == true) && (reportControl.pg26_1.Text != "")) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg26_1.Text; }
 
-            if (reportControl.pg27.Checked == true) {
+            if (reportControl.pg27.Checked == true)
+            {
                 if (ptxt != "") { ptxt += ", "; }
                 ptxt += reportControl.pg27.Text;
                 if (reportControl.pg27_1.Text != "") { ptxt += " " + reportControl.pg27_1.Text; }
@@ -1212,11 +1282,12 @@ namespace IDMS.ReportContent
             if (reportControl.pg40.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg40.Text; }
             if (reportControl.pg41.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg41.Text; }
 
-            if (reportControl.pg42.Checked == true) { if (ptxt != "") { ptxt += ","; } ptxt += reportControl.pg42.Text+" "; }
-            if (reportControl.pg43_1.Text != "") {
+            if (reportControl.pg42.Checked == true) { if (ptxt != "") { ptxt += ","; } ptxt += reportControl.pg42.Text + " "; }
+            if (reportControl.pg43_1.Text != "")
+            {
                 if (ptxt != "") { ptxt += "-"; }
-                ptxt += reportControl.pg43txt.Text+" "+reportControl.pg43_1.Text + " cm ";
-                if(reportControl.pg43.Checked == true) { ptxt += reportControl.pg43.Text; }
+                ptxt += reportControl.pg43txt.Text + " " + reportControl.pg43_1.Text + " cm ";
+                if (reportControl.pg43.Checked == true) { ptxt += reportControl.pg43.Text; }
             }
             if (reportControl.pg44_1.Text != "")
             {
@@ -1266,7 +1337,7 @@ namespace IDMS.ReportContent
                 ptxt += reportControl.pg51txt.Text + " " + reportControl.pg51_1.Text + " cm ";
                 if (reportControl.pg51.Checked == true) { ptxt += reportControl.pg51.Text; }
             }
-            if ((reportControl.pg52.Checked == true)&&(reportControl.pg52_1.Text!="")) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg52_1.Text; }
+            if ((reportControl.pg52.Checked == true) && (reportControl.pg52_1.Text != "")) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg52_1.Text; }
             if (reportControl.pg53.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg53.Text; }
             if (reportControl.pg54.Checked == true) { if (ptxt != "") { ptxt += "-"; } ptxt += reportControl.pg54.Text; }
             L1 = ptxt;
@@ -1274,13 +1345,13 @@ namespace IDMS.ReportContent
             Phrase getL1 = new Phrase(L1, Thai);
             string L2 = "2";
 
-        
+
 
             string spdxtxt = "";
 
             spdxtxt = reportControl.pdx.Text;
 
-           
+
             L2 = spdxtxt;
 
 
@@ -1293,12 +1364,12 @@ namespace IDMS.ReportContent
             }
             string comtxt = ""; string L7 = "";
             if (reportControl.c1.Checked == true) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c1.Text; }
-            if ((reportControl.c2.Checked == true)&& (reportControl.c2txt.Text!="")) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c2.Text+" "+ reportControl.c2txt.Text; }
+            if ((reportControl.c2.Checked == true) && (reportControl.c2txt.Text != "")) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c2.Text + " " + reportControl.c2txt.Text; }
             if (reportControl.c3.Checked == true) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c3.Text; }
             if ((reportControl.c4.Checked == true) && (reportControl.c4txt.Text != "")) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c4txt.Text; }
             if (reportControl.c5.Checked == true) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c5.Text; }
             if (reportControl.c6.Checked == true) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c6.Text; }
-           if (reportControl.c7.Checked == true) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c7.Text; }
+            if (reportControl.c7.Checked == true) { if (comtxt != "") { comtxt += ", "; } comtxt += reportControl.c7.Text; }
 
             L7 = comtxt;
 
@@ -1306,7 +1377,7 @@ namespace IDMS.ReportContent
 
 
             string retxt = "";
-           
+
 
             L5 = retxt;
             if ((retxt != "") && (reportControl.note.Text != "")) { L5 += "/"; }
@@ -1362,7 +1433,7 @@ namespace IDMS.ReportContent
 
             int lb5y = lb3y - BodySpace;
 
-           
+
             lb5.SetSimpleColumn(LB5, BodyX, lb5y, 580, 317, 15, Element.ALIGN_LEFT); lb5.Go();
             l5.SetSimpleColumn(getL5, BodyX + 50, lb5y, 580, 317, 15, Element.ALIGN_LEFT); l5.Go();
 
@@ -1386,6 +1457,8 @@ namespace IDMS.ReportContent
 
 
         }
+
+
         private PdfPTable GetImg(Document pdfDoc, PdfWriter writer, imageReport output)
         {
             string[] P1 = new string[] { "A", "B", "C", "D", "E", "F", "G", "H" };
@@ -1454,6 +1527,8 @@ namespace IDMS.ReportContent
             return imgTable;
 
         }
+
+
         private PdfPTable GetImg2(Document pdfDoc, PdfWriter writer, int page, imageReport output)
         {
             string[] P2, P3, P4, P5, P6, PX = null;
@@ -1515,7 +1590,7 @@ namespace IDMS.ReportContent
             {
                 Image a = Image.FromFile(output.imgPath[x]);
                 //top
-                iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(a, 500, output.recImage[z]), System.Drawing.Imaging.ImageFormat.Jpeg);
+                iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(a, 500, output.recImage[x]), System.Drawing.Imaging.ImageFormat.Jpeg);
                 //  iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(a, System.Drawing.Imaging.ImageFormat.Jpeg);
                 picPDF[z] = v;
                 picPDF[z].ScaleAbsolute(size, size);
@@ -1535,6 +1610,8 @@ namespace IDMS.ReportContent
             return imgTable;
 
         }
+
+
         public float calculatePDFStringWidth(string a)
         {
             var chunk = new Chunk(a);
@@ -1543,6 +1620,8 @@ namespace IDMS.ReportContent
             // System.Windows.Forms.MessageBox.Show(WidthWithCharSpacing.ToString());
             return WidthWithCharSpacing;
         }
+
+
         public int calculatePDFWidth(string a, int b)
         {
             var chunk = new Chunk(a);
@@ -1561,6 +1640,8 @@ namespace IDMS.ReportContent
 
             return line;
         }
+
+
         private void PlaceChunck(PdfWriter writer, String text, int x, int y)
         {
             PdfContentByte cb = writer.DirectContent;
@@ -1573,8 +1654,6 @@ namespace IDMS.ReportContent
             cb.EndText();
             cb.RestoreState();
         }
-
-
 
 
         private void PlaceChunckB(PdfWriter writer, String text, int x, int y)
@@ -1592,6 +1671,8 @@ namespace IDMS.ReportContent
             cb.EndText();
             cb.RestoreState();
         }
+
+
         private void PlaceChunckIMG(PdfWriter writer, String text, int x, int y)
         {
             PdfContentByte cb = writer.DirectContent;
@@ -1608,6 +1689,7 @@ namespace IDMS.ReportContent
             cb.RestoreState();
         }
 
+
         public string cutEnter(string b)
         {
 
@@ -1619,7 +1701,7 @@ namespace IDMS.ReportContent
             return b;
         }
 
-       
+
         private void PlaceChunckHead(PdfWriter writer, String text, int x, int y)
         {
             string projectDirectory;
@@ -1643,6 +1725,7 @@ namespace IDMS.ReportContent
             cb.RestoreState();
         }
 
+
         private void PlaceChunckHeadMini(PdfWriter writer, String text, int x, int y)
         {
             string projectDirectory;
@@ -1665,6 +1748,8 @@ namespace IDMS.ReportContent
             cb.EndText();
             cb.RestoreState();
         }
+
+
         private void PlaceChunckHeadMini2(PdfWriter writer, String text, int x, int y)
         {
             string projectDirectory;

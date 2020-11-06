@@ -124,6 +124,20 @@ namespace IDMS.Page
                     break;
             }
 
+            string pictureMode = Load.getOption("option_value", "pictureMode");
+            switch (pictureMode)
+            {
+                case "1":
+                    radioButton3.Checked = true;
+                    break;
+                case "2":
+                    radioButton4.Checked = true;
+                    break;
+                default:
+                    radioButton3.Checked = true;
+                    break;
+            }
+
             string useCamera = Load.getOption("option_value", "useCamera");
             switch (useCamera)
             {
@@ -212,6 +226,8 @@ namespace IDMS.Page
             dts.Columns[0].Width = dts.Width / 6;
             dts.Columns[1].Width = dts.Width - dts.Columns[0].Width;
 
+            dts.ColumnHeadersHeight = 40;
+
 
         }
         private void loadDataList(string table)
@@ -236,6 +252,8 @@ namespace IDMS.Page
             dts.Columns[1].Visible = false;
             dts.Columns[0].Width = dts.Width / 4;
             dts.Columns[1].Width = dts.Width - dts.Columns[0].Width;
+
+            dts.ColumnHeadersHeight = 40;
 
             if (table == "doctor")
             {
@@ -718,6 +736,9 @@ namespace IDMS.Page
             cTable.Columns[1].Visible = false;
             cTable.Columns[0].Width = cTable.Width / 8;
             cTable.Columns[1].Width = cTable.Width - cTable.Columns[0].Width;
+
+            cTable.ColumnHeadersHeight = 40;
+
             //this.cTable.Font = new Font("Times", 8);
         }
 
@@ -877,6 +898,22 @@ namespace IDMS.Page
             }
         }
 
+        private void handleChangePictureMode(object sender, EventArgs e)
+        {
+            bool ckeckSquare = radioButton3.Checked;
+            bool checkWide = radioButton4.Checked;
+            DataAccess save = new DataAccess();
+
+            if (ckeckSquare)
+            {
+                save.updateOption("option_value", "pictureMode", "1");
+            }
+            if (checkWide)
+            {
+                save.updateOption("option_value", "pictureMode", "2");
+            }
+        }
+
         private void radioButtonUseCamera_CheckedChanged(object sender, EventArgs e)
         {
             bool checkA = radioCameraNormal.Checked;
@@ -953,6 +990,8 @@ namespace IDMS.Page
 
             procedureRoomTable.Columns[1].Visible = false;
             procedureRoomTable.Columns[0].Width = 80;
+
+            procedureRoomTable.ColumnHeadersHeight = 40;
         }
 
         private void addProcedureRoom()
@@ -994,6 +1033,11 @@ namespace IDMS.Page
         }
 
         private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

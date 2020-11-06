@@ -13,43 +13,58 @@ using Image = System.Drawing.Image;
 using Font = iTextSharp.text.Font;
 using System.Diagnostics;
 using IDMS.Page;
+using IDMS.DataManage;
 
 namespace IDMS.ReportContent
 {
     class PdfColono
     {
-        bool page2, page3, page4, page5, page6;
+        bool page2, page3, page4, page5, page6, page7, page8, page9;
         const int BODY_X = 65;
         const int SMALL_GAP = 2;
         const int IMG_SIZE = 130;
 
+
+        DataAccess load = new DataAccess();
+        GetImageWide wideMode = new GetImageWide();
+
+
         public PdfColono(imageReport output)
         {
-            if (output.pic9.Enabled == true)
+            string pictureMode = load.getOption("option_value", "pictureMode");
+            bool squareMode = pictureMode == "1";
+
+            if (squareMode)
             {
-                page2 = true;
+                if (output.pic9.Enabled == true) page2 = true;
+                if (output.pic21.Enabled == true) page3 = true;
+                if (output.pic33.Enabled == true) page4 = true;
+                if (output.pic45.Enabled == true) page5 = true;
+                if (output.pic57.Enabled == true) page6 = true;
             }
-            if (output.pic21.Enabled == true)
+            else
             {
-                page3 = true;
-            }
-            if (output.pic33.Enabled == true)
-            {
-                page4 = true;
-            }
-            if (output.pic45.Enabled == true)
-            {
-                page5 = true;
-            }
-            if (output.pic57.Enabled == true)
-            {
-                page6 = true;
+                if (output.pic7.Enabled == true) page2 = true;
+                if (output.pic15.Enabled == true) page3 = true;
+                if (output.pic23.Enabled == true) page4 = true;
+                if (output.pic31.Enabled == true) page5 = true;
+                if (output.pic39.Enabled == true) page6 = true;
+                if (output.pic47.Enabled == true) page7 = true;
+                if (output.pic54.Enabled == true) page8 = true;
+                if (output.pic62.Enabled == true) page9 = true;
             }
 
         }
-        public String specialCharReplace(String hn)
+
+
+        int sum_line = 0;
+        int page_cut = 4;
+        string PROCEDURE_IMAGE = "COL";
+
+
+        public string specialCharReplace(string hn)
         {
-            String hid = hn;
+            string hid = hn;
 
             string[] regEx = { "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "=", "|", "\\", "[", "]", "{", "}", "/", "'" };
 
@@ -57,16 +72,11 @@ namespace IDMS.ReportContent
             {
                 if (hid.Contains(regEx[i])) { hid = hid.Replace(regEx[i], "_"); }
             }
-
-            //if (hid.Contains("'")) { hid = hid.Replace("'", "_"); }
-            //if (hid.Contains('\\')) { hid = hid.Replace('\\', '_'); }
-            //if (hid.Contains('/')) { hid = hid.Replace('/', '_'); }
-
-
             return hid;
         }
 
-        public void GEN_PdfCOL(String PRO, imageReport output, Report report, reportControlColono COL, string ORIGINAL_ID, bool Multimode)
+
+        public void GenPDF(String PRO, imageReport output, Report report, reportControlColono COL, string ORIGINAL_ID, bool Multimode)
         {
             string filename = specialCharReplace(report.infohn.Text);
             string Filesave = "";
@@ -74,7 +84,7 @@ namespace IDMS.ReportContent
             Filesave = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "-HN " + filename + "-TIME " + DateTime.Now.ToString("HH") + "." + DateTime.Now.ToString("mm") + "." + DateTime.Now.ToString("ss") + ".pdf";
 
             string imgFolder = IDMS.World.Settings.savePath + "/images/" + specialCharReplace(ORIGINAL_ID) + "/" + PRO + "/";
-            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/" ;
+            string imgFolder_oldversion = IDMS.World.Settings.savePath + "/" + specialCharReplace(ORIGINAL_ID) + "/";
 
             imgFolder_oldversion = imgFolder_oldversion.Replace("idmsCASE", "idmsData");
 
@@ -89,53 +99,80 @@ namespace IDMS.ReportContent
                 Filesave = imgFolder + PRO + "-HN " + filename + "-TIME " + DateTime.Now.ToString("HH") + "." + DateTime.Now.ToString("mm") + "." + DateTime.Now.ToString("ss") + ".pdf";
             }
 
+
             Document pdfDoc = new Document(PageSize.A4, 0, 0, 0, 0);
             PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(Filesave, FileMode.Create));
+
+
+            string pictureMode = load.getOption("option_value", "pictureMode");
+            bool squareMode = pictureMode == "1";
 
 
             pdfDoc.Open();
             pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
             pdfDoc.Add(GetBodyCOL(pdfDoc, writer, report, COL, output));
-            pdfDoc.Add(GetImg(pdfDoc, writer, output));
 
-            if (page2)
+
+            string doctorName = report.infodoc.Text;
+
+
+            if (sum_line >= page_cut)
             {
-                pdfDoc.NewPage();
-                pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
-                pdfDoc.Add(GetImg2(pdfDoc, writer, 2, output));
+                bool[] PAGENUMBER = new bool[] { output.pic5.Enabled, output.pic17.Enabled, output.pic29.Enabled, output.pic41.Enabled, output.pic53.Enabled, output.pic65.Enabled, false, false };
+
+                if (squareMode)
+                { pdfDoc.Add(GetImg_2(pdfDoc, writer, output)); }
+                else
+                {
+                    PAGENUMBER = new bool[] { output.pic4.Enabled, output.pic12.Enabled, output.pic20.Enabled, output.pic28.Enabled, output.pic36.Enabled, output.pic44.Enabled, output.pic52.Enabled, output.pic60.Enabled };
+                    pdfDoc.Add(wideMode.FirstPage_2(pdfDoc, writer, output, doctorName, PROCEDURE_IMAGE));
+                }
+
+
+                for (int i = 0; i <= 7; i++)
+                {
+
+
+                    if (PAGENUMBER[i])
+                    {
+                        pdfDoc.NewPage();
+                        pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
+                        if (squareMode) { pdfDoc.Add(GetImg2_2(pdfDoc, writer, i + 2, output)); }
+                        else { pdfDoc.Add(wideMode.MultiPage_2(pdfDoc, writer, i + 2, output, doctorName, PROCEDURE_IMAGE)); }
+                    }
+                }
+
+
             }
-            if (page3)
+            else
             {
-                pdfDoc.NewPage();
-                pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
-                pdfDoc.Add(GetImg2(pdfDoc, writer, 3, output));
+                if (squareMode)
+                { pdfDoc.Add(GetImg(pdfDoc, writer, output)); }
+                else
+                { pdfDoc.Add(wideMode.FirstPage(pdfDoc, writer, output, doctorName, PROCEDURE_IMAGE)); }
+
+                for (int i = 0; i <= 7; i++)
+                {
+                    bool[] PAGENUMBER = new bool[] { page2, page3, page4, page5, page6, page7, page8, page9 };
+
+                    if (PAGENUMBER[i])
+                    {
+                        pdfDoc.NewPage();
+                        pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
+                        if (squareMode) { pdfDoc.Add(GetImg2(pdfDoc, writer, i + 2, output)); }
+                        else { pdfDoc.Add(wideMode.MultiPage(pdfDoc, writer, i + 2, output, doctorName, PROCEDURE_IMAGE)); }
+                    }
+                }
             }
-            if (page4)
-            {
-                pdfDoc.NewPage();
-                pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
-                pdfDoc.Add(GetImg2(pdfDoc, writer, 4, output));
-            }
-            if (page5)
-            {
-                pdfDoc.NewPage();
-                pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
-                pdfDoc.Add(GetImg2(pdfDoc, writer, 5, output));
-            }
-            if (page6)
-            {
-                pdfDoc.NewPage();
-                pdfDoc.Add(GetHeader(pdfDoc, writer, PRO, report));
-                pdfDoc.Add(GetImg2(pdfDoc, writer, 6, output));
-            }
+
             pdfDoc.Close();
 
-            DataManage.DataAccess Load = new DataManage.DataAccess();
-            if (Load.getusbtext("1", "IS_USE") == "1")
+
+            if (load.getusbtext("1", "IS_USE") == "1")
             {
                 string sourceFile = Filesave;
                 string Filesave2;
-                string PATH = Load.getusbtext("1", "USB_PATH");
+                string PATH = load.getusbtext("1", "USB_PATH");
 
                 if (Directory.Exists(PATH))
                 {
@@ -167,6 +204,7 @@ namespace IDMS.ReportContent
 
         }
 
+
         public iTextSharp.text.Image getHeadImg(String PRO)
         {
             string projectDirectory;
@@ -180,14 +218,16 @@ namespace IDMS.ReportContent
 
 
                 PNG = iTextSharp.text.Image.GetInstance(Image.FromFile(projectDirectory), System.Drawing.Imaging.ImageFormat.Png);
-              
+
             }
             catch (FileNotFoundException ex)
             {
-                
+
             }
             return PNG;
         }
+
+
         private void PlaceChunckHead(PdfWriter writer, String text, int x, int y)
         {
             string projectDirectory;
@@ -211,6 +251,7 @@ namespace IDMS.ReportContent
             cb.RestoreState();
         }
 
+
         private void PlaceChunckHeadMini(PdfWriter writer, String text, int x, int y)
         {
             string projectDirectory;
@@ -233,6 +274,8 @@ namespace IDMS.ReportContent
             cb.EndText();
             cb.RestoreState();
         }
+
+
         private void PlaceChunckHeadMini2(PdfWriter writer, String text, int x, int y)
         {
             string projectDirectory;
@@ -255,6 +298,7 @@ namespace IDMS.ReportContent
             cb.EndText();
             cb.RestoreState();
         }
+
 
         private PdfPTable GetHeader(Document pdfDoc, PdfWriter writer, String PRO, Page.Report report)
         {
@@ -328,6 +372,7 @@ namespace IDMS.ReportContent
             //thai Font
             BaseFont bf = BaseFont.CreateFont("c:/windows/fonts/micross.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             iTextSharp.text.Font Thai = new Font(bf, 10);
+            iTextSharp.text.Font Thai_Small = new Font(bf, 8);
 
             //
             ColumnText ct = new ColumnText(cb);
@@ -360,11 +405,13 @@ namespace IDMS.ReportContent
             Phrase headerAGE = new Phrase("Age:", f1);
 
             string H1 = report.infohn.Text; Phrase getHN = new Phrase(H1, Thai);
-            string H2 = report.infoname.Text; Phrase getNAME = new Phrase(H2, Thai);
+
+            string H2 = report.infoname.Text;
+            int nameLength = H2.Length;
+            Phrase getNAME = new Phrase(H2, nameLength < 25 ? Thai : Thai_Small);
+
             string H3 = report.infopro.Text; Phrase getPRO = new Phrase(H3, Thai);
-            //top
-            string H4 = report.registerDay.Text; Phrase getREGIS = new Phrase(H4, Thai);
-            //
+            string H4 = report.inforegis.Text.Substring(0, 10); Phrase getREGIS = new Phrase(H4, Thai);
             string H5 = report.Duration.Text; ; Phrase getDUR = new Phrase(H5, Thai);
             string H6 = report.infosex.Text; Phrase getSEX = new Phrase(H6, Thai);
             string H7 = report.infoage.Text; Phrase getAGE = new Phrase(H7, Thai);
@@ -396,8 +443,9 @@ namespace IDMS.ReportContent
 
             return headerTable;
         }
+
+
         public static int BodyEnd;
-        //reportBody
         private PdfPTable GetBodyCOL(Document pdfDoc, PdfWriter writer, Report report, reportControlColono reportControl, imageReport output)
         {
             PdfPTable BodyTable = new PdfPTable(2);
@@ -507,18 +555,26 @@ namespace IDMS.ReportContent
             if (reportControl.med6.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med6txt.Text + " mg"; }
             if (reportControl.med7.Checked == true) { if (medname != "") { medname += ", "; } medname += reportControl.med7.Text + " " + reportControl.med7txt.Text + " mg"; }
 
+            if (medname.Length > 60)
+            {
+                medname = medname.Substring(0, 60) + "...";
+            }
 
             Phrase getMedname = new Phrase(medname, Thai);
 
             string instname = report.infoinstrument.Text;
-            if (report.in2.Text != "" && instname != "")
-            {
-                instname += ", ";
-                instname += report.in2.Text;
-            }
+
+
 
             Phrase getInstname = new Phrase(instname, Thai);
-            string indiname = report.indication.Text; Phrase getIndiname = new Phrase(indiname, Thai);
+            string indiname = report.indication.Text;
+
+            if (indiname.Length > 60)
+            {
+                indiname = indiname.Substring(0, 60) + "...";
+            }
+
+            Phrase getIndiname = new Phrase(indiname, Thai);
 
 
 
@@ -649,9 +705,9 @@ namespace IDMS.ReportContent
             lp6 += output.mark1[5];
             lp7 += output.mark1[6];
             lp8 += output.mark1[7];
-        //    lp9 += output.mark1[8];
+            //    lp9 += output.mark1[8];
 
-          //  PlaceChunckIMG(writer, lp9, BodyX + BodyX2 + 220, 675);
+            //  PlaceChunckIMG(writer, lp9, BodyX + BodyX2 + 220, 675);
             PlaceChunckIMG(writer, lp7, BodyX + BodyX2 + 185, 690);
             PlaceChunckIMG(writer, lp8, BodyX + BodyX2 + 185, 650);
             PlaceChunckIMG(writer, lp6, BodyX + BodyX2 + 185, 720);
@@ -979,7 +1035,7 @@ namespace IDMS.ReportContent
             //
             int f4y = f3y - BodySpace;
 
-          
+
 
             //f4
 
@@ -1059,7 +1115,7 @@ namespace IDMS.ReportContent
             //
             int f9y = f8y - BodySpace;
 
-           
+
 
             //f9
             extraline = calculatePDFWidth(fd8, 80);
@@ -1118,7 +1174,7 @@ namespace IDMS.ReportContent
             ColumnText l6 = new ColumnText(cb);
             ColumnText l7 = new ColumnText(cb);
             ColumnText l8 = new ColumnText(cb);
-            iTextSharp.text.Font f3 = FontFactory.GetFont("Roboto", 14, iTextSharp.text.Font.BOLD, BaseColor.RED);
+            iTextSharp.text.Font f3 = FontFactory.GetFont("Roboto", 10, iTextSharp.text.Font.BOLD, BaseColor.RED);
 
             Phrase LB1 = new Phrase("Procedures:", f2);
             Phrase LB2 = new Phrase("Post-diagnosis:", f3);
@@ -1286,8 +1342,8 @@ namespace IDMS.ReportContent
                 lb2y -= j;
 
             }
-            lb2.SetSimpleColumn(LB2, BodyX, lb2y, 580, 317, 15, Element.ALIGN_LEFT); lb2.Go();
-            l2.SetSimpleColumn(getL2, BodyX + 110, lb2y, 580, 317, 15, Element.ALIGN_LEFT); l2.Go();
+            lb2.SetSimpleColumn(LB2, BodyX, lb2y - 500, 580, lb2y, 15, Element.ALIGN_LEFT); lb2.Go();
+            l2.SetSimpleColumn(getL2, BodyX + 110, lb2y - 500, 580, lb2y, 15, Element.ALIGN_LEFT); l2.Go();
             //
             int lb3y = lb2y - BodySpace;
             extraline = calculatePDFWidth(L2, 71);
@@ -1297,19 +1353,19 @@ namespace IDMS.ReportContent
                 lb3y -= j;
 
             }
-            lb3.SetSimpleColumn(LB3, BodyX, lb3y, 580, 317, 15, Element.ALIGN_LEFT); lb3.Go();
-            l3.SetSimpleColumn(getL3, BodyX + 100, lb3y, 580, 317, 15, Element.ALIGN_LEFT); l3.Go();
+            lb3.SetSimpleColumn(LB3, BodyX, lb3y - 500, 580, lb3y, 15, Element.ALIGN_LEFT); lb3.Go();
+            l3.SetSimpleColumn(getL3, BodyX + 100, lb3y - 500, 580, lb3y, 15, Element.ALIGN_LEFT); l3.Go();
 
             //
             int lb4y = lb3y - BodySpace;
 
-            lb4.SetSimpleColumn(LB4, BodyX, lb4y, 580, 317, 15, Element.ALIGN_LEFT); lb4.Go();
-            l4.SetSimpleColumn(getL4, BodyX + 70, lb4y, 580, 317, 15, Element.ALIGN_LEFT); l4.Go();
+            lb4.SetSimpleColumn(LB4, BodyX, lb4y - 500, 580, lb4y, 15, Element.ALIGN_LEFT); lb4.Go();
+            l4.SetSimpleColumn(getL4, BodyX + 70, lb4y - 500, 580, lb4y, 15, Element.ALIGN_LEFT); l4.Go();
 
             //
             int lb5y = lb4y - BodySpace;
-            lb5.SetSimpleColumn(LB5, BodyX, lb5y, 580, 317, 15, Element.ALIGN_LEFT); lb5.Go();
-            l5.SetSimpleColumn(getL5, BodyX + 50, lb5y, 580, 317, 15, Element.ALIGN_LEFT); l5.Go();
+            lb5.SetSimpleColumn(LB5, BodyX, lb5y - 500, 580, lb5y, 15, Element.ALIGN_LEFT); lb5.Go();
+            l5.SetSimpleColumn(getL5, BodyX + 50, lb5y - 500, 580, lb5y, 15, Element.ALIGN_LEFT); l5.Go();
 
             //
 
@@ -1317,8 +1373,8 @@ namespace IDMS.ReportContent
 
             //
 
-            lb7.SetSimpleColumn(LB7, BodyX + LowerSpace, lb3y, 580, 317, 15, Element.ALIGN_LEFT); lb7.Go();
-            l7.SetSimpleColumn(getL7, BodyX + LowerSpace + 70, lb3y, 580, 317, 15, Element.ALIGN_LEFT); l7.Go();
+            lb7.SetSimpleColumn(LB7, BodyX + LowerSpace, lb3y - 500, 580, lb3y, 15, Element.ALIGN_LEFT); lb7.Go();
+            l7.SetSimpleColumn(getL7, BodyX + LowerSpace + 70, lb3y - 500, 580, lb3y, 15, Element.ALIGN_LEFT); l7.Go();
 
             //
 
@@ -1336,6 +1392,8 @@ namespace IDMS.ReportContent
 
 
         }
+
+
         private PdfPTable GetImg(Document pdfDoc, PdfWriter writer, imageReport output)
         {
             string[] P1 = new string[] { "A", "B", "C", "D", "E", "F", "G", "H" };
@@ -1343,20 +1401,15 @@ namespace IDMS.ReportContent
             iTextSharp.text.Image[] picPDF;
             picPDF = new iTextSharp.text.Image[] { picPdf1, picPdf2, picPdf3, picPdf4, picPdf5, picPdf6, picPdf7, picPdf8 };
 
-
             PdfPTable imgTable = new PdfPTable(2);
             PdfContentByte cb = writer.DirectContent;
 
-
-            iTextSharp.text.Font f1 = FontFactory.GetFont("Roboto", 14, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
-            iTextSharp.text.Font f2 = FontFactory.GetFont("Roboto", 30, iTextSharp.text.Font.BOLD, new BaseColor(54, 103, 255));
+            Font f1 = FontFactory.GetFont("Roboto", 14, Font.BOLD, BaseColor.BLACK);
+            Font f2 = FontFactory.GetFont("Roboto", 30, Font.BOLD, new BaseColor(54, 103, 255));
             BaseFont bf = BaseFont.CreateFont("c:/windows/fonts/micross.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-            Font thai = new Font(bf, 10, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-            Font thaiGreen = new Font(bf, 10, iTextSharp.text.Font.NORMAL, BaseColor.GREEN);
-
-            Font thaiRed = new Font(bf, 10, iTextSharp.text.Font.NORMAL, BaseColor.RED);
-
-
+            Font thai = new Font(bf, 10, Font.NORMAL, BaseColor.BLACK);
+            Font thaiGreen = new Font(bf, 10, Font.NORMAL, BaseColor.GREEN);
+            Font thaiRed = new Font(bf, 10, Font.NORMAL, BaseColor.RED);
 
             int BodyY = BodyEnd - IMG_SIZE - 5;
             int LoopX = BODY_X;
@@ -1374,21 +1427,19 @@ namespace IDMS.ReportContent
                 }
 
             }
+
             int imgperpage;
             if (i < 8) { imgperpage = i; } else { imgperpage = 8; }
             for (int z = 0; z < imgperpage; z++)
             {
-
                 Image img = Image.FromFile(output.imgPath[z]);
-                //top
                 iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(img, 500, output.recImage[z]), System.Drawing.Imaging.ImageFormat.Jpeg);
-                //  iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(img, System.Drawing.Imaging.ImageFormat.Jpeg);
                 picPDF[z] = v;
                 picPDF[z].ScaleAbsolute(IMG_SIZE, IMG_SIZE);
                 picPDF[z].SetAbsolutePosition(LoopX, LoopY);
                 pdfDoc.Add(picPDF[z]);
                 PlaceChunckB(writer, P1[z], LoopX, LoopY - 15);
-                PlaceChunck(writer, output.cBoxes[z].Text, LoopX + 15, LoopY - 15);
+                PlaceChunck(writer, output.cBoxes[z].Text, LoopX + 17, LoopY - 15);
                 if (z == 3)
                 {
                     LoopX = BODY_X; LoopY = LoopY - IMG_SIZE - 20;
@@ -1401,25 +1452,27 @@ namespace IDMS.ReportContent
             cb.LineTo(BODY_X + IMG_SIZE * 3 + SMALL_GAP * 3 + 125, 5);
             cb.Stroke();
             PlaceChunck(writer, "Signature", BODY_X + IMG_SIZE * 2 + 50, 10);
+
             return imgTable;
 
         }
+
+
         private PdfPTable GetImg2(Document pdfDoc, PdfWriter writer, int page, imageReport output)
         {
             string[] P2, P3, P4, P5, P6, PX = null;
             P2 = new string[] { "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T" };
             P3 = new string[] { "U", "V", "W", "X", "Y", "Z", "AA", "AB", "AC", "AD", "AE", "AF" };
             P4 = new string[] { "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR" };
-
             P5 = new string[] { "AS", "AT", "AU", "AV", "AW", "AX", "AY", "AZ", "BA", "BB", "BC", "BD" };
-
             P6 = new string[] { "BE", "BF", "BG", "BH", "BI", "BJ", "BK", "BL", "BM", "BN" };
 
             iTextSharp.text.Image picPdf1 = null, picPdf2 = null, picPdf3 = null, picPdf4 = null, picPdf5 = null, picPdf6 = null, picPdf7 = null, picPdf8 = null, picPdf9 = null, picPdf10 = null, picPdf11 = null, picPdf12 = null;
             iTextSharp.text.Image[] picPDF;
             picPDF = new iTextSharp.text.Image[] { picPdf1, picPdf2, picPdf3, picPdf4, picPdf5, picPdf6, picPdf7, picPdf8, picPdf9, picPdf10, picPdf11, picPdf12 };
 
-            int BodyX = 65; int smallgap = 12;
+            int BodyX = 65;
+            int smallgap = 12;
 
             PdfPTable imgTable = new PdfPTable(2);
             PdfContentByte cb = writer.DirectContent;
@@ -1442,12 +1495,12 @@ namespace IDMS.ReportContent
                 }
 
             }
+
             int j = i;
-
-
-            int size = 165; int BodyY = 595;
-
-            int LoopX = BodyX; int LoopY = BodyY;
+            int size = 165;
+            int BodyY = 595;
+            int LoopX = BodyX;
+            int LoopY = BodyY;
             ///
             int X1 = 0, X2 = 0, X3 = 0;
             if (page == 2) { PX = P2; X1 = 21; X2 = 20; X3 = 8; }
@@ -1464,15 +1517,13 @@ namespace IDMS.ReportContent
             for (int z = 0; z < j - X3; z++)
             {
                 Image a = Image.FromFile(output.imgPath[x]);
-                //top
                 iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(a, 500, output.recImage[z]), System.Drawing.Imaging.ImageFormat.Jpeg);
-                //  iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(a, System.Drawing.Imaging.ImageFormat.Jpeg);
                 picPDF[z] = v;
                 picPDF[z].ScaleAbsolute(size, size);
                 picPDF[z].SetAbsolutePosition(LoopX, LoopY);
                 pdfDoc.Add(picPDF[z]);
                 PlaceChunckB(writer, PX[z], LoopX, LoopY - 15);
-                PlaceChunck(writer, output.cBoxes[x].Text, LoopX + 15, LoopY - 15);
+                PlaceChunck(writer, output.cBoxes[x].Text, LoopX + 17, LoopY - 15);
                 if (z == 2 || z == 5 || z == 8)
                 {
                     LoopX = BodyX; LoopY = LoopY - size - 20;
@@ -1485,6 +1536,8 @@ namespace IDMS.ReportContent
             return imgTable;
 
         }
+
+
         public float calculatePDFStringWidth(string a)
         {
             var chunk = new Chunk(a);
@@ -1493,6 +1546,8 @@ namespace IDMS.ReportContent
             // System.Windows.Forms.MessageBox.Show(WidthWithCharSpacing.ToString());
             return WidthWithCharSpacing;
         }
+
+
         public int calculatePDFWidth(string a, int b)
         {
             var chunk = new Chunk(a);
@@ -1509,8 +1564,12 @@ namespace IDMS.ReportContent
             }
             // System.Windows.Forms.MessageBox.Show(line.ToString());
 
+            sum_line += line;
+
             return line;
         }
+
+
         private void PlaceChunck(PdfWriter writer, String text, int x, int y)
         {
             PdfContentByte cb = writer.DirectContent;
@@ -1523,8 +1582,6 @@ namespace IDMS.ReportContent
             cb.EndText();
             cb.RestoreState();
         }
-
-
 
 
         private void PlaceChunckB(PdfWriter writer, String text, int x, int y)
@@ -1542,6 +1599,8 @@ namespace IDMS.ReportContent
             cb.EndText();
             cb.RestoreState();
         }
+
+
         private void PlaceChunckIMG(PdfWriter writer, String text, int x, int y)
         {
             PdfContentByte cb = writer.DirectContent;
@@ -1558,6 +1617,7 @@ namespace IDMS.ReportContent
             cb.RestoreState();
         }
 
+
         public string cutEnter(string b)
         {
 
@@ -1567,6 +1627,147 @@ namespace IDMS.ReportContent
 
             }
             return b;
+        }
+
+
+        private PdfPTable GetImg_2(Document pdfDoc, PdfWriter writer, imageReport output)
+        {
+            string[] P1 = new string[] { "A", "B", "C", "D", "E", "F", "G", "H" };
+            iTextSharp.text.Image picPdf1 = null, picPdf2 = null, picPdf3 = null, picPdf4 = null, picPdf5 = null, picPdf6 = null, picPdf7 = null, picPdf8 = null;
+            iTextSharp.text.Image[] picPDF;
+            picPDF = new iTextSharp.text.Image[] { picPdf1, picPdf2, picPdf3, picPdf4, picPdf5, picPdf6, picPdf7, picPdf8 };
+
+            PdfPTable imgTable = new PdfPTable(2);
+            PdfContentByte cb = writer.DirectContent;
+
+            Font f1 = FontFactory.GetFont("Roboto", 14, Font.BOLD, BaseColor.BLACK);
+            Font f2 = FontFactory.GetFont("Roboto", 30, Font.BOLD, new BaseColor(54, 103, 255));
+            BaseFont bf = BaseFont.CreateFont("c:/windows/fonts/micross.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font thai = new Font(bf, 10, Font.NORMAL, BaseColor.BLACK);
+            Font thaiGreen = new Font(bf, 10, Font.NORMAL, BaseColor.GREEN);
+            Font thaiRed = new Font(bf, 10, Font.NORMAL, BaseColor.RED);
+
+
+            int BodyY = BodyEnd - IMG_SIZE - 5;
+            int LoopX = BODY_X;
+            int LoopY = 200;
+
+            int i = 0;
+            for (int e = 0; e < output.imgCount; e++)
+            {
+                if (output.imgPath[i] != null)
+                {
+                    if (output.imgPath[i].Contains(PROCEDURE_IMAGE) == true)
+                    {
+                        i++;
+                    }
+                }
+
+            }
+
+            int imgperpage;
+            if (i < 4) { imgperpage = i; } else { imgperpage = 4; }
+
+            LoopX = BODY_X; LoopY = LoopY - IMG_SIZE - 20;
+
+            for (int z = 0; z < imgperpage; z++)
+            {
+
+                Image img = Image.FromFile(output.imgPath[z]);
+                iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(img, 500, output.recImage[z]), System.Drawing.Imaging.ImageFormat.Jpeg);
+                picPDF[z] = v;
+                picPDF[z].ScaleAbsolute(IMG_SIZE, IMG_SIZE);
+                picPDF[z].SetAbsolutePosition(LoopX, LoopY);
+                pdfDoc.Add(picPDF[z]);
+                PlaceChunckB(writer, P1[z], LoopX, LoopY - 15);
+                PlaceChunck(writer, output.cBoxes[z].Text, LoopX + 17, LoopY - 15);
+
+                LoopX += IMG_SIZE + SMALL_GAP;
+            }
+
+            cb.MoveTo(BODY_X + IMG_SIZE * 2 + 50, 5);
+            cb.LineTo(BODY_X + IMG_SIZE * 3 + SMALL_GAP * 3 + 125, 5);
+            cb.Stroke();
+            PlaceChunck(writer, "Signature", BODY_X + IMG_SIZE * 2 + 50, 10);
+
+            return imgTable;
+
+        }
+
+
+        private PdfPTable GetImg2_2(Document pdfDoc, PdfWriter writer, int page, imageReport output)
+        {
+            string[] P2, P3, P4, P5, P6, PX = null;
+            P2 = new string[] { "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P" };
+            P3 = new string[] { "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "AA", "AB" };
+            P4 = new string[] { "AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN" };
+            P5 = new string[] { "AO", "AP", "AQ", "AR", "AS", "AT", "AU", "AV", "AW", "AX", "AY", "AZ" };
+            P6 = new string[] { "BA", "BB", "BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BK", "BL" };
+
+            iTextSharp.text.Image picPdf1 = null, picPdf2 = null, picPdf3 = null, picPdf4 = null, picPdf5 = null, picPdf6 = null, picPdf7 = null, picPdf8 = null, picPdf9 = null, picPdf10 = null, picPdf11 = null, picPdf12 = null;
+            iTextSharp.text.Image[] picPDF;
+            picPDF = new iTextSharp.text.Image[] { picPdf1, picPdf2, picPdf3, picPdf4, picPdf5, picPdf6, picPdf7, picPdf8, picPdf9, picPdf10, picPdf11, picPdf12 };
+
+            int BodyX = 65; int smallgap = 12;
+
+            PdfPTable imgTable = new PdfPTable(2);
+            PdfContentByte cb = writer.DirectContent;
+            cb.MoveTo(65 + 130 * 2 + 50, 5);
+            cb.LineTo(65 + 130 * 3 + smallgap * 3 + 125, 5);
+            cb.Stroke();
+            PlaceChunck(writer, "Signature", 65 + 130 * 2 + 50, 10);
+
+            int i = 0;
+            for (int e = 0; e < output.imgCount; e++)
+            {
+                if (output.imgPath[i] != null)
+                {
+                    if (output.imgPath[i].Contains(PROCEDURE_IMAGE) == true)
+                    {
+                        i++;
+                    }
+                }
+
+            }
+
+            int j = i;
+            int size = 165; int BodyY = 595;
+
+            int LoopX = BodyX; int LoopY = BodyY;
+            ///
+            int X2 = 0, X3 = 0;
+            if (page == 2) { PX = P2; X2 = 16; X3 = 4; }//TODO: test4
+            if (page == 3) { PX = P3; X2 = 28; X3 = 16; }
+
+            if (page == 4) { PX = P4; X2 = 40; X3 = 28; }
+            if (page == 5) { PX = P5; X2 = 52; X3 = 40; }
+            if (page == 6) { PX = P6; X2 = i; X3 = 52; }
+            ///
+            if (i >= X2) { j = X2; }
+
+            int x = X3;
+
+            for (int z = 0; z < j - X3; z++)
+            {
+                Image a = Image.FromFile(output.imgPath[x]);
+                iTextSharp.text.Image v = iTextSharp.text.Image.GetInstance(output.MakeSquareEndoWayPoint(a, 500, output.recImage[z]), System.Drawing.Imaging.ImageFormat.Jpeg);
+                picPDF[z] = v;
+                picPDF[z].ScaleAbsolute(size, size);
+                picPDF[z].SetAbsolutePosition(LoopX, LoopY);
+                pdfDoc.Add(picPDF[z]);
+                PlaceChunckB(writer, PX[z], LoopX, LoopY - 15);
+                PlaceChunck(writer, output.cBoxes[x].Text, LoopX + 15, LoopY - 15);
+                if (z == 2 || z == 5 || z == 8)
+                {
+                    LoopX = BodyX; LoopY = LoopY - size - 20;
+                }
+                else
+                { LoopX += size + smallgap; }
+                x++;
+            }
+
+            return imgTable;
+
         }
 
     }

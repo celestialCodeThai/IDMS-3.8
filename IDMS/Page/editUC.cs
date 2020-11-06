@@ -353,7 +353,7 @@ namespace IDMS.Page
                 DataAccess db = new DataAccess();
                 string cname = pf+" " + FirstName.Text + " " + LastName.Text;
                 db.DeleteRow(caseid);
-                db.AddNewCase(a, cname, hn.Text, pro, pRoom, indi, inst, cd1.Text + "-" + dx1.Text, cd2.Text + "-" + dx2.Text, cd3.Text + "-" + dx3.Text, cd4.Text + "-" + dx4.Text, b, c, d1, d2, sc, cc, ac, "Prepare","Edit");
+                db.AddNewCase(a, cname, hn.Text, pro, pRoom, indi, inst, cd1.Text + "-" + dx1.Text, cd2.Text + "-" + dx2.Text, cd3.Text + "-" + dx3.Text, cd4.Text + "-" + dx4.Text, b, c, d1, d2, sc, cc, ac, "Prepare","editFinance","editType","editCameraA", "editCameraB");
 
 
 

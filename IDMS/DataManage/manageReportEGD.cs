@@ -12,13 +12,13 @@ namespace IDMS.DataManage
 {
     class manageReportEGD
     {
+
         public void saveReportField(UserControl reportcon, string caseid, UserControl inforeport)
         {
             reportControlEGD report = (reportControlEGD)reportcon;
             Report info = (Report)inforeport;
             DataAccess save = new DataAccess();
 
-            //top
             string reportType = save.getOption("option_value", "reportType");
             if (reportType == "2") { save.updatePatientCase(caseid, "Indication", report.commentText.Text); }
 
@@ -148,7 +148,8 @@ namespace IDMS.DataManage
                 "his1", "his2", "his3", "his4",
                 "rap1", "rap2", "r1", "r2", "r3", "r4",
                 "comment",
-                "sf1", "sf2", "sf3", "sf4", "sf5", "sf6","sf7","sf8","sf9","sf10"
+                "sf1", "sf2", "sf3", "sf4", "sf5", "sf6","sf7","sf8","sf9","sf10",
+                "other",
 
             };
 
@@ -244,13 +245,15 @@ namespace IDMS.DataManage
                 state7,
                 state8,
                 state9,
-                state10
+                state10,
+                report.otherTextBox.Text,
 
             };
 
             save.addReportFieldnew(caseid, data, field);
 
         }
+
 
         public void saveEditField(UserControl reportcon, string caseid, UserControl inforeport)
         {
@@ -263,6 +266,7 @@ namespace IDMS.DataManage
             save.updatePatientdata(caseid, "Patient Name", info.infoname.Text);
             save.updatePatientdata(caseid, "hn", info.infohn.Text);
         }
+
 
         private void setbuttonB(int a0, Button a1, Button a2, Button a3, TextBox b)
         {
@@ -314,6 +318,7 @@ namespace IDMS.DataManage
                     break;
             }
         }
+
 
         public void LoadReportField(UserControl reportcon, string caseid, UserControl inforeport)
         {
@@ -902,6 +907,9 @@ namespace IDMS.DataManage
                 }
             }
 
+            value = save.getValue(caseid, "other");
+            report.otherTextBox.Text = value;
+
             //
             value = save.getValue(caseid, "hn");
             if (value != "")
@@ -915,105 +923,6 @@ namespace IDMS.DataManage
             }
         }
 
-        public void savepicture(UserControl reportcon, string caseid)
-        {
-            imageReport report = (imageReport)reportcon;
-            DataAccess save = new DataAccess();
-            int k;
-            string[] field = new string[66];
-            string[] cfield = new string[66];
-            string[] data = new string[66];
-            string[] cdata = new string[66];
-            for (int i = 0; i < 66; i++)
-            {
-                k = i + 1;
-
-                field[i] = "img" + k.ToString();
-                data[i] = report.imgPath[i];
-                cfield[i] = "cb" + k.ToString();
-                cdata[i] = report.cBoxIndex[i].ToString();
-            }
-            save.addReportFieldnew(caseid, data, field);
-            save.addReportFieldnew(caseid, cdata, cfield);
-
-            //top ==============================================================================================================================================
-
-            string[] imagesPointDatas = new string[66];
-            string[] imagesPointField = new string[66];
-
-            for (int i = 0; i < 66; i++)
-            {
-                imagesPointField[i] = "point_" + (i + 1) + "";
-                imagesPointDatas[i] = report.recImage[i].ToString();
-            }
-
-            //System.Diagnostics.Debug.Write("recImage Value = " + report.recImage[0].ToString());
-
-            save.imagePointInsertOrUpdate(caseid, imagesPointDatas, imagesPointField);
-
-            // ================================================================================================================================================
-        }
-
-        public void Loadpicture(UserControl r, UserControl reportcon, string caseid)
-        {
-            imageReport report = (imageReport)reportcon;
-            Report rep = (Report)r;
-
-            DataAccess save = new DataAccess();
-
-            string imageName = "";
-            string Value = "";
-            int k;
-
-            for (int i = 0; i < 66; i++)
-            {
-                k = i + 1;
-                if (save.getValue(caseid, "img" + k) != "")
-                {
-                    Value = save.getValue(caseid, "img" + k);
-                    // report.setPicture(Value);
-
-                    //top =====================================================================================================
-                    int fieldNumber = i + 1;
-                    string imagePoint = save.getValueWithTableName(caseid, "image_point", "point_" + fieldNumber + "");
-                   
-                    if (imagePoint == null || imagePoint == "")
-                    {
-                        report.recImage[i] = new Rectangle(0, 0, 0, 0);
-                    }
-                    else
-                    {
-                        string[] imagePointDatas = imagePoint.Split('=');
-                        string[] pointX = imagePointDatas[1].Split(',');
-                        string[] pointY = imagePointDatas[2].Split(',');
-                        string[] pointWidth = imagePointDatas[3].Split(',');
-                        string[] pointHeight = imagePointDatas[4].Split('}');
-
-                        int AXIS_X = Int32.Parse(pointX[0]);
-                        int AXIS_Y = Int32.Parse(pointY[0]);
-                        int CROP_WIDTH = Int32.Parse(pointWidth[0]);
-                        int CROP_HEIGHT = Int32.Parse(pointHeight[0]);
-                        report.recImage[i] = new Rectangle(AXIS_X, AXIS_Y, CROP_WIDTH, CROP_HEIGHT);
-                    }
-                    report.setPictureWithPoint(Value, report.recImage[i]);
-                    //=========================================================================================================
-
-                    report.cBoxIndex[i] = Convert.ToInt32(save.getValue(caseid, "cb" + k));
-                    report.cBoxes[i].SelectedIndex = report.cBoxIndex[i];
-                    imageName = Value.Replace(rep.imgFolder, null);
-                    rep.selectImageTable.Rows.Add(imageName);
-
-                    for (int v = 0; v < rep.imagelistTable.Rows.Count; v++)
-                    {
-                        if (string.Equals(rep.imagelistTable[0, v].Value as string, imageName))
-                        {
-                            rep.imagelistTable.Rows.RemoveAt(v);
-                            v--;
-                        }
-                    }
-                }
-            }
-        }
     }
 }
 
