@@ -92,9 +92,8 @@ namespace IDMS.Popup
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(60, 85);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 17);
+            this.label1.Size = new System.Drawing.Size(0, 17);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Saving. . .";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // SplashScreen

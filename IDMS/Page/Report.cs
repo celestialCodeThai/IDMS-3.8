@@ -678,8 +678,28 @@ namespace IDMS.Page
         }
 
 
+        //private LoadingWindow loadingWindow = new LoadingWindow();
+
+        /*
+    public static void LOADING_SCREEN()
+    {
+        SplashScreen.ShowSplashScreen();
+        Application.DoEvents();
+
+        SplashScreen.SetStatus("Loading module 1");
+        System.Threading.Thread.Sleep(500);
+
+        m_bLayoutCalled = true;
+        m_dt = DateTime.Now;
+        SplashScreen.CloseForm();
+    }
+    */
+
         private void importButton_Click(object sender, EventArgs e)
         {
+            SplashScreen.ShowSplashScreen();
+            Application.DoEvents();
+
             if (casepro != "")
             {
                 switch (PRO)
@@ -705,15 +725,11 @@ namespace IDMS.Page
                 table.Clear();
                 reloadImageList();
 
-
                 picnamePreview.Text = "";
-
 
             }
 
-
             selectImageTable.ClearSelection();
-
 
             int row = table.Rows.Count;
             for (int v = 0; v < row && selectImageTable.Rows.Count < 65; v++)
@@ -742,8 +758,9 @@ namespace IDMS.Page
                 selectImageTable.Rows.Add(imageName);
 
                 imagelistTable.Rows.RemoveAt(imagelistTable.Rows[0].Index);
-
             }
+
+            SplashScreen.CloseForm();
 
         }
 
@@ -1342,6 +1359,7 @@ namespace IDMS.Page
 
         private static bool m_bLayoutCalled = false;
         private static DateTime m_dt;
+
         public static void LOADING_SCREEN()
         {
             SplashScreen.ShowSplashScreen();
@@ -1391,11 +1409,28 @@ namespace IDMS.Page
 
         }
 
+        /*
+        public static void LOADING_SCREEN()
+        {
+            SplashScreen.ShowSplashScreen();
+            Application.DoEvents();
+
+            SplashScreen.SetStatus("Loading module 1");
+            System.Threading.Thread.Sleep(500);
+
+            m_bLayoutCalled = true;
+            m_dt = DateTime.Now;
+            SplashScreen.CloseForm();
+        }
+        */
 
         private void preReportButton_Click(object sender, EventArgs e)
         {
             try
             {
+                SplashScreen.ShowSplashScreen();
+                Application.DoEvents();
+
                 DataAccess Load = new DataAccess();
                 string reportType = Load.getOption("option_value", "reportType");
 
@@ -1466,6 +1501,8 @@ namespace IDMS.Page
                             break;
                     }
                 }
+
+                SplashScreen.CloseForm();
 
             }
             catch
