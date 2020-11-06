@@ -239,6 +239,7 @@ namespace IDMS.Page
             this.BRONCO.TabStop = true;
             this.BRONCO.Text = "BRONCO";
             this.BRONCO.UseVisualStyleBackColor = true;
+            this.BRONCO.Visible = false;
             // 
             // label1
             // 
@@ -262,6 +263,7 @@ namespace IDMS.Page
             this.ERCP.TabStop = true;
             this.ERCP.Text = "ERCP";
             this.ERCP.UseVisualStyleBackColor = true;
+            this.ERCP.Visible = false;
             // 
             // colono
             // 
@@ -557,6 +559,7 @@ namespace IDMS.Page
             this.ENT.TabStop = true;
             this.ENT.Text = "ENT";
             this.ENT.UseVisualStyleBackColor = true;
+            this.ENT.Visible = false;
             // 
             // examUC
             // 

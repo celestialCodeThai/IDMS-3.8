@@ -1338,6 +1338,7 @@
             this.button4.TabIndex = 81;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Visible = false;
             // 
             // button3
             // 
@@ -1350,6 +1351,7 @@
             this.button3.TabIndex = 80;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Visible = false;
             // 
             // button2
             // 
@@ -1373,6 +1375,7 @@
             this.pro5.TabIndex = 78;
             this.pro5.Text = "ENT";
             this.pro5.UseVisualStyleBackColor = true;
+            this.pro5.Visible = false;
             this.pro5.CheckedChanged += new System.EventHandler(this.pro5_CheckedChanged);
             // 
             // pro4
@@ -1385,6 +1388,7 @@
             this.pro4.TabIndex = 77;
             this.pro4.Text = "BRONCHO";
             this.pro4.UseVisualStyleBackColor = true;
+            this.pro4.Visible = false;
             this.pro4.CheckedChanged += new System.EventHandler(this.pro4_CheckedChanged);
             // 
             // button1
@@ -1421,6 +1425,7 @@
             this.procedure3.TabIndex = 60;
             this.procedure3.Text = "ERCP";
             this.procedure3.UseVisualStyleBackColor = true;
+            this.procedure3.Visible = false;
             // 
             // procedure2
             // 
