@@ -36,7 +36,6 @@ namespace IDMS.Popup
             this.lblTimeRemaining = new System.Windows.Forms.Label();
             this.UpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,24 +84,11 @@ namespace IDMS.Popup
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Leelawadee UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(60, 85);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 17);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Saving. . .";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
             // SplashScreen
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(176, 122);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(180, 110);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblTimeRemaining);
             this.Controls.Add(this.pnlStatus);
@@ -115,7 +101,6 @@ namespace IDMS.Popup
             this.DoubleClick += new System.EventHandler(this.SplashScreen_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
         #endregion
@@ -126,6 +111,5 @@ namespace IDMS.Popup
         private System.Windows.Forms.Timer UpdateTimer;
         private System.Windows.Forms.Panel pnlStatus;
         private PictureBox pictureBox1;
-        private Label label1;
     }
 }
