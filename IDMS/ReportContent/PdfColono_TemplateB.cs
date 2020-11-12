@@ -1592,7 +1592,7 @@ namespace IDMS.ReportContent
                 picPDF[z].SetAbsolutePosition(LoopX, LoopY);
                 pdfDoc.Add(picPDF[z]);
                 PlaceChunckB(writer, P1[z], LoopX, LoopY - 15);
-                PlaceChunck(writer, output.cBoxes[z].Text, LoopX + 1, LoopY - 14);
+                PlaceChunck(writer, output.cBoxes[z].Text, LoopX + 17, LoopY - 14);
                 if (z == 3)
                 {
                     LoopX = BODY_X; LoopY = LoopY - IMG_SIZE - 20;
@@ -2156,7 +2156,7 @@ namespace IDMS.ReportContent
                 picPDF[z].SetAbsolutePosition(LoopX, LoopY);
                 pdfDoc.Add(picPDF[z]);
                 PlaceChunckB(writer, PX[z], LoopX, LoopY - 15);
-                PlaceChunck(writer, output.cBoxes[x].Text, LoopX + 1, LoopY - 14);
+                PlaceChunck(writer, output.cBoxes[x].Text, LoopX + 17, LoopY - 14);
                 if (z == 2 || z == 5 || z == 8)
                 {
                     LoopX = BodyX; LoopY = LoopY - size - 20;
