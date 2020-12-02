@@ -1118,7 +1118,7 @@ namespace IDMS.DataManage
         }
 
 
-        public int sumMedication(string column, string startDate, string endDate)
+        public float sumMedication(string column, string startDate, string endDate)
         {
             string query = "SELECT report.caseid, report." + column + ", patientcase.Procedure FROM `report` INNER JOIN `patientcase` ON report.caseid=patientcase.caseid WHERE patientcase.Procedure != 'ENT' AND patientcase.Day BETWEEN '" + startDate + "' AND '" + endDate + "'";
 
@@ -1140,14 +1140,24 @@ namespace IDMS.DataManage
                 Console.WriteLine(ex.Message);
             }
 
-            int countTotal = 0;
+            float countTotal = 0;
 
             foreach (DataRow dr in dt.Rows)
             {
                 dynamic value = dr[column].ToString();
                 if (!string.IsNullOrEmpty(value))
                 {
-                    countTotal += Convert.ToInt32(value);
+                    countTotal += float.Parse(value);
+
+                    /*
+                    float flt1 = float.Parse(value);
+
+                    int result;
+
+                    if (int.TryParse(value, out result ))
+                        countTotal += result;
+
+                */
                 }
             }
 

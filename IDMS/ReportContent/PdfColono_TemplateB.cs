@@ -1262,6 +1262,8 @@ namespace IDMS.ReportContent
             cb.Stroke();
             //LastBodyPart
             ColumnText lb1 = new ColumnText(cb);
+            ColumnText lb1_1 = new ColumnText(cb);
+
             ColumnText lb2 = new ColumnText(cb);
             ColumnText lb3 = new ColumnText(cb);
             ColumnText lb4 = new ColumnText(cb);
@@ -1271,6 +1273,8 @@ namespace IDMS.ReportContent
             ColumnText lb8 = new ColumnText(cb);
 
             ColumnText l1 = new ColumnText(cb);
+            ColumnText l1_1 = new ColumnText(cb);
+
             ColumnText l2 = new ColumnText(cb);
             ColumnText l3 = new ColumnText(cb);
             ColumnText l4 = new ColumnText(cb);
@@ -1280,7 +1284,9 @@ namespace IDMS.ReportContent
             ColumnText l8 = new ColumnText(cb);
             iTextSharp.text.Font f3 = FontFactory.GetFont("Roboto", 10, iTextSharp.text.Font.BOLD, BaseColor.RED);
 
-            Phrase LB1 = new Phrase("Procedures:", f2);
+            Phrase LB1 = new Phrase("Diagnosis:", f2);
+            Phrase LB1_1 = new Phrase("Therapeutic", f2);
+
             Phrase LB2 = new Phrase("Post-diagnosis:", f3);
             Phrase LB3 = new Phrase("Estimate blood loss:", f2);
             Phrase LB4 = new Phrase("Histopathogy:", f2);
@@ -1290,8 +1296,11 @@ namespace IDMS.ReportContent
             Phrase LB8 = new Phrase("Rapid urease test:", f2);
             //info
             string L1;
+            string L1_1;
 
             string ptxt = "";
+            string ptxt2 = "";
+
 
             if (reportControl.pg1.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg1.Text; }
             if (reportControl.pg2.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg2.Text; }
@@ -1305,19 +1314,8 @@ namespace IDMS.ReportContent
             if (reportControl.pg10.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg10.Text; }
             if (reportControl.pg11.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg11.Text; }
             if (reportControl.pg12.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg12.Text; }
-            if (reportControl.pg13.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg13.Text; }
-            if (reportControl.pg14.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg14.Text; }
-            if (reportControl.pg15.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg15.Text; }
-            if (reportControl.pg16.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg16.Text; }
-            if (reportControl.pg17.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg17.Text; }
-            if (reportControl.pg18.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg18.Text; }
-            if (reportControl.pg19.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg19.Text; }
-            if (reportControl.pg20.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg20.Text; }
-            if (reportControl.pg21.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg21.Text; }
-            if (reportControl.pg22.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg22.Text; }
-            if (reportControl.pg23.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg23.Text; }
-            if (reportControl.pg24.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg24.Text; }
-            if (reportControl.pg25.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pgtxtbox.Text; }
+         
+           
             if (reportControl.pg26.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg26.Text; }
             //if (reportControl.pg27.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg27.Text; }
             //if (reportControl.pg28.Checked == true) { if (ptxt != "") { ptxt += ", "; } ptxt += reportControl.pg28.Text; }
@@ -1330,11 +1328,26 @@ namespace IDMS.ReportContent
 
 
 
-
+            if (reportControl.pg13.Checked == true) { if (ptxt2 != "") { ptxt2 += ", "; } ptxt2 += reportControl.pg13.Text; }
+            if (reportControl.pg14.Checked == true) { if (ptxt2 != "") { ptxt2 += ", "; } ptxt2 += reportControl.pg14.Text; }
+            if (reportControl.pg15.Checked == true) { if (ptxt2 != "") { ptxt2 += ", "; } ptxt2 += reportControl.pg15.Text; }
+            if (reportControl.pg16.Checked == true) { if (ptxt2 != "") { ptxt2 += ", "; } ptxt2 += reportControl.pg16.Text; }
+            if (reportControl.pg17.Checked == true) { if (ptxt2 != "") { ptxt2 += ", "; } ptxt2 += reportControl.pg17.Text; }
+            if (reportControl.pg18.Checked == true) { if (ptxt2 != "") { ptxt2 += ", "; } ptxt2 += reportControl.pg18.Text; }
+            if (reportControl.pg19.Checked == true) { if (ptxt2 != "") { ptxt2 += ", "; } ptxt2 += reportControl.pg19.Text; }
+            if (reportControl.pg20.Checked == true) { if (ptxt2 != "") { ptxt2 += ", "; } ptxt2 += reportControl.pg20.Text; }
+            if (reportControl.pg21.Checked == true) { if (ptxt2 != "") { ptxt2 += ", "; } ptxt2 += reportControl.pg21.Text; }
+            if (reportControl.pg22.Checked == true) { if (ptxt2 != "") { ptxt2 += ", "; } ptxt2 += reportControl.pg22.Text; }
+            if (reportControl.pg23.Checked == true) { if (ptxt2 != "") { ptxt2 += ", "; } ptxt2 += reportControl.pg23.Text; }
+            if (reportControl.pg24.Checked == true) { if (ptxt2 != "") { ptxt2 += ", "; } ptxt2 += reportControl.pg24.Text; }
+            if (reportControl.pg25.Checked == true) { if (ptxt2 != "") { ptxt2 += ", "; } ptxt2 += reportControl.pgtxtbox.Text; }
 
             L1 = ptxt;
+            L1_1 = ptxt2;
 
             Phrase getL1 = new Phrase(L1, Thai);
+            Phrase getL1_1 = new Phrase(L1_1, Thai);
+
             string L2 = "2";
 
             int PostDxCount = 0;
@@ -1438,8 +1451,22 @@ namespace IDMS.ReportContent
             lb1.SetSimpleColumn(LB1, BodyX, LowerY, 580, 317, 15, Element.ALIGN_LEFT); lb1.Go();
             l1.SetSimpleColumn(getL1, BodyX + 65, LowerY, 580, 317, 15, Element.ALIGN_LEFT); l1.Go();
             //
-            int lb2y = LowerY - BodySpace;
+
+            int lb1y = LowerY - BodySpace;
             extraline = calculatePDFWidth(L1, 80);
+            if (extraline > 0)
+            {
+                j = gap * extraline;
+                lb1y -= j;
+
+            }
+            lb1_1.SetSimpleColumn(LB1_1, BodyX, lb1y, 580, 317, 15, Element.ALIGN_LEFT); lb1_1.Go();
+            l1_1.SetSimpleColumn(getL1_1, BodyX + 65, lb1y, 580, 317, 15, Element.ALIGN_LEFT); l1_1.Go();
+
+
+
+            int lb2y = lb1y - BodySpace;
+            extraline = calculatePDFWidth(L1_1, 80);
             if (extraline > 0)
             {
                 j = gap * extraline;
@@ -1565,7 +1592,7 @@ namespace IDMS.ReportContent
                 picPDF[z].SetAbsolutePosition(LoopX, LoopY);
                 pdfDoc.Add(picPDF[z]);
                 PlaceChunckB(writer, P1[z], LoopX, LoopY - 15);
-                PlaceChunck(writer, output.cBoxes[z].Text, LoopX + 1, LoopY - 14);
+                PlaceChunck(writer, output.cBoxes[z].Text, LoopX + 17, LoopY - 14);
                 if (z == 3)
                 {
                     LoopX = BODY_X; LoopY = LoopY - IMG_SIZE - 20;
@@ -2129,7 +2156,7 @@ namespace IDMS.ReportContent
                 picPDF[z].SetAbsolutePosition(LoopX, LoopY);
                 pdfDoc.Add(picPDF[z]);
                 PlaceChunckB(writer, PX[z], LoopX, LoopY - 15);
-                PlaceChunck(writer, output.cBoxes[x].Text, LoopX + 1, LoopY - 14);
+                PlaceChunck(writer, output.cBoxes[x].Text, LoopX + 17, LoopY - 14);
                 if (z == 2 || z == 5 || z == 8)
                 {
                     LoopX = BodyX; LoopY = LoopY - size - 20;

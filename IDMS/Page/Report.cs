@@ -680,6 +680,9 @@ namespace IDMS.Page
 
         private void importButton_Click(object sender, EventArgs e)
         {
+            SplashScreen.ShowSplashScreen();
+            Application.DoEvents();
+
             if (casepro != "")
             {
                 switch (PRO)
@@ -744,6 +747,8 @@ namespace IDMS.Page
                 imagelistTable.Rows.RemoveAt(imagelistTable.Rows[0].Index);
 
             }
+
+            SplashScreen.CloseForm();
 
         }
 

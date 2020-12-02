@@ -1227,7 +1227,12 @@ namespace IDMS.Page
             foreach (DataRow bronchoRow in bronchoMedicationTable.Rows)
             {
                 string bronchoKey = bronchoRow["ตัวยาที่ใช้"].ToString();
-                int bronchoValue = Convert.ToInt32(bronchoRow["ปริมาณ"]);
+
+
+                float bronchoValue=0;
+
+
+
 
                 if (medicationTable.Rows.Contains(bronchoKey))
                 {
@@ -1236,8 +1241,10 @@ namespace IDMS.Page
                         string key = oriRow["ตัวยาที่ใช้"].ToString();
                         if (key == bronchoKey)
                         {
-                            int updateValue = Convert.ToInt32(oriRow["ปริมาณ"]);
-
+                            float updateValue = 0;
+                            //Convert.ToInt32(oriRow["ปริมาณ"]);
+                            float.TryParse(oriRow["ปริมาณ"].ToString(), out updateValue);
+                            float.TryParse(bronchoRow["ปริมาณ"].ToString(), out bronchoValue);
                             oriRow["ปริมาณ"] = updateValue + bronchoValue;
 
                         }
@@ -1280,8 +1287,12 @@ namespace IDMS.Page
         {
             foreach (DataRow entRow in entMedicationTable.Rows)
             {
+
                 string entKey = entRow["ตัวยาที่ใช้"].ToString();
-                int entValue = Convert.ToInt32(entRow["ปริมาณ"]);
+
+                float entValue = 0;
+                float.TryParse(entRow["ปริมาณ"].ToString(), out entValue);
+
 
                 if (medicationTable.Rows.Contains(entKey))
                 {
@@ -1290,7 +1301,9 @@ namespace IDMS.Page
                         string key = oriRow["ตัวยาที่ใช้"].ToString();
                         if (key == entKey)
                         {
-                            int updateValue = Convert.ToInt32(oriRow["ปริมาณ"]);
+                            float updateValue = 0;
+                            //int updateValue = Convert.ToInt32(oriRow["ปริมาณ"]);
+                            float.TryParse(oriRow["ปริมาณ"].ToString(), out updateValue);
 
                             oriRow["ปริมาณ"] = updateValue + entValue;
 
@@ -1298,6 +1311,14 @@ namespace IDMS.Page
 
                     }
                 }
+
+                /*
+                float updateValue = 0;
+                //Convert.ToInt32(oriRow["ปริมาณ"]);
+                float.TryParse(oriRow["ปริมาณ"].ToString(), out updateValue);
+                oriRow["ปริมาณ"] = updateValue + bronchoValue;
+                */
+                 
 
                 else
                 {
