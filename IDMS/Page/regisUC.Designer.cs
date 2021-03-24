@@ -141,7 +141,7 @@
             this.RegisterLabel.Font = new System.Drawing.Font("Leelawadee UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisterLabel.Location = new System.Drawing.Point(20, 0);
             this.RegisterLabel.Name = "RegisterLabel";
-            this.RegisterLabel.Size = new System.Drawing.Size(214, 65);
+            this.RegisterLabel.Size = new System.Drawing.Size(265, 81);
             this.RegisterLabel.TabIndex = 6;
             this.RegisterLabel.Text = "Register";
             // 
@@ -152,7 +152,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(89)))));
             this.label3.Location = new System.Drawing.Point(30, 95);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 20);
+            this.label3.Size = new System.Drawing.Size(126, 25);
             this.label3.TabIndex = 11;
             this.label3.Text = "Register Time";
             // 
@@ -163,7 +163,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(89)))));
             this.label2.Location = new System.Drawing.Point(30, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 20);
+            this.label2.Size = new System.Drawing.Size(124, 25);
             this.label2.TabIndex = 7;
             this.label2.Text = "Register Date";
             // 
@@ -174,7 +174,7 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(89)))));
             this.label5.Location = new System.Drawing.Point(15, 45);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 20);
+            this.label5.Size = new System.Drawing.Size(50, 25);
             this.label5.TabIndex = 8;
             this.label5.Text = "HN#";
             // 
@@ -186,7 +186,7 @@
             this.hn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(18)))));
             this.hn.Location = new System.Drawing.Point(20, 70);
             this.hn.Name = "hn";
-            this.hn.Size = new System.Drawing.Size(167, 33);
+            this.hn.Size = new System.Drawing.Size(167, 39);
             this.hn.TabIndex = 22;
             this.hn.TextChanged += new System.EventHandler(this.hn_TextChanged);
             this.hn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.hn_KeyDown);
@@ -209,7 +209,7 @@
             this.FirstName.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FirstName.Location = new System.Drawing.Point(20, 205);
             this.FirstName.Name = "FirstName";
-            this.FirstName.Size = new System.Drawing.Size(375, 33);
+            this.FirstName.Size = new System.Drawing.Size(375, 39);
             this.FirstName.TabIndex = 25;
             this.FirstName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FirstName_KeyDown);
             // 
@@ -220,7 +220,7 @@
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(89)))));
             this.label10.Location = new System.Drawing.Point(15, 184);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(77, 20);
+            this.label10.Size = new System.Drawing.Size(99, 25);
             this.label10.TabIndex = 14;
             this.label10.Text = "First name";
             // 
@@ -231,7 +231,7 @@
             this.LastName.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LastName.Location = new System.Drawing.Point(20, 279);
             this.LastName.Name = "LastName";
-            this.LastName.Size = new System.Drawing.Size(375, 33);
+            this.LastName.Size = new System.Drawing.Size(375, 39);
             this.LastName.TabIndex = 26;
             this.LastName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FirstName_KeyDown);
             // 
@@ -242,7 +242,7 @@
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(89)))));
             this.label11.Location = new System.Drawing.Point(15, 258);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(76, 20);
+            this.label11.Size = new System.Drawing.Size(97, 25);
             this.label11.TabIndex = 16;
             this.label11.Text = "Last name";
             // 
@@ -287,7 +287,7 @@
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(89)))));
             this.label12.Location = new System.Drawing.Point(15, 113);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(46, 20);
+            this.label12.Size = new System.Drawing.Size(60, 25);
             this.label12.TabIndex = 20;
             this.label12.Text = "Prefix";
             // 
@@ -319,7 +319,7 @@
             "นางสาว"});
             this.prefix.Location = new System.Drawing.Point(20, 136);
             this.prefix.Name = "prefix";
-            this.prefix.Size = new System.Drawing.Size(168, 33);
+            this.prefix.Size = new System.Drawing.Size(168, 40);
             this.prefix.TabIndex = 23;
             // 
             // nationBox
@@ -531,7 +531,7 @@
             "Zimbabwean"});
             this.nationBox.Location = new System.Drawing.Point(20, 428);
             this.nationBox.Name = "nationBox";
-            this.nationBox.Size = new System.Drawing.Size(221, 33);
+            this.nationBox.Size = new System.Drawing.Size(221, 40);
             this.nationBox.TabIndex = 28;
             // 
             // label14
@@ -541,7 +541,7 @@
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(89)))));
             this.label14.Location = new System.Drawing.Point(16, 404);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(154, 20);
+            this.label14.Size = new System.Drawing.Size(194, 25);
             this.label14.TabIndex = 25;
             this.label14.Text = "Nationality (Optional)";
             // 
@@ -552,7 +552,7 @@
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(89)))));
             this.label15.Location = new System.Drawing.Point(15, 331);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(166, 20);
+            this.label15.Size = new System.Drawing.Size(208, 25);
             this.label15.TabIndex = 27;
             this.label15.Text = "Date of birth (Optional)";
             // 
@@ -601,7 +601,7 @@
             this.doc1.FormattingEnabled = true;
             this.doc1.Location = new System.Drawing.Point(18, 65);
             this.doc1.Name = "doc1";
-            this.doc1.Size = new System.Drawing.Size(530, 33);
+            this.doc1.Size = new System.Drawing.Size(530, 40);
             this.doc1.TabIndex = 44;
             // 
             // label18
@@ -611,7 +611,7 @@
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(89)))));
             this.label18.Location = new System.Drawing.Point(23, -21);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(71, 18);
+            this.label18.Size = new System.Drawing.Size(90, 24);
             this.label18.TabIndex = 22;
             this.label18.Text = "Physician";
             // 
@@ -626,7 +626,7 @@
             this.sn.FormattingEnabled = true;
             this.sn.Location = new System.Drawing.Point(18, 198);
             this.sn.Name = "sn";
-            this.sn.Size = new System.Drawing.Size(530, 33);
+            this.sn.Size = new System.Drawing.Size(530, 40);
             this.sn.TabIndex = 46;
             // 
             // st3
@@ -736,7 +736,7 @@
             this.cn.FormattingEnabled = true;
             this.cn.Location = new System.Drawing.Point(18, 269);
             this.cn.Name = "cn";
-            this.cn.Size = new System.Drawing.Size(530, 33);
+            this.cn.Size = new System.Drawing.Size(530, 40);
             this.cn.TabIndex = 47;
             // 
             // checkdoc
@@ -746,7 +746,7 @@
             this.checkdoc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.checkdoc.Location = new System.Drawing.Point(458, 43);
             this.checkdoc.Name = "checkdoc";
-            this.checkdoc.Size = new System.Drawing.Size(84, 13);
+            this.checkdoc.Size = new System.Drawing.Size(111, 17);
             this.checkdoc.TabIndex = 71;
             this.checkdoc.Text = "*Please Fill Data";
             this.checkdoc.Visible = false;
@@ -773,7 +773,7 @@
             this.an.FormattingEnabled = true;
             this.an.Location = new System.Drawing.Point(18, 338);
             this.an.Name = "an";
-            this.an.Size = new System.Drawing.Size(530, 33);
+            this.an.Size = new System.Drawing.Size(530, 40);
             this.an.TabIndex = 48;
             this.an.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FirstName_KeyDown);
             // 
@@ -799,7 +799,7 @@
             this.doc2.FormattingEnabled = true;
             this.doc2.Location = new System.Drawing.Point(18, 130);
             this.doc2.Name = "doc2";
-            this.doc2.Size = new System.Drawing.Size(530, 33);
+            this.doc2.Size = new System.Drawing.Size(530, 40);
             this.doc2.TabIndex = 45;
             // 
             // groupBox2
@@ -847,7 +847,7 @@
             this.checkage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.checkage.Location = new System.Drawing.Point(305, 412);
             this.checkage.Name = "checkage";
-            this.checkage.Size = new System.Drawing.Size(89, 13);
+            this.checkage.Size = new System.Drawing.Size(106, 19);
             this.checkage.TabIndex = 65;
             this.checkage.Text = "*Please Fill Data";
             this.checkage.Visible = false;
@@ -859,7 +859,7 @@
             this.checknation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.checknation.Location = new System.Drawing.Point(151, 391);
             this.checknation.Name = "checknation";
-            this.checknation.Size = new System.Drawing.Size(89, 13);
+            this.checknation.Size = new System.Drawing.Size(106, 19);
             this.checknation.TabIndex = 64;
             this.checknation.Text = "*Please Fill Data";
             this.checknation.Visible = false;
@@ -872,7 +872,7 @@
             this.checklastname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.checklastname.Location = new System.Drawing.Point(307, 265);
             this.checklastname.Name = "checklastname";
-            this.checklastname.Size = new System.Drawing.Size(89, 13);
+            this.checklastname.Size = new System.Drawing.Size(106, 19);
             this.checklastname.TabIndex = 63;
             this.checklastname.Text = "*Please Fill Data";
             this.checklastname.Visible = false;
@@ -884,7 +884,7 @@
             this.checkprefix.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.checkprefix.Location = new System.Drawing.Point(94, 118);
             this.checkprefix.Name = "checkprefix";
-            this.checkprefix.Size = new System.Drawing.Size(89, 13);
+            this.checkprefix.Size = new System.Drawing.Size(106, 19);
             this.checkprefix.TabIndex = 61;
             this.checkprefix.Text = "*Please Fill Data";
             this.checkprefix.Visible = false;
@@ -896,7 +896,7 @@
             this.checkhn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.checkhn.Location = new System.Drawing.Point(94, 52);
             this.checkhn.Name = "checkhn";
-            this.checkhn.Size = new System.Drawing.Size(89, 13);
+            this.checkhn.Size = new System.Drawing.Size(106, 19);
             this.checkhn.TabIndex = 60;
             this.checkhn.Text = "*Please Fill Data";
             this.checkhn.Visible = false;
@@ -912,7 +912,7 @@
             this.yearBirth.FormattingEnabled = true;
             this.yearBirth.Location = new System.Drawing.Point(286, 354);
             this.yearBirth.Name = "yearBirth";
-            this.yearBirth.Size = new System.Drawing.Size(107, 33);
+            this.yearBirth.Size = new System.Drawing.Size(107, 40);
             this.yearBirth.TabIndex = 59;
             this.yearBirth.SelectedIndexChanged += new System.EventHandler(this.yearBirth_SelectedIndexChanged);
             // 
@@ -940,7 +940,7 @@
             "ธันวาคม"});
             this.monthBirth.Location = new System.Drawing.Point(96, 354);
             this.monthBirth.Name = "monthBirth";
-            this.monthBirth.Size = new System.Drawing.Size(185, 33);
+            this.monthBirth.Size = new System.Drawing.Size(185, 40);
             this.monthBirth.TabIndex = 58;
             // 
             // dateBirth
@@ -986,7 +986,7 @@
             "31"});
             this.dateBirth.Location = new System.Drawing.Point(20, 354);
             this.dateBirth.Name = "dateBirth";
-            this.dateBirth.Size = new System.Drawing.Size(72, 33);
+            this.dateBirth.Size = new System.Drawing.Size(72, 40);
             this.dateBirth.TabIndex = 57;
             // 
             // ageText
@@ -996,7 +996,7 @@
             this.ageText.Font = new System.Drawing.Font("Leelawadee UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ageText.Location = new System.Drawing.Point(250, 429);
             this.ageText.Name = "ageText";
-            this.ageText.Size = new System.Drawing.Size(144, 33);
+            this.ageText.Size = new System.Drawing.Size(144, 39);
             this.ageText.TabIndex = 29;
             this.ageText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FirstName_KeyDown);
             // 
@@ -1052,7 +1052,7 @@
             this.regisTime.Location = new System.Drawing.Point(40, 115);
             this.regisTime.Mask = "00:00";
             this.regisTime.Name = "regisTime";
-            this.regisTime.Size = new System.Drawing.Size(81, 20);
+            this.regisTime.Size = new System.Drawing.Size(81, 25);
             this.regisTime.TabIndex = 21;
             this.regisTime.ValidatingType = typeof(System.DateTime);
             // 
@@ -1064,7 +1064,7 @@
             this.regisDate.Location = new System.Drawing.Point(40, 60);
             this.regisDate.Mask = "00/00/0000";
             this.regisDate.Name = "regisDate";
-            this.regisDate.Size = new System.Drawing.Size(112, 20);
+            this.regisDate.Size = new System.Drawing.Size(112, 25);
             this.regisDate.TabIndex = 20;
             this.regisDate.ValidatingType = typeof(System.DateTime);
             // 
@@ -1236,7 +1236,7 @@
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(14, 115);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 20);
+            this.label8.Size = new System.Drawing.Size(50, 25);
             this.label8.TabIndex = 22;
             this.label8.Text = "DX3:";
             // 
@@ -1247,7 +1247,7 @@
             this.label21.ForeColor = System.Drawing.Color.Black;
             this.label21.Location = new System.Drawing.Point(14, 150);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(40, 20);
+            this.label21.Size = new System.Drawing.Size(50, 25);
             this.label21.TabIndex = 24;
             this.label21.Text = "DX4:";
             // 
@@ -1258,7 +1258,7 @@
             this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(14, 46);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(40, 20);
+            this.label17.Size = new System.Drawing.Size(50, 25);
             this.label17.TabIndex = 18;
             this.label17.Text = "DX1:";
             // 
@@ -1269,7 +1269,7 @@
             this.label16.ForeColor = System.Drawing.Color.Black;
             this.label16.Location = new System.Drawing.Point(14, 81);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(40, 20);
+            this.label16.Size = new System.Drawing.Size(50, 25);
             this.label16.TabIndex = 20;
             this.label16.Text = "DX2:";
             // 
@@ -1333,13 +1333,12 @@
             this.button4.BackColor = System.Drawing.Color.LightGray;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(26, 187);
+            this.button4.Location = new System.Drawing.Point(19, 178);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(121, 1);
             this.button4.TabIndex = 81;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Visible = false;
             // 
             // button3
             // 
@@ -1371,7 +1370,7 @@
             this.pro5.Font = new System.Drawing.Font("Leelawadee UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.pro5.Location = new System.Drawing.Point(26, 239);
             this.pro5.Name = "pro5";
-            this.pro5.Size = new System.Drawing.Size(55, 24);
+            this.pro5.Size = new System.Drawing.Size(58, 24);
             this.pro5.TabIndex = 78;
             this.pro5.Text = "ENT";
             this.pro5.UseVisualStyleBackColor = true;
@@ -1382,13 +1381,12 @@
             // 
             this.pro4.AutoSize = true;
             this.pro4.Font = new System.Drawing.Font("Leelawadee UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pro4.Location = new System.Drawing.Point(26, 209);
+            this.pro4.Location = new System.Drawing.Point(19, 152);
             this.pro4.Name = "pro4";
-            this.pro4.Size = new System.Drawing.Size(99, 24);
+            this.pro4.Size = new System.Drawing.Size(102, 24);
             this.pro4.TabIndex = 77;
             this.pro4.Text = "BRONCHO";
             this.pro4.UseVisualStyleBackColor = true;
-            this.pro4.Visible = false;
             this.pro4.CheckedChanged += new System.EventHandler(this.pro4_CheckedChanged);
             // 
             // button1
@@ -1410,7 +1408,7 @@
             this.checkpro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.checkpro.Location = new System.Drawing.Point(136, 44);
             this.checkpro.Name = "checkpro";
-            this.checkpro.Size = new System.Drawing.Size(84, 13);
+            this.checkpro.Size = new System.Drawing.Size(111, 17);
             this.checkpro.TabIndex = 71;
             this.checkpro.Text = "*Please Fill Data";
             this.checkpro.Visible = false;
@@ -1421,7 +1419,7 @@
             this.procedure3.Font = new System.Drawing.Font("Leelawadee UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.procedure3.Location = new System.Drawing.Point(19, 122);
             this.procedure3.Name = "procedure3";
-            this.procedure3.Size = new System.Drawing.Size(62, 24);
+            this.procedure3.Size = new System.Drawing.Size(65, 24);
             this.procedure3.TabIndex = 60;
             this.procedure3.Text = "ERCP";
             this.procedure3.UseVisualStyleBackColor = true;
@@ -1432,7 +1430,7 @@
             this.procedure2.Font = new System.Drawing.Font("Leelawadee UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.procedure2.Location = new System.Drawing.Point(19, 92);
             this.procedure2.Name = "procedure2";
-            this.procedure2.Size = new System.Drawing.Size(114, 24);
+            this.procedure2.Size = new System.Drawing.Size(117, 24);
             this.procedure2.TabIndex = 59;
             this.procedure2.Text = "Colonoscopy";
             this.procedure2.UseVisualStyleBackColor = true;
@@ -1443,7 +1441,7 @@
             this.procedure1.Font = new System.Drawing.Font("Leelawadee UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.procedure1.Location = new System.Drawing.Point(21, 62);
             this.procedure1.Name = "procedure1";
-            this.procedure1.Size = new System.Drawing.Size(57, 24);
+            this.procedure1.Size = new System.Drawing.Size(60, 24);
             this.procedure1.TabIndex = 58;
             this.procedure1.Text = "EGD";
             this.procedure1.UseVisualStyleBackColor = true;
@@ -1537,7 +1535,7 @@
             this.procedureRoom.FormattingEnabled = true;
             this.procedureRoom.Location = new System.Drawing.Point(8, 173);
             this.procedureRoom.Name = "procedureRoom";
-            this.procedureRoom.Size = new System.Drawing.Size(252, 33);
+            this.procedureRoom.Size = new System.Drawing.Size(252, 40);
             this.procedureRoom.TabIndex = 33;
             // 
             // label4
@@ -1595,7 +1593,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(18, 338);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(530, 33);
+            this.comboBox2.Size = new System.Drawing.Size(530, 40);
             this.comboBox2.TabIndex = 48;
             // 
             // label27
@@ -1633,7 +1631,7 @@
             "ประกันสังคม"});
             this.financeValue.Location = new System.Drawing.Point(20, 40);
             this.financeValue.Name = "financeValue";
-            this.financeValue.Size = new System.Drawing.Size(200, 33);
+            this.financeValue.Size = new System.Drawing.Size(200, 40);
             this.financeValue.TabIndex = 45;
             // 
             // label28
@@ -1643,7 +1641,7 @@
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(89)))));
             this.label28.Location = new System.Drawing.Point(23, -21);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(71, 18);
+            this.label28.Size = new System.Drawing.Size(90, 24);
             this.label28.TabIndex = 22;
             this.label28.Text = "Physician";
             // 
