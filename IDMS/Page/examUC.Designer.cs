@@ -232,13 +232,14 @@ namespace IDMS.Page
             this.BRONCO.AutoSize = true;
             this.BRONCO.Enabled = false;
             this.BRONCO.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BRONCO.Location = new System.Drawing.Point(14, 172);
+            this.BRONCO.Location = new System.Drawing.Point(39, 211);
             this.BRONCO.Name = "BRONCO";
             this.BRONCO.Size = new System.Drawing.Size(93, 25);
             this.BRONCO.TabIndex = 21;
             this.BRONCO.TabStop = true;
             this.BRONCO.Text = "BRONCO";
             this.BRONCO.UseVisualStyleBackColor = true;
+            this.BRONCO.Visible = false;
             // 
             // label1
             // 
@@ -255,7 +256,7 @@ namespace IDMS.Page
             this.ERCP.AutoSize = true;
             this.ERCP.Enabled = false;
             this.ERCP.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ERCP.Location = new System.Drawing.Point(14, 142);
+            this.ERCP.Location = new System.Drawing.Point(14, 111);
             this.ERCP.Name = "ERCP";
             this.ERCP.Size = new System.Drawing.Size(65, 25);
             this.ERCP.TabIndex = 2;
@@ -550,13 +551,14 @@ namespace IDMS.Page
             this.ENT.AutoSize = true;
             this.ENT.Enabled = false;
             this.ENT.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ENT.Location = new System.Drawing.Point(14, 111);
+            this.ENT.Location = new System.Drawing.Point(39, 250);
             this.ENT.Name = "ENT";
             this.ENT.Size = new System.Drawing.Size(56, 25);
             this.ENT.TabIndex = 22;
             this.ENT.TabStop = true;
             this.ENT.Text = "ENT";
             this.ENT.UseVisualStyleBackColor = true;
+            this.ENT.Visible = false;
             // 
             // examUC
             // 

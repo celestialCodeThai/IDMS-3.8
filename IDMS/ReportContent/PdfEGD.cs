@@ -464,9 +464,12 @@ namespace IDMS.ReportContent
             ColumnText finding10 = new ColumnText(cb);
 
             Phrase headerBody = new Phrase("Case's information", f1);
-            Phrase DocBody = new Phrase("Endoscopist:", f2);
+
+            //Phrase DocBody = new Phrase("Endoscopist:", f2);
+            Phrase DocBody = new Phrase("Physician:", f2);
+            Phrase AntBody = new Phrase("Anesthetist nurse:", f2);
             Phrase NurseBody = new Phrase("Scrub nurse:", f2);
-            Phrase AntBody = new Phrase("Anesthetist:", f2);
+            //Phrase AntBody = new Phrase("Anesthetist:", f2); Anesthetist nurse
             Phrase AnesBody = new Phrase("Anesthesia:", f2);
             Phrase MedBody = new Phrase("Medication:", f2);
             Phrase InstBody = new Phrase("Instrument:", f2);
@@ -475,6 +478,7 @@ namespace IDMS.ReportContent
             Phrase HistorytBody = new Phrase("Patient history:", f2);
             Phrase CNurseBody = new Phrase("Circulation nurse:", f2);
             Phrase ProRoomBody = new Phrase("Procedure room:", f2);
+            
 
             ColumnText d1 = new ColumnText(cb);
             ColumnText d2 = new ColumnText(cb);

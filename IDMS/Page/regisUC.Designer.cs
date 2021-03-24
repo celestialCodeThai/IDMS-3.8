@@ -650,6 +650,7 @@
             this.st4.Size = new System.Drawing.Size(191, 20);
             this.st4.TabIndex = 26;
             this.st4.Text = "Circulating nurse (Optional)";
+            this.st4.Click += new System.EventHandler(this.st4_Click);
             // 
             // groupBox1
             // 
@@ -682,7 +683,7 @@
             this.bon3.AutoSize = true;
             this.bon3.Font = new System.Drawing.Font("Leelawadee UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.bon3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(89)))));
-            this.bon3.Location = new System.Drawing.Point(14, 175);
+            this.bon3.Location = new System.Drawing.Point(207, 175);
             this.bon3.Name = "bon3";
             this.bon3.Size = new System.Drawing.Size(160, 20);
             this.bon3.TabIndex = 75;
@@ -694,7 +695,7 @@
             this.bon2.AutoSize = true;
             this.bon2.Font = new System.Drawing.Font("Leelawadee UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.bon2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(89)))));
-            this.bon2.Location = new System.Drawing.Point(14, 107);
+            this.bon2.Location = new System.Drawing.Point(207, 101);
             this.bon2.Name = "bon2";
             this.bon2.Size = new System.Drawing.Size(208, 20);
             this.bon2.TabIndex = 74;
@@ -706,7 +707,7 @@
             this.bon1.AutoSize = true;
             this.bon1.Font = new System.Drawing.Font("Leelawadee UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.bon1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(89)))));
-            this.bon1.Location = new System.Drawing.Point(14, 39);
+            this.bon1.Location = new System.Drawing.Point(134, 36);
             this.bon1.Name = "bon1";
             this.bon1.Size = new System.Drawing.Size(88, 20);
             this.bon1.TabIndex = 73;
@@ -781,7 +782,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Leelawadee UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(89)))));
-            this.label22.Location = new System.Drawing.Point(14, 314);
+            this.label22.Location = new System.Drawing.Point(15, 316);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(193, 20);
             this.label22.TabIndex = 29;
@@ -1332,12 +1333,13 @@
             this.button4.BackColor = System.Drawing.Color.LightGray;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(19, 176);
+            this.button4.Location = new System.Drawing.Point(26, 187);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(121, 1);
             this.button4.TabIndex = 81;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Visible = false;
             // 
             // button3
             // 
@@ -1367,24 +1369,26 @@
             // 
             this.pro5.AutoSize = true;
             this.pro5.Font = new System.Drawing.Font("Leelawadee UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pro5.Location = new System.Drawing.Point(19, 122);
+            this.pro5.Location = new System.Drawing.Point(26, 239);
             this.pro5.Name = "pro5";
             this.pro5.Size = new System.Drawing.Size(55, 24);
             this.pro5.TabIndex = 78;
             this.pro5.Text = "ENT";
             this.pro5.UseVisualStyleBackColor = true;
+            this.pro5.Visible = false;
             this.pro5.CheckedChanged += new System.EventHandler(this.pro5_CheckedChanged);
             // 
             // pro4
             // 
             this.pro4.AutoSize = true;
             this.pro4.Font = new System.Drawing.Font("Leelawadee UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.pro4.Location = new System.Drawing.Point(19, 182);
+            this.pro4.Location = new System.Drawing.Point(26, 209);
             this.pro4.Name = "pro4";
             this.pro4.Size = new System.Drawing.Size(99, 24);
             this.pro4.TabIndex = 77;
             this.pro4.Text = "BRONCHO";
             this.pro4.UseVisualStyleBackColor = true;
+            this.pro4.Visible = false;
             this.pro4.CheckedChanged += new System.EventHandler(this.pro4_CheckedChanged);
             // 
             // button1
@@ -1415,7 +1419,7 @@
             // 
             this.procedure3.AutoSize = true;
             this.procedure3.Font = new System.Drawing.Font("Leelawadee UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.procedure3.Location = new System.Drawing.Point(19, 152);
+            this.procedure3.Location = new System.Drawing.Point(19, 122);
             this.procedure3.Name = "procedure3";
             this.procedure3.Size = new System.Drawing.Size(62, 24);
             this.procedure3.TabIndex = 60;

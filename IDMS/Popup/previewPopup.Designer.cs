@@ -66,12 +66,12 @@
             this.doctorValue = new System.Windows.Forms.TextBox();
             this.submitValue = new System.Windows.Forms.Button();
             this.instruments = new System.Windows.Forms.GroupBox();
+            this.removeButton = new System.Windows.Forms.Button();
             this.selectButton_2 = new System.Windows.Forms.Button();
             this.instrumentsValue_2 = new System.Windows.Forms.Label();
             this.instrumentsValue_1 = new System.Windows.Forms.Label();
             this.selectButton_1 = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
-            this.removeButton = new System.Windows.Forms.Button();
             this.appoitment.SuspendLayout();
             this.indication.SuspendLayout();
             this.preDiagnosis.SuspendLayout();
@@ -410,7 +410,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 30);
             this.label1.TabIndex = 70;
-            this.label1.Text = "Fellow";
+            this.label1.Text = "Physician";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
@@ -422,7 +422,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 30);
             this.label5.TabIndex = 74;
-            this.label5.Text = "Anesthesist";
+            this.label5.Text = "Anesthetist nurse";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
@@ -446,7 +446,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 30);
             this.label3.TabIndex = 72;
-            this.label3.Text = "Staff";
+            this.label3.Text = "Scrub nurse";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -458,7 +458,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 30);
             this.label2.TabIndex = 71;
-            this.label2.Text = "Doctor order";
+            this.label2.Text = "Assistant";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // anesthesistValue
@@ -537,6 +537,22 @@
             this.instruments.TabStop = false;
             this.instruments.Text = "Instruments";
             // 
+            // removeButton
+            // 
+            this.removeButton.BackColor = System.Drawing.SystemColors.Window;
+            this.removeButton.BackgroundImage = global::IDMS.Properties.Resources.remove;
+            this.removeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.removeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.removeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeButton.ForeColor = System.Drawing.SystemColors.Window;
+            this.removeButton.Location = new System.Drawing.Point(295, 95);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(20, 20);
+            this.removeButton.TabIndex = 63;
+            this.removeButton.UseVisualStyleBackColor = false;
+            this.removeButton.Visible = false;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+            // 
             // selectButton_2
             // 
             this.selectButton_2.BackColor = System.Drawing.Color.CornflowerBlue;
@@ -611,22 +627,6 @@
             this.cancel.Text = "Cancel";
             this.cancel.UseVisualStyleBackColor = false;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
-            // 
-            // removeButton
-            // 
-            this.removeButton.BackColor = System.Drawing.SystemColors.Window;
-            this.removeButton.BackgroundImage = global::IDMS.Properties.Resources.remove;
-            this.removeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.removeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeButton.ForeColor = System.Drawing.SystemColors.Window;
-            this.removeButton.Location = new System.Drawing.Point(295, 95);
-            this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(20, 20);
-            this.removeButton.TabIndex = 63;
-            this.removeButton.UseVisualStyleBackColor = false;
-            this.removeButton.Visible = false;
-            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // previewPopup
             // 

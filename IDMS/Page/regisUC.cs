@@ -1224,6 +1224,9 @@ namespace IDMS.Page
             }
         }
 
+        private void st4_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

@@ -491,9 +491,11 @@ namespace IDMS.ReportContent
 
 
             Phrase headerBody = new Phrase("Case's information", f1);
-            Phrase DocBody = new Phrase("Endoscopist:", f2);
+            Phrase DocBody = new Phrase("Physician:", f2);
+            Phrase AntBody = new Phrase("Anesthetist nurse:", f2);
+            //Phrase DocBody = new Phrase("Endoscopist:", f2);
             Phrase NurseBody = new Phrase("Scrub nurse:", f2);
-            Phrase AntBody = new Phrase("Anesthetist:", f2);
+            //Phrase AntBody = new Phrase("Anesthetist:", f2);
             Phrase AnesBody = new Phrase("Anesthesia:", f2);
             Phrase MedBody = new Phrase("Medication:", f2);
             Phrase InstBody = new Phrase("Instrument:", f2);
